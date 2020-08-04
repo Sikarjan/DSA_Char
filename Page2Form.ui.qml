@@ -20,47 +20,47 @@ Page {
         height: 292
 
         CharTalent {
-            id: bodyControl
+            id: tal_4
             talName: qsTr("Body Contol")
-            prop1Name: hero.geText
-            prop1Value: hero.geMod
-            prop2Name: hero.geText
-            prop2Value: hero.geMod
-            prop3Name: hero.koText
-            prop3Value: hero.koMod
+            attr1Name: hero.geText
+            attr1Value: hero.geMod
+            attr2Name: hero.geText
+            attr2Value: hero.geMod
+            attr3Name: hero.koText
+            attr3Value: hero.koMod
             skill: "4"
         }
         CharTalent {
-            id: carousing
+            id: tal_14
             talName: qsTr("Carousing")
-            prop1Name: hero.kkText
-            prop1Value: hero.kkMod
-            prop2Name: hero.kkText
-            prop2Value: hero.kkMod
-            prop3Name: hero.koText
-            prop3Value: hero.koMod
+            attr1Name: hero.kkText
+            attr1Value: hero.kkMod
+            attr2Name: hero.kkText
+            attr2Value: hero.kkMod
+            attr3Name: hero.koText
+            attr3Value: hero.koMod
             skill: "4"
         }
         CharTalent {
-            id: climbing
+            id: tal_3
             talName: qsTr("Climbing")
-            prop1Name: hero.muText
-            prop1Value: hero.muMod
-            prop2Name: hero.geText
-            prop2Value: hero.geMod
-            prop3Name: hero.kkText
-            prop3Value: hero.kkMod
+            attr1Name: hero.muText
+            attr1Value: hero.muMod
+            attr2Name: hero.geText
+            attr2Value: hero.geMod
+            attr3Name: hero.kkText
+            attr3Value: hero.kkMod
             skill: "4"
         }
         CharTalent {
-            id: dancing
+            id: tal_11
             talName: qsTr("Dancing")
-            prop1Name: hero.klText
-            prop1Value: hero.klMod
-            prop2Name: hero.chText
-            prop2Value: hero.chMod
-            prop3Name: hero.ffText
-            prop3Value: hero.ffMod
+            attr1Name: hero.klText
+            attr1Value: hero.klMod
+            attr2Name: hero.chText
+            attr2Value: hero.chMod
+            attr3Name: hero.ffText
+            attr3Value: hero.ffMod
             skill: "4"
         }
     }

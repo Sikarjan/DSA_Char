@@ -3,12 +3,12 @@ import QtQuick.Controls 2.12
 
 Item {
     property alias talName: talName.text
-    property alias prop1Name: prop1.prop1Name
-    property alias prop1Value: prop1.prop1Value
-    property alias prop2Name: prop2.prop2Name
-    property alias prop2Value: prop2.prop2Value
-    property alias prop3Name: prop3.prop3Name
-    property alias prop3Value: prop3.prop3Value
+    property alias attr1Name: attr1.attr1Name
+    property alias attr1Value: attr1.attr1Value
+    property alias attr2Name: attr2.attr2Name
+    property alias attr2Value: attr2.attr2Value
+    property alias attr3Name: attr3.attr3Name
+    property alias attr3Value: attr3.attr3Value
     property alias skill: skill.text
     property alias note: note.text
 
@@ -29,31 +29,31 @@ Item {
         }
 
         Label{
-            id: prop1
+            id: attr1
             width: 25
-            text: mArea.containsMouse ? prop1Value:prop1Name
+            text: mArea.containsMouse ? attr1Value:attr1Name
             font.pointSize: talName.font.pointSize
 
-            property string prop1Name
-            property int prop1Value
+            property string attr1Name
+            property int attr1Value
         }
         Label{
-            id: prop2
+            id: attr2
             width: 25
-            text: mArea.containsMouse ? prop2Value:prop2Name
+            text: mArea.containsMouse ? attr2Value:attr2Name
             font.pointSize: talName.font.pointSize
 
-            property string prop2Name
-            property int prop2Value
+            property string attr2Name
+            property int attr2Value
         }
         Label{
-            id: prop3
+            id: attr3
             width: 25
-            text: mArea.containsMouse ? prop3Value:prop3Name
+            text: mArea.containsMouse ? attr3Value:attr3Name
             font.pointSize: talName.font.pointSize
 
-            property string prop3Name
-            property int prop3Value
+            property string attr3Name
+            property int attr3Value
         }
         Label{
             id: skill
@@ -73,7 +73,7 @@ Item {
             height: 30
             text: qsTr("roll")
             onClicked: {
-                var res = hero.rollTalent(prop1Value, prop3Value, prop3Value, skill.text*1)
+                var res = hero.rollTalent(attr1Value, attr3Value, attr3Value, skill.text*1)
                 console.log(res)
             }
         }
