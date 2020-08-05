@@ -40,6 +40,12 @@ Page {
                 Label {
                     text: model.fill
                 }
+                Label {
+                    text: model.weight
+                }
+                Label {
+                    text: model.price
+                }
             }
         }
     }
