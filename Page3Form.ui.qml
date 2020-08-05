@@ -30,6 +30,7 @@ Page {
 
             delegate: Row {
                 spacing: 3
+                visible: model.index !== 0
 
                 Label {
                     text: model.bagName

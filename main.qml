@@ -27,6 +27,7 @@ ApplicationWindow {
             title: qsTr("Items")
             Action {
                 text: qsTr("&Add Item")
+                onTriggered: addItemDialog.open()
             }
             Action {
                 text: qsTr("Add &Bag")
@@ -80,10 +81,10 @@ ApplicationWindow {
                     { text: qsTr("Quiver"), value: 20, type: "quiver", weight: 0.75, price: 15, desc: qsTr("Quiver for 20 arrows or bolds. To be carried on a belt or on the back.") }
                 ]
 
-                onCurrentIndexChanged: {
+                onCurrentTextChanged: {
                     var bagModel = bagType.model
 
-                    bagDescription.text = currentText+" | " + qsTr("capacity: ")+ currentValue+ qsTr(" stone")+"\n"+ bagModel[currentIndex].desc
+                    bagDescription.text = currentText +" | " + qsTr("capacity: ")+ bagModel[currentIndex].value + qsTr(" stone")+"\n"+ bagModel[currentIndex].desc
                 }
             }
 
@@ -121,6 +122,67 @@ ApplicationWindow {
             })
         }
     }
+    Dialog {
+        id: addItemDialog
+        width: 400
+        height: 300
+        title: qsTr("Adding Item")
+
+        standardButtons: Dialog.Ok | Dialog.Cancel
+
+        Column {
+            anchors.fill: parent
+            anchors.margins: 10
+            spacing: 5
+
+            Row {
+                width: parent.width
+
+                Label {
+                    text: qsTr("Item")
+                    width: 100
+                }
+
+                TextInput {
+                    id: itemName
+                    width: parent.width-110
+                }
+            }
+
+            Row {
+                Label {
+                    text: qsTr("Weight")
+                    width: 100
+                }
+
+                SpinBox {
+                    id: itemWeight
+                }
+            }
+            Row {
+                Label {
+                    text: qsTr("Price")
+                    width: 100
+                }
+
+                SpinBox {
+                    id: itemPrice
+                }
+            }
+            Row {
+                Label {
+                    text: qsTr("Where")
+                    width: 100
+                }
+
+                ComboBox {
+                    textRole: "bagName"
+                    valueRole: "value"
+                    model: bagList
+                }
+            }
+        }
+    }
 
     SwipeView {
         id: swipeView
@@ -139,6 +201,16 @@ ApplicationWindow {
         Page3Form {
             ListModel {
                 id: bagList
+
+                ListElement {
+                    bagName: qsTr("Body")
+                    size: 0
+                    type: "body"
+                    weight: 0
+                    price: 0
+                    fill: 0
+                    where: "body"
+                }
             }
         }
     }
@@ -158,7 +230,7 @@ ApplicationWindow {
             text: qsTr("Skills")
         }
         TabButton {
-            text: qsTr("Spells")
+            text: qsTr("Belongings")
         }
     }
 }
