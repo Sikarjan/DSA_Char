@@ -20,7 +20,7 @@ Page {
         spacing: 5
 
         Label {
-            text: qsTr("Containers")
+            text: qsTr("Places")
         }
 
         ListView {
@@ -28,24 +28,75 @@ Page {
             height: contentHeight
             model: bagList
 
+            header: bagListHeader
+
             delegate: Row {
                 spacing: 3
-                visible: model.index !== 0
 
                 Label {
                     text: model.bagName
+                    width: 120
                 }
                 Label {
                     text: model.where
+                    width: 40
                 }
                 Label {
-                    text: model.fill
+                    text: model.fill + "/" + model.size
+                    width: 40
                 }
                 Label {
                     text: model.weight
+                    width: 20
                 }
                 Label {
                     text: model.price
+                    width: 20
+                }
+            }
+        }
+
+        ListView {
+            width: parent.width
+            height: contentHeight
+            model: itemList
+
+            header: itemListHeader
+            section.property: "where"
+            section.criteria: ViewSection.FullString
+            section.delegate: Rectangle {
+                width: parent.width
+                height: childrenRect.height
+                color: "lightsteelblue"
+
+                required property string section
+
+                Text {
+                    text: parent.section
+                    font.bold: true
+                }
+            }
+
+            delegate: Row {
+                spacing: 3
+
+                Label {
+                    id: itemNameLabel
+                    text: model.item
+                    width: 120
+                }
+                SpinBox {
+                    value: model.amount
+                    width: 50
+                    height: itemNameLabel.height
+                }
+                Label {
+                    text: model.weight
+                    width: 20
+                }
+                Label {
+                    text: model.price
+                    width: 20
                 }
             }
         }

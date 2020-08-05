@@ -171,16 +171,43 @@ ApplicationWindow {
             }
             Row {
                 Label {
+                    text: qsTr("Amount")
+                    width: 100
+                }
+
+                SpinBox {
+                    id: itemAmount
+                }
+            }
+            Row {
+                width: parent.width
+
+                Label {
                     text: qsTr("Where")
                     width: 100
                 }
 
                 ComboBox {
+                    id: itemWhere
                     textRole: "bagName"
                     valueRole: "value"
                     model: bagList
+                    width: parent.width - 110
                 }
             }
+        }
+
+        onAccepted: {
+            itemList.append({
+                                "item": itemName.text,
+                                "amount": itemAmount.value,
+                                "weight": itemWeight.value,
+                                "price": itemPrice.value,
+                                "where": itemWhere.currentText
+            })
+
+            var fill = bagList.get(itemWhere.currentIndex).fill + itemWeight.value*itemAmount.value
+            bagList.setProperty(itemWhere.currentIndex, "fill", fill)
         }
     }
 
@@ -210,6 +237,32 @@ ApplicationWindow {
                     price: 0
                     fill: 0
                     where: "body"
+                }
+            }
+
+            ListModel {
+                id: itemList
+            }
+
+            Component {
+                id: bagListHeader
+                Row {
+                    spacing: 3
+                    Label { text: qsTr("Container"); width: 120 }
+                    Label { text: qsTr("Where"); width: 40 }
+                    Label { text: qsTr("Level"); width: 40 }
+                    Label { text: qsTr("Weight"); width: 20 }
+                    Label { text: qsTr("Price"); width: 20 }
+                }
+            }
+            Component {
+                id: itemListHeader
+                Row {
+                    spacing: 3
+                    Label { text: qsTr("Item"); width: 120 }
+                    Label { text: qsTr("Amount"); width: 50 }
+                    Label { text: qsTr("Weight"); width: 20 }
+                    Label { text: qsTr("Price"); width: 20 }
                 }
             }
         }
