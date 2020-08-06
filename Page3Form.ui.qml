@@ -47,11 +47,11 @@ Page {
                 }
                 Label {
                     text: model.weight
-                    width: 20
+                    width: 40
                 }
                 Label {
                     text: model.price
-                    width: 20
+                    width: 40
                 }
             }
         }
@@ -69,7 +69,7 @@ Page {
                 height: childrenRect.height
                 color: "lightsteelblue"
 
-                required property string section
+                property string section
 
                 Text {
                     text: parent.section
@@ -77,28 +77,7 @@ Page {
                 }
             }
 
-            delegate: Row {
-                spacing: 3
-
-                Label {
-                    id: itemNameLabel
-                    text: model.item
-                    width: 120
-                }
-                SpinBox {
-                    value: model.amount
-                    width: 50
-                    height: itemNameLabel.height
-                }
-                Label {
-                    text: model.weight
-                    width: 20
-                }
-                Label {
-                    text: model.price
-                    width: 20
-                }
-            }
+            delegate: itemListDelegate
         }
     }
 }

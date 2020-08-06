@@ -61,7 +61,7 @@ ApplicationWindow {
             Text {
                 width: parent.width
                 wrapMode: Text.Wrap
-                text: qsTr("Adding an item that allows you to carry other items")
+                text: qsTr("Adding an item that allows you to carry other items.")
             }
             ComboBox {
                 id: bagType
@@ -203,11 +203,9 @@ ApplicationWindow {
                                 "amount": itemAmount.value,
                                 "weight": itemWeight.value,
                                 "price": itemPrice.value,
-                                "where": itemWhere.currentText
+                                "where": itemWhere.currentText,
+                                "whereId": itemWhere.currentIndex
             })
-
-            var fill = bagList.get(itemWhere.currentIndex).fill + itemWeight.value*itemAmount.value
-            bagList.setProperty(itemWhere.currentIndex, "fill", fill)
         }
     }
 
@@ -236,12 +234,8 @@ ApplicationWindow {
                     weight: 0
                     price: 0
                     fill: 0
-                    where: "body"
+                    where: qsTr("Body")
                 }
-            }
-
-            ListModel {
-                id: itemList
             }
 
             Component {
@@ -251,18 +245,68 @@ ApplicationWindow {
                     Label { text: qsTr("Container"); width: 120 }
                     Label { text: qsTr("Where"); width: 40 }
                     Label { text: qsTr("Level"); width: 40 }
-                    Label { text: qsTr("Weight"); width: 20 }
-                    Label { text: qsTr("Price"); width: 20 }
+                    Label { text: qsTr("Weight"); width: 40 }
+                    Label { text: qsTr("Price"); width: 40 }
                 }
             }
+
+            ListModel {
+                id: itemList
+
+                onCountChanged:  {
+                    for(var i=0; i<count; i++) {
+                        for(var j=0; j<i; j++) {
+                            if(get(i).where === get(j).where)
+                                move(i,j,1)
+                            break
+                        }
+                    }
+                }
+            }
+
             Component {
                 id: itemListHeader
                 Row {
                     spacing: 3
-                    Label { text: qsTr("Item"); width: 120 }
-                    Label { text: qsTr("Amount"); width: 50 }
-                    Label { text: qsTr("Weight"); width: 20 }
-                    Label { text: qsTr("Price"); width: 20 }
+                    Label { text: qsTr("Item"); width: 140 }
+                    Label { text: qsTr("Amount"); width: 70 }
+                    Label { text: qsTr("Weight"); width: 50 }
+                    Label { text: qsTr("Price"); width: 50 }
+                }
+            }
+            Component {
+                id: itemListDelegate
+                Row {
+                    spacing: 3
+
+                    Label {
+                        id: itemNameLabel
+                        text: model.item
+                        width: 140
+                    }
+                    SpinBox {
+                        value: model.amount
+                        width: 70
+                        height: itemNameLabel.height
+                        editable: false
+
+                        property int lastValue: 0
+
+                        onValueChanged:  {
+                            var nWeight = (value - lastValue)*model.weight
+                            lastValue = value
+                            var fill = bagList.get(model.whereId).fill + nWeight
+                            bagList.setProperty(model.whereId, "fill", fill)
+                        }
+                    }
+                    Label {
+                        text: model.weight
+                        width: 50
+                    }
+                    Label {
+                        text: model.price
+                        width: 50
+                    }
                 }
             }
         }
