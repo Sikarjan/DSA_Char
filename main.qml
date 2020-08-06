@@ -264,6 +264,7 @@ ApplicationWindow {
                 id: bagList
 
                 property real fill: 0
+                property int weightBurden: 0
 
                 ListElement {
                     bagName: qsTr("Body")
@@ -279,6 +280,16 @@ ApplicationWindow {
                     fill = 0
                     for(var i=0;i<count;i++){
                         fill += get(i).fill
+                    }
+                }
+
+                onFillChanged: {
+                    if(fill > hero.kk*2){
+                        var extraFill = fill - hero.kk*2
+                        var extraBurden = Math.floor(extraFill/4)+1
+
+                        hero.burden += extraBurden - weightBurden
+                        weightBurden = extraBurden
                     }
                 }
             }

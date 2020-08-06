@@ -97,7 +97,6 @@ Page {
     }
     ButtonGroup {
         id: painGroup
-
     }
 
     Grid {
@@ -141,6 +140,7 @@ Page {
             height: 24
             text: qsTr("")
             ButtonGroup.group: burdenGroup
+            checked: hero.burden == 0
             onToggled: hero.burden = 0
         }
         RadioButton {
@@ -149,6 +149,7 @@ Page {
             height: 24
             text: qsTr("")
             ButtonGroup.group: burdenGroup
+            checked: hero.burden == 1
             onToggled: hero.burden = 1
         }
         RadioButton {
@@ -156,6 +157,7 @@ Page {
             width: 22
             height: 24
             ButtonGroup.group: burdenGroup
+            checked: hero.burden == 2
             onToggled: hero.burden = 2
         }
         RadioButton {
@@ -164,6 +166,7 @@ Page {
             height: 24
             text: qsTr("")
             ButtonGroup.group: burdenGroup
+            checked: hero.burden == 3
             onToggled: hero.burden = 3
         }
         RadioButton {
@@ -172,6 +175,7 @@ Page {
             height: 24
             text: qsTr("")
             ButtonGroup.group: burdenGroup
+            checked: hero.burden >= 4
             onToggled: hero.burden = 4
         }
         Label {
@@ -214,7 +218,7 @@ Page {
             id: pain4
             width: 22
             height: 24
-            checked: hero.pain == 4
+            checked: hero.pain >= 4
             ButtonGroup.group: painGroup
         }
         Label {
