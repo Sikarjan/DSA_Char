@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 import "components"
 
 Page {
@@ -7,10 +8,27 @@ Page {
     width: 600
     height: 400
 
-    header: Label {
-        text: qsTr("Belongins")
-        font.pixelSize: Qt.application.font.pixelSize * 2
-        padding: 10
+    header: RowLayout {
+        spacing: 5
+        Label {
+            text: qsTr("Belongins")
+            font.pixelSize: Qt.application.font.pixelSize * 2
+            padding: 10
+        }
+
+        Item {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Label {
+            anchors.bottom: parent.bottom
+            text: qsTr("Carrying Capacity STRx2: ")+hero.kk*2
+        }
+        Label {
+            anchors.bottom: parent.bottom
+            text: qsTr("Total weight: ")+bagList.fill
+        }
     }
 
     Column {
@@ -35,23 +53,23 @@ Page {
 
                 Label {
                     text: model.bagName
-                    width: 120
+                    width: 140
                 }
                 Label {
                     text: model.where
-                    width: 40
+                    width: 50
                 }
                 Label {
                     text: model.fill + "/" + model.size
-                    width: 40
+                    width: 50
                 }
                 Label {
                     text: model.weight
-                    width: 40
+                    width: 50
                 }
                 Label {
                     text: model.price
-                    width: 40
+                    width: 50
                 }
             }
         }

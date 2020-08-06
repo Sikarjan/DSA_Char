@@ -157,6 +157,24 @@ ApplicationWindow {
 
                 SpinBox {
                     id: itemWeight
+                    stepSize: 50
+                    to:10000
+                    editable: true
+
+                    property real realValue: value/100
+
+                    validator: DoubleValidator {
+                        bottom: Math.min(itemWeight.from, itemWeight.to)
+                        top:  Math.max(itemWeight.from, itemWeight.to)
+                    }
+
+                    textFromValue: function(value, locale) {
+                        return Number(value / 100).toLocaleString(locale, 'f', 2)
+                    }
+
+                    valueFromText: function(text, locale) {
+                        return Number.fromLocaleString(locale, text) * 100
+                    }
                 }
             }
             Row {
@@ -167,6 +185,24 @@ ApplicationWindow {
 
                 SpinBox {
                     id: itemPrice
+                    stepSize: 50
+                    to: 100000
+                    editable: true
+
+                    property real realValue: value/100
+
+                    validator: DoubleValidator {
+                        bottom: Math.min(itemPrice.from, itemPrice.to)
+                        top:  Math.max(itemPrice.from, itemPrice.to)
+                    }
+
+                    textFromValue: function(value, locale) {
+                        return Number(value / 100).toLocaleString(locale, 'f', 2)
+                    }
+
+                    valueFromText: function(text, locale) {
+                        return Number.fromLocaleString(locale, text) * 100
+                    }
                 }
             }
             Row {
@@ -201,8 +237,8 @@ ApplicationWindow {
             itemList.append({
                                 "item": itemName.text,
                                 "amount": itemAmount.value,
-                                "weight": itemWeight.value,
-                                "price": itemPrice.value,
+                                "weight": itemWeight.realValue,
+                                "price": itemPrice.realValue,
                                 "where": itemWhere.currentText,
                                 "whereId": itemWhere.currentIndex
             })
@@ -227,6 +263,8 @@ ApplicationWindow {
             ListModel {
                 id: bagList
 
+                property real fill: 0
+
                 ListElement {
                     bagName: qsTr("Body")
                     size: 0
@@ -236,17 +274,24 @@ ApplicationWindow {
                     fill: 0
                     where: qsTr("Body")
                 }
+
+                function calcFill(){
+                    fill = 0
+                    for(var i=0;i<count;i++){
+                        fill += get(i).fill
+                    }
+                }
             }
 
             Component {
                 id: bagListHeader
                 Row {
                     spacing: 3
-                    Label { text: qsTr("Container"); width: 120 }
-                    Label { text: qsTr("Where"); width: 40 }
-                    Label { text: qsTr("Level"); width: 40 }
-                    Label { text: qsTr("Weight"); width: 40 }
-                    Label { text: qsTr("Price"); width: 40 }
+                    Label { text: qsTr("Container"); width: 140 }
+                    Label { text: qsTr("Where"); width: 50 }
+                    Label { text: qsTr("Level"); width: 50 }
+                    Label { text: qsTr("Weight"); width: 50 }
+                    Label { text: qsTr("Price"); width: 50 }
                 }
             }
 
@@ -297,6 +342,7 @@ ApplicationWindow {
                             lastValue = value
                             var fill = bagList.get(model.whereId).fill + nWeight
                             bagList.setProperty(model.whereId, "fill", fill)
+                            bagList.fill += nWeight
                         }
                     }
                     Label {
