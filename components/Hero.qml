@@ -35,6 +35,10 @@ Item {
     property int aspMax: aspMod > 0 ? eval(mainAttr)+aspMod:0
     property int asp: aspMax
 
+    property int maxLoad: kk*2
+    property real currentLoad: 0
+    property int weightBurden: 0
+
     property int burden: 0
     property int pain: 0
 
@@ -49,6 +53,17 @@ Item {
             pain = 1
         }else{
             pain = 0
+        }
+    }
+
+    onCurrentLoadChanged: {
+        console.log("new load: "+currentLoad)
+        if(currentLoad > maxLoad){
+            var extraFill = currentLoad - maxLoad
+            var extraBurden = Math.floor(extraFill/4)+1
+
+            burden += extraBurden - weightBurden
+            weightBurden = extraBurden
         }
     }
 
@@ -156,3 +171,9 @@ Item {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

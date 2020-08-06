@@ -23,11 +23,11 @@ Page {
 
         Label {
             anchors.bottom: parent.bottom
-            text: qsTr("Carrying Capacity STRx2: ")+hero.kk*2
+            text: qsTr("Total weight: ") + hero.currentLoad
         }
         Label {
             anchors.bottom: parent.bottom
-            text: qsTr("Total weight: ")+bagList.fill
+            text: qsTr("Burden by weight: ") + hero.weightBurden
         }
     }
 
@@ -48,30 +48,7 @@ Page {
 
             header: bagListHeader
 
-            delegate: Row {
-                spacing: 3
-
-                Label {
-                    text: model.bagName
-                    width: 140
-                }
-                Label {
-                    text: model.where
-                    width: 50
-                }
-                Label {
-                    text: model.fill + "/" + model.size
-                    width: 50
-                }
-                Label {
-                    text: model.weight
-                    width: 50
-                }
-                Label {
-                    text: model.price
-                    width: 50
-                }
-            }
+            delegate: bagListDelegate
         }
 
         ListView {

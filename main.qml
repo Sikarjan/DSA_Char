@@ -110,16 +110,19 @@ ApplicationWindow {
 
         onAccepted: {
             var bagModel = bagType.model
+            var bagWeigth = bagModel[bagType.currentIndex].weight
 
             bagList.append({
                                "bagName": bagType.currentText,
                                "size": bagType.currentValue,
                                "type": bagModel[bagType.currentIndex].type,
-                               "weight": bagModel[bagType.currentIndex].weight,
+                               "weight": bagWeigth,
                                "price": bagModel[bagType.currentIndex].price,
-                               "fill": 0,
-                               "where": bagCarry.currentText
+                               "load": 0,
+                               "where": bagCarry.currentText,
+                               "dropped": false
             })
+            hero.currentLoad += bagModel[bagType.currentIndex].weight
         }
     }
     Dialog {
@@ -263,34 +266,17 @@ ApplicationWindow {
             ListModel {
                 id: bagList
 
-                property real fill: 0
-                property int weightBurden: 0
-
-                ListElement {
-                    bagName: qsTr("Body")
-                    size: 0
-                    type: "body"
-                    weight: 0
-                    price: 0
-                    fill: 0
-                    where: qsTr("Body")
-                }
-
-                function calcFill(){
-                    fill = 0
-                    for(var i=0;i<count;i++){
-                        fill += get(i).fill
-                    }
-                }
-
-                onFillChanged: {
-                    if(fill > hero.kk*2){
-                        var extraFill = fill - hero.kk*2
-                        var extraBurden = Math.floor(extraFill/4)+1
-
-                        hero.burden += extraBurden - weightBurden
-                        weightBurden = extraBurden
-                    }
+                Component.onCompleted: {
+                    append({
+                               "bagName": qsTr("Body"),
+                               "size": hero.maxLoad,
+                               "type": "body",
+                               "weight": 0,
+                               "price": 0,
+                               "load": hero.currentLoad,
+                               "where": "-",
+                               "dropped": false
+            })
                 }
             }
 
@@ -303,6 +289,43 @@ ApplicationWindow {
                     Label { text: qsTr("Level"); width: 50 }
                     Label { text: qsTr("Weight"); width: 50 }
                     Label { text: qsTr("Price"); width: 50 }
+                    Label { text: qsTr("Dropped"); width: 50 }
+                }
+            }
+
+            Component {
+                id: bagListDelegate
+
+                Row {
+                    spacing: 3
+
+                    Label {
+                        text: model.bagName
+                        width: 140
+                    }
+                    Label {
+                        text: model.where
+                        width: 50
+                    }
+                    Label {
+                        text: model.load + "/" + model.size
+                        width: 50
+                    }
+                    Label {
+                        text: model.weight
+                        width: 50
+                    }
+                    Label {
+                        text: model.price
+                        width: 50
+                    }
+                    CheckBox {
+                        checked: model.dropped
+                        onToggled: {
+                            var factor = checked ? -1:1
+                            hero.currentLoad += factor*(model.load + model.weight)
+                        }
+                    }
                 }
             }
 
@@ -351,9 +374,9 @@ ApplicationWindow {
                         onValueChanged:  {
                             var nWeight = (value - lastValue)*model.weight
                             lastValue = value
-                            var fill = bagList.get(model.whereId).fill + nWeight
-                            bagList.setProperty(model.whereId, "fill", fill)
-                            bagList.fill += nWeight
+                            var mLoad = bagList.get(model.whereId).load + nWeight
+                            bagList.setProperty(model.whereId, "load", mLoad)
+                            hero.currentLoad += nWeight
                         }
                     }
                     Label {
