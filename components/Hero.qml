@@ -168,6 +168,42 @@ Item {
                 break;
             }
         }
+
+        var belongings = hero.belongings.items
+        for (const item in belongings){
+            console.log(item)
+            var template = item.template.substring(8)
+console.log(template)
+            if(template>88 && template <92 || template>201 && template <205){ //Needs to be checked if all kinds of bags are captured!
+                addBag(template);
+            }else{
+                itemList.append({
+                                "item": item.name,
+                                "amount": item.amount,
+                                "weight": item.weight,
+                                "price": item.price,
+                                "where": "Body",
+                                "whereId": 0
+                                })
+                bagList.setProperty(0,"load",item.weight)
+            }
+        }
+    }
+
+    function addBag(item){
+        bagList.append({
+                       "bagId": bagList.nextId,
+                       "bagName": item.name,
+                       "size": item.gr,
+                       "type": "inport",
+                       "weight": item.weight,
+                       "price":item.price,
+                       "load": 0,
+                       "where": "Body",
+                       "dropped": false
+                       })
+        bagList.setProperty(0,"load",item.weight)
+        bagList.nextId++
     }
 }
 
