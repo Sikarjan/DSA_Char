@@ -113,7 +113,8 @@ ApplicationWindow {
             var bagWeigth = bagModel[bagType.currentIndex].weight
 
             bagList.append({
-                               "bagName": bagType.currentText,
+                               "bagId": bagList.nextId,
+                               "bagName": bagType.currentText, // This needs to be unique!
                                "size": bagType.currentValue,
                                "type": bagModel[bagType.currentIndex].type,
                                "weight": bagWeigth,
@@ -122,7 +123,21 @@ ApplicationWindow {
                                "where": bagCarry.currentText,
                                "dropped": false
             })
-            hero.currentLoad += bagModel[bagType.currentIndex].weight
+
+            // Add weight of bag to the hero
+            hero.currentLoad += bagWeigth
+            bagList.setProperty(0, "load", bagList.get(0).load+bagWeigth)
+
+            var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
+            mItem.text = bagType.currentText
+            mItem.bagId = bagList.nextId
+            itemWhereMenu.addItem(mItem)
+            var f = function(it){
+                it.triggered.connect(function(){ bagList.moveItem(it)})
+            }
+            f(mItem)
+
+            bagList.nextId++
         }
     }
     Dialog {
@@ -229,7 +244,7 @@ ApplicationWindow {
                 ComboBox {
                     id: itemWhere
                     textRole: "bagName"
-                    valueRole: "value"
+                    valueRole: "bagId"
                     model: bagList
                     width: parent.width - 110
                 }
@@ -243,7 +258,7 @@ ApplicationWindow {
                                 "weight": itemWeight.realValue,
                                 "price": itemPrice.realValue,
                                 "where": itemWhere.currentText,
-                                "whereId": itemWhere.currentIndex
+                                "whereId": itemWhere.currentValue // holds bagId
             })
         }
     }
@@ -255,7 +270,7 @@ ApplicationWindow {
 
         Page1Form {
             leP {
-                onValueChanged: hero.le = leP.value
+                onValueChanged: hero.le = leP.value // Warum? Da sollte man doch ein Binding machen können
             }
         }
 
@@ -266,17 +281,24 @@ ApplicationWindow {
             ListModel {
                 id: bagList
 
+                property int nextId: 1
+
                 Component.onCompleted: {
                     append({
+                               "bagId": 0,
                                "bagName": qsTr("Body"),
                                "size": hero.maxLoad,
                                "type": "body",
                                "weight": 0,
                                "price": 0,
-                               "load": hero.currentLoad,
+                               "load": 0,
                                "where": "-",
                                "dropped": false
-            })
+                    })
+                }
+
+                function moveItem(item){
+                    itemList.moveItem(item.bagId)
                 }
             }
 
@@ -324,6 +346,7 @@ ApplicationWindow {
                         onToggled: {
                             var factor = checked ? -1:1
                             hero.currentLoad += factor*(model.load + model.weight)
+                            bagList.setProperty(0,"load",hero.currentLoad)
                         }
                     }
                 }
@@ -332,7 +355,12 @@ ApplicationWindow {
             ListModel {
                 id: itemList
 
-                onCountChanged:  {
+                property int selectedIndex: -1
+
+                onCountChanged:  sortItems()
+
+                // Sort items by "where" they are located
+                function sortItems() {
                     for(var i=0; i<count; i++) {
                         for(var j=0; j<i; j++) {
                             if(get(i).where === get(j).where)
@@ -340,6 +368,24 @@ ApplicationWindow {
                             break
                         }
                     }
+                }
+                function moveItem(bagId){
+                    var lastBagId = get(selectedIndex).whereId
+                    var newPos = bagList.get(bagId).bagName
+                    var load = get(selectedIndex).weight*get(selectedIndex).amount
+
+                    setProperty(selectedIndex, "where", newPos)
+                    setProperty(selectedIndex, "whereId", bagId)
+
+                    if(lastBagId !== 0){
+                    bagList.setProperty(lastBagId, "load", bagList.get(lastBagId).load - load)
+                    }
+
+                    if(bagId !== 0){
+                        bagList.setProperty(bagId, "load", bagList.get(bagId).load + load)
+                    }
+
+                    itemList.sortItems()
                 }
             }
 
@@ -362,6 +408,14 @@ ApplicationWindow {
                         id: itemNameLabel
                         text: model.item
                         width: 140
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                itemList.selectedIndex = model.index
+                                itemMenu.popup()
+                            }
+                        }
                     }
                     SpinBox {
                         value: model.amount
@@ -377,6 +431,10 @@ ApplicationWindow {
                             var mLoad = bagList.get(model.whereId).load + nWeight
                             bagList.setProperty(model.whereId, "load", mLoad)
                             hero.currentLoad += nWeight
+
+                            bagList.setProperty(0,"load",hero.currentLoad)
+
+                            model.amount = value
                         }
                     }
                     Label {
@@ -387,6 +445,28 @@ ApplicationWindow {
                         text: model.price
                         width: 50
                     }
+                }
+            }
+
+            Menu {
+                id: itemMenu
+
+                MenuItem {
+                    text: qsTr("Move...")
+                    onClicked: itemWhereMenu.popup()
+
+                    Menu {
+                        id: itemWhereMenu
+                        title: qsTr("Location")
+
+                        MenuItem {
+                            text: qsTr("Body")
+                            onClicked: itemList.moveItem(0)
+                        }
+                    }
+                }
+                MenuItem {
+                    text: qsTr("Remove")
                 }
             }
         }

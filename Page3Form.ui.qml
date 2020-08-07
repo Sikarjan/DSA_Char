@@ -10,24 +10,25 @@ Page {
 
     header: RowLayout {
         spacing: 5
+        Layout.margins: 5
+
         Label {
             text: qsTr("Belongins")
             font.pixelSize: Qt.application.font.pixelSize * 2
-            padding: 10
         }
 
-        Item {
+/*        Item {
             Layout.fillHeight: true
             Layout.fillWidth: true
-        }
+        }*/
 
         Label {
-            anchors.bottom: parent.bottom
             text: qsTr("Total weight: ") + hero.currentLoad
+            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
         }
         Label {
-            anchors.bottom: parent.bottom
             text: qsTr("Burden by weight: ") + hero.weightBurden
+            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
         }
     }
 
@@ -38,7 +39,7 @@ Page {
         spacing: 5
 
         Label {
-            text: qsTr("Places")
+            text: qsTr("Location")
         }
 
         ListView {
@@ -52,8 +53,10 @@ Page {
         }
 
         ListView {
+            id: itemListView
             width: parent.width
             height: contentHeight
+            spacing: 2
             model: itemList
 
             header: itemListHeader
@@ -64,15 +67,20 @@ Page {
                 height: childrenRect.height
                 color: "lightsteelblue"
 
-                property string section
+                required property string section
 
                 Text {
                     text: parent.section
                     font.bold: true
+                    font.pixelSize: Qt.application.font.pixelSize+3
                 }
             }
 
             delegate: itemListDelegate
+
+            ScrollBar.vertical: ScrollBar {
+                active: true
+            }
         }
     }
 }

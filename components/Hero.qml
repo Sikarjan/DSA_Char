@@ -57,7 +57,6 @@ Item {
     }
 
     onCurrentLoadChanged: {
-        console.log("new load: "+currentLoad)
         if(currentLoad > maxLoad){
             var extraFill = currentLoad - maxLoad
             var extraBurden = Math.floor(extraFill/4)+1
