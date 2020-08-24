@@ -111,33 +111,9 @@ ApplicationWindow {
         onAccepted: {
             var bagModel = bagType.model
             var bagWeigth = bagModel[bagType.currentIndex].weight
+            var item = {name: bagType.currentText, gr: bagType.currentValue, type: bagModel[bagType.currentIndex].type, weight: bagWeigth, price: bagModel[bagType.currentIndex].price, where: bagCarry.currentText}
 
-            bagList.append({
-                               "bagId": bagList.nextId,
-                               "bagName": bagType.currentText, // This needs to be unique!
-                               "size": bagType.currentValue,
-                               "type": bagModel[bagType.currentIndex].type,
-                               "weight": bagWeigth,
-                               "price": bagModel[bagType.currentIndex].price,
-                               "load": 0,
-                               "where": bagCarry.currentText,
-                               "dropped": false
-            })
-
-            // Add weight of bag to the hero
-            hero.currentLoad += bagWeigth
-            bagList.setProperty(0, "load", bagList.get(0).load+bagWeigth)
-
-            var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
-            mItem.text = bagType.currentText
-            mItem.bagId = bagList.nextId
-            itemWhereMenu.addItem(mItem)
-            var f = function(it){
-                it.triggered.connect(function(){ bagList.moveItem(it)})
-            }
-            f(mItem)
-
-            bagList.nextId++
+            hero.addBag(item)
         }
     }
     Dialog {
@@ -260,6 +236,7 @@ ApplicationWindow {
                                 "where": itemWhere.currentText,
                                 "whereId": itemWhere.currentValue // holds bagId
             })
+            itemList.sortItems()
         }
     }
 
@@ -357,17 +334,28 @@ ApplicationWindow {
 
                 property int selectedIndex: -1
 
-                onCountChanged:  sortItems()
-
-                // Sort items by "where" they are located
+                // Sort items by "whereId" they are located
                 function sortItems() {
+                    console.log("sorting...")
+                    let indexes = [...Array(count)].map( (v,i) => i )
+                    indexes.sort(function(a, b){return a.whereId - b.whereId})
+
+                    let sorted = 0
+                    while (sorted < indexes.length && sorted === indexes[sorted]) sorted++
+                    if (sorted === indexes.length) return
+                    for (let i = sorted; i < indexes.length; i++) {
+                        move(indexes[i], count - 1, 1)
+                        insert(indexes[i], { } )
+                    }
+                    remove(sorted, indexes.length - sorted)
+                    /*
                     for(var i=0; i<count; i++) {
                         for(var j=0; j<i; j++) {
-                            if(get(i).where === get(j).where)
+                            if(get(i).whereId === get(j).whereId)
                                 move(i,j,1)
                             break
                         }
-                    }
+                    }*/
                 }
                 function moveItem(bagId){
                     var lastBagId = get(selectedIndex).whereId

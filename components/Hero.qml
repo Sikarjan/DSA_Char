@@ -170,17 +170,28 @@ Item {
         }
 
         var belongings = hero.belongings.items
-        for (const item in belongings){
-            console.log(item)
-            var template = item.template.substring(8)
-console.log(template)
+
+        for (var key in belongings){
+            console.log(key)
+            var item = belongings[key]
+            var template = 0
+
+            if('template' in item){
+                template = item.template.substring(8)
+            }
+
             if(template>88 && template <92 || template>201 && template <205){ //Needs to be checked if all kinds of bags are captured!
-                addBag(template);
+                addBag(item);
             }else{
+                var weight = 0
+                if('weight' in item){
+                    weight = item.weight
+                }
+
                 itemList.append({
                                 "item": item.name,
                                 "amount": item.amount,
-                                "weight": item.weight,
+                                "weight": weight,
                                 "price": item.price,
                                 "where": "Body",
                                 "whereId": 0
@@ -191,24 +202,41 @@ console.log(template)
     }
 
     function addBag(item){
+        var where = 'Body'
+        var type = 'import'
+
+        if('where' in item){
+            where = item.where
+        }
+        if('type' in item){
+            type = item.type
+        }
+
         bagList.append({
                        "bagId": bagList.nextId,
                        "bagName": item.name,
                        "size": item.gr,
-                       "type": "inport",
+                       "type": type,
                        "weight": item.weight,
                        "price":item.price,
                        "load": 0,
-                       "where": "Body",
+                       "where": where,
                        "dropped": false
                        })
-        bagList.setProperty(0,"load",item.weight)
+
+        // Add weight of bag to the hero
+        hero.currentLoad += item.weight
+        bagList.setProperty(0, "load", bagList.get(0).load+item.weight)
+
+        var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
+        mItem.text = item.name
+        mItem.bagId = bagList.nextId
+        itemWhereMenu.addItem(mItem)
+        var f = function(it){
+            it.triggered.connect(function(){ bagList.moveItem(it)})
+        }
+        f(mItem)
+
         bagList.nextId++
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
