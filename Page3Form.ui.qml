@@ -17,11 +17,6 @@ Page {
             font.pixelSize: Qt.application.font.pixelSize * 2
         }
 
-/*        Item {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-        }*/
-
         Label {
             text: qsTr("Total weight: ") + hero.currentLoad
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
@@ -39,10 +34,12 @@ Page {
         spacing: 5
 
         Label {
+            id: colheader
             text: qsTr("Location")
         }
 
         ListView {
+            id: bagListView
             width: parent.width
             height: contentHeight
             model: bagList
@@ -55,9 +52,10 @@ Page {
         ListView {
             id: itemListView
             width: parent.width
-            height: contentHeight
+            height: parent.height - bagListView.height - colheader.height - 2*parent.spacing
             spacing: 2
             model: itemList
+            clip: true
 
             header: itemListHeader
             section.property: "where"

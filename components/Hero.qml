@@ -136,8 +136,8 @@ Item {
         xhr.send();
     }
 
-    function readHero(hero){
-        var attr = hero.attr.values
+    function readHero(data){
+        var attr = data.attr.values
 
         for(var i=0;i<8; i++){
 
@@ -169,10 +169,10 @@ Item {
             }
         }
 
-        var belongings = hero.belongings.items
+        var belongings = data.belongings.items
 
         for (var key in belongings){
-            console.log(key)
+//            console.log(key)
             var item = belongings[key]
             var template = 0
 
@@ -196,7 +196,8 @@ Item {
                                 "where": "Body",
                                 "whereId": 0
                                 })
-                bagList.setProperty(0,"load",item.weight)
+                hero.currentLoad += item.weight
+                bagList.setProperty(0, "load", bagList.get(0).load+item.weight)
             }
         }
     }
@@ -212,6 +213,10 @@ Item {
             type = item.type
         }
 
+
+        if(item.weight.length > 6){
+            console.log(item.weight + " "+item.name)
+        }
         bagList.append({
                        "bagId": bagList.nextId,
                        "bagName": item.name,

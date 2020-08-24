@@ -137,7 +137,7 @@ ApplicationWindow {
                     width: 100
                 }
 
-                TextInput {
+                TextField {
                     id: itemName
                     width: parent.width-110
                 }
@@ -300,7 +300,8 @@ ApplicationWindow {
 
                     Label {
                         text: model.bagName
-                        width: 140
+                        width: 240
+                        clip: true
                     }
                     Label {
                         text: model.where
@@ -308,7 +309,7 @@ ApplicationWindow {
                     }
                     Label {
                         text: model.load + "/" + model.size
-                        width: 50
+                        width: 100
                     }
                     Label {
                         text: model.weight
@@ -319,6 +320,7 @@ ApplicationWindow {
                         width: 50
                     }
                     CheckBox {
+                        visible: index > 0
                         checked: model.dropped
                         onToggled: {
                             var factor = checked ? -1:1
@@ -336,7 +338,7 @@ ApplicationWindow {
 
                 // Sort items by "whereId" they are located
                 function sortItems() {
-                    console.log("sorting...")
+//                    console.log("sorting...")
                     let indexes = [...Array(count)].map( (v,i) => i )
                     indexes.sort(function(a, b){return a.whereId - b.whereId})
 
@@ -395,7 +397,8 @@ ApplicationWindow {
                     Label {
                         id: itemNameLabel
                         text: model.item
-                        width: 140
+                        width: 240
+                        clip: true
 
                         MouseArea {
                             anchors.fill: parent
@@ -413,7 +416,7 @@ ApplicationWindow {
 
                         property int lastValue: 0
 
-                        onValueChanged:  {
+                        onValueModified: {
                             var nWeight = (value - lastValue)*model.weight
                             lastValue = value
                             var mLoad = bagList.get(model.whereId).load + nWeight
