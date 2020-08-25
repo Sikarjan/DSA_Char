@@ -18,7 +18,7 @@ Page {
         }
 
         Label {
-            text: qsTr("Total weight: ") + hero.currentLoad
+            text: qsTr("Total weight: ") + hero.currentLoad.toFixed(3)
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
         }
         Label {

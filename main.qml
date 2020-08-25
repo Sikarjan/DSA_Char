@@ -308,7 +308,7 @@ ApplicationWindow {
                         width: 50
                     }
                     Label {
-                        text: model.load + "/" + model.size
+                        text: model.load.toFixed(3) + "/" + model.size
                         width: 100
                     }
                     Label {
@@ -404,6 +404,12 @@ ApplicationWindow {
                             anchors.fill: parent
                             onClicked: {
                                 itemList.selectedIndex = model.index
+                                var pos = mapToGlobal(mouseX, mouseY)
+
+                                if(root.height - itemMenu.height < pos.y){
+                                    itemMenu.popup(Qt.point(pos.x,root.height - itemMenu.height))
+                                }
+
                                 itemMenu.popup()
                             }
                         }
@@ -442,7 +448,20 @@ ApplicationWindow {
 
                 MenuItem {
                     text: qsTr("Move...")
-                    onClicked: itemWhereMenu.popup()
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        onClicked: {
+                            var pos = mapToGlobal(mouseX, mouseY)
+
+                            if(root.height - itemWhereMenu.height < pos.y){
+                                itemWhereMenu.popup(Qt.point(pos.x,root.height - itemMenu.height))
+                            }
+
+                            itemWhereMenu.popup()
+                        }
+                    }
 
                     Menu {
                         id: itemWhereMenu
@@ -451,6 +470,10 @@ ApplicationWindow {
                         MenuItem {
                             text: qsTr("Body")
                             onClicked: itemList.moveItem(0)
+                        }
+
+                        onClosed: {
+                            itemMenu.close()
                         }
                     }
                 }
