@@ -336,11 +336,10 @@ ApplicationWindow {
 
                 property int selectedIndex: -1
 
-                // Sort items by "whereId" they are located
+                // Sort items by "whereId" they are located and then by name
                 function sortItems() {
-//                    console.log("sorting...")
-                    let indexes = [...Array(count)].map( (v,i) => i )
-                    indexes.sort(function(a, b){return a.whereId - b.whereId})
+                    let indexes = [...Array(count).keys()]
+                    indexes.sort((a,b) => compareFunction(get(a), get(b)))
 
                     let sorted = 0
                     while (sorted < indexes.length && sorted === indexes[sorted]) sorted++
@@ -350,15 +349,16 @@ ApplicationWindow {
                         insert(indexes[i], { } )
                     }
                     remove(sorted, indexes.length - sorted)
-                    /*
-                    for(var i=0; i<count; i++) {
-                        for(var j=0; j<i; j++) {
-                            if(get(i).whereId === get(j).whereId)
-                                move(i,j,1)
-                            break
-                        }
-                    }*/
                 }
+                function compareFunction(a, b){
+                    var res = a.whereId - b.whereId
+
+                    if(res === 0){
+                        return a.item.localeCompare(b.item)
+                    }
+                    return res
+                }
+
                 function moveItem(bagId){
                     var lastBagId = get(selectedIndex).whereId
                     var newPos = bagList.get(bagId).bagName

@@ -200,6 +200,7 @@ Item {
                 bagList.setProperty(0, "load", bagList.get(0).load+item.weight)
             }
         }
+        itemList.sortItems()
     }
 
     function addBag(item){
