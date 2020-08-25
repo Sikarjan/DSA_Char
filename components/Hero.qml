@@ -26,6 +26,10 @@ Item {
     property int ko: 8
     property int koMod: ko-burden-pain
 
+    onKkChanged: {
+        bagList.setProperty(0,"size", kk*2)
+    }
+
     property int leMod: 2
     property int leMax: ko+ko+leMod
     property int le: leMax
@@ -196,8 +200,8 @@ Item {
                                 "where": "Body",
                                 "whereId": 0
                                 })
-                hero.currentLoad += item.weight
-                bagList.setProperty(0, "load", bagList.get(0).load+item.weight)
+                hero.currentLoad += weight
+                bagList.setProperty(0, "load", bagList.get(0).load+weight)
             }
         }
         itemList.sortItems()

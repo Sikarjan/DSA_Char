@@ -283,9 +283,9 @@ ApplicationWindow {
                 id: bagListHeader
                 Row {
                     spacing: 3
-                    Label { text: qsTr("Container"); width: 140 }
+                    Label { text: qsTr("Container"); width: 240 }
                     Label { text: qsTr("Where"); width: 50 }
-                    Label { text: qsTr("Level"); width: 50 }
+                    Label { text: qsTr("Level"); width: 100 }
                     Label { text: qsTr("Weight"); width: 50 }
                     Label { text: qsTr("Price"); width: 50 }
                     Label { text: qsTr("Dropped"); width: 50 }
@@ -383,7 +383,7 @@ ApplicationWindow {
                 id: itemListHeader
                 Row {
                     spacing: 3
-                    Label { text: qsTr("Item"); width: 140 }
+                    Label { text: qsTr("Item"); width: 240 }
                     Label { text: qsTr("Amount"); width: 70 }
                     Label { text: qsTr("Weight"); width: 50 }
                     Label { text: qsTr("Price"); width: 50 }
@@ -414,12 +414,10 @@ ApplicationWindow {
                         height: itemNameLabel.height
                         editable: false
 
-                        property int lastValue: 0
-
                         onValueModified: {
-                            var nWeight = (value - lastValue)*model.weight
-                            lastValue = value
+                            var nWeight = (value - model.amount)*model.weight
                             var mLoad = bagList.get(model.whereId).load + nWeight
+
                             bagList.setProperty(model.whereId, "load", mLoad)
                             hero.currentLoad += nWeight
 
