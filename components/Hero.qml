@@ -200,8 +200,8 @@ Item {
                                 "where": "Body",
                                 "whereId": 0
                                 })
-                hero.currentLoad += weight
-                bagList.setProperty(0, "load", bagList.get(0).load+weight)
+                // Add weight of bag to the hero
+                addWeight(weight, 0)
             }
         }
         itemList.sortItems()
@@ -218,10 +218,6 @@ Item {
             type = item.type
         }
 
-
-        if(item.weight.length > 6){
-            console.log(item.weight + " "+item.name)
-        }
         bagList.append({
                        "bagId": bagList.nextId,
                        "bagName": item.name,
@@ -235,8 +231,7 @@ Item {
                        })
 
         // Add weight of bag to the hero
-        hero.currentLoad += item.weight
-        bagList.setProperty(0, "load", bagList.get(0).load+item.weight)
+        addWeight(item.weight, 0)
 
         var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
         mItem.text = item.name
@@ -248,5 +243,14 @@ Item {
         f(mItem)
 
         bagList.nextId++
+    }
+
+    function addWeight(weight, bagId){
+        hero.currentLoad += weight
+        bagList.setProperty(0, "load", bagList.get(0).load+weight)
+
+        if(bagId > 0){
+            bagList.setProperty(bagId, "load", bagList.get(bagId).load+weight)
+        }
     }
 }

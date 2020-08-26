@@ -110,8 +110,8 @@ ApplicationWindow {
 
         onAccepted: {
             var bagModel = bagType.model
-            var bagWeigth = bagModel[bagType.currentIndex].weight
-            var item = {name: bagType.currentText, gr: bagType.currentValue, type: bagModel[bagType.currentIndex].type, weight: bagWeigth, price: bagModel[bagType.currentIndex].price, where: bagCarry.currentText}
+            var bagWeight = bagModel[bagType.currentIndex].weight
+            var item = {name: bagType.currentText, gr: bagType.currentValue, type: bagModel[bagType.currentIndex].type, weight: bagWeight, price: bagModel[bagType.currentIndex].price, where: bagCarry.currentText}
 
             hero.addBag(item)
         }
@@ -237,6 +237,9 @@ ApplicationWindow {
                                 "whereId": itemWhere.currentValue // holds bagId
             })
             itemList.sortItems()
+
+            // Add weight to hero
+            hero.addWeight(itemWeight.realValue, itemWhere.currentValue)
         }
     }
 
