@@ -1,6 +1,8 @@
 import QtQuick 2.0
+import Qt.labs.settings 1.1
 
 Item {
+    id: hero
     property string muText: qsTr("COU")
     property int mu: 8
     property int muMod: mu-burden-pain
@@ -26,10 +28,6 @@ Item {
     property int ko: 8
     property int koMod: ko-burden-pain
 
-    onKkChanged: {
-        bagList.setProperty(0,"size", kk*2)
-    }
-
     property int leMod: 2
     property int leMax: ko+ko+leMod
     property int le: leMax
@@ -46,6 +44,20 @@ Item {
     property int burden: 0
     property int pain: 0
 
+    Settings {
+        property alias mu: hero.mu
+        property alias kl: hero.kl
+        property alias ch: hero.ch
+        property alias intu: hero.intu
+        property alias ff: hero.ff
+        property alias ge: hero.ge
+        property alias kk: hero.kk
+        property alias ko: hero.ko
+    }
+
+    onKkChanged: {
+        bagList.setProperty(0,"size", kk*2)
+    }
     onLeChanged: {
         if(le<=5){
             pain = 4

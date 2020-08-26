@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
     app.setOrganizationName("Innobiz");
     app.setOrganizationDomain("innobiz.de");
+    app.setApplicationName("DSA Char Sheets");
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

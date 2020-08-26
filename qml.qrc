@@ -8,5 +8,6 @@
         <file>components/Hero.qml</file>
         <file>components/CharTalent.qml</file>
         <file>Page3Form.ui.qml</file>
+        <file>components/NumberInput.qml</file>
     </qresource>
 </RCC>

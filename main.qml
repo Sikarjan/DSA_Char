@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.3
+import Qt.labs.settings 1.1
 import "components"
 
 ApplicationWindow {
@@ -8,7 +9,35 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Tabs")
+    title: qsTr("DSA Char Sheet")
+
+    property string bagListStore: ""
+
+    Settings {
+        property alias x: root.x
+        property alias y: root.y
+        property alias width: root.width
+        property alias height: root.height
+        property alias bagListStore: root.bagListStore
+    }
+
+    Component.onCompleted: {
+        if(bagListStore){
+            bagList.clear()
+            var bagStore = JSON.parse(bagListStore)
+            for(var i=0;i<bagStore.length; i++){
+                bagList.append(bagStore[i])
+            }
+        }
+    }
+
+    onClosing: {
+        var bagStore = []
+        for(var i=0;i<bagList.count;i++){
+            bagStore.push(bagList.get(i))
+        }
+        bagListStore = JSON.stringify(bagStore)
+    }
 
     menuBar: MenuBar{
         Menu {
@@ -20,7 +49,7 @@ ApplicationWindow {
             MenuSeparator{}
             Action{
                 text: qsTr("&Quit")
-                onTriggered: Qt.quit()
+                onTriggered: root.close()
             }
         }
         Menu {
@@ -154,6 +183,7 @@ ApplicationWindow {
                     stepSize: 50
                     to:10000
                     editable: true
+                    value: 100
 
                     property real realValue: value/100
 
@@ -207,6 +237,7 @@ ApplicationWindow {
 
                 SpinBox {
                     id: itemAmount
+                    from: 1
                 }
             }
             Row {
@@ -238,6 +269,11 @@ ApplicationWindow {
             })
             itemList.sortItems()
 
+            itemName.clear()
+            itemAmount.value = 1
+            itemWeight.realValue = 1
+            itemPrice.realValue = 0
+
             // Add weight to hero
             hero.addWeight(itemWeight.realValue, itemWhere.currentValue)
         }
@@ -263,6 +299,10 @@ ApplicationWindow {
 
                 property int nextId: 1
 
+                function moveItem(item){
+                    itemList.moveItem(item.bagId)
+                }
+
                 Component.onCompleted: {
                     append({
                                "bagId": 0,
@@ -275,10 +315,6 @@ ApplicationWindow {
                                "where": "-",
                                "dropped": false
                     })
-                }
-
-                function moveItem(item){
-                    itemList.moveItem(item.bagId)
                 }
             }
 
@@ -402,6 +438,7 @@ ApplicationWindow {
                         text: model.item
                         width: 240
                         clip: true
+//                        font.pixelSize: Qt.application.font.pixelSize*1.5
 
                         MouseArea {
                             anchors.fill: parent
@@ -417,7 +454,7 @@ ApplicationWindow {
                             }
                         }
                     }
-                    SpinBox {
+                    NumberInput {
                         value: model.amount
                         width: 70
                         height: itemNameLabel.height
