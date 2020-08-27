@@ -26,7 +26,7 @@ SpinBox {
     up.indicator: Rectangle {
         x: control.mirrored ? 0 : parent.width - width
         height: parent.height
-        implicitWidth: control.width < 80 ? control.width*0.25:40
+        implicitWidth: control.width < 140 ? control.width*0.25:40
         implicitHeight: control.height
         color: control.up.pressed ? "#e4e4e4" : "#f6f6f6"
         border.color: enabled ? "#21be2b" : "#bdbebf"
@@ -45,7 +45,7 @@ SpinBox {
     down.indicator: Rectangle {
         x: control.mirrored ? parent.width - width : 0
         height: parent.height
-        implicitWidth: control.width < 80 ? control.width*0.25:40
+        implicitWidth: control.width < 140 ? control.width*0.25:40
         implicitHeight: control.height
         color: control.down.pressed ? "#e4e4e4" : "#f6f6f6"
         border.color: enabled ? "#21be2b" : "#bdbebf"

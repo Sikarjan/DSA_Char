@@ -12,6 +12,7 @@ ApplicationWindow {
     title: qsTr("DSA Char Sheet")
 
     property string bagListStore: ""
+    property string itemListStore: ""
 
     Settings {
         property alias x: root.x
@@ -19,6 +20,8 @@ ApplicationWindow {
         property alias width: root.width
         property alias height: root.height
         property alias bagListStore: root.bagListStore
+        property alias itemListStore: root.itemListStore
+        property alias heroFolder: importHeroDialog.folder
     }
 
     Component.onCompleted: {
@@ -27,6 +30,26 @@ ApplicationWindow {
             var bagStore = JSON.parse(bagListStore)
             for(var i=0;i<bagStore.length; i++){
                 bagList.append(bagStore[i])
+            }
+        }else{
+            bagList.append({
+                   "bagId": 0,
+                   "bagName": qsTr("Body"),
+                   "size": hero.maxLoad,
+                   "type": "body",
+                   "weight": 0,
+                   "price": 0,
+                   "load": 0,
+                   "where": "-",
+                   "dropped": false
+            })
+        }
+
+        if(itemListStore){
+            itemList.clear()
+            var itemStore = JSON.parse(itemListStore)
+            for(i=0;i<itemStore.length; i++){
+                itemList.append(itemStore[i])
             }
         }
     }
@@ -37,6 +60,12 @@ ApplicationWindow {
             bagStore.push(bagList.get(i))
         }
         bagListStore = JSON.stringify(bagStore)
+
+        var itemStore = []
+        for(i=0;i<itemList.count;i++){
+            itemStore.push(itemList.get(i))
+        }
+        itemListStore = JSON.stringify(itemStore)
     }
 
     menuBar: MenuBar{
@@ -302,20 +331,6 @@ ApplicationWindow {
                 function moveItem(item){
                     itemList.moveItem(item.bagId)
                 }
-
-                Component.onCompleted: {
-                    append({
-                               "bagId": 0,
-                               "bagName": qsTr("Body"),
-                               "size": hero.maxLoad,
-                               "type": "body",
-                               "weight": 0,
-                               "price": 0,
-                               "load": 0,
-                               "where": "-",
-                               "dropped": false
-                    })
-                }
             }
 
             Component {
@@ -423,7 +438,7 @@ ApplicationWindow {
                 Row {
                     spacing: 3
                     Label { text: qsTr("Item"); width: 240 }
-                    Label { text: qsTr("Amount"); width: 70 }
+                    Label { text: qsTr("Amount"); width: 80 }
                     Label { text: qsTr("Weight"); width: 50 }
                     Label { text: qsTr("Price"); width: 50 }
                 }
@@ -438,7 +453,7 @@ ApplicationWindow {
                         text: model.item
                         width: 240
                         clip: true
-//                        font.pixelSize: Qt.application.font.pixelSize*1.5
+                        font.pixelSize: Qt.application.font.pixelSize*1.8
 
                         MouseArea {
                             anchors.fill: parent
@@ -454,9 +469,9 @@ ApplicationWindow {
                             }
                         }
                     }
-                    NumberInput {
+                    SpinBox {
                         value: model.amount
-                        width: 70
+                        width: 80
                         height: itemNameLabel.height
                         editable: false
 
@@ -475,10 +490,12 @@ ApplicationWindow {
                     Label {
                         text: model.weight
                         width: 50
+                        font.pixelSize: Qt.application.font.pixelSize*1.8
                     }
                     Label {
                         text: model.price
                         width: 50
+                        font.pixelSize: Qt.application.font.pixelSize*1.8
                     }
                 }
             }

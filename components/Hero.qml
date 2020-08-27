@@ -56,7 +56,9 @@ Item {
     }
 
     onKkChanged: {
-        bagList.setProperty(0,"size", kk*2)
+        if(bagList.count >0){
+            bagList.setProperty(0,"size", kk*2)
+        }
     }
     onLeChanged: {
         if(le<=5){
@@ -186,6 +188,19 @@ Item {
         }
 
         var belongings = data.belongings.items
+        itemList.clear()
+        bagList.clear()
+        bagList.append({
+               "bagId": 0,
+               "bagName": qsTr("Body"),
+               "size": hero.maxLoad,
+               "type": "body",
+               "weight": 0,
+               "price": 0,
+               "load": 0,
+               "where": "-",
+               "dropped": false
+        })
 
         for (var key in belongings){
 //            console.log(key)
