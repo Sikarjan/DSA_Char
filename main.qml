@@ -536,6 +536,18 @@ ApplicationWindow {
                 }
                 MenuItem {
                     text: qsTr("Remove")
+                    onTriggered: {
+                        var item = itemList.get(itemList.selectedIndex)
+                        var weight = item.weight * item.amount
+
+                        bagList.setProperty(item.whereId, "load", bagList.get(item.whereId).load-weight)
+                        if(item.whereId > 0){
+                            bagList.setProperty(0, "load", bagList.get(0).load-weight)
+                        }
+
+                        hero.currentLoad += weight
+                        itemList.remove(itemList.selectedIndex);
+                    }
                 }
             }
         }

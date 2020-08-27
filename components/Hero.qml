@@ -53,6 +53,9 @@ Item {
         property alias ge: hero.ge
         property alias kk: hero.kk
         property alias ko: hero.ko
+
+        property alias currentLoad: hero.currentLoad
+        property alias weightBurden: hero.weightBurden
     }
 
     onKkChanged: {
@@ -81,6 +84,9 @@ Item {
 
             burden += extraBurden - weightBurden
             weightBurden = extraBurden
+        }else if(weightBurden > 0){
+            burden -= weightBurden
+            weightBurden = 0
         }
     }
 
@@ -201,6 +207,7 @@ Item {
                "where": "-",
                "dropped": false
         })
+        currentLoad = 0
 
         for (var key in belongings){
 //            console.log(key)
