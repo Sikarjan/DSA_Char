@@ -267,16 +267,20 @@ Item {
         // Add weight of bag to the hero
         addWeight(item.weight, 0)
 
+        addItemWhereMenu(item.name, bagList.nextId)
+
+        bagList.nextId++
+    }
+
+    function addItemWhereMenu(name, id){
         var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
-        mItem.text = item.name
-        mItem.bagId = bagList.nextId
+        mItem.text = name
+        mItem.bagId = id
         itemWhereMenu.addItem(mItem)
         var f = function(it){
             it.triggered.connect(function(){ bagList.moveItem(it)})
         }
         f(mItem)
-
-        bagList.nextId++
     }
 
     function addWeight(weight, bagId){

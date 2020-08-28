@@ -9,5 +9,8 @@
         <file>components/CharTalent.qml</file>
         <file>Page3Form.ui.qml</file>
         <file>components/NumberInput.qml</file>
+        <file>dialogs/AddBagDialog.qml</file>
+        <file>dialogs/EditBagDialog.qml</file>
+        <file>dialogs/AddItemDialog.qml</file>
     </qresource>
 </RCC>
