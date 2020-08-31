@@ -4,6 +4,7 @@ import "components"
 import QtQuick.Layouts 1.11
 
 Page {
+    id: page
     width: 600
     height: 400
     hoverEnabled: false
@@ -21,10 +22,13 @@ Page {
 
     Row {
         id: row
-        x: 102
-        y: 6
-        width: 455
-        height: 62
+        x: 125
+        width: 475
+        height: 61
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 5
 
         CharProperty {
             id: mu
@@ -93,20 +97,32 @@ Page {
 
     // Zustände
     ButtonGroup {
+        id: confusionGroup
+    }
+    ButtonGroup {
         id: burdenGroup
     }
     ButtonGroup {
         id: painGroup
     }
+    ButtonGroup {
+        id: rupGroup
+    }
+    ButtonGroup {
+        id: paraGroup
+    }
+    ButtonGroup {
+        id: stupGroup
+    }
 
     Grid {
         id: grid
-        x: 220
-        y: 196
-        width: 369
+        x: 290
+        y: 72
+        width: 310
         height: 146
         spacing: 1
-        rows: 3
+        rows: 7
         columns: 7
 
         Label {
@@ -130,9 +146,63 @@ Page {
         Label {
             text: "Incapacitated"
         }
-        // next Row
+
+        // Confusion
         Label {
-            text: qsTr("Burden")
+            text: qsTr("Confusion")
+        }
+        RadioButton {
+            id: con0
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: confusionGroup
+            checked: hero.confusion === 0
+            onToggled: hero.confusion = 0
+        }
+        RadioButton {
+            id: con1
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: confusionGroup
+            checked: hero.confusion === 1
+            onToggled: hero.confusion = 1
+        }
+        RadioButton {
+            id: con2
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: confusionGroup
+            checked: hero.confusion === 2
+            onToggled: hero.confusion = 2
+        }
+        RadioButton {
+            id: con3
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: confusionGroup
+            checked: hero.confusion === 3
+            onToggled: hero.confusion = 3
+        }
+        RadioButton {
+            id: con4
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: confusionGroup
+            checked: hero.confusion === 4
+            onToggled: hero.confusion = 4
+        }
+        Label {
+            text: qsTr("perplex")
+        }
+
+        // Burden
+        Label {
+            text: qsTr("Encumbrance")
         }
         RadioButton {
             id: bel0
@@ -182,7 +252,7 @@ Page {
             text: qsTr("hamstrung")
         }
 
-        // next Row
+        // Pain
         Label {
             text: qsTr("Pain")
         }
@@ -224,11 +294,168 @@ Page {
         Label {
             text: qsTr("unconscious")
         }
+
+        // Paralysis
+        Label {
+            text: qsTr("Paralysis")
+        }
+        RadioButton {
+            id: para0
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: paraGroup
+            checked: hero.paralysis === 0
+            onToggled: hero.paralysis = 0
+        }
+        RadioButton {
+            id: para1
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: paraGroup
+            checked: hero.paralysis === 1
+            onToggled: hero.paralysis = 1
+        }
+        RadioButton {
+            id: para2
+            width: 22
+            height: 24
+            ButtonGroup.group: paraGroup
+            checked: hero.paralysis === 2
+            onToggled: hero.paralysis = 2
+        }
+        RadioButton {
+            id: para3
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: paraGroup
+            checked: hero.paralysis === 3
+            onToggled: hero.paralysis = 3
+        }
+        RadioButton {
+            id: para4
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: paraGroup
+            checked: hero.paralysis >= 4
+            onToggled: hero.paralysis = 4
+        }
+        Label {
+            text: qsTr("paralysed")
+        }
+
+        // Rupture
+        Label {
+            text: qsTr("Rupture")
+        }
+        RadioButton {
+            id: rup0
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: rupGroup
+            checked: hero.rupture === 0
+            onToggled: hero.rupture = 0
+        }
+        RadioButton {
+            id: rup1
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: rupGroup
+            checked: hero.rupture === 1
+            onToggled: hero.rupture = 1
+        }
+        RadioButton {
+            id: rup2
+            width: 22
+            height: 24
+            ButtonGroup.group: rupGroup
+            checked: hero.rupture === 2
+            onToggled: hero.rupture = 2
+        }
+        RadioButton {
+            id: rup3
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: rupGroup
+            checked: hero.rupture === 3
+            onToggled: hero.rupture = 3
+        }
+        RadioButton {
+            id: rup4
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: rupGroup
+            checked: hero.rupture >= 4
+            onToggled: hero.rupture = 4
+        }
+        Label {
+            text: qsTr("engrossed")
+        }
+
+        // Stupor
+        Label {
+            text: qsTr("Stupor")
+        }
+        RadioButton {
+            id: stup0
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: stupGroup
+            checked: hero.stupor === 0
+            onToggled: hero.stupor = 0
+        }
+        RadioButton {
+            id: stup1
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: stupGroup
+            checked: hero.stupor === 1
+            onToggled: hero.stupor = 1
+        }
+        RadioButton {
+            id: stup2
+            width: 22
+            height: 24
+            ButtonGroup.group: stupGroup
+            checked: hero.stupor === 2
+            onToggled: hero.stupor = 2
+        }
+        RadioButton {
+            id: stup3
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: stupGroup
+            checked: hero.stupor === 3
+            onToggled: hero.stupor = 3
+        }
+        RadioButton {
+            id: stup4
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: stupGroup
+            checked: hero.stupor >= 4
+            onToggled: hero.stupor = 4
+        }
+        Label {
+            text: qsTr("sensless")
+        }
     }
 
     Column {
-        x: 231
-        y: 82
+        y: 72
+        anchors.left: parent.left
+        anchors.leftMargin: 5
 
         Row {
             Label {
@@ -301,3 +528,9 @@ Page {
         }
     }
 }
+
+/*##^##
+Designer {
+    D{i:2;anchors_y:-44}
+}
+##^##*/
