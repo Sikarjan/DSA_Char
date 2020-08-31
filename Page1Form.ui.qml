@@ -30,68 +30,68 @@ Page {
         anchors.top: parent.top
         anchors.topMargin: 5
 
-        CharProperty {
+        CharAttribute {
             id: mu
-            propName: qsTr("MU")
-            propColor: "Red"
-            propValue: hero.mu
-            propModValue: hero.muMod
+            attrName: hero.muText
+            attrColor: "Red"
+            attrValue: hero.mu
+            attrModValue: hero.muMod
         }
 
-        CharProperty {
+        CharAttribute {
             id: kl
-            propValue: hero.kl
-            propModValue: hero.klMod
-            propColor: "#7220f0"
-            propName: "KL"
+            attrValue: hero.kl
+            attrModValue: hero.klMod
+            attrColor: "#7220f0"
+            attrName: hero.klText
         }
 
-        CharProperty {
+        CharAttribute {
             id: intu
-            propValue: hero.intu
-            propModValue: hero.inMod
-            propColor: "#47f020"
-            propName: "IN"
+            attrValue: hero.intu
+            attrModValue: hero.inMod
+            attrColor: "#47f020"
+            attrName: hero.klText
         }
 
-        CharProperty {
+        CharAttribute {
             id: ch
-            propValue: hero.ch
-            propModValue: hero.chMod
-            propColor: "#dd000000"
-            propName: "CH"
+            attrValue: hero.ch
+            attrModValue: hero.chMod
+            attrColor: "#dd000000"
+            attrName: hero.chText
         }
 
-        CharProperty {
+        CharAttribute {
             id: ff
-            propValue: hero.ff
-            propModValue: hero.ffMod
-            propColor: "#f7ff08"
-            propName: "FF"
+            attrValue: hero.ff
+            attrModValue: hero.ffMod
+            attrColor: "#f7ff08"
+            attrName: hero.ffText
         }
 
-        CharProperty {
+        CharAttribute {
             id: ge
-            propValue: hero.ge
-            propModValue: hero.geMod
-            propColor: "#204ef0"
-            propName: "GE"
+            attrValue: hero.ge
+            attrModValue: hero.geMod
+            attrColor: "#204ef0"
+            attrName: hero.geText
         }
 
-        CharProperty {
+        CharAttribute {
             id: ko
-            propValue: hero.ko
-            propModValue: hero.koMod
-            propColor: "#aeafae"
-            propName: "KO"
+            attrValue: hero.ko
+            attrModValue: hero.koMod
+            attrColor: "#aeafae"
+            attrName: hero.koText
         }
 
-        CharProperty {
+        CharAttribute {
             id: kk
-            propValue: hero.kk
-            propModValue: hero.kkMod
-            propColor: "#ffab00"
-            propName: "KK"
+            attrValue: hero.kk
+            attrModValue: hero.kkMod
+            attrColor: "#ffab00"
+            attrName: hero.kkText
         }
     }
 
@@ -106,7 +106,7 @@ Page {
         id: painGroup
     }
     ButtonGroup {
-        id: rupGroup
+        id: rapGroup
     }
     ButtonGroup {
         id: paraGroup
@@ -347,53 +347,53 @@ Page {
             text: qsTr("paralysed")
         }
 
-        // Rupture
+        // Rapture
         Label {
-            text: qsTr("Rupture")
+            text: qsTr("Rapture")
         }
         RadioButton {
-            id: rup0
+            id: rap0
             width: 22
             height: 24
             text: qsTr("")
-            ButtonGroup.group: rupGroup
-            checked: hero.rupture === 0
-            onToggled: hero.rupture = 0
+            ButtonGroup.group: rapGroup
+            checked: hero.rapture === 0
+            onToggled: hero.rapture = 0
         }
         RadioButton {
-            id: rup1
+            id: rap1
             width: 22
             height: 24
             text: qsTr("")
-            ButtonGroup.group: rupGroup
-            checked: hero.rupture === 1
-            onToggled: hero.rupture = 1
+            ButtonGroup.group: rapGroup
+            checked: hero.rapture === 1
+            onToggled: hero.rapture = 1
         }
         RadioButton {
-            id: rup2
+            id: rap2
             width: 22
             height: 24
-            ButtonGroup.group: rupGroup
-            checked: hero.rupture === 2
-            onToggled: hero.rupture = 2
+            ButtonGroup.group: rapGroup
+            checked: hero.rapture === 2
+            onToggled: hero.rapture = 2
         }
         RadioButton {
-            id: rup3
-            width: 22
-            height: 24
-            text: qsTr("")
-            ButtonGroup.group: rupGroup
-            checked: hero.rupture === 3
-            onToggled: hero.rupture = 3
-        }
-        RadioButton {
-            id: rup4
+            id: rap3
             width: 22
             height: 24
             text: qsTr("")
-            ButtonGroup.group: rupGroup
-            checked: hero.rupture >= 4
-            onToggled: hero.rupture = 4
+            ButtonGroup.group: rapGroup
+            checked: hero.rapture === 3
+            onToggled: hero.rapture = 3
+        }
+        RadioButton {
+            id: rap4
+            width: 22
+            height: 24
+            text: qsTr("")
+            ButtonGroup.group: rapGroup
+            checked: hero.rapture >= 4
+            onToggled: hero.rapture = 4
         }
         Label {
             text: qsTr("engrossed")
@@ -531,6 +531,7 @@ Page {
 
 /*##^##
 Designer {
-    D{i:2;anchors_y:-44}
+    D{i:2;anchors_y:"-44"}
 }
 ##^##*/
+

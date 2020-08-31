@@ -23,11 +23,13 @@ Page {
         }
         Label {
             text: qsTr("Burden by weight: ") + hero.weightBurden
+            Layout.rightMargin: 5
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
         }
     }
 
     Column {
+        id: col
         anchors.fill: parent
         anchors.margins: 5
 
@@ -38,39 +40,70 @@ Page {
             text: qsTr("Location")
         }
 
+        Row {
+            spacing: 3
+            Label { text: qsTr("Container"); width: 240 }
+            Label { text: qsTr("Where"); width: 50 }
+            Label { text: qsTr("Level"); width: 100 }
+            Label { text: qsTr("Weight"); width: 60 }
+            Label { text: qsTr("Price"); width: 50 }
+            Label { text: qsTr("Dropped"); width: 50 }
+        }
         ListView {
             id: bagListView
             width: parent.width
-            height: contentHeight
+            height: contentHeight > col.height/2 ? col.height/2:contentHeight
             model: bagList
 
-            header: bagListHeader
+ //           header: bagListHeader
 
             delegate: bagListDelegate
+
+            ScrollBar.vertical: ScrollBar {
+                active: true
+            }
         }
 
+        Row {
+            spacing: 3
+            Label { text: qsTr("Item"); width: 240 }
+            Label { text: qsTr("Amount"); width: 80 }
+            Label { text: qsTr("Weight"); width: 60 }
+            Label { text: qsTr("Price"); width: 50 }
+        }
         ListView {
             id: itemListView
             width: parent.width
-            height: parent.height - bagListView.height - colheader.height - 2*parent.spacing
+            height: parent.height - bagListView.height - colheader.height - 2 * parent.spacing
             spacing: 2
             model: itemList
             clip: true
 
-            header: itemListHeader
+//            header: itemListHeader
             section.property: "where"
             section.criteria: ViewSection.FullString
             section.delegate: Rectangle {
+                id: secRect
                 width: parent.width
-                height: childrenRect.height
+                height: secRow.height
                 color: "lightsteelblue"
 
-                required property string section
+                property string section
 
-                Text {
-                    text: parent.section
-                    font.bold: true
-                    font.pixelSize: Qt.application.font.pixelSize+3
+                Row {
+                    id: secRow
+                    anchors.fill: parent
+                    anchors.topMargin: 2
+                    anchors.bottomMargin: 2
+                    Label {
+                        text: secRect.section
+                        font.bold: true
+                        font.pixelSize: Qt.application.font.pixelSize + 3
+                        width: 240
+                    }
+                    Label { text: qsTr("Amount"); width: 80 }
+                    Label { text: qsTr("Weight"); width: 60 }
+                    Label { text: qsTr("Price"); width: 50 }
                 }
             }
 

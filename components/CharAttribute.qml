@@ -4,14 +4,14 @@ Item {
     width: 60
     height: 30
 
-    property string propName: ""
-    property int propValue: 8
-    property int propModValue: 8
-    property alias propColor: prop.border.color
+    property string attrName: ""
+    property int attrValue: 8
+    property int attrModValue: 8
+    property alias attrColor: attribute.border.color
 
     Text {
         id: label
-        text: propName
+        text: attrName
         font.pointSize: Qt.application.font.pixelSize
 
         anchors.left: parent.left
@@ -20,7 +20,7 @@ Item {
     }
 
     Rectangle {
-        id: prop
+        id: attribute
         border.width: 2
         width: 25
         height: width
@@ -29,16 +29,16 @@ Item {
         anchors.leftMargin: 3
 
         Text {
-            text: propValue
+            text: attrValue
             anchors.centerIn: parent
             font.pointSize: Qt.application.font.pixelSize
         }
     }
 
     Text {
-        text: propModValue
-        anchors.top: prop.bottom
-        anchors.left: prop.left
+        text: attrModValue
+        anchors.top: attribute.bottom
+        anchors.left: attribute.left
         font.pointSize: Qt.application.font.pixelSize - 2
     }
 }

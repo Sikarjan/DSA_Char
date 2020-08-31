@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QTranslator>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
@@ -9,7 +11,14 @@ int main(int argc, char *argv[])
 
     app.setOrganizationName("Innobiz");
     app.setOrganizationDomain("innobiz.de");
-    app.setApplicationName("DSA Char Sheets");
+    app.setApplicationName("DSA Character Sheet");
+
+    QString locale = QLocale::system().name();
+
+    QTranslator* translator = new QTranslator(0);
+    if(translator->load("DSA_Char_"+locale,":")){
+        app.installTranslator(translator);
+    }
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

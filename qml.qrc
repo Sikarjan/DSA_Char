@@ -4,7 +4,7 @@
         <file>Page1Form.ui.qml</file>
         <file>Page2Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>components/CharProperty.qml</file>
+        <file>components/CharAttribute.qml</file>
         <file>components/Hero.qml</file>
         <file>components/CharTalent.qml</file>
         <file>Page3Form.ui.qml</file>
@@ -12,5 +12,6 @@
         <file>dialogs/AddBagDialog.qml</file>
         <file>dialogs/EditBagDialog.qml</file>
         <file>dialogs/AddItemDialog.qml</file>
+        <file>DSA_Char_de_DE.qm</file>
     </qresource>
 </RCC>

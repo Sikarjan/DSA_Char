@@ -185,7 +185,7 @@ ApplicationWindow {
                     }
                     Label {
                         text: model.weight
-                        width: 50
+                        width: 60
                     }
                     Label {
                         text: model.price
@@ -270,7 +270,7 @@ ApplicationWindow {
                     spacing: 3
                     Label { text: qsTr("Item"); width: 240 }
                     Label { text: qsTr("Amount"); width: 80 }
-                    Label { text: qsTr("Weight"); width: 50 }
+                    Label { text: qsTr("Weight"); width: 60 }
                     Label { text: qsTr("Price"); width: 50 }
                 }
             }
@@ -320,7 +320,7 @@ ApplicationWindow {
                     }
                     Label {
                         text: model.weight
-                        width: 50
+                        width: 60
                         font.pixelSize: Qt.application.font.pixelSize*1.8
                     }
                     Label {

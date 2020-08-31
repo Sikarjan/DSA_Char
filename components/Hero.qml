@@ -5,28 +5,28 @@ Item {
     id: hero
     property string muText: qsTr("COU")
     property int mu: 8
-    property int muMod: mu-burden-pain
+    property int muMod: mu-attrMods
     property string klText: qsTr("SGC")
     property int kl: 8
-    property int klMod: kl-burden-pain
+    property int klMod: kl-attrMods
     property string chText: qsTr("CHA")
     property int ch: 8
-    property int chMod: ch-burden-pain
+    property int chMod: ch-attrMods
     property string inText: qsTr("INT")
     property int intu: 15
-    property int inMod: intu-burden-pain
+    property int inMod: intu-attrMods
     property string ffText: qsTr("DEX")
     property int ff: 8
-    property int ffMod: ff-burden-pain
+    property int ffMod: ff-attrMods
     property string geText: qsTr("AGE")
     property int ge: 8
-    property int geMod: ge-burden-pain
+    property int geMod: ge-attrMods
     property string kkText: qsTr("STR")
     property int kk: 8
-    property int kkMod: kk-burden-pain
+    property int kkMod: kk-attrMods
     property string koText: qsTr("CON")
     property int ko: 8
-    property int koMod: ko-burden-pain
+    property int koMod: ko-attrMods
 
     property int leMod: 2
     property int leMax: ko+ko+leMod
@@ -41,9 +41,14 @@ Item {
     property real currentLoad: 0
     property int weightBurden: 0
 
-    property int burden: 0
+    property int confusion: 0
     property int pain: 0
+    property int burden: 0
+    property int paralysis: 0
+    property int rapture: 0
+    property int stupor: 0
 
+    property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
     Settings {
         property alias mu: hero.mu
         property alias kl: hero.kl
@@ -141,7 +146,7 @@ Item {
 
         if(skill >= 0){
             var q = Math.floor(skill/3)+1
-            return qsTr("You succeeded with a quality ")+q+"\n"+qsTr("Your roll was: ")+roll1+"/"+roll2+"/"+roll3
+            return qsTr("You succeeded with a quality %1.").arg(q)+"\n"+qsTr("Your roll was: ")+roll1+"/"+roll2+"/"+roll3
         }else{
             return qsTr("You failed")+"\n"+qsTr("Your roll was: ")+roll1+"/"+roll2+"/"+roll3
         }
