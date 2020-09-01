@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
 
     QTranslator* translator = new QTranslator(0);
-    if(translator->load("DSA_Char_"+locale,":")){
+    if(translator->load("DSA_Char_"+locale,":/lang/language/")){
         app.installTranslator(translator);
     }
 

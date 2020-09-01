@@ -74,38 +74,15 @@ Page {
         ListView {
             id: itemListView
             width: parent.width
-            height: parent.height - bagListView.height - colheader.height - 2 * parent.spacing
+            height: parent.height - bagListView.height - colheader.height - 2 * parent.spacing - tabBar.height
             spacing: 2
             model: itemList
             clip: true
 
 //            header: itemListHeader
-            section.property: "where"
+            section.property: "whereId"
             section.criteria: ViewSection.FullString
-            section.delegate: Rectangle {
-                id: secRect
-                width: parent.width
-                height: secRow.height
-                color: "lightsteelblue"
-
-                property string section
-
-                Row {
-                    id: secRow
-                    anchors.fill: parent
-                    anchors.topMargin: 2
-                    anchors.bottomMargin: 2
-                    Label {
-                        text: secRect.section
-                        font.bold: true
-                        font.pixelSize: Qt.application.font.pixelSize + 3
-                        width: 240
-                    }
-                    Label { text: qsTr("Amount"); width: 80 }
-                    Label { text: qsTr("Weight"); width: 60 }
-                    Label { text: qsTr("Price"); width: 50 }
-                }
-            }
+            section.delegate: itemListSectionDelegate
 
             delegate: itemListDelegate
 

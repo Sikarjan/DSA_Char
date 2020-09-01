@@ -12,6 +12,9 @@
         <file>dialogs/AddBagDialog.qml</file>
         <file>dialogs/EditBagDialog.qml</file>
         <file>dialogs/AddItemDialog.qml</file>
-        <file>DSA_Char_de_DE.qm</file>
     </qresource>
+    <qresource prefix="/lang">
+        <file>language/DSA_Char_de_DE.qm</file>
+    </qresource>
+    <qresource prefix="/new/prefix1"/>
 </RCC>

@@ -121,7 +121,6 @@ Dialog {
                             "amount": itemAmount.value,
                             "weight": itemWeight.realValue,
                             "price": itemPrice.realValue,
-                            "where": itemWhere.currentText,
                             "whereId": itemWhere.currentValue // holds bagId
         })
         itemList.sortItems()

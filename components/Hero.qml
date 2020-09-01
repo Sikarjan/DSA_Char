@@ -236,7 +236,6 @@ Item {
                                 "amount": item.amount,
                                 "weight": weight,
                                 "price": item.price,
-                                "where": "Body",
                                 "whereId": 0
                                 })
                 // Add weight of bag to the hero

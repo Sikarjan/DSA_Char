@@ -246,14 +246,12 @@ ApplicationWindow {
 
                 function moveItem(bagId){
                     var lastBagId = get(selectedIndex).whereId
-                    var newPos = bagList.get(bagId).bagName
                     var load = get(selectedIndex).weight*get(selectedIndex).amount
 
-                    setProperty(selectedIndex, "where", newPos)
                     setProperty(selectedIndex, "whereId", bagId)
 
                     if(lastBagId !== 0){
-                    bagList.setProperty(lastBagId, "load", bagList.get(lastBagId).load - load)
+                        bagList.setProperty(lastBagId, "load", bagList.get(lastBagId).load - load)
                     }
 
                     if(bagId !== 0){
@@ -278,6 +276,7 @@ ApplicationWindow {
                 id: itemListDelegate
                 Row {
                     spacing: 3
+                    anchors.leftMargin: 2
 
                     Label {
                         id: itemNameLabel
@@ -327,6 +326,35 @@ ApplicationWindow {
                         text: model.price
                         width: 50
                         font.pixelSize: Qt.application.font.pixelSize*1.8
+                    }
+                }
+            }
+
+            Component {
+                id: itemListSectionDelegate
+
+                Rectangle {
+                    id: secRect
+                    width: parent.width
+                    height: secRow.implicitHeight+4
+                    color: "lightsteelblue"
+
+                    property string label: bagList.get(section).bagName
+
+                    Row {
+                        id: secRow
+                        anchors.verticalCenter: parent.verticalCenter
+                        x:2
+
+                        Label {
+                            text: secRect.label
+                            font.bold: true
+                            font.pixelSize: Qt.application.font.pixelSize + 3
+                            width: 240
+                        }
+                        Label { text: qsTr("Amount"); width: 80 }
+                        Label { text: qsTr("Weight"); width: 60 }
+                        Label { text: qsTr("Price"); width: 50 }
                     }
                 }
             }
