@@ -35,14 +35,9 @@ Page {
 
         spacing: 5
 
-        Label {
-            id: colheader
-            text: qsTr("Location")
-        }
-
         Row {
             spacing: 3
-            Label { text: qsTr("Container"); width: 240 }
+            Label { text: qsTr("Location"); width: 240 }
             Label { text: qsTr("Where"); width: 50 }
             Label { text: qsTr("Level"); width: 100 }
             Label { text: qsTr("Weight"); width: 60 }
@@ -55,13 +50,17 @@ Page {
             height: contentHeight > col.height/2 ? col.height/2:contentHeight
             model: bagList
 
- //           header: bagListHeader
-
             delegate: bagListDelegate
 
             ScrollBar.vertical: ScrollBar {
                 active: true
             }
+        }
+
+        Rectangle {
+            width: parent.width
+            height: 2
+            color: "darkgray"
         }
 
         Row {
@@ -74,12 +73,11 @@ Page {
         ListView {
             id: itemListView
             width: parent.width
-            height: parent.height - bagListView.height - colheader.height - 2 * parent.spacing - tabBar.height
+            height: parent.height - bagListView.height - 2 * parent.spacing - tabBar.height
             spacing: 2
             model: itemList
             clip: true
 
-//            header: itemListHeader
             section.property: "whereId"
             section.criteria: ViewSection.FullString
             section.delegate: itemListSectionDelegate

@@ -5,7 +5,7 @@ import QtQuick.Controls 2.12
 Dialog {
     id: addItemDialog
     width: 400
-    height: 300
+    height: 400
     title: qsTr("Adding Item")
 
     standardButtons: Dialog.Ok | Dialog.Cancel

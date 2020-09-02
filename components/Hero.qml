@@ -212,8 +212,12 @@ Item {
                "where": "-",
                "dropped": false
         })
+        bagList.nextId = 1
+        editItemWhereMenu()
         currentLoad = 0
 
+        // First run to find bags
+        var bags = ["@"]
         for (var key in belongings){
 //            console.log(key)
             var item = belongings[key]
@@ -224,29 +228,68 @@ Item {
             }
 
             if(template>88 && template <92 || template>201 && template <205){ //Needs to be checked if all kinds of bags are captured!
+                switch(template){
+                case 89: //deggar sheath
+                    item.gr = 5
+                    break;
+                case 90: // quiver
+                    item.gr = 10
+                    break
+                case 91: // scabbard
+                    item.gr = 8
+                    break
+                case 202: // bumbag
+                    item.gr = 2
+                    break;
+                case 204: // backpack
+                    item.gr = 50
+                }
+
                 addBag(item);
+                bags.push(item.name)
+            }
+        }
+
+        // Second run to add items
+        for (var iKey in belongings){
+            var mItem = belongings[iKey]
+            var mTemplate = 0
+
+            if('template' in mItem){
+                mTemplate = mItem.template.substring(8)
+            }
+
+            if(mTemplate>88 && mTemplate <92 || mTemplate>201 && mTemplate <205){
+              // Bag already added
             }else{
                 var weight = 0
-                if('weight' in item){
-                    weight = item.weight
+                if('weight' in mItem){
+                    weight = mItem.weight
+                }
+
+                var whereId = 0
+                var id = bags.indexOf(mItem.where)
+                if(id > 0){
+                    whereId = id
                 }
 
                 itemList.append({
-                                "item": item.name,
-                                "amount": item.amount,
+                                "item": mItem.name,
+                                "amount": mItem.amount,
                                 "weight": weight,
-                                "price": item.price,
-                                "whereId": 0
+                                "price": mItem.price,
+                                "whereId": whereId
                                 })
                 // Add weight of bag to the hero
-                addWeight(weight, 0)
+                addWeight(weight, whereId)
             }
         }
+
         itemList.sortItems()
     }
 
     function addBag(item){
-        var where = 'Body'
+        var where = qsTr("Body")
         var type = 'import'
 
         if('where' in item){
@@ -282,9 +325,22 @@ Item {
         mItem.bagId = id
         itemWhereMenu.addItem(mItem)
         var f = function(it){
-            it.triggered.connect(function(){ bagList.moveItem(it)})
+            it.triggered.connect(function(){ itemList.moveItem(it.bagId)})
         }
         f(mItem)
+    }
+
+    function editItemWhereMenu(task = "delete"){
+        while(itemWhereMenu.count > 1){
+            itemWhereMenu.removeItem(itemWhereMenu.itemAt(1))
+        }
+
+        if(task === "new"){
+            for(var j=1;j<bagList.count;j++){
+                var bag = bagList.get(j)
+                addItemWhereMenu(bag.bagName, bag.bagId)
+            }
+        }
     }
 
     function addWeight(weight, bagId){

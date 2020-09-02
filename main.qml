@@ -10,7 +10,7 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("DSA Char Sheet")
+    title: qsTr("DSA Character Sheet")
 
     property string bagListStore: ""
     property string itemListStore: ""
@@ -28,13 +28,20 @@ ApplicationWindow {
     Component.onCompleted: {
         if(bagListStore){
             bagList.clear()
+
             var bagStore = JSON.parse(bagListStore)
+            var bagIdHigh = 0
+
             for(var i=0;i<bagStore.length; i++){
                 bagList.append(bagStore[i])
                 if(i>0){
                     hero.addItemWhereMenu(bagStore[i].bagName, bagStore[i].bagId)
+                    if(bagStore[i].bagId>bagIdHigh){
+                        bagIdHigh = bagStore[i].bagId
+                    }
                 }
             }
+            bagList.nextId = bagIdHigh+1
         }else{
             bagList.append({
                    "bagId": 0,
@@ -138,9 +145,9 @@ ApplicationWindow {
                 property int nextId: 1
                 property int activeId: -1
 
-                function moveItem(item){
+/*                function moveItem(item){
                     itemList.moveItem(item.bagId)
-                }
+                }*/
             }
 
             Component {
@@ -192,7 +199,7 @@ ApplicationWindow {
                         width: 50
                     }
                     CheckBox {
-                        visible: index > 0
+                        opacity: index > 0
                         checked: model.dropped
                         onToggled: {
                             var factor = checked ? -1:1
@@ -212,7 +219,18 @@ ApplicationWindow {
                 }
                 MenuItem {
                     text: qsTr("Remove")
-                    onTriggered: bagList.remove(bagList.activeId)
+                    onTriggered: {
+                        confirmDelete.item = bagList.get(bagList.activeId).bagName
+                        confirmDelete.task = "bag"
+                        confirmDelete.visible = true
+                    }
+                }
+                MenuItem {
+                    text: "Info"
+                    onTriggered: {
+                        var mItem = bagList.get(bagList.activeId)
+                        console.log(JSON.stringify(mItem))
+                    }
                 }
             }
 
@@ -396,6 +414,30 @@ ApplicationWindow {
                 MenuItem {
                     text: qsTr("Remove")
                     onTriggered: {
+                        confirmDelete.item = itemList.get(itemList.selectedIndex).item
+                        confirmDelete.visible = true
+                    }
+                }
+                MenuItem {
+                    text: "Info"
+                    onTriggered: {
+                        var mItem = itemList.get(itemList.selectedIndex)
+                        console.log(JSON.stringify(mItem))
+                    }
+                }
+            }
+
+            MessageDialog {
+                id: confirmDelete
+                title: qsTr("Confirm delete")
+                icon: StandardIcon.Question
+                text: qsTr("Are you sure you want to delete %1?\n This cannot be undone.").arg(item)
+                standardButtons: StandardButton.Yes | StandardButton.No
+
+                property string item
+                property string task: "item"
+                onYes: {
+                    if(task === "item"){
                         var item = itemList.get(itemList.selectedIndex)
                         var weight = item.weight * item.amount
 
@@ -404,8 +446,24 @@ ApplicationWindow {
                             bagList.setProperty(0, "load", bagList.get(0).load-weight)
                         }
 
-                        hero.currentLoad += weight
+                        hero.currentLoad -= weight
                         itemList.remove(itemList.selectedIndex);
+                    }
+                    else if(task === "bag"){
+                        for(var i=0;i<itemList.count;i++){
+                            var j = itemList.get(i)
+
+                            if(j.whereId === bagList.activeId){
+                                itemList.setProperty(i, "whereId", 0)
+                            }
+                        }
+
+                        bagList.setProperty(0, "load", bagList.get(0).load-bagList.get(bagList.activeId).weight)
+                        hero.currentLoad -= bagList.get(bagList.activeId).weight
+
+                        bagList.remove(bagList.activeId)
+                        hero.editItemWhereMenu("new")
+                        itemList.sortItems()
                     }
                 }
             }
