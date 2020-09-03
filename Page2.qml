@@ -1,0 +1,766 @@
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+import "components"
+
+Page {
+    width: 600
+    height: 400
+
+    property alias skillList: skillList
+    property alias skillView: skillView
+
+    Component.onCompleted: skillList.sortSkills()
+    header: Label {
+        text: qsTr("Skills")
+        font.pixelSize: Qt.application.font.pixelSize * 2
+        padding: 10
+    }
+
+    ListView {
+        id: skillView
+        anchors.fill: parent
+
+        model: skillList
+        clip: true
+
+        section.property: "sec"
+        section.criteria: ViewSection.FullString
+        section.delegate: Rectangle {
+            id: skillSection
+            width: parent.width
+            height: secRow.implicitHeight+4
+            color: "lightsteelblue"
+
+            property string label: skillList.getSecName(section)
+
+            Row {
+                id: secRow
+                anchors.verticalCenter: parent.verticalCenter
+                x:2
+
+                Label {
+                    text: skillSection.label
+                    font.bold: true
+                    font.pixelSize: Qt.application.font.pixelSize + 3
+                    width: 155
+                }
+                Label { text: qsTr("Check"); width: 100 }
+                Label { text: qsTr("ENC"); width: 40 }
+                Label { text: qsTr("SR"); width: 50 }
+            }
+        }
+
+        delegate: Row {
+            spacing: 5
+            width: skillView.width - 10
+            x:5
+
+            Label {
+                id: skillName
+                text: name
+                width: 150
+                font.pointSize: Qt.application.font.pixelSize
+
+                MouseArea {
+                    anchors.fill: parent
+
+                    hoverEnabled: true
+
+                    onEntered: setAttrText("in")
+                    onExited: setAttrText("out")
+                }
+            }
+
+            Label {
+                id: skillCheck
+                text: check
+                font.pointSize: skillName.font.pointSize
+                width: 100
+            }
+            Label {
+                text: burden
+                width: 40
+            }
+            Label {
+                text: level
+                width: 50
+            }
+            Label {
+                text: comment
+            }
+
+            Component.onCompleted: setAttrText("out")
+
+            function setAttrText(state) {
+                var attrTest = check.split(",")
+
+                if(state === "in"){
+                    var attr = {
+                        mu: hero.muMod,
+                        kl: hero.klMod,
+                        in: hero.inMod,
+                        ch: hero.chMod,
+                        ff: hero.ffMod,
+                        ge: hero.geMod,
+                        ko: hero.koMod,
+                        kk: hero.kkMod
+                    }
+                    skillCheck.text = attr[attrTest[0]]+" "+attr[attrTest[1]]+" "+attr[attrTest[2]]
+                }else{
+                    var attrName = {
+                        mu: hero.muText,
+                        kl: hero.klText,
+                        in: hero.inText,
+                        ch: hero.chText,
+                        ff: hero.ffText,
+                        ge: hero.geText,
+                        ko: hero.koText,
+                        kk: hero.kkText
+                    }
+                    skillCheck.text = attrName[attrTest[0]]+" "+attrName[attrTest[1]]+" "+attrName[attrTest[2]]
+                }
+            }
+        }
+
+        ScrollBar.vertical: ScrollBar {
+            active: true
+        }
+
+        function setSkill(tal, prop, level){
+            for(var i=0;i<model.count;i++){
+                if(tal === model.get(i).tal){
+                    model.setProperty(i, prop, level)
+                    return 1
+                }
+            }
+            return 0
+        }
+    }
+
+    ListModel {
+        id: skillList
+
+        // Sort items by "sec" and then by name
+        function sortSkills() {
+            let indexes = [...Array(count).keys()]
+            indexes.sort((a,b) => compareFunction(get(a), get(b)))
+
+            let sorted = 0
+            while (sorted < indexes.length && sorted === indexes[sorted]) sorted++
+            if (sorted === indexes.length) return
+            for (let i = sorted; i < indexes.length; i++) {
+                move(indexes[i], count - 1, 1)
+                insert(indexes[i], { } )
+            }
+            remove(sorted, indexes.length - sorted)
+        }
+        function compareFunction(a, b){
+            var res = a.sec- b.sec
+
+            if(res === 0){
+                return a.name.localeCompare(b.name)
+            }
+            return res
+        }
+        function getSecName(id){
+            var secs = [qsTr("Physical"), qsTr("Social"), qsTr("Nature"), qsTr("Knowledge"), qsTr("Craft")]
+
+            return secs[id]
+        }
+
+        ListElement {
+            tal:"TAL_1"
+            sec: 0
+            name: qsTr("Flying")
+            level: 0
+            check: "mu,in,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_2"
+            sec: 0
+            name: qsTr("Gaukelei")
+            level: 0
+            check: "mu,ch,ff"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_3"
+            sec: 0
+            name: qsTr("Climbing")
+            level: 0
+            check: "mu,ge,kk"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_4"
+            sec: 0
+            name: qsTr("Body Control")
+            level: 0
+            check: "ge,ge,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_5"
+            sec: 0
+            name: qsTr("Feat of Strength")
+            level: 0
+            check: "ko,kk,kk"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_6"
+            sec: 0
+            name: qsTr("Riding")
+            level: 0
+            check: "ch,ge,kk"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_7"
+            sec: 0
+            name: qsTr("Swimming")
+            level: 0
+            check: "ge,ko,kk"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_8"
+            sec: 0
+            name: qsTr("Self-Control")
+            level: 0
+            check: "mu,mu,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_9"
+            sec: 0
+            name: qsTr("Singing")
+            level: 0
+            check: "kl,ch,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_10"
+            sec: 0
+            name: qsTr("Perception")
+            level: 0
+            check: "kl,in,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_11"
+            sec: 0
+            name: qsTr("Dancing")
+            level: 0
+            check: "kl,ch,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_12"
+            sec: 0
+            name: qsTr("Pickpocket")
+            level: 0
+            check: "mu,ff,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_13"
+            sec: 0
+            name: qsTr("Stealth")
+            level: 0
+            check: "mu,in,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_14"
+            sec: 0
+            name: qsTr("Carousing")
+            level: 0
+            check: "kl,ko,kk"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_15"
+            sec: 1
+            name: qsTr("Persuasion")
+            level: 0
+            check: "mu,kl,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_16"
+            sec: 1
+            name: qsTr("Seduction")
+            level: 0
+            check: "mu,ch,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_17"
+            sec: 1
+            name: qsTr("Intimidation")
+            level: 0
+            check: "mu,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_18"
+            sec: 1
+            name: qsTr("Etiquette")
+            level: 0
+            check: "kl,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_19"
+            sec: 1
+            name: qsTr("Streetwise")
+            level: 0
+            check: "kl,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_20"
+            sec: 1
+            name: qsTr("Empathy")
+            level: 0
+            check: "kl,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_21"
+            sec: 1
+            name: qsTr("Fast-Talk")
+            level: 0
+            check: "mu,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_22"
+            sec: 1
+            name: qsTr("Disguise")
+            level: 0
+            check: "in,ch,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_23"
+            sec: 1
+            name: qsTr("Willpower")
+            level: 0
+            check: "mu,in,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_24"
+            sec: 2
+            name: qsTr("Tracking")
+            level: 0
+            check: "mu,in,ge"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_25"
+            sec: 2
+            name: qsTr("Ropes")
+            level: 0
+            check: "kl,ge,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_26"
+            sec: 2
+            name: qsTr("Fishing")
+            level: 0
+            check: "ff,ge,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_27"
+            sec: 2
+            name: qsTr("Orienting")
+            level: 0
+            check: "kl,in,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_28"
+            sec: 2
+            name: qsTr("Plant Lore")
+            level: 0
+            check: "kl,ff,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_29"
+            sec: 2
+            name: qsTr("Animal Lore")
+            level: 0
+            check: "mu,mu,ch"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_30"
+            sec: 2
+            name: qsTr("Survival")
+            level: 0
+            check: "mu,ge,ko"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_31"
+            sec: 3
+            name: qsTr("Gambling")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_32"
+            sec: 3
+            name: qsTr("Geography")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_33"
+            sec: 3
+            name: qsTr("History")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_34"
+            sec: 3
+            name: qsTr("Religions")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_35"
+            sec: 3
+            name: qsTr("Warfare")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_36"
+            sec: 3
+            name: qsTr("Magical Lore")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_37"
+            sec: 3
+            name: qsTr("Mechanics")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_38"
+            sec: 3
+            name: qsTr("Math")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_39"
+            sec: 3
+            name: qsTr("Law")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_40"
+            sec: 3
+            name: qsTr("Myths & Legends")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_41"
+            sec: 3
+            name: qsTr("Sphere Lore")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_42"
+            sec: 3
+            name: qsTr("Astronomy")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_43"
+            sec: 4
+            name: qsTr("Alchemy")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_44"
+            sec: 4
+            name: qsTr("Sailing")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_45"
+            sec: 4
+            name: qsTr("Driving")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_46"
+            sec: 4
+            name: qsTr("Commerce")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_47"
+            sec: 4
+            name: qsTr("Treat Poison")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_48"
+            sec: 4
+            name: qsTr("Treat Disease")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_49"
+            sec: 4
+            name: qsTr("Treat Soul")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_50"
+            sec: 4
+            name: qsTr("Treat Wounds")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_51"
+            sec: 4
+            name: qsTr("Woodworking")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_52"
+            sec: 4
+            name: qsTr("Prepare Food")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_53"
+            sec: 4
+            name: qsTr("Leatherworking")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_54"
+            sec: 4
+            name: qsTr("Artistic Ability")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_55"
+            sec: 4
+            name: qsTr("Metalworking")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_56"
+            sec: 4
+            name: qsTr("Music")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_57"
+            sec: 4
+            name: qsTr("Pick Locks")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_58"
+            sec: 4
+            name: qsTr("Earthencraft")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+
+        ListElement {
+            tal:"TAL_59"
+            sec: 4
+            name: qsTr("Clothworking")
+            level: 0
+            check: "mu,kl,in"
+            burden: 0
+            comment: ""
+        }
+        /*
+        Regex for notepad++ to get all skills in the right format from https://github.com/elyukai/optolith-client/blob/master/src/App/Constants/Id.re
+          \| ([\d]+) => ([\w]*)
+        ListElement {\r\n\ttal:"TAL_\1" \r\n\tsec: qsTr\("Craft"\)\r\n\tname: qsTr\("\2"\)\r\n\tlevel: 0\r\n\tcheck: "mu,kl,in"\r\n\tburden: 0\r\n\tcomment: ""\r\n}\r\n
+        */
+    }
+}

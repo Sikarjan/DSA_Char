@@ -64,8 +64,8 @@ Item {
     }
 
     onKkChanged: {
-        if(bagList.count >0){
-            bagList.setProperty(0,"size", kk*2)
+        if(page3.bagList.count >0){
+            page3.bagList.setProperty(0,"size", kk*2)
         }
     }
     onLeChanged: {
@@ -198,10 +198,22 @@ Item {
             }
         }
 
+        var skills = data.talents
+
+        // Resetting data
+        for(i=0;i<page2.skillList.count;i++){
+            page2.skillList.setProperty(i,"level",0)
+        }
+        for(var sKey in skills){
+            var skill = skills[sKey]
+
+            page2.skillView.setSkill(sKey, "level", skill)
+        }
+
         var belongings = data.belongings.items
-        itemList.clear()
-        bagList.clear()
-        bagList.append({
+        page3.itemList.clear()
+        page3.bagList.clear()
+        page3.bagList.append({
                "bagId": 0,
                "bagName": qsTr("Body"),
                "size": hero.maxLoad,
@@ -212,7 +224,7 @@ Item {
                "where": "-",
                "dropped": false
         })
-        bagList.nextId = 1
+        page3.bagList.nextId = 1
         editItemWhereMenu()
         currentLoad = 0
 
@@ -273,7 +285,7 @@ Item {
                     whereId = id
                 }
 
-                itemList.append({
+                page3.itemList.append({
                                 "item": mItem.name,
                                 "amount": mItem.amount,
                                 "weight": weight,
@@ -285,7 +297,7 @@ Item {
             }
         }
 
-        itemList.sortItems()
+        page3.itemList.sortItems()
     }
 
     function addBag(item){
@@ -299,8 +311,8 @@ Item {
             type = item.type
         }
 
-        bagList.append({
-                       "bagId": bagList.nextId,
+        page3.bagList.append({
+                       "bagId": page3.bagList.nextId,
                        "bagName": item.name,
                        "size": item.gr,
                        "type": type,
@@ -314,30 +326,30 @@ Item {
         // Add weight of bag to the hero
         addWeight(item.weight, 0)
 
-        addItemWhereMenu(item.name, bagList.nextId)
+        addItemWhereMenu(item.name, page3.bagList.nextId)
 
-        bagList.nextId++
+        page3.bagList.nextId++
     }
 
     function addItemWhereMenu(name, id){
-        var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', itemWhereMenu)
+        var mItem = Qt.createQmlObject('import QtQuick 2.12; import QtQuick.Controls 2.12; MenuItem { property int bagId}', page3.itemWhereMenu)
         mItem.text = name
         mItem.bagId = id
-        itemWhereMenu.addItem(mItem)
+        page3.itemWhereMenu.addItem(mItem)
         var f = function(it){
-            it.triggered.connect(function(){ itemList.moveItem(it.bagId)})
+            it.triggered.connect(function(){ page3.itemList.moveItem(it.bagId)})
         }
         f(mItem)
     }
 
     function editItemWhereMenu(task = "delete"){
-        while(itemWhereMenu.count > 1){
-            itemWhereMenu.removeItem(itemWhereMenu.itemAt(1))
+        while(page3.itemWhereMenu.count > 1){
+            page3.itemWhereMenu.removeItem(page3.itemWhereMenu.itemAt(1))
         }
 
         if(task === "new"){
-            for(var j=1;j<bagList.count;j++){
-                var bag = bagList.get(j)
+            for(var j=1;j<page3.bagList.count;j++){
+                var bag = page3.bagList.get(j)
                 addItemWhereMenu(bag.bagName, bag.bagId)
             }
         }
@@ -345,10 +357,10 @@ Item {
 
     function addWeight(weight, bagId){
         hero.currentLoad += weight
-        bagList.setProperty(0, "load", bagList.get(0).load+weight)
+        page3.bagList.setProperty(0, "load", page3.bagList.get(0).load+weight)
 
         if(bagId > 0){
-            bagList.setProperty(bagId, "load", bagList.get(bagId).load+weight)
+            page3.bagList.setProperty(bagId, "load", page3.bagList.get(bagId).load+weight)
         }
     }
 }

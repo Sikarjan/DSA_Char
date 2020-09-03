@@ -109,21 +109,21 @@ Dialog {
                 id: itemWhere
                 textRole: "bagName"
                 valueRole: "bagId"
-                model: bagList
+                model: page3.bagList
                 width: parent.width - 110
             }
         }
     }
 
     onAccepted: {
-        itemList.append({
+        page3.itemList.append({
                             "item": itemName.text,
                             "amount": itemAmount.value,
                             "weight": itemWeight.realValue,
                             "price": itemPrice.realValue,
                             "whereId": itemWhere.currentValue // holds bagId
         })
-        itemList.sortItems()
+        page3.itemList.sortItems()
 
         itemName.clear()
         itemAmount.value = 1
