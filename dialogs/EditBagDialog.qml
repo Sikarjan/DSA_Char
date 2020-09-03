@@ -5,7 +5,7 @@ import QtQuick.Dialogs 1.3
 Dialog {
     id: editBagDialog
     width: 400
-    height: 300
+
     title: qsTr("Edit Bag")
 
     standardButtons: Dialog.Ok | Dialog.Cancel
@@ -14,7 +14,7 @@ Dialog {
         if(!editBagDialog.visible)
             return
 
-        var bag = bagList.get(bagList.activeId)
+        var bag = page3.bagList.get(bagList.activeId)
 
         bagName.text = bag["bagName"]
         bagCapacity.value = bag["size"]
@@ -24,6 +24,7 @@ Dialog {
     }
 
     Column {
+        id: content
         anchors.fill: parent
         anchors.margins: 10
         spacing: 5
@@ -129,10 +130,10 @@ Dialog {
     }
 
     onAccepted: {
-        bagList.setProperty(bagList.activeId, "bagName", bagName.text)
-        bagList.setProperty(bagList.activeId, "size", bagCapacity.value)
-        bagList.setProperty(bagList.activeId, "weight", bagWeight.realValue)
-        bagList.setProperty(bagList.activeId, "price", bagPrice.realValue)
-        bagList.setProperty(bagList.activeId, "where", bagWhere.text)
+        page3.bagList.setProperty(bagList.activeId, "bagName", bagName.text)
+        page3.bagList.setProperty(bagList.activeId, "size", bagCapacity.value)
+        page3.bagList.setProperty(bagList.activeId, "weight", bagWeight.realValue)
+        page3.bagList.setProperty(bagList.activeId, "price", bagPrice.realValue)
+        page3.bagList.setProperty(bagList.activeId, "where", bagWhere.text)
     }
 }

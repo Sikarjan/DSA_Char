@@ -134,12 +134,19 @@ ApplicationWindow {
 
     AddBagDialog {
         id: addBagDialog
+        anchors.centerIn: parent
     }
     EditBagDialog {
         id: editBagDialog
+ //       anchors.centerIn: parent
     }
     AddItemDialog {
         id: addItemDialog
+        anchors.centerIn: parent
+    }
+    RollTalentDialog {
+        id: rollTalentDialog
+//        anchors.centerIn: parent
     }
 
     SwipeView {

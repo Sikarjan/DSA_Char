@@ -95,7 +95,20 @@ Item {
         }
     }
 
-    function rollTalent(prop1, prop2, prop3, skill){
+    function rollTalent(talent){
+        var attrTest = talent.check.split(",")
+        var skill = talent.level
+        var attr = {
+            mu: hero.muMod,
+            kl: hero.klMod,
+            in: hero.inMod,
+            ch: hero.chMod,
+            ff: hero.ffMod,
+            ge: hero.geMod,
+            ko: hero.koMod,
+            kk: hero.kkMod
+        }
+
         var roll1 = Math.floor((Math.random()*20)+1)
         var roll2 = Math.floor((Math.random()*20)+1)
         var roll3 = Math.floor((Math.random()*20)+1)
@@ -134,14 +147,14 @@ Item {
             return qsTr("Catastrophic error")
         }
 
-        if(roll1 > prop1){
-            skill += prop1-roll1;
+        if(roll1 > attr[attrTest[0]]){
+            skill += attr[attrTest[0]]-roll1;
         }
-        if(roll2 > prop2){
-           skill += prop2-roll2;
+        if(roll2 > attr[attrTest[1]]){
+           skill += attr[attrTest[1]]-roll2;
         }
-        if(roll3 > prop3){
-            skill += prop3-roll3;
+        if(roll3 > attr[attrTest[2]]){
+            skill += attr[attrTest[2]]-roll3;
         }
 
         if(skill >= 0){

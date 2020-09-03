@@ -5,12 +5,13 @@ import QtQuick.Controls 2.12
 Dialog {
     id: addBagDialog
     width: 400
-    height: 300
+
     title: qsTr("Add Bag")
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
     Column {
+        id: content
         anchors.fill: parent
         anchors.margins: 10
         spacing: 5

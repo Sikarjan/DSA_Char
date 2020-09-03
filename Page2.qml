@@ -8,8 +8,10 @@ Page {
 
     property alias skillList: skillList
     property alias skillView: skillView
+    property int activeSkill: 0
 
     Component.onCompleted: skillList.sortSkills()
+
     header: Label {
         text: qsTr("Skills")
         font.pixelSize: Qt.application.font.pixelSize * 2
@@ -45,8 +47,10 @@ Page {
                     width: 155
                 }
                 Label { text: qsTr("Check"); width: 100 }
-                Label { text: qsTr("ENC"); width: 40 }
-                Label { text: qsTr("SR"); width: 50 }
+                Label { text: qsTr("ENC"); width: 45 }
+                Label { text: qsTr("SR"); width: 55 }
+                Label { text: "+"; width: Qt.application.font.pixelSize+5 }
+                Label { text: qsTr("Comment") }
             }
         }
 
@@ -78,13 +82,30 @@ Page {
                 width: 100
             }
             Label {
-                text: burden
+                text: burden === 0 ? qsTr("No"):(burden === 1? qsTr("Yes"):qsTr("maybe"))
                 width: 40
             }
             Label {
                 text: level
                 width: 50
             }
+            Button {
+                anchors.verticalCenter: parent.verticalCenter
+                width: skillCheck.height -2
+                height: width
+
+                Image {
+                    anchors.fill: parent
+                    source: "qrc:/img/img/dice.png"
+                    fillMode: Image.PreserveAspectFit
+                }
+
+                onClicked: {
+                    activeSkill = index
+                    rollTalentDialog.open()
+                }
+            }
+
             Label {
                 text: comment
             }
@@ -473,7 +494,7 @@ Page {
             sec: 3
             name: qsTr("Gambling")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -483,7 +504,7 @@ Page {
             sec: 3
             name: qsTr("Geography")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -493,7 +514,7 @@ Page {
             sec: 3
             name: qsTr("History")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -503,7 +524,7 @@ Page {
             sec: 3
             name: qsTr("Religions")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -523,7 +544,7 @@ Page {
             sec: 3
             name: qsTr("Magical Lore")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -533,7 +554,7 @@ Page {
             sec: 3
             name: qsTr("Mechanics")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,ff"
             burden: 0
             comment: ""
         }
@@ -543,7 +564,7 @@ Page {
             sec: 3
             name: qsTr("Math")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -553,7 +574,7 @@ Page {
             sec: 3
             name: qsTr("Law")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -563,7 +584,7 @@ Page {
             sec: 3
             name: qsTr("Myths & Legends")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -573,7 +594,7 @@ Page {
             sec: 3
             name: qsTr("Sphere Lore")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -583,7 +604,7 @@ Page {
             sec: 3
             name: qsTr("Astronomy")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,kl,in"
             burden: 0
             comment: ""
         }
@@ -593,7 +614,7 @@ Page {
             sec: 4
             name: qsTr("Alchemy")
             level: 0
-            check: "mu,kl,in"
+            check: "mu,kl,ff"
             burden: 0
             comment: ""
         }
@@ -603,7 +624,7 @@ Page {
             sec: 4
             name: qsTr("Sailing")
             level: 0
-            check: "mu,kl,in"
+            check: "ff,ge,kk"
             burden: 0
             comment: ""
         }
@@ -613,7 +634,7 @@ Page {
             sec: 4
             name: qsTr("Driving")
             level: 0
-            check: "mu,kl,in"
+            check: "ch,ff,ko"
             burden: 0
             comment: ""
         }
@@ -623,7 +644,7 @@ Page {
             sec: 4
             name: qsTr("Commerce")
             level: 0
-            check: "mu,kl,in"
+            check: "mu,in,ch"
             burden: 0
             comment: ""
         }
@@ -643,7 +664,7 @@ Page {
             sec: 4
             name: qsTr("Treat Disease")
             level: 0
-            check: "mu,kl,in"
+            check: "mu,in,ko"
             burden: 0
             comment: ""
         }
@@ -653,7 +674,7 @@ Page {
             sec: 4
             name: qsTr("Treat Soul")
             level: 0
-            check: "mu,kl,in"
+            check: "in,ch,ko"
             burden: 0
             comment: ""
         }
@@ -663,7 +684,7 @@ Page {
             sec: 4
             name: qsTr("Treat Wounds")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,ff,ff"
             burden: 0
             comment: ""
         }
@@ -673,7 +694,7 @@ Page {
             sec: 4
             name: qsTr("Woodworking")
             level: 0
-            check: "mu,kl,in"
+            check: "ff,ge,kk"
             burden: 0
             comment: ""
         }
@@ -683,7 +704,7 @@ Page {
             sec: 4
             name: qsTr("Prepare Food")
             level: 0
-            check: "mu,kl,in"
+            check: "in,ff,ff"
             burden: 0
             comment: ""
         }
@@ -693,7 +714,7 @@ Page {
             sec: 4
             name: qsTr("Leatherworking")
             level: 0
-            check: "mu,kl,in"
+            check: "ff,ge,ko"
             burden: 0
             comment: ""
         }
@@ -703,7 +724,7 @@ Page {
             sec: 4
             name: qsTr("Artistic Ability")
             level: 0
-            check: "mu,kl,in"
+            check: "in,ff,ff"
             burden: 0
             comment: ""
         }
@@ -713,7 +734,7 @@ Page {
             sec: 4
             name: qsTr("Metalworking")
             level: 0
-            check: "mu,kl,in"
+            check: "ff,ko,kk"
             burden: 0
             comment: ""
         }
@@ -723,7 +744,7 @@ Page {
             sec: 4
             name: qsTr("Music")
             level: 0
-            check: "mu,kl,in"
+            check: "ch,ff,ko"
             burden: 0
             comment: ""
         }
@@ -733,7 +754,7 @@ Page {
             sec: 4
             name: qsTr("Pick Locks")
             level: 0
-            check: "mu,kl,in"
+            check: "in,ff,ff"
             burden: 0
             comment: ""
         }
@@ -743,7 +764,7 @@ Page {
             sec: 4
             name: qsTr("Earthencraft")
             level: 0
-            check: "mu,kl,in"
+            check: "ff,ff,kk"
             burden: 0
             comment: ""
         }
@@ -753,7 +774,7 @@ Page {
             sec: 4
             name: qsTr("Clothworking")
             level: 0
-            check: "mu,kl,in"
+            check: "kl,ff,ff"
             burden: 0
             comment: ""
         }
