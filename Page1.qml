@@ -8,90 +8,80 @@ Page {
     width: 600
     height: 400
     hoverEnabled: false
-    title: "Hero"
-
+    title: qsTr("Hero")
+/*
     property alias leP: leP
     property alias asP: asP
     property alias painGroup: painGroup
-
-    header: Label {
-        text: qsTr("Hero")
-        font.pixelSize: Qt.application.font.pixelSize * 2
-        padding: 10
-    }
-
-    Row {
-        id: row
-        x: 125
-        width: 475
-        height: 61
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 5
-
-        CharAttribute {
-            id: mu
-            attrName: hero.muText
-            attrColor: "Red"
-            attrValue: hero.mu
-            attrModValue: hero.muMod
+*/
+    header: RowLayout {
+        Label {
+            text: qsTr("Hero")
+            font.pixelSize: Qt.application.font.pixelSize * 2
+            padding: 10
         }
 
-        CharAttribute {
-            id: kl
-            attrValue: hero.kl
-            attrModValue: hero.klMod
-            attrColor: "#7220f0"
-            attrName: hero.klText
+        Rectangle {
+            Layout.fillWidth: true
         }
 
-        CharAttribute {
-            id: intu
-            attrValue: hero.intu
-            attrModValue: hero.inMod
-            attrColor: "#47f020"
-            attrName: hero.klText
-        }
+        Row {
+            CharAttribute {
+                attrName: hero.muText
+                attrColor: "Red"
+                attrValue: hero.mu
+                attrModValue: hero.muMod
+            }
 
-        CharAttribute {
-            id: ch
-            attrValue: hero.ch
-            attrModValue: hero.chMod
-            attrColor: "#dd000000"
-            attrName: hero.chText
-        }
+            CharAttribute {
+                attrValue: hero.kl
+                attrModValue: hero.klMod
+                attrColor: "#7220f0"
+                attrName: hero.klText
+            }
 
-        CharAttribute {
-            id: ff
-            attrValue: hero.ff
-            attrModValue: hero.ffMod
-            attrColor: "#f7ff08"
-            attrName: hero.ffText
-        }
+            CharAttribute {
+                attrValue: hero.intu
+                attrModValue: hero.inMod
+                attrColor: "#47f020"
+                attrName: hero.klText
+            }
 
-        CharAttribute {
-            id: ge
-            attrValue: hero.ge
-            attrModValue: hero.geMod
-            attrColor: "#204ef0"
-            attrName: hero.geText
-        }
+            CharAttribute {
+                id: ch
+                attrValue: hero.ch
+                attrModValue: hero.chMod
+                attrColor: "#dd000000"
+                attrName: hero.chText
+            }
 
-        CharAttribute {
-            id: ko
-            attrValue: hero.ko
-            attrModValue: hero.koMod
-            attrColor: "#aeafae"
-            attrName: hero.koText
-        }
+            CharAttribute {
+                attrValue: hero.ff
+                attrModValue: hero.ffMod
+                attrColor: "#f7ff08"
+                attrName: hero.ffText
+            }
 
-        CharAttribute {
-            id: kk
-            attrValue: hero.kk
-            attrModValue: hero.kkMod
-            attrColor: "#ffab00"
-            attrName: hero.kkText
+            CharAttribute {
+                attrValue: hero.ge
+                attrModValue: hero.geMod
+                attrColor: "#204ef0"
+                attrName: hero.geText
+            }
+
+            CharAttribute {
+                attrValue: hero.ko
+                attrModValue: hero.koMod
+                attrColor: "#aeafae"
+                attrName: hero.koText
+            }
+
+            CharAttribute {
+                attrValue: hero.kk
+                attrModValue: hero.kkMod
+                attrColor: "#ffab00"
+                attrName: hero.kkText
+            }
         }
     }
 
@@ -144,7 +134,7 @@ Page {
             text: "4"
         }
         Label {
-            text: "Incapacitated"
+            text: qsTr("Incapacitated")
         }
 
         // Confusion
@@ -210,7 +200,7 @@ Page {
             height: 24
             text: qsTr("")
             ButtonGroup.group: burdenGroup
-            checked: hero.burden == 0
+            checked: hero.burden === 0
             onToggled: hero.burden = 0
         }
         RadioButton {
@@ -528,10 +518,3 @@ Page {
         }
     }
 }
-
-/*##^##
-Designer {
-    D{i:2;anchors_y:"-44"}
-}
-##^##*/
-

@@ -1,7 +1,8 @@
 import QtQuick 2.0
 
 Item {
-    width: 60
+    id: root
+    width: 60 * root.height/30
     height: 30
 
     property string attrName: ""
@@ -12,7 +13,7 @@ Item {
     Text {
         id: label
         text: attrName
-        font.pointSize: Qt.application.font.pixelSize
+        font.pointSize: Qt.application.font.pixelSize * root.height/30
 
         anchors.left: parent.left
         anchors.top: parent.top
@@ -22,7 +23,7 @@ Item {
     Rectangle {
         id: attribute
         border.width: 2
-        width: 25
+        width: 25 * root.height/30
         height: width
         anchors.top: parent.top
         anchors.left: label.right
@@ -31,7 +32,7 @@ Item {
         Text {
             text: attrValue
             anchors.centerIn: parent
-            font.pointSize: Qt.application.font.pixelSize
+            font.pointSize: Qt.application.font.pixelSize * root.height/30
         }
     }
 
@@ -39,6 +40,6 @@ Item {
         text: attrModValue
         anchors.top: attribute.bottom
         anchors.left: attribute.left
-        font.pointSize: Qt.application.font.pixelSize - 2
+        font.pointSize: (Qt.application.font.pixelSize - 2) * root.height/30
     }
 }

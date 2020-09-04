@@ -126,6 +126,20 @@ Dialog {
             spacing: 5
             Label {
                 width: root.labelWidth
+                text: qsTr("Skill mod")
+            }
+            SpinBox {
+                id: skillMod
+                from: -10
+                to: 10
+                value: talent.mod
+            }
+        }
+
+        Row {
+            spacing: 5
+            Label {
+                width: root.labelWidth
                 text: qsTr("Obstacle")
             }
             SpinBox {
@@ -145,7 +159,7 @@ Dialog {
             x:10
             text: qsTr("Check Talent with mods")
 
-            onClicked: checkResult.text = hero.rollTalent(talent, obstacle.value)
+            onClicked: checkResult.text = hero.rollTalent(talent, obstacle.value, skillMod.value)
         }
         Text {
             id: checkResult

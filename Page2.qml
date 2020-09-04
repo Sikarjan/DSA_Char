@@ -1,6 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.3
 import "components"
+import "dialogs"
 
 Page {
     width: 600
@@ -12,10 +14,91 @@ Page {
 
     Component.onCompleted: skillList.sortSkills()
 
-    header: Label {
-        text: qsTr("Skills")
-        font.pixelSize: Qt.application.font.pixelSize * 2
-        padding: 10
+    header: RowLayout {
+        Label {
+            text: qsTr("Skills")
+            font.pixelSize: Qt.application.font.pixelSize * 2
+            padding: 10
+        }
+        Rectangle {
+            Layout.fillWidth: true
+        }
+
+        Row {
+            id: row
+
+            CharAttribute {
+                id: mu
+                height: 25
+                attrName: hero.muText
+                attrColor: "Red"
+                attrValue: hero.mu
+                attrModValue: hero.muMod
+            }
+
+            CharAttribute {
+                id: kl
+                height: 25
+                attrValue: hero.kl
+                attrModValue: hero.klMod
+                attrColor: "#7225f0"
+                attrName: hero.klText
+            }
+
+            CharAttribute {
+                id: intu
+                height: 25
+                attrValue: hero.intu
+                attrModValue: hero.inMod
+                attrColor: "#47f025"
+                attrName: hero.klText
+            }
+
+            CharAttribute {
+                id: ch
+                height: 25
+                attrValue: hero.ch
+                attrModValue: hero.chMod
+                attrColor: "#dd000000"
+                attrName: hero.chText
+            }
+
+            CharAttribute {
+                id: ff
+                height: 25
+                attrValue: hero.ff
+                attrModValue: hero.ffMod
+                attrColor: "#f7ff08"
+                attrName: hero.ffText
+            }
+
+            CharAttribute {
+                id: ge
+                height: 25
+                attrValue: hero.ge
+                attrModValue: hero.geMod
+                attrColor: "#254ef0"
+                attrName: hero.geText
+            }
+
+            CharAttribute {
+                id: ko
+                height: 25
+                attrValue: hero.ko
+                attrModValue: hero.koMod
+                attrColor: "#aeafae"
+                attrName: hero.koText
+            }
+
+            CharAttribute {
+                id: kk
+                height: 25
+                attrValue: hero.kk
+                attrModValue: hero.kkMod
+                attrColor: "#ffab00"
+                attrName: hero.kkText
+            }
+        }
     }
 
     ListView {
@@ -39,17 +122,19 @@ Page {
                 id: secRow
                 anchors.verticalCenter: parent.verticalCenter
                 x:2
+                spacing: 5
 
                 Label {
                     text: skillSection.label
                     font.bold: true
                     font.pixelSize: Qt.application.font.pixelSize + 3
-                    width: 155
+                    width: 175
                 }
                 Label { text: qsTr("Check"); width: 100 }
-                Label { text: qsTr("ENC"); width: 45 }
-                Label { text: qsTr("SR"); width: 55 }
+                Label { text: qsTr("ENC"); width: 50 }
+                Label { text: qsTr("SR"); width: 30 }
                 Label { text: "+"; width: Qt.application.font.pixelSize+5 }
+                Label { text: qsTr("Mod"); width: 30 }
                 Label { text: qsTr("Comment") }
             }
         }
@@ -62,7 +147,7 @@ Page {
             Label {
                 id: skillName
                 text: name
-                width: 150
+                width: 170
                 font.pointSize: Qt.application.font.pixelSize
 
                 MouseArea {
@@ -72,6 +157,10 @@ Page {
 
                     onEntered: setAttrText("in")
                     onExited: setAttrText("out")
+                    onClicked: {
+                        activeSkill = index
+                        skillContext.popup()
+                    }
                 }
             }
 
@@ -83,11 +172,11 @@ Page {
             }
             Label {
                 text: burden === 0 ? qsTr("No"):(burden === 1? qsTr("Yes"):qsTr("maybe"))
-                width: 40
+                width: 50
             }
             Label {
                 text: level
-                width: 50
+                width: 30
             }
             Button {
                 anchors.verticalCenter: parent.verticalCenter
@@ -107,7 +196,14 @@ Page {
             }
 
             Label {
+                text: mod < 0 ? mod:(mod > 0 ? "+"+mod:"")
+                width: 30
+            }
+
+            Label {
                 text: comment
+                clip: true
+                Layout.fillWidth: true
             }
 
             Component.onCompleted: setAttrText("out")
@@ -158,6 +254,18 @@ Page {
         }
     }
 
+    Menu {
+        id: skillContext
+        MenuItem {
+            text: qsTr("Edit")
+            onTriggered: editSkillDialog.open()
+        }
+    }
+    EditSkillDialog {
+        id: editSkillDialog
+        anchors.centerIn: parent
+    }
+
     ListModel {
         id: skillList
 
@@ -195,7 +303,8 @@ Page {
             name: qsTr("Flying")
             level: 0
             check: "mu,in,ge"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -205,7 +314,8 @@ Page {
             name: qsTr("Gaukelei")
             level: 0
             check: "mu,ch,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -215,7 +325,8 @@ Page {
             name: qsTr("Climbing")
             level: 0
             check: "mu,ge,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -225,7 +336,8 @@ Page {
             name: qsTr("Body Control")
             level: 0
             check: "ge,ge,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -236,6 +348,7 @@ Page {
             level: 0
             check: "ko,kk,kk"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -245,7 +358,8 @@ Page {
             name: qsTr("Riding")
             level: 0
             check: "ch,ge,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -255,7 +369,8 @@ Page {
             name: qsTr("Swimming")
             level: 0
             check: "ge,ko,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -266,6 +381,7 @@ Page {
             level: 0
             check: "mu,mu,ko"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -276,6 +392,7 @@ Page {
             level: 0
             check: "kl,ch,ko"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -286,6 +403,7 @@ Page {
             level: 0
             check: "kl,in,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -295,7 +413,8 @@ Page {
             name: qsTr("Dancing")
             level: 0
             check: "kl,ch,ge"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -305,7 +424,8 @@ Page {
             name: qsTr("Pickpocket")
             level: 0
             check: "mu,ff,ge"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -315,7 +435,8 @@ Page {
             name: qsTr("Stealth")
             level: 0
             check: "mu,in,ge"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -326,6 +447,7 @@ Page {
             level: 0
             check: "kl,ko,kk"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -336,6 +458,7 @@ Page {
             level: 0
             check: "mu,kl,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -345,7 +468,8 @@ Page {
             name: qsTr("Seduction")
             level: 0
             check: "mu,ch,ch"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -356,6 +480,7 @@ Page {
             level: 0
             check: "mu,in,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -365,7 +490,8 @@ Page {
             name: qsTr("Etiquette")
             level: 0
             check: "kl,in,ch"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -375,7 +501,8 @@ Page {
             name: qsTr("Streetwise")
             level: 0
             check: "kl,in,ch"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -386,6 +513,7 @@ Page {
             level: 0
             check: "kl,in,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -396,6 +524,7 @@ Page {
             level: 0
             check: "mu,in,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -405,7 +534,8 @@ Page {
             name: qsTr("Disguise")
             level: 0
             check: "in,ch,ge"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -416,6 +546,7 @@ Page {
             level: 0
             check: "mu,in,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -425,17 +556,19 @@ Page {
             name: qsTr("Tracking")
             level: 0
             check: "mu,in,ge"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
         ListElement {
-            tal:"TAL_25"
+            tal:"TAL_20"
             sec: 2
             name: qsTr("Ropes")
             level: 0
             check: "kl,ge,ko"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -445,7 +578,8 @@ Page {
             name: qsTr("Fishing")
             level: 0
             check: "ff,ge,ko"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -456,6 +590,7 @@ Page {
             level: 0
             check: "kl,in,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -465,7 +600,8 @@ Page {
             name: qsTr("Plant Lore")
             level: 0
             check: "kl,ff,ko"
-            burden: 0
+            burden: 2
+            mod: 0
             comment: ""
         }
 
@@ -475,7 +611,8 @@ Page {
             name: qsTr("Animal Lore")
             level: 0
             check: "mu,mu,ch"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -485,7 +622,8 @@ Page {
             name: qsTr("Survival")
             level: 0
             check: "mu,ge,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -496,6 +634,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -506,6 +645,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -516,6 +656,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -526,6 +667,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -536,6 +678,7 @@ Page {
             level: 0
             check: "mu,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -546,6 +689,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -556,6 +700,7 @@ Page {
             level: 0
             check: "kl,kl,ff"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -566,6 +711,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -576,6 +722,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -586,6 +733,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -596,6 +744,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -606,6 +755,7 @@ Page {
             level: 0
             check: "kl,kl,in"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -615,7 +765,8 @@ Page {
             name: qsTr("Alchemy")
             level: 0
             check: "mu,kl,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -625,7 +776,8 @@ Page {
             name: qsTr("Sailing")
             level: 0
             check: "ff,ge,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -635,7 +787,8 @@ Page {
             name: qsTr("Driving")
             level: 0
             check: "ch,ff,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -646,6 +799,7 @@ Page {
             level: 0
             check: "mu,in,ch"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -655,7 +809,8 @@ Page {
             name: qsTr("Treat Poison")
             level: 0
             check: "mu,kl,in"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -665,7 +820,8 @@ Page {
             name: qsTr("Treat Disease")
             level: 0
             check: "mu,in,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -676,6 +832,7 @@ Page {
             level: 0
             check: "in,ch,ko"
             burden: 0
+            mod: 0
             comment: ""
         }
 
@@ -685,7 +842,8 @@ Page {
             name: qsTr("Treat Wounds")
             level: 0
             check: "kl,ff,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -695,7 +853,8 @@ Page {
             name: qsTr("Woodworking")
             level: 0
             check: "ff,ge,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -705,7 +864,8 @@ Page {
             name: qsTr("Prepare Food")
             level: 0
             check: "in,ff,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -715,7 +875,8 @@ Page {
             name: qsTr("Leatherworking")
             level: 0
             check: "ff,ge,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -725,7 +886,8 @@ Page {
             name: qsTr("Artistic Ability")
             level: 0
             check: "in,ff,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -735,7 +897,8 @@ Page {
             name: qsTr("Metalworking")
             level: 0
             check: "ff,ko,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -745,7 +908,8 @@ Page {
             name: qsTr("Music")
             level: 0
             check: "ch,ff,ko"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -755,7 +919,8 @@ Page {
             name: qsTr("Pick Locks")
             level: 0
             check: "in,ff,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -765,7 +930,8 @@ Page {
             name: qsTr("Earthencraft")
             level: 0
             check: "ff,ff,kk"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
 
@@ -775,13 +941,14 @@ Page {
             name: qsTr("Clothworking")
             level: 0
             check: "kl,ff,ff"
-            burden: 0
+            burden: 1
+            mod: 0
             comment: ""
         }
         /*
         Regex for notepad++ to get all skills in the right format from https://github.com/elyukai/optolith-client/blob/master/src/App/Constants/Id.re
           \| ([\d]+) => ([\w]*)
-        ListElement {\r\n\ttal:"TAL_\1" \r\n\tsec: qsTr\("Craft"\)\r\n\tname: qsTr\("\2"\)\r\n\tlevel: 0\r\n\tcheck: "mu,kl,in"\r\n\tburden: 0\r\n\tcomment: ""\r\n}\r\n
+        ListElement {\r\n\ttal:"TAL_\1" \r\n\tsec: qsTr\("Craft"\)\r\n\tname: qsTr\("\2"\)\r\n\tlevel: 0\r\n\tcheck: "mu,kl,in"\r\n\tburden: 0\r\n\tmod: 0\r\n\tcomment: ""\r\n}\r\n
         */
     }
 }

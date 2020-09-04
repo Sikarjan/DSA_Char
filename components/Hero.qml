@@ -95,9 +95,9 @@ Item {
         }
     }
 
-    function rollTalent(talent, obstacle=0, mode="mod"){
+    function rollTalent(talent, obstacle=0, skillMod=0, mode="mod"){
         var attrTest = talent.check.split(",")
-        var skill = talent.level
+        var skill = talent.level + skillMod
         var attr = {}
 
         if(mode==="mod"){

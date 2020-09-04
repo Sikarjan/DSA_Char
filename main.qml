@@ -69,8 +69,9 @@ ApplicationWindow {
         if(skillListStore){
             var skillStore = JSON.parse(skillListStore)
             for(i=0;i<skillStore.length;i++){
-                if(skillStore[i].level !== 0){
+                if(skillStore[i].level !== 0 || skillStore[i].mod !== 0 || skillStore[i].comment !== ""){
                     page2.skillView.setSkill(skillStore[i].tal, "level", skillStore[i].level)
+                    page2.skillView.setSkill(skillStore[i].tal, "mod", skillStore[i].mod)
                     page2.skillView.setSkill(skillStore[i].tal, "comment", skillStore[i].comment)
                 }
             }
@@ -154,14 +155,12 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1Form {
-            leP {
-                onValueChanged: hero.le = leP.value // Warum? Da sollte man doch ein Binding machen können
-            }
+        Page1 {
+            id: page1
         }
 
         Page2 {
-            id:page2
+            id: page2
         }
 
         Page3 {
