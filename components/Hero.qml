@@ -95,18 +95,33 @@ Item {
         }
     }
 
-    function rollTalent(talent){
+    function rollTalent(talent, obstacle=0, mode="mod"){
         var attrTest = talent.check.split(",")
         var skill = talent.level
-        var attr = {
-            mu: hero.muMod,
-            kl: hero.klMod,
-            in: hero.inMod,
-            ch: hero.chMod,
-            ff: hero.ffMod,
-            ge: hero.geMod,
-            ko: hero.koMod,
-            kk: hero.kkMod
+        var attr = {}
+
+        if(mode==="mod"){
+            attr = {
+                mu: hero.muMod,
+                kl: hero.klMod,
+                in: hero.inMod,
+                ch: hero.chMod,
+                ff: hero.ffMod,
+                ge: hero.geMod,
+                ko: hero.koMod,
+                kk: hero.kkMod
+            }
+        }else{
+            attr = {
+                mu: hero.mu,
+                kl: hero.kl,
+                in: hero.intu,
+                ch: hero.ch,
+                ff: hero.ff,
+                ge: hero.ge,
+                ko: hero.ko,
+                kk: hero.kk
+            }
         }
 
         var roll1 = Math.floor((Math.random()*20)+1)
@@ -147,21 +162,25 @@ Item {
             return qsTr("Catastrophic error")
         }
 
-        if(roll1 > attr[attrTest[0]]){
-            skill += attr[attrTest[0]]-roll1;
+        var t1 = attr[attrTest[0]] + obstacle
+        var t2 = attr[attrTest[1]] + obstacle
+        var t3 = attr[attrTest[2]] + obstacle
+
+        if(roll1 > t1){
+            skill += t1-roll1;
         }
-        if(roll2 > attr[attrTest[1]]){
-           skill += attr[attrTest[1]]-roll2;
+        if(roll2 > t2){
+           skill += t2-roll2;
         }
-        if(roll3 > attr[attrTest[2]]){
-            skill += attr[attrTest[2]]-roll3;
+        if(roll3 > t3){
+            skill += t3-roll3;
         }
 
         if(skill >= 0){
             var q = Math.floor(skill/3)+1
-            return qsTr("You succeeded with a quality %1.").arg(q)+"\n"+qsTr("Your roll was: ")+roll1+"/"+roll2+"/"+roll3
+            return qsTr("You succeeded with a quality %1 (%2).").arg(q).arg(skill)+"\n"+qsTr("Your roll was: ")+roll1+" vs "+t1+"/"+roll2+" vs "+t2+"/"+roll3+" vs "+t3
         }else{
-            return qsTr("You failed")+"\n"+qsTr("Your roll was: ")+roll1+"/"+roll2+"/"+roll3
+            return qsTr("You failed")+"\n"+qsTr("Your roll was: ")+roll1+" vs "+t1+"/"+roll2+" vs "+t2+"/"+roll3+" vs "+t3
         }
     }
 
