@@ -105,6 +105,11 @@ ApplicationWindow {
                 text: qsTr("&Import")
                 onTriggered: importHeroDialog.visible = true
             }
+            Action {
+                text: qsTr("&Edit Attributes")
+                onTriggered: editAttributesDialog.visible = true
+            }
+
             MenuSeparator{}
             Action{
                 text: qsTr("&Quit")
@@ -148,6 +153,10 @@ ApplicationWindow {
     RollTalentDialog {
         id: rollTalentDialog
 //        anchors.centerIn: parent
+    }
+    EditAttributesDialog {
+        id: editAttributesDialog
+        anchors.centerIn: parent
     }
 
     SwipeView {

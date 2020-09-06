@@ -11,7 +11,7 @@ Page {
     title: qsTr("Hero")
 /*
     property alias leP: leP
-    property alias asP: asP
+    property alias ae: ae
     property alias painGroup: painGroup
 */
     header: RowLayout {
@@ -492,28 +492,55 @@ Page {
         }
         // Magic Points
         Row {
-            visible: hero.aspMod > 0
+            visible: hero.aeMod > 0
             Label {
                 text: qsTr("Arcane Energy")
                 height: 40
                 width: col1.width
             }
             Label {
-                text: hero.aspMax
+                text: hero.aeMax
                 width: col2.width
             }
 
             SpinBox {
-                id: asP
+                id: ae
                 width: col3.width
                 height: 30
                 editable: true
                 wheelEnabled: true
                 enabled: true
-                value: hero.asp
+                value: hero.ae
                 font.pointSize: 10
                 from: -10
-                to: hero.aspMax
+                to: hero.aeMax
+            }
+        }
+
+        // Karmal Points
+        Row {
+ //           visible: hero.keMod > 0
+            Label {
+                text: qsTr("Karmal Energy")
+                height: 40
+                width: col1.width
+            }
+            Label {
+                text: hero.keMax
+                width: col2.width
+            }
+
+            SpinBox {
+                id: ke
+                width: col3.width
+                height: 30
+                editable: true
+                wheelEnabled: true
+                enabled: true
+                value: hero.ke
+                font.pointSize: 10
+                from: -10
+                to: hero.keMax
             }
         }
     }

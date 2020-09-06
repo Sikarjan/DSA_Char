@@ -32,10 +32,15 @@ Item {
     property int leMax: ko+ko+leMod
     property int le: leMax
 
-    property int aspMod: 20
     property string mainAttr: "intu"
-    property int aspMax: aspMod > 0 ? eval(mainAttr)+aspMod:0
-    property int asp: aspMax
+
+    property int aeMod: 0
+    property int aeMax: aeMod > 0 ? eval(mainAttr)+aeMod:0
+    property int ae: aeMax
+
+    property int keMod: 0
+    property int keMax: keMod > 0 ? eval(mainAttr)+keMod:0
+    property int ke: keMax
 
     property int maxLoad: kk*2
     property real currentLoad: 0
@@ -58,6 +63,11 @@ Item {
         property alias ge: hero.ge
         property alias kk: hero.kk
         property alias ko: hero.ko
+
+        property alias aeMod: hero.aeMod
+        property alias ae: hero.ae
+        property alias keMod: hero.keMod
+        property alias ke: hero.ke
 
         property alias currentLoad: hero.currentLoad
         property alias weightBurden: hero.weightBurden
@@ -230,6 +240,18 @@ Item {
             }
         }
 
+        // Checking for ae (ADV_50), KE (ADV_12)
+        var activable = data.activatable
+        if(activable['ADV_50']){
+            hero.aeMod = 20
+            // mainAttr ???
+        }
+        if(activable['ADV_12']){
+            hero.keMod = 20
+            // mainAttr ???
+        }
+
+        // Loading Skills
         var skills = data.talents
 
         // Resetting data
