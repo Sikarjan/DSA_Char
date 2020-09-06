@@ -221,7 +221,8 @@ Page {
                 value: model.amount
                 width: 80
                 height: itemNameLabel.height
-                editable: false
+                editable: true
+                wheelEnabled: true
 
                 onValueModified: {
                     var nWeight = (value - model.amount)*model.weight

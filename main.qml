@@ -175,6 +175,10 @@ ApplicationWindow {
         Page3 {
             id: page3
         }
+
+        PageNotes {
+            id: pageNotes
+        }
     }
 
     Hero{
@@ -193,6 +197,8 @@ ApplicationWindow {
         }
         TabButton {
             text: qsTr("Belongings")
+        }TabButton {
+            text: qsTr("Notes")
         }
     }
 }

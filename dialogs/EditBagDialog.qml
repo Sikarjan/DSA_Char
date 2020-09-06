@@ -14,7 +14,7 @@ Dialog {
         if(!editBagDialog.visible)
             return
 
-        var bag = page3.bagList.get(bagList.activeId)
+        var bag = page3.bagList.get(page3.bagList.activeId)
 
         bagName.text = bag["bagName"]
         bagCapacity.value = bag["size"]
@@ -130,10 +130,10 @@ Dialog {
     }
 
     onAccepted: {
-        page3.bagList.setProperty(bagList.activeId, "bagName", bagName.text)
-        page3.bagList.setProperty(bagList.activeId, "size", bagCapacity.value)
-        page3.bagList.setProperty(bagList.activeId, "weight", bagWeight.realValue)
-        page3.bagList.setProperty(bagList.activeId, "price", bagPrice.realValue)
-        page3.bagList.setProperty(bagList.activeId, "where", bagWhere.text)
+        page3.bagList.setProperty(page3.bagList.activeId, "bagName", bagName.text)
+        page3.bagList.setProperty(page3.bagList.activeId, "size", bagCapacity.value)
+        page3.bagList.setProperty(page3.bagList.activeId, "weight", bagWeight.realValue)
+        page3.bagList.setProperty(page3.bagList.activeId, "price", bagPrice.realValue)
+        page3.bagList.setProperty(page3.bagList.activeId, "where", bagWhere.text)
     }
 }
