@@ -22,5 +22,10 @@
     </qresource>
     <qresource prefix="/img">
         <file>img/dice.png</file>
+        <file>img/BalkenSymboleLinks.png</file>
+        <file>img/BalkenSymboleRechts.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/fontello.ttf</file>
     </qresource>
 </RCC>
