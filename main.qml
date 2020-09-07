@@ -127,6 +127,19 @@ ApplicationWindow {
                 onTriggered: addBagDialog.open()
             }
         }
+        Menu {
+            title: qsTr("Text")
+            enabled: pageNotes.activeFocus
+
+            Menu {
+                title: qsTr("Alignemnt")
+
+                MenuItem {
+                   text: qsTr("align left")
+                   onTriggered: pageNotes.document.alignment = Qt.AlignLeft
+                }
+            }
+        }
     }
 
     FileDialog {

@@ -55,7 +55,7 @@ Page {
         cursorPosition: note.cursorPosition
         selectionStart: note.selectionStart
         selectionEnd: note.selectionEnd
-        textColor: colorDialog.color
+        textColor: "black"
         Component.onCompleted: document.load("qrc:/texteditor.html")
         onLoaded: {
             note.text = text
@@ -103,7 +103,7 @@ Page {
                     }
                     ToolButton {
                         id: cutButton
-                        text: "\uE802" // icon-scissors
+                        text: "\uE800" // icon-scissors
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         enabled: note.selectedText
@@ -126,7 +126,7 @@ Page {
                     id: formatRow
                     ToolButton {
                         id: boldButton
-                        text: "\uE800" // icon-bold
+                        text: "\uE806" // icon-bold
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -135,7 +135,7 @@ Page {
                     }
                     ToolButton {
                         id: italicButton
-                        text: "\uE801" // icon-italic
+                        text: "\uE80A" // icon-italic
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -153,7 +153,7 @@ Page {
                     }
                     ToolButton {
                         id: fontFamilyToolButton
-                        text: qsTr("\uE808") // icon-font
+                        text: qsTr("\uE805") // icon-font
                         font.family: "fontello"
                         font.bold: document.bold
                         font.italic: document.italic
@@ -164,29 +164,7 @@ Page {
                             fontDialog.open();
                         }
                     }
-/*                    ToolButton {
-                        id: textColorButton
-                        text: "\uF1FC" // icon-brush
-                        font.family: "fontello"
-                        focusPolicy: Qt.TabFocus
-                        onClicked: colorDialog.open()
 
-                        Rectangle {
-                            width: aFontMetrics.width + 3
-                            height: 2
-                            color: document.textColor
-                            parent: textColorButton.contentItem
-                            anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.baseline: parent.baseline
-                            anchors.baselineOffset: 6
-
-                            TextMetrics {
-                                id: aFontMetrics
-                                font: textColorButton.font
-                                text: textColorButton.text
-                            }
-                        }
-                    }*/
                     ToolSeparator {
                         contentItem.visible: formatRow.y === alignRow.y
                     }
@@ -196,7 +174,7 @@ Page {
                     id: alignRow
                     ToolButton {
                         id: alignLeftButton
-                        text: "\uE803" // icon-align-left
+                        text: "\uE801" // icon-align-left
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -205,7 +183,7 @@ Page {
                     }
                     ToolButton {
                         id: alignCenterButton
-                        text: "\uE804" // icon-align-center
+                        text: "\uE802" // icon-align-center
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -214,7 +192,7 @@ Page {
                     }
                     ToolButton {
                         id: alignRightButton
-                        text: "\uE805" // icon-align-right
+                        text: "\uE803" // icon-align-right
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -223,7 +201,7 @@ Page {
                     }
                     ToolButton {
                         id: alignJustifyButton
-                        text: "\uE806" // icon-align-justify
+                        text: "\uE804" // icon-align-justify
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true
@@ -299,9 +277,9 @@ Page {
             onTriggered: fontDialog.open()
         }
 
-        MenuItem {
+/*        MenuItem {
             text: qsTr("Color...")
             onTriggered: colorDialog.open()
-        }
+        }*/
     }
 }
