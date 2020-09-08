@@ -16,6 +16,7 @@
         <file>dialogs/EditSkillDialog.qml</file>
         <file>dialogs/EditAttributesDialog.qml</file>
         <file>PageNotes.qml</file>
+        <file>components/Globals.js</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>

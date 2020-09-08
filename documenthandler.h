@@ -54,6 +54,7 @@
 #include <QFont>
 #include <QObject>
 #include <QTextCursor>
+#include <QTextListFormat>
 #include <QUrl>
 
 QT_BEGIN_NAMESPACE
@@ -79,6 +80,8 @@ class DocumentHandler : public QObject
     Q_PROPERTY(bool underline READ underline WRITE setUnderline NOTIFY underlineChanged)
 
     Q_PROPERTY(int fontSize READ fontSize WRITE setFontSize NOTIFY fontSizeChanged)
+
+    Q_PROPERTY(bool ul READ ul WRITE setUl NOTIFY ulChanged)
 
     Q_PROPERTY(QString fileName READ fileName NOTIFY fileUrlChanged)
     Q_PROPERTY(QString fileType READ fileType NOTIFY fileUrlChanged)
@@ -122,6 +125,9 @@ public:
     int fontSize() const;
     void setFontSize(int size);
 
+    bool ul() const;
+    void setUl(bool ul);
+
     QString fileName() const;
     QString fileType() const;
     QUrl fileUrl() const;
@@ -148,6 +154,8 @@ Q_SIGNALS:
     void underlineChanged();
 
     void fontSizeChanged();
+
+    void ulChanged();
 
     void textChanged();
     void fileUrlChanged();

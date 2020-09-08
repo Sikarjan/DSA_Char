@@ -46,12 +46,26 @@ Item {
     property real currentLoad: 0
     property int weightBurden: 0
 
+    property int spiritBase:-4
+    property int spirit: (hero.mu+hero.kl+hero.intu)/6+spiritBase
+    property int toughnessBase: -4
+    property int toughness: (hero.ko*2+hero.kk)/6+toughnessBase
+    property int dodge: hero.ge/2
+    property int fatePoints: 3
+    property int fatePointsMax: 3
+
     property int confusion: 0
     property int pain: 0
     property int burden: 0
     property int paralysis: 0
     property int rapture: 0
     property int stupor: 0
+
+    property string hName: " "
+    property int raceId: 0
+    property string profession: " "
+    property int hSize: 0
+    property int hWeight: 0
 
     property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
     Settings {
@@ -68,6 +82,21 @@ Item {
         property alias ae: hero.ae
         property alias keMod: hero.keMod
         property alias ke: hero.ke
+
+        property alias spiritBase: hero.spiritBase
+        property alias toughnessBase: hero.toughnessBase
+        property alias confusion: hero.confusion
+        property alias pain: hero.pain
+        property alias burden: hero.burden
+        property alias paralysis: hero.paralysis
+        property alias rapture: hero.rapture
+        property alias stupor: hero.stupor
+
+        property alias hName: hero.hName
+        property alias raceId: hero.raceId
+        property alias profession: hero.profession
+        property alias hSize: hero.hSize
+        property alias hWeight: hero.hWeight
 
         property alias currentLoad: hero.currentLoad
         property alias weightBurden: hero.weightBurden
@@ -208,8 +237,13 @@ Item {
     }
 
     function readHero(data){
-        var attr = data.attr.values
+        hero.hName = data.name+" "+data.pers.family
+        hero.profession = data.professionName
+        hero.hSize = data.pers.size
+        hero.hWeight = data.pers.weight
+        hero.raceId = data.r.substring(2)
 
+        var attr = data.attr.values
         for(var i=0;i<8; i++){
 
             switch(attr[i].id){

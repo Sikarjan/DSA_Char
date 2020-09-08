@@ -164,12 +164,67 @@ Page {
                             fontDialog.open();
                         }
                     }
+                    ToolButton {
+                        text: qsTr("\uf0ca") // icon-unordered list
+                        font.family: "fontello"
+                        focusPolicy: Qt.TabFocus
+                        checkable: true
+                        checked: document.ul
+                        onClicked: document.ul = !document.ul
+                    }
 
                     ToolSeparator {
                         contentItem.visible: formatRow.y === alignRow.y
                     }
                 }
 
+                Row {
+                    id: alignRow
+                    ToolButton {
+                        text: "\uE801" // icon-align-left
+                        font.family: "fontello"
+                        onClicked: alignmentMenu.open()
+                    }
+
+                    Menu {
+                        id: alignmentMenu
+
+                        MenuItem {
+                            text: "\uE801" // icon-align-left
+                            font.family: "fontello"
+                            focusPolicy: Qt.TabFocus
+                            checkable: true
+                            checked: document.alignment == Qt.AlignLeft
+                            onClicked: document.alignment = Qt.AlignLeft
+                        }
+                        MenuItem {
+                            text: "\uE802" // icon-align-center
+                            font.family: "fontello"
+                            focusPolicy: Qt.TabFocus
+                            checkable: true
+                            checked: document.alignment == Qt.AlignHCenter
+                            onClicked: document.alignment = Qt.AlignHCenter
+                        }
+                        MenuItem {
+                            text: "\uE803" // icon-align-right
+                            font.family: "fontello"
+                            focusPolicy: Qt.TabFocus
+                            checkable: true
+                            checked: document.alignment == Qt.AlignRight
+                            onClicked: document.alignment = Qt.AlignRight
+                        }
+                        MenuItem {
+                            text: "\uE804" // icon-align-justify
+                            font.family: "fontello"
+                            focusPolicy: Qt.TabFocus
+                            checkable: true
+                            checked: document.alignment == Qt.AlignJustify
+                            onClicked: document.alignment = Qt.AlignJustify
+                        }
+                    }
+                }
+
+/*
                 Row {
                     id: alignRow
                     ToolButton {
@@ -208,7 +263,7 @@ Page {
                         checked: document.alignment == Qt.AlignJustify
                         onClicked: document.alignment = Qt.AlignJustify
                     }
-                }
+                }*/
             }
         }
 

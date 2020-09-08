@@ -241,7 +241,7 @@ int DocumentHandler::fontSize() const
 
 void DocumentHandler::setFontSize(int size)
 {
-    if (size <= 0)
+    if (size <= 5)
         return;
 
     QTextCursor cursor = textCursor();
@@ -258,6 +258,32 @@ void DocumentHandler::setFontSize(int size)
     format.setFontPointSize(size);
     mergeFormatOnWordOrSelection(format);
     emit fontSizeChanged();
+}
+
+bool DocumentHandler::ul() const
+{
+    QTextCursor cursor = textCursor();
+    if (cursor.isNull())
+        return false;
+    qDebug()<< "is list?" << cursor.blockFormat().isListFormat();
+    return cursor.blockFormat().isListFormat();
+}
+
+void DocumentHandler::setUl(bool ul)
+{
+    qDebug() << "ul is: " << ul;
+    QTextCursor cursor = textCursor();
+    QTextListFormat list;
+
+    if(ul){
+        list.setStyle(QTextListFormat::ListDisc);
+    }else{
+        list.clearProperty(QTextListFormat::ListDisc);
+    }
+
+    cursor.insertList(list);
+
+    emit ulChanged();
 }
 
 QString DocumentHandler::fileName() const
