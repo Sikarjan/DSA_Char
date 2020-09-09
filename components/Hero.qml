@@ -29,17 +29,20 @@ Item {
     property int koMod: ko-attrMods
 
     property int leMod: 2
-    property int leMax: ko+ko+leMod
+    property int leBought: 0
+    property int leMax: ko+ko+leMod+leBought
     property int le: leMax
 
     property string mainAttr: "intu"
 
-    property int aeMod: 0
-    property int aeMax: aeMod > 0 ? eval(mainAttr)+aeMod:0
+    property int aeMod: -1
+    property int aeBought: 0
+    property int aeMax: aeMod >= 0 ? eval(mainAttr)+aeMod+aeBought+20:0
     property int ae: aeMax
 
-    property int keMod: 0
-    property int keMax: keMod > 0 ? eval(mainAttr)+keMod:0
+    property int keMod: -1
+    property int keBought: 0
+    property int keMax: keMod >= 0 ? eval(mainAttr)+keMod+keBought+20:0
     property int ke: keMax
 
     property int maxLoad: kk*2
@@ -47,12 +50,21 @@ Item {
     property int weightBurden: 0
 
     property int spiritBase:-4
-    property int spirit: (hero.mu+hero.kl+hero.intu)/6+spiritBase
+    property int spiritMod: 0
+    property int spirit: Math.round((hero.mu+hero.kl+hero.intu)/6)+spiritBase+spiritMod
     property int toughnessBase: -4
-    property int toughness: (hero.ko*2+hero.kk)/6+toughnessBase
-    property int dodge: hero.ge/2
+    property int toughnessMod: 0
+    property int toughness: Math.round((hero.ko*2+hero.kk)/6)+toughnessBase+toughnessMod
+    property int dodge: hero.ge/2+dodgeMod
+    property int dodgeMod: 0
+    property int iniMod: 0
+    property int iniBase: Math.round((hero.mu+hero.ge)/2)+iniMod
+    property int moveRaceMod: 0
+    property int moveMod: 0
+    property int move: 8+moveMod+moveRaceMod
     property int fatePoints: 3
-    property int fatePointsMax: 3
+    property int fatePointsMod: 0
+    property int fatePointsMax: 3+fatePointsMod
 
     property int confusion: 0
     property int pain: 0
@@ -66,6 +78,7 @@ Item {
     property string profession: " "
     property int hSize: 0
     property int hWeight: 0
+    property string avatar: ""
 
     property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
     Settings {
@@ -78,13 +91,23 @@ Item {
         property alias kk: hero.kk
         property alias ko: hero.ko
 
+        property alias le: hero.le
+        property alias leBought: hero.leBought
         property alias aeMod: hero.aeMod
+        property alias aeBought: hero.aeBought
         property alias ae: hero.ae
         property alias keMod: hero.keMod
+        property alias keBought: hero.keBought
         property alias ke: hero.ke
 
         property alias spiritBase: hero.spiritBase
+        property alias spiritMod: hero.spiritMod
         property alias toughnessBase: hero.toughnessBase
+        property alias toughnessMod: hero.toughnessMod
+        property alias dodgeMod: hero.dodgeMod
+        property alias fatePoints: hero.fatePoints
+        property alias fatePointsMod: hero.fatePointsMod
+
         property alias confusion: hero.confusion
         property alias pain: hero.pain
         property alias burden: hero.burden
@@ -97,6 +120,7 @@ Item {
         property alias profession: hero.profession
         property alias hSize: hero.hSize
         property alias hWeight: hero.hWeight
+        property alias avatar: hero.avatar
 
         property alias currentLoad: hero.currentLoad
         property alias weightBurden: hero.weightBurden
@@ -242,10 +266,10 @@ Item {
         hero.hSize = data.pers.size
         hero.hWeight = data.pers.weight
         hero.raceId = data.r.substring(2)
+        hero.avatar = data.avatar
 
         var attr = data.attr.values
         for(var i=0;i<8; i++){
-
             switch(attr[i].id){
             case "ATTR_1":
                 mu = attr[i].value
@@ -273,15 +297,18 @@ Item {
                 break;
             }
         }
+        hero.leBought = data.attr.lp
 
         // Checking for ae (ADV_50), KE (ADV_12)
         var activable = data.activatable
         if(activable['ADV_50']){
-            hero.aeMod = 20
+            hero.aeMod = 0
+            hero.aeBought = data.attr.ae
             // mainAttr ???
         }
         if(activable['ADV_12']){
-            hero.keMod = 20
+            hero.keMod = 0
+            hero.keBought = data.attr.ke
             // mainAttr ???
         }
 

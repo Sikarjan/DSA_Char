@@ -19,7 +19,7 @@ Page {
     header: RowLayout {
         Label {
             text: qsTr("Hero")
-            font.pixelSize: Qt.application.font.pixelSize * 2
+            font.pixelSize: Globals.fontSizeBig
             padding: 10
         }
 
@@ -133,45 +133,69 @@ Page {
             }
         }
 
+        Rectangle {
+            width: 200
+            height: 300
+            border.color: "black"
+            border.width: 2
+            radius: 5
+            color: "lightgray"
+
+            Image {
+                anchors.fill: parent
+                source: hero.avatar
+                fillMode: Image.PreserveAspectFit
+            }
+        }
         Column {
             id: points
+            spacing: 5
 //            anchors.right: parent.right
 //            anchors.top: parent.top
 //            anchors.margins: 5
 
             Row {
+                spacing: 5
                 Label {
                     id: col1
                     text: qsTr("Points")
-                    height: 40
                     width: 150
                 }
                 Label {
                     id: col2
-                    text: qsTr("Max")
+                    text: qsTr("Stat")
+                    width: 90
                 }
                 Label {
                     id: col3
-                    text: qsTr("Current")
-                    width: 100
+                    text: qsTr("Mod")
+                }
+                Label {
+                    id: col4
+                    text: qsTr("Bought")
+                }
+                Label {
+                    id: col5
+                    text: qsTr("Max")
                 }
             }
 
             // Life Points
             Row {
-                Label {
-                    text: qsTr("Life Points")
-                    height: 40
-                    width: col1.width
+                spacing: 5
+                Column {
+                    Label {
+                        text: qsTr("Life Points")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("Mod")+"+"+hero.koText+"+"+hero.koText
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
                 }
-                Label {
-                    text: hero.leMax
-                    width: col2.width
-                }
-
                 SpinBox {
                     id: leP
-                    width: col3.width
+                    width: col2.width
                     height: 30
                     editable: true
                     wheelEnabled: true
@@ -181,23 +205,36 @@ Page {
                     from: -10
                     to: hero.leMax
                 }
+                Label {
+                    text: hero.leMod
+                    width: col3.width
+                }
+                Label {
+                    text: hero.leBought
+                    width: col4.width
+                }
+                Label {
+                    text: hero.leMax
+                    width: col5.width
+                }
             }
             // Magic Points
             Row {
-                visible: hero.aeMod > 0
-                Label {
-                    text: qsTr("Arcane Energy")
-                    height: 40
-                    width: col1.width
+                spacing: 5
+                visible: hero.aeMod >= 0
+                Column {
+                    Label {
+                        text: qsTr("Arcane Energie")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("20 for Spellcaster + Primary Attribute")
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
                 }
-                Label {
-                    text: hero.aeMax
-                    width: col2.width
-                }
-
                 SpinBox {
                     id: ae
-                    width: col3.width
+                    width: col2.width
                     height: 30
                     editable: true
                     wheelEnabled: true
@@ -207,24 +244,37 @@ Page {
                     from: -10
                     to: hero.aeMax
                 }
+                Label {
+                    text: hero.aeMod
+                    width: col3.width
+                }
+                Label {
+                    text: hero.aeBought
+                    width: col4.width
+                }
+                Label {
+                    text: hero.aeMax
+                    width: col5.width
+                }
             }
 
             // Karmal Points
             Row {
-                visible: hero.keMod > 0
-                Label {
-                    text: qsTr("Karmal Points")
-                    height: 40
-                    width: col1.width
+                spacing: 5
+                visible: hero.keMod >= 0
+                Column {
+                    Label {
+                        text: qsTr("Karma Points")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("20 for Blessed One + Primary Attribute")
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
                 }
-                Label {
-                    text: hero.keMax
-                    width: col2.width
-                }
-
                 SpinBox {
                     id: ke
-                    width: col3.width
+                    width: col2.width
                     height: 30
                     editable: true
                     wheelEnabled: true
@@ -234,80 +284,29 @@ Page {
                     from: -10
                     to: hero.keMax
                 }
-            }
-            // Spirit
-            Row {
-                visible: hero.keMod > 0
                 Label {
-                    text: qsTr("Spirit")
-                    height: 40
-                    width: col1.width
-                }
-                Label {
-                    text: hero.spirit
-                    width: col2.width
-                }
-
-                Label {
+                    text: hero.keMod
                     width: col3.width
-                    height: 30
-                    text: hero.spirit
-                    font.pointSize: 10
-                }
-            }
-            // Toughness
-            Row {
-                Label {
-                    text: qsTr("Toughness")
-                    height: 40
-                    width: col1.width
                 }
                 Label {
-                    text: hero.toughness
-                    width: col2.width
-                }
-
-                Label {
-                    width: col3.width
-                    height: 30
-                    text: hero.toughness
-                    font.pointSize: 10
-                }
-            }
-            // Dodge
-            Row {
-                Label {
-                    text: qsTr("Dodge")
-                    height: 40
-                    width: col1.width
+                    text: hero.keBought
+                    width: col4.width
                 }
                 Label {
-                    text: hero.dodge
-                    width: col2.width
-                }
-
-                Label {
-                    width: col3.width
-                    height: 30
-                    text: hero.dodge
-                    font.pointSize: 10
+                    text: hero.keMax
+                    width: col5.width
                 }
             }
             // Fate Points
             Row {
-
+                spacing: 5
                 Label {
                     text: qsTr("Fate Points")
                     height: 40
                     width: col1.width
                 }
-                Label {
-                    text: hero.keMax
-                    width: col2.width
-                }
-
                 SpinBox {
-                    width: col3.width
+                    width: col2.width
                     height: 30
                     editable: true
                     wheelEnabled: true
@@ -316,6 +315,171 @@ Page {
                     font.pointSize: 10
                     from: 0
                     to: hero.fatePointsMax
+                }
+                Label {
+                    text: hero.fatePointsMod
+                    width: col3.width
+                }Label {
+                    text: "X"
+                    width: col4.width
+                }
+                Label {
+                    text: hero.fatePointsMax
+                    width: col5.width
+                }
+            }
+        }
+
+        Column {
+//            anchors.right: parent.right
+//            anchors.top: parent.top
+//            anchors.margins: 5
+
+            Row {
+                spacing: 3
+                Label {
+                    text: qsTr("Properties")
+                    width: col1.width
+                }
+                Label {
+                    id: baseLabel
+                    text: qsTr("Base")
+                }
+                Label {
+                    text: qsTr("Mod")
+                }
+                Label {
+                    text: qsTr("Stat")
+                }
+            }
+            // Spirit
+            Row {
+                spacing: 3
+                Column {
+                    Label {
+                        text: qsTr("Spirit")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("Race Mod")+"("+hero.spiritBase+") +("+hero.muText+"+"+hero.klText+"+"+hero.inText+")/6"
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
+                }
+                Label {
+                    text: hero.spiritBase+Math.round((hero.mu+hero.kl+hero.intu)/6)
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.spiritMod
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.spirit
+                    width: baseLabel.width
+                }
+            }
+            // Toughness
+            Row {
+                spacing: 3
+                Column {
+                    Label {
+                        text: qsTr("Toughness")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("Race Mod")+"("+hero.toughnessBase+") +("+hero.koText+"+"+hero.koText+"+"+hero.kkText+")/6"
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
+                }
+                Label {
+                    text: hero.toughnessBase+Math.round((hero.ko+hero.ko+hero.kk)/6)
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.toughnessMod
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.toughness
+                    width: baseLabel.width
+                }
+            }
+            // Dodge
+            Row {
+                spacing: 3
+                Column {
+                    Label {
+                        text: qsTr("Dodge")
+                        width: col1.width
+                    }
+                    Label {
+                        text: hero.geText+"/2"
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
+                }
+                Label {
+                    text: Math.round(hero.ge/2)
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.dodgeMod
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.dodge
+                    width: baseLabel.width
+                }
+            }
+            // Initiative
+            Row {
+                spacing: 3
+                Column {
+                    Label {
+                        text: qsTr("Initiative")
+                        width: col1.width
+                    }
+                    Label {
+                        text: "("+hero.muText+"+"+hero.geText+")/2"
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
+                }
+                Label {
+                    text: Math.round((hero.mu+hero.ge)/2)
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.iniMod
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.iniBase
+                    width: baseLabel.width
+                }
+            }
+            // Movement
+            Row {
+                spacing: 3
+                Column {
+                    Label {
+                        text: qsTr("Movement")
+                        width: col1.width
+                    }
+                    Label {
+                        text: qsTr("Race Mod +8")
+                        font.pixelSize: Globals.fontSizeSmall
+                    }
+                }
+                Label {
+                    text: hero.moveRaceMod+8
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.moveMod
+                    width: baseLabel.width
+                }
+                Label {
+                    text: hero.move
+                    width: baseLabel.width
                 }
             }
         }
