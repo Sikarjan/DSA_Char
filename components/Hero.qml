@@ -304,12 +304,15 @@ Item {
         if(activable['ADV_50']){
             hero.aeMod = 0
             hero.aeBought = data.attr.ae
-            // mainAttr ???
+        }else{
+            hero.aeMod = -1
         }
+
         if(activable['ADV_12']){
             hero.keMod = 0
             hero.keBought = data.attr.ke
-            // mainAttr ???
+        }else{
+            hero.keMod = -1
         }
 
         // Loading Skills

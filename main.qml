@@ -100,7 +100,27 @@ ApplicationWindow {
 
     menuBar: MenuBar{
         Menu {
-            title: qsTr("Hero")
+            title: qsTr("&File")
+            Action {
+                text: qsTr("&New")
+            }
+            Action {
+                text: qsTr("&Save")
+            }Action {
+                text: qsTr("Save &As")
+            }
+            Action {
+                text: qsTr("&Load")
+            }
+            MenuSeparator{}
+            Action{
+                text: qsTr("&Quit")
+                onTriggered: root.close()
+            }
+        }
+
+        Menu {
+            title: qsTr("&Hero")
             Action{
                 text: qsTr("&Import")
                 onTriggered: importHeroDialog.visible = true
@@ -109,15 +129,15 @@ ApplicationWindow {
                 text: qsTr("&Edit Attributes")
                 onTriggered: editAttributesDialog.visible = true
             }
-
-            MenuSeparator{}
-            Action{
-                text: qsTr("&Quit")
-                onTriggered: root.close()
+            Action {
+                text: qsTr("&Add Avatar")
+                onTriggered: addAvatarDialog.visible = true
             }
+
+
         }
         Menu {
-            title: qsTr("Items")
+            title: qsTr("&Items")
             Action {
                 text: qsTr("&Add Item")
                 onTriggered: addItemDialog.open()
@@ -125,19 +145,6 @@ ApplicationWindow {
             Action {
                 text: qsTr("Add &Bag")
                 onTriggered: addBagDialog.open()
-            }
-        }
-        Menu {
-            title: qsTr("Text")
-            enabled: pageNotes.activeFocus
-
-            Menu {
-                title: qsTr("Alignemnt")
-
-                MenuItem {
-                   text: qsTr("align left")
-                   onTriggered: pageNotes.document.alignment = Qt.AlignLeft
-                }
             }
         }
     }
@@ -149,6 +156,13 @@ ApplicationWindow {
         defaultSuffix: "json"
         nameFilters: ["Hero Files (*.json)"]
         onAccepted: hero.importHero(importHeroDialog.fileUrl)
+    }
+    FileDialog {
+        id: addAvatarDialog
+        title: qsTr("Add an Avatar")
+        folder: shortcuts.home
+        nameFilters: ["Image files (*.png *.jpg *.gif)"]
+        onAccepted: hero.avatar = addAvatarDialog.fileUrl
     }
 
     AddBagDialog {
