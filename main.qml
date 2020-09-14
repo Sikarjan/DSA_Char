@@ -208,6 +208,9 @@ ApplicationWindow {
         Page2 {
             id: page2
         }
+        PageCombat {
+            id: pageCombat
+        }
 
         Page3 {
             id: page3
@@ -231,6 +234,9 @@ ApplicationWindow {
         }
         TabButton {
             text: qsTr("Skills")
+        }
+        TabButton {
+            text: qsTr("Combat")
         }
         TabButton {
             text: qsTr("Belongings")

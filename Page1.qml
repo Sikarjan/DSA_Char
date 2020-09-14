@@ -138,12 +138,9 @@ Page {
             }
 
             Rectangle {
+                id: avator
                 width: 225
                 height: 300
-/*                border.color: "black"
-                border.width: 2
-                radius: 5
-                color: "lightgray"*/
 
                 Image {
                     anchors.fill: parent
@@ -151,6 +148,7 @@ Page {
                 }
                 Image {
                     anchors.fill: parent
+                    anchors.margins: 5
                     source: hero.avatar
                     fillMode: Image.PreserveAspectFit
                 }

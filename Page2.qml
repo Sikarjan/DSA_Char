@@ -1,8 +1,10 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
+
 import "components"
 import "dialogs"
+import "components/Globals.js" as Globals
 
 Page {
     width: 600
@@ -212,29 +214,9 @@ Page {
                 var attrTest = check.split(",")
 
                 if(state === "in"){
-                    var attr = {
-                        mu: hero.muMod,
-                        kl: hero.klMod,
-                        in: hero.inMod,
-                        ch: hero.chMod,
-                        ff: hero.ffMod,
-                        ge: hero.geMod,
-                        ko: hero.koMod,
-                        kk: hero.kkMod
-                    }
-                    skillCheck.text = attr[attrTest[0]]+" "+attr[attrTest[1]]+" "+attr[attrTest[2]]
+                    skillCheck.text = hero.getAttr(attrTest[0], 1)+" "+hero.getAttr(attrTest[1], 1)+" "+hero.getAttr(attrTest[2], 1)
                 }else{
-                    var attrName = {
-                        mu: hero.muText,
-                        kl: hero.klText,
-                        in: hero.inText,
-                        ch: hero.chText,
-                        ff: hero.ffText,
-                        ge: hero.geText,
-                        ko: hero.koText,
-                        kk: hero.kkText
-                    }
-                    skillCheck.text = attrName[attrTest[0]]+" "+attrName[attrTest[1]]+" "+attrName[attrTest[2]]
+                    skillCheck.text = hero.getAttr(attrTest[0], 0)+" "+hero.getAttr(attrTest[1], 0)+" "+hero.getAttr(attrTest[2], 0)
                 }
             }
         }

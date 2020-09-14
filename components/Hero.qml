@@ -55,7 +55,7 @@ Item {
     property int toughnessBase: -4
     property int toughnessMod: 0
     property int toughness: Math.round((hero.ko*2+hero.kk)/6)+toughnessBase+toughnessMod
-    property int dodge: hero.ge/2+dodgeMod
+    property int dodge: Math.round(hero.ge/2)+dodgeMod
     property int dodgeMod: 0
     property int iniMod: 0
     property int iniBase: Math.round((hero.mu+hero.ge)/2)+iniMod
@@ -158,6 +158,43 @@ Item {
             burden -= weightBurden
             weightBurden = 0
         }
+    }
+
+    function getAttr(mAttr, val){
+        var attr = {
+            mu: hero.muMod,
+            kl: hero.klMod,
+            in: hero.inMod,
+            ch: hero.chMod,
+            ff: hero.ffMod,
+            ge: hero.geMod,
+            ko: hero.koMod,
+            kk: hero.kkMod
+        }
+        var attrName = {
+            mu: hero.muText,
+            kl: hero.klText,
+            in: hero.inText,
+            ch: hero.chText,
+            ff: hero.ffText,
+            ge: hero.geText,
+            ko: hero.koText,
+            kk: hero.kkText
+        }
+        var attrs = mAttr.split("/")
+        var res = ""
+
+        for(const a of attrs){
+            if(a in attr){
+                if(val === 0){
+                    res += attrName[a]
+                }else if(val === 1){
+                    res += attr[a]
+                }
+                res += "/"
+            }
+        }
+        return res.slice(0,-1)
     }
 
     function rollTalent(talent, obstacle=0, skillMod=0, mode="mod"){
@@ -335,6 +372,17 @@ Item {
             var skill = skills[sKey]
 
             page2.skillView.setSkill(sKey, "level", skill)
+        }
+
+        // Load Combat Techniques
+        var ct = data.ct
+        for(i=0;i<pageCombat.ctList.count;i++){
+            pageCombat.ctList.setProperty(i,"level",6)
+        }
+        for(sKey in ct){
+            skill = ct[sKey]
+
+            pageCombat.combatTalents.setSkill(sKey, "level", skill)
         }
 
         var belongings = data.belongings.items
