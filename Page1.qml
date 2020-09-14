@@ -138,13 +138,17 @@ Page {
             }
 
             Rectangle {
-                width: 200
+                width: 225
                 height: 300
-                border.color: "black"
+/*                border.color: "black"
                 border.width: 2
                 radius: 5
-                color: "lightgray"
+                color: "lightgray"*/
 
+                Image {
+                    anchors.fill: parent
+                    source: "qrc:/img/img/parchment.png"
+                }
                 Image {
                     anchors.fill: parent
                     source: hero.avatar

@@ -17,6 +17,7 @@
         <file>dialogs/EditAttributesDialog.qml</file>
         <file>PageNotes.qml</file>
         <file>components/Globals.js</file>
+        <file>dialogs/GetMainAttrDialog.qml</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>
@@ -25,6 +26,7 @@
         <file>img/dice.png</file>
         <file>img/BalkenSymboleLinks.png</file>
         <file>img/BalkenSymboleRechts.png</file>
+        <file>img/parchment.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/fontello.ttf</file>

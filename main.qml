@@ -130,6 +130,12 @@ ApplicationWindow {
                 onTriggered: editAttributesDialog.visible = true
             }
             Action {
+                text: qsTr("Edit &Main Attribute")
+                onTriggered: getMainAttrDialog.visible = true
+                enabled: hero.aeMod >= 0 || hero.keMod >= 0
+            }
+
+            Action {
                 text: qsTr("&Add Avatar")
                 onTriggered: addAvatarDialog.visible = true
             }
@@ -183,6 +189,10 @@ ApplicationWindow {
     }
     EditAttributesDialog {
         id: editAttributesDialog
+        anchors.centerIn: parent
+    }
+    GetMainAttrDialog {
+        id: getMainAttrDialog
         anchors.centerIn: parent
     }
 

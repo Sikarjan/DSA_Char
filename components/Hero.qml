@@ -33,7 +33,7 @@ Item {
     property int leMax: ko+ko+leMod+leBought
     property int le: leMax
 
-    property string mainAttr: "intu"
+    property string mainAttr: ""
 
     property int aeMod: -1
     property int aeBought: 0
@@ -81,6 +81,7 @@ Item {
     property string avatar: ""
 
     property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
+
     Settings {
         property alias mu: hero.mu
         property alias kl: hero.kl
@@ -99,6 +100,7 @@ Item {
         property alias keMod: hero.keMod
         property alias keBought: hero.keBought
         property alias ke: hero.ke
+        property alias mainAttr: hero.mainAttr
 
         property alias spiritBase: hero.spiritBase
         property alias spiritMod: hero.spiritMod
@@ -301,9 +303,11 @@ Item {
 
         // Checking for ae (ADV_50), KE (ADV_12)
         var activable = data.activatable
+        var getMainAttr = false
         if(activable['ADV_50']){
             hero.aeMod = 0
             hero.aeBought = data.attr.ae
+            getMainAttr = true
         }else{
             hero.aeMod = -1
         }
@@ -311,8 +315,13 @@ Item {
         if(activable['ADV_12']){
             hero.keMod = 0
             hero.keBought = data.attr.ke
+            getMainAttr = true
         }else{
             hero.keMod = -1
+        }
+
+        if(getMainAttr) {
+            getMainAttrDialog.visible = true
         }
 
         // Loading Skills
