@@ -20,6 +20,27 @@ Dialog {
             width: parent.width
 
             Label {
+                text: qsTr("Type")
+                width: 100
+            }
+
+            ComboBox {
+                id: itemType
+                width: parent.width-110
+                textRole: "text"
+                valueRole: "value"
+                model: [
+                    { value: "item", text: qsTr("Item") },
+                    { value: "weapon", text: qsTr("Weapon") },
+                    { value: "rangeWeapon", text: qsTr("Range Weapon") },
+                    { value: "armor", text: qsTr("Armor") }
+                ]
+            }
+        }
+        Row {
+            width: parent.width
+
+            Label {
                 text: qsTr("Item")
                 width: 100
             }
@@ -114,18 +135,43 @@ Dialog {
                 width: parent.width - 110
             }
         }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 1 || itemType.currentIndex === 2
+
+            Label {
+                text: qsTr("Damage")
+                width: 100
+            }
+            SpinBox {
+                id: damageDice
+                from: 1
+            }
+            Label {
+                text: qsTr("D6+")
+            }
+            SpinBox {
+                id: damageFlat
+                from: -5
+                value: 1
+            }
+        }
     }
 
     onAccepted: {
         page3.itemList.append({
                             "item": itemName.text,
+                            "type": itemType.currentValue,
                             "amount": itemAmount.value,
                             "weight": itemWeight.realValue,
                             "price": itemPrice.realValue,
-                            "whereId": itemWhere.currentValue // holds bagId
+                            "whereId": itemWhere.currentValue, // holds bagId
+                            "damageDice": damageDice.value,
+                            "damageFlat": damageFlat.value
         })
         page3.itemList.sortItems()
 
+        itemType.currentIndex = 0
         itemName.clear()
         itemAmount.value = 1
         itemWeight.realValue = 1

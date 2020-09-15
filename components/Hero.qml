@@ -460,13 +460,46 @@ Item {
                     whereId = id
                 }
 
-                page3.itemList.append({
-                                "item": mItem.name,
-                                "amount": mItem.amount,
-                                "weight": weight,
-                                "price": mItem.price,
-                                "whereId": whereId
-                                })
+                if('reach' in mItem){// Check if weapon
+                    page3.itemList.append({
+                            "item": mItem.name,
+                            "type": "weapon",
+                            "amount": mItem.amount,
+                            "weight": weight,
+                            "price": mItem.price,
+                            "whereId": whereId,
+                            "damageDice": mItem.damageDiceNumber,
+                            "damageFlat": mItem.damageFlat,
+                            "reach": mItem.reach,
+                            "at": mItem.at,
+                            "pa": mItem.pa,
+                            "ct": mItem.combatTechnique
+                    })
+                }else if('range' in mItem){
+                    page3.itemList.append({
+                            "item": mItem.name,
+                            "type": "rangeWeapon",
+                            "amount": mItem.amount,
+                            "weight": weight,
+                            "price": mItem.price,
+                            "whereId": whereId,
+                            "damageDice": mItem.damageDiceNumber,
+                            "damageFlat": mItem.damageFlat,
+                            "range": mItem.range,
+                            "reload": mItem.reloadTime,
+                            "ct": mItem.combatTechnique
+                    })
+                }else {
+                    page3.itemList.append({
+                            "item": mItem.name,
+                            "type": "item",
+                            "amount": mItem.amount,
+                            "weight": weight,
+                            "price": mItem.price,
+                            "whereId": whereId
+                    })
+                }
+
                 // Add weight of bag to the hero
                 addWeight(weight, whereId)
             }

@@ -1,8 +1,10 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.3
 
 import "components"
+import "dialogs"
+import "components/Globals.js" as Globals
 
 Page {
     id: page
@@ -12,16 +14,19 @@ Page {
     property alias ctList: combatTalentsList
     property alias combatTalents: combatTalents
 
+    property int activeSkill: 0
+
     Component.onCompleted: combatTalentsList.sortCombatSkills()
 
     header: Label {
-        text: qsTr("Notes")
+        anchors.leftMargin: Globals.marginNormal
+        text: qsTr("Combat")
+        font.pixelSize: Globals.fontSizeBig
     }
 
     Flickable {
         id: flick
         anchors.fill: parent
-        anchors.margins: 5
         contentHeight: content.height
         clip: true
 
@@ -53,37 +58,102 @@ Page {
                     return 0
                 }
             }
+            Rectangle {
+                width: parent.width
+                height: Globals.marginBig
+            }
+            ListView {
+                width: parent.width
+                height: contentHeight
+
+                model: page3.itemList
+                delegate: ccDelegate
+            }
+            Rectangle {
+                width: parent.width
+                height: Globals.marginBig
+            }
+            ListView {
+                width: parent.width
+                height: contentHeight
+
+                model: page3.itemList
+                delegate: rcDelegate
+            }
+        }
+    }
+
+    Component {
+        id: ccDelegate
+
+        Row {
+            visible: type === "weapon"
+            height: type === "weapon" ? childrenRect.height:0
+            spacing: 3
+
+            Label {
+                text: item
+            }
+            Label {
+                text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
+            }
+        }
+    }
+
+    Component {
+        id: rcDelegate
+
+        Row {
+            visible: type === "rangeWeapon"
+            height: type === "weapon" ? childrenRect.height:0
+            spacing: 3
+
+            Label {
+                text: item
+            }
+            Label {
+                text: damage ? damage:""
+            }
         }
     }
 
     Component {
         id: combatHead
-        RowLayout {
+
+        Row{
+            x: Globals.marginNormal
             spacing: 3
             Label {
-                width: 300
+                width: 250
                 text: qsTr("Combat Techniques")
+                font.bold: true
+                font.pixelSize: Globals.fontSizeNormal + 3
             }
             Text {
                 width: 80
                 text: qsTr("Primary Attribute")
                 wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignHCenter
             }
             Label {
                 width: 50
                 text: qsTr("Impr.")
+                horizontalAlignment: Text.AlignHCenter
             }
             Label {
                 width: 50
                 text: qsTr("CSR")
+                horizontalAlignment: Text.AlignHCenter
             }
             Label {
                 width: 50
                 text: qsTr("AT/RC")
+                horizontalAlignment: Text.AlignHCenter
             }
             Label {
-                width: 50
+                width: 30
                 text: qsTr("PA")
+                horizontalAlignment: Text.AlignHCenter
             }
             Label {
                 text: qsTr("Notes")
@@ -94,38 +164,79 @@ Page {
     Component {
         id: combatDelegate
 
-        Row {
-            spacing: 3
-            Label {
-                width: 200
-                text: name
-            }
-            Label {
-                width: 80
-                text: hero.getAttr(primaryAttr, 0)
-            }
-            Label {
-                width: 50
-                text: improve
-            }
-            Label {
-                width: 50
-                text: level
-            }
-            Label {
-                width: 50
-                text: at
-            }
-            Label {
-                width: 50
-                text: pa
-            }
-            Label {
-                text: ((modAt > 0 || modPa > 0) ? ("("+qsTr("At mod")+modAt+"/"+qsTr("Pa mod")+modPa+") "):"") + notes
-                Layout.fillWidth: true
+        Rectangle {
+            color: index%2 == 0 ? "lightgray":"white"
+            width: page.width
+            height: childrenRect.height+2*Globals.marginSmall
+
+            Row {
+                x: Globals.marginNormal
+                y: Globals.marginSmall
+                width: parent.width - 2*Globals.marginNormal
+                spacing: 3
+//                anchors.verticalCenter: parent.verticalCenter
+
+                Label {
+                    width: 250
+                    text: name
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        acceptedButtons: Qt.RightButton
+                        onClicked: {
+                            page.activeSkill = index
+                            ctContextMenu.popup()
+                        }
+                    }
+                }
+                Label {
+                    width: 80
+                    text: hero.getAttr(primaryAttr, 0)
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    width: 50
+                    text: improve
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    width: 50
+                    text: level
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    width: 50
+                    text: at
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    width: 30
+                    text: pa == "-1" ? "X":pa
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Text {
+                    text: ((modAt > 0 || modPa > 0) ? ("("+qsTr("At mod")+modAt+"/"+qsTr("Pa mod")+modPa+") "):"") + notes
+                    Layout.fillWidth: true
+                    wrapMode: Text.Wrap
+                }
             }
         }
     }
+
+    Menu {
+        id: ctContextMenu
+        MenuItem {
+            text: qsTr("Edit skill")
+            onTriggered: editCSDialog.open()
+        }
+    }
+
+    EditCombatSkillDialog {
+        id: editCSDialog
+        anchors.centerIn: parent
+    }
+
 
     ListModel {
         id: combatTalentsList

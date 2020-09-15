@@ -129,7 +129,7 @@ Page {
                 Label {
                     text: skillSection.label
                     font.bold: true
-                    font.pixelSize: Qt.application.font.pixelSize + 3
+                    font.pixelSize: Globals.fontSizeNormal + 3
                     width: 175
                 }
                 Label { text: qsTr("Check"); width: 100 }

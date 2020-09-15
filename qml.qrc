@@ -19,6 +19,7 @@
         <file>components/Globals.js</file>
         <file>dialogs/GetMainAttrDialog.qml</file>
         <file>PageCombat.qml</file>
+        <file>dialogs/EditCombatSkillDialog.qml</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>

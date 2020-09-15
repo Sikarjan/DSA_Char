@@ -8,3 +8,7 @@ cultureIds[28] = qsTr("Steppenelfen")
 var fontSizeSmall = Qt.application.font.pixelSize*0.75
 var fontSizeNormal = Qt.application.font.pixelSize
 var fontSizeBig = Qt.application.font.pixelSize*2
+
+var marginSmall = 3
+var marginNormal = 5
+var marginBig = 7
