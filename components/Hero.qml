@@ -470,6 +470,7 @@ Item {
                             "whereId": whereId,
                             "damageDice": mItem.damageDiceNumber,
                             "damageFlat": mItem.damageFlat,
+                            "damageBonus": mItem.primaryThreshold.threshold,
                             "reach": mItem.reach,
                             "at": mItem.at,
                             "pa": mItem.pa,

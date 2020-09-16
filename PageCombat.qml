@@ -61,6 +61,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: Globals.marginBig
+                // Add some grafical element
             }
             ListView {
                 width: parent.width
@@ -72,6 +73,7 @@ Page {
             Rectangle {
                 width: parent.width
                 height: Globals.marginBig
+                // Add some grafical element
             }
             ListView {
                 width: parent.width
@@ -95,7 +97,22 @@ Page {
                 text: item
             }
             Label {
+                text: Globals.cts[ct]
+            }
+            Label {
+                text: Globals.cts[ct]+damageBonus
+            }
+            Label {
                 text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
+            }
+            Label {
+                text: at
+            }
+            Label {
+                text: pa
+            }
+            Label {
+                text: Globals.reach[reach]
             }
         }
     }
@@ -178,7 +195,7 @@ Page {
 
                 Label {
                     width: 250
-                    text: name
+                    text: Globals.cts[tal]
 
                     MouseArea {
                         anchors.fill: parent
@@ -261,7 +278,6 @@ Page {
 
         ListElement {
             tal: "CT_1"
-            name: qsTr("Crossbow")
             level: 6
             at: 6
             pa: -1
@@ -273,7 +289,6 @@ Page {
         }
         ListElement {
             tal: "CT_2"
-            name: qsTr("Bows")
             level: 6
             at: 6
             pa: -1
@@ -285,7 +300,6 @@ Page {
         }
         ListElement {
             tal: "CT_3"
-            name: qsTr("Daggers")
             level: 6
             at: 6
             pa: 5
@@ -297,7 +311,6 @@ Page {
         }
         ListElement {
             tal: "CT_4"
-            name: qsTr("Fencing Weapons")
             level: 6
             at: 6
             pa: 5
@@ -309,7 +322,6 @@ Page {
         }
         ListElement {
             tal: "CT_5"
-            name: qsTr("Impact Weapons")
             level: 6
             at: 6
             pa: 5
@@ -321,7 +333,6 @@ Page {
         }
         ListElement {
             tal: "CT_6"
-            name: qsTr("Chain Weapons")
             level: 6
             at: 6
             pa: 5
@@ -333,7 +344,6 @@ Page {
         }
         ListElement {
             tal: "CT_7"
-            name: qsTr("Lances")
             level: 6
             at: 6
             pa: 5
@@ -345,7 +355,6 @@ Page {
         }
         ListElement {
             tal: "CT_8"
-            name: qsTr("Brawling")
             level: 6
             at: 6
             pa: 5
@@ -357,7 +366,6 @@ Page {
         }
         ListElement {
             tal: "CT_9"
-            name: qsTr("Shields")
             level: 6
             at: 6
             pa: 5
@@ -369,7 +377,6 @@ Page {
         }
         ListElement {
             tal: "CT_10"
-            name: qsTr("Swords")
             level: 6
             at: 6
             pa: 5
@@ -381,7 +388,6 @@ Page {
         }
         ListElement {
             tal: "CT_11"
-            name: qsTr("Pole Weapons")
             level: 6
             at: 6
             pa: 5
@@ -393,7 +399,6 @@ Page {
         }
         ListElement {
             tal: "CT_12"
-            name: qsTr("Throw Weapons")
             level: 6
             at: 6
             pa: 5
@@ -405,7 +410,6 @@ Page {
         }
         ListElement {
             tal: "CT_13"
-            name: qsTr("Two-Handed Impact Weapons")
             level: 6
             at: 6
             pa: 5
@@ -417,7 +421,6 @@ Page {
         }
         ListElement {
             tal: "CT_14"
-            name: qsTr("Two-Handed Swords")
             level: 6
             at: 6
             pa: 5
