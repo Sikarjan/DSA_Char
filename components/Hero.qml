@@ -489,6 +489,11 @@ Item {
                             "ct": mItem.combatTechnique
                     })
                 }else if('range' in mItem){
+                    var ammo = qsTr("Bolts")
+                    if(mItem.ammunition === "ITEMTPL_75"){
+                        ammo = qsTr("Arrows")
+                    }
+
                     page3.itemList.append({
                             "item": mItem.name,
                             "type": "rangeWeapon",
@@ -498,8 +503,9 @@ Item {
                             "whereId": whereId,
                             "damageDice": mItem.damageDiceNumber,
                             "damageFlat": mItem.damageFlat,
-                            "range": mItem.range,
+                            "range": JSON.stringify(mItem.range),
                             "reload": mItem.reloadTime,
+                            "ammunition": ammo,
                             "ct": mItem.combatTechnique
                     })
                 }else {

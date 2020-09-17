@@ -82,6 +82,7 @@ Page {
 
                 model: page3.itemList
                 delegate: rcDelegate
+                header:  rcHead
             }
         }
     }
@@ -148,7 +149,7 @@ Page {
                 width: 150
             }
             Label {
-                text: ct ? Globals.cts[ct]:""
+                text: ct ? ctSkill.name:""
                 width: 150
             }
             Label {
@@ -189,18 +190,77 @@ Page {
     }
 
     Component {
+        id: rcHead
+
+        Row {
+            spacing: 3
+
+            Label {
+                text: qsTr("Weapon")
+                width: 150
+            }
+            Label {
+                text: qsTr("Combat Technique")
+                width: 150
+            }
+            Label {
+                text: qsTr("Load time")
+                width: 80
+            }
+            Label {
+                text: qsTr("Damage")
+                width: 60
+            }
+            Label {
+                text: qsTr("Ammunition")
+                width: 100
+            }
+            Label {
+                text: qsTr("Range")
+                width: 100
+            }
+            Label {
+                text: qsTr("AT")
+                width: 100
+            }
+        }
+    }
+    Component {
         id: rcDelegate
 
         Row {
             visible: type === "rangeWeapon"
-            height: type === "weapon" ? childrenRect.height:0
+            height: type === "rangeWeapon" ? childrenRect.height:0
             spacing: 3
+
+            property var ctSkill: ctList.getCT(ct)
 
             Label {
                 text: item
+                width: 150
+            }
+            Label {
+                text: ct ? ctSkill.name:""
+                width: 150
+            }
+            Label {
+                text: ct ? reload:""
+                width: 80
             }
             Label {
                 text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
+                width: 60
+            }
+            Label {
+                text: ammunition ? ammunition:""
+                width: 100
+            }
+            Label {
+                text: range ? range:""
+                width: 100
+            }
+            Label {
+                text: ct ? ctSkill.level:""
             }
         }
     }
@@ -266,7 +326,7 @@ Page {
 
                 Label {
                     width: 250
-                    text: Globals.cts[tal]
+                    text: name
 
                     MouseArea {
                         anchors.fill: parent
@@ -304,7 +364,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                 }
                 Text {
-                    text: ((modAt > 0 || modPa > 0) ? ("("+qsTr("At mod ")+modAt+"/"+qsTr("Pa mod ")+modPa+") "):"") + notes
+                    text: ((modAt !== 0 || modPa !== 0 || modHp !== 0) ? ("("+qsTr("At mod ")+modAt+"/"+qsTr("Pa mod ")+modPa+"/"+qsTr("HP mod ")+modHp+") "):"") + notes
                     Layout.fillWidth: true
                     wrapMode: Text.Wrap
                 }
@@ -344,7 +404,7 @@ Page {
             remove(sorted, indexes.length - sorted)
         }
         function compareFunction(a, b){
-            return Globals.cts[a.tal].localeCompare(Globals.cts[b.tal])
+            return a.name.localeCompare(b.name)
         }
 
         function getCT(tal){
@@ -358,6 +418,7 @@ Page {
 
         ListElement {
             tal: "CT_1"
+            name: qsTr("Crossbow")
             level: 6
             rc: true
             improve: "B"
@@ -369,6 +430,7 @@ Page {
         }
         ListElement {
             tal: "CT_2"
+            name: qsTr("Bows")
             level: 6
             rc: true
             improve: "C"
@@ -380,6 +442,7 @@ Page {
         }
         ListElement {
             tal: "CT_3"
+            name: qsTr("Daggers")
             level: 6
             rc:false
             improve: "B"
@@ -391,6 +454,7 @@ Page {
         }
         ListElement {
             tal: "CT_4"
+            name: qsTr("Fencing Weapons")
             level: 6
             rc: false
             improve: "C"
@@ -402,6 +466,7 @@ Page {
         }
         ListElement {
             tal: "CT_5"
+            name: qsTr("Impact Weapons")
             level: 6
             rc: false
             improve: "C"
@@ -413,6 +478,7 @@ Page {
         }
         ListElement {
             tal: "CT_6"
+            name: qsTr("Chain Weapons")
             level: 6
             rc: true
             improve: "C"
@@ -424,6 +490,7 @@ Page {
         }
         ListElement {
             tal: "CT_7"
+            name: qsTr("Lances")
             level: 6
             rc: false
             improve: "B"
@@ -435,6 +502,7 @@ Page {
         }
         ListElement {
             tal: "CT_9"
+            name: qsTr("Brawling")
             level: 6
             rc: false
             improve: "B"
@@ -446,6 +514,7 @@ Page {
         }
         ListElement {
             tal: "CT_10"
+            name: qsTr("Shields")
             level: 6
             rc: false
             improve: "C"
@@ -457,6 +526,7 @@ Page {
         }
         ListElement {
             tal: "CT_12"
+            name: qsTr("Swords")
             level: 6
             rc: false
             improve: "C"
@@ -468,6 +538,7 @@ Page {
         }
         ListElement {
             tal: "CT_13"
+            name: qsTr("Pole Weapons")
             level: 6
             rc: false
             improve: "C"
@@ -479,6 +550,7 @@ Page {
         }
         ListElement {
             tal: "CT_14"
+            name: qsTr("Throw Weapons")
             level: 6
             rc: true
             improve: "B"
@@ -490,6 +562,7 @@ Page {
         }
         ListElement {
             tal: "CT_15"
+            name: qsTr("Two-Handed Impact Weapons")
             level: 6
             rc: false
             improve: "C"
@@ -501,6 +574,7 @@ Page {
         }
         ListElement {
             tal: "CT_16"
+            name: qsTr("Two-Handed Swords")
             level: 6
             rc: false
             improve: "C"
