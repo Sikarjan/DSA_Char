@@ -66,6 +66,18 @@ Dialog {
         Row {
             Label {
                 width: firstLabel.width
+                text: qsTr("PA mod")
+            }
+            SpinBox {
+                id: hpMod
+                from:-3
+                to: 30
+                value: talent.modHp
+            }
+        }
+        Row {
+            Label {
+                width: firstLabel.width
                 text: qsTr("Comment")
             }
             TextField {
@@ -79,6 +91,7 @@ Dialog {
         pageCombat.ctList.setProperty(pageCombat.activeSkill, "level", skillRate.value)
         pageCombat.ctList.setProperty(pageCombat.activeSkill, "modAt", atMod.value)
         pageCombat.ctList.setProperty(pageCombat.activeSkill, "modPa", paMod.value)
+        pageCombat.ctList.setProperty(pageCombat.activeSkill, "modHp", hpMod.value)
         pageCombat.ctList.setProperty(pageCombat.activeSkill, "notes", skillComment.text)
     }
 }

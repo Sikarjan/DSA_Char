@@ -374,10 +374,6 @@ Page {
 
         property int nextId: 1
         property int activeId: -1
-
-/*                function moveItem(item){
-            itemList.moveItem(item.bagId)
-        }*/
     }
 
     ListModel {

@@ -11,12 +11,12 @@ Page {
     width: 600
     height: 400
 
-    property alias ctList: combatTalentsList
+    property alias ctList: ctList
     property alias combatTalents: combatTalents
 
     property int activeSkill: 0
 
-    Component.onCompleted: combatTalentsList.sortCombatSkills()
+    Component.onCompleted: ctList.sortCombatSkills()
 
     header: Label {
         anchors.leftMargin: Globals.marginNormal
@@ -44,7 +44,7 @@ Page {
                 width: parent.width
                 height: contentHeight
 
-                model: combatTalentsList
+                model: ctList
                 header: combatHead
                 delegate: combatDelegate
 
@@ -69,6 +69,7 @@ Page {
 
                 model: page3.itemList
                 delegate: ccDelegate
+                header: ccHead
             }
             Rectangle {
                 width: parent.width
@@ -86,6 +87,53 @@ Page {
     }
 
     Component {
+        id: ccHead
+
+        Row {
+            spacing: 3
+
+            Label {
+                text: qsTr("Weapon")
+                width: 150
+            }
+            Label {
+                text: qsTr("Combat Technique")
+                width: 150
+            }
+            Text {
+                text: qsTr("Damage Bonus")
+                width: 80
+                wrapMode: Text.Wrap
+            }
+            Label {
+                text: qsTr("Damage")
+                width: 60
+            }
+            Text {
+                text: qsTr("Damage Total")
+                width: 60
+                wrapMode: Text.Wrap
+            }
+            Label {
+                text: qsTr("At/Pa Mod")
+                width: 100
+            }
+            Label {
+                text: qsTr("Reach")
+                width: 100
+            }
+            Label {
+                text: qsTr("At")
+                width: 60
+            }
+            Label {
+                text: qsTr("Pa")
+                width: 60
+            }
+        }
+    }
+
+    Component {
         id: ccDelegate
 
         Row {
@@ -93,26 +141,49 @@ Page {
             height: type === "weapon" ? childrenRect.height:0
             spacing: 3
 
+            property var ctSkill: ctList.getCT(ct)
+
             Label {
                 text: item
+                width: 150
             }
             Label {
-                text: Globals.cts[ct]
+                text: ct ? Globals.cts[ct]:""
+                width: 150
             }
             Label {
-                text: Globals.cts[ct]+damageBonus
+                text: ct ? hero.getAttr(ctSkill.primaryAttr,0)+damageBonus:""
+                width: 80
             }
             Label {
                 text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
+                width: 60
             }
             Label {
-                text: at
+                text: damageDice ?
+                          damageDice+qsTr("D6+")+
+                          (damageFlat+
+                          ctSkill.modHp+
+                          ((hero.getMainCtAttrValue(ctSkill.primaryAttr) > damageBonus ? hero.getMainCtAttrValue(ctSkill.primaryAttr)-damageBonus:0)))
+                        :""
+                width: 60
+            }
+
+            Label {
+                text: at ? at+"/"+pa:""
+                width: 100
             }
             Label {
-                text: pa
+                text: reach ? Globals.reach[reach]:""
+                width: 100
             }
             Label {
-                text: Globals.reach[reach]
+                text: ct ? ctSkill.modAt+at+ctSkill.level+Math.floor((hero.mu-8)/3):""
+                width: 60
+            }
+            Label {
+                text: ct ? ctSkill.modPa+pa+Math.floor(ctSkill.level/2)+1+Math.floor((hero.getMainCtAttrValue(ctSkill.primaryAttr)-8)/3):""
+                width: 60
             }
         }
     }
@@ -129,7 +200,7 @@ Page {
                 text: item
             }
             Label {
-                text: damage ? damage:""
+                text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
             }
         }
     }
@@ -224,16 +295,16 @@ Page {
                 }
                 Label {
                     width: 50
-                    text: at
+                    text: level+Math.floor(((rc ? hero.ff:hero.mu)-8)/3)
                     horizontalAlignment: Text.AlignHCenter
                 }
                 Label {
                     width: 30
-                    text: pa == "-1" ? "X":pa
+                    text: rc ? "X": Math.floor(level/2)+1+Math.floor((hero.getMainCtAttrValue(primaryAttr)-8)/3)
                     horizontalAlignment: Text.AlignHCenter
                 }
                 Text {
-                    text: ((modAt > 0 || modPa > 0) ? ("("+qsTr("At mod")+modAt+"/"+qsTr("Pa mod")+modPa+") "):"") + notes
+                    text: ((modAt > 0 || modPa > 0) ? ("("+qsTr("At mod ")+modAt+"/"+qsTr("Pa mod ")+modPa+") "):"") + notes
                     Layout.fillWidth: true
                     wrapMode: Text.Wrap
                 }
@@ -256,7 +327,7 @@ Page {
 
 
     ListModel {
-        id: combatTalentsList
+        id: ctList
 
         // Sort items by "name"
         function sortCombatSkills() {
@@ -273,161 +344,170 @@ Page {
             remove(sorted, indexes.length - sorted)
         }
         function compareFunction(a, b){
-            return a.name.localeCompare(b.name)
+            return Globals.cts[a.tal].localeCompare(Globals.cts[b.tal])
+        }
+
+        function getCT(tal){
+            for(var i=0;i<count;i++){
+                if(tal === get(i).tal){
+                    return get(i)
+                }
+            }
+            return 0
         }
 
         ListElement {
             tal: "CT_1"
             level: 6
-            at: 6
-            pa: -1
+            rc: true
             improve: "B"
             primaryAttr: "ff"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_2"
             level: 6
-            at: 6
-            pa: -1
+            rc: true
             improve: "C"
             primaryAttr: "ff"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_3"
             level: 6
-            at: 6
-            pa: 5
+            rc:false
             improve: "B"
             primaryAttr: "ge"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_4"
             level: 6
-            at: 6
-            pa: 5
+            rc: false
             improve: "C"
             primaryAttr: "ge"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_5"
             level: 6
-            at: 6
-            pa: 5
+            rc: false
             improve: "C"
             primaryAttr: "kk"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_6"
             level: 6
-            at: 6
-            pa: 5
+            rc: true
             improve: "C"
             primaryAttr: "kk"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_7"
             level: 6
-            at: 6
-            pa: 5
+            rc: false
             improve: "B"
             primaryAttr: "kk"
             modAt: 0
             modPa: 0
-            notes: ""
-        }
-        ListElement {
-            tal: "CT_8"
-            level: 6
-            at: 6
-            pa: 5
-            improve: "B"
-            primaryAttr: "ge/kk"
-            modAt: 0
-            modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_9"
             level: 6
-            at: 6
-            pa: 5
-            improve: "C"
-            primaryAttr: "kk"
+            rc: false
+            improve: "B"
+            primaryAttr: "ge/kk"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_10"
             level: 6
-            at: 6
-            pa: 5
+            rc: false
             improve: "C"
-            primaryAttr: "ge/kk"
+            primaryAttr: "kk"
             modAt: 0
             modPa: 0
-            notes: ""
-        }
-        ListElement {
-            tal: "CT_11"
-            level: 6
-            at: 6
-            pa: 5
-            improve: "C"
-            primaryAttr: "ge/kk"
-            modAt: 0
-            modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_12"
             level: 6
-            at: 6
-            pa: 5
-            improve: "B"
-            primaryAttr: "ff"
+            rc: false
+            improve: "C"
+            primaryAttr: "ge/kk"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_13"
             level: 6
-            at: 6
-            pa: 5
+            rc: false
             improve: "C"
-            primaryAttr: "kk"
+            primaryAttr: "ge/kk"
             modAt: 0
             modPa: 0
+            modHp: 0
             notes: ""
         }
         ListElement {
             tal: "CT_14"
             level: 6
-            at: 6
-            pa: 5
+            rc: true
+            improve: "B"
+            primaryAttr: "ff"
+            modAt: 0
+            modPa: 0
+            modHp: 0
+            notes: ""
+        }
+        ListElement {
+            tal: "CT_15"
+            level: 6
+            rc: false
             improve: "C"
             primaryAttr: "kk"
             modAt: 0
             modPa: 0
+            modHp: 0
+            notes: ""
+        }
+        ListElement {
+            tal: "CT_16"
+            level: 6
+            rc: false
+            improve: "C"
+            primaryAttr: "kk"
+            modAt: 0
+            modPa: 0
+            modHp: 0
             notes: ""
         }
     }

@@ -197,6 +197,18 @@ Item {
         return res.slice(0,-1)
     }
 
+    function getMainCtAttrValue(pAttr){
+        if(pAttr.length < 3){
+            return getAttr(pAttr,1)
+        }
+
+        var attrs = pAttr.split("/")
+        for(var i=0;i<attrs.length;++i){
+            attrs[i] = getAttr(attrs[i],1)
+        }
+        return Math.max.apply(null, attrs)
+    }
+
     function rollTalent(talent, obstacle=0, skillMod=0, mode="mod"){
         var attrTest = talent.check.split(",")
         var skill = talent.level + skillMod
