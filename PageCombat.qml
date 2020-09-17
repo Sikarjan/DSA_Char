@@ -16,7 +16,10 @@ Page {
 
     property int activeSkill: 0
 
-    Component.onCompleted: ctList.sortCombatSkills()
+    Component.onCompleted: {
+        ctList.sortCombatSkills()
+        console.log("page: "+page.height+" flick: "+flick.height+" content: "+content.height)
+    }
 
     header: Label {
         anchors.leftMargin: Globals.marginNormal
@@ -322,7 +325,6 @@ Page {
                 y: Globals.marginSmall
                 width: parent.width - 2*Globals.marginNormal
                 spacing: 3
-//                anchors.verticalCenter: parent.verticalCenter
 
                 Label {
                     width: 250

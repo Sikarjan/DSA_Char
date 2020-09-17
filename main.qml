@@ -15,6 +15,7 @@ ApplicationWindow {
     property string bagListStore: ""
     property string itemListStore: ""
     property string skillListStore: ""
+    property string ctListStore: ""
 
     Settings {
         property alias x: root.x
@@ -24,6 +25,7 @@ ApplicationWindow {
         property alias bagListStore: root.bagListStore
         property alias itemListStore: root.itemListStore
         property alias skillListStore: root.skillListStore
+        property alias ctListStore: root.ctListStore
         property alias heroFolder: importHeroDialog.folder
     }
 
@@ -76,6 +78,13 @@ ApplicationWindow {
                 }
             }
         }
+
+        if(ctListStore){
+            var ctStore = JSON.parse(ctListStore)
+            for(i=0;i<ctStore.length;i++){
+                pageCombat.ctList.append(ctStore[i])
+            }
+        }
     }
 
     onClosing: {
@@ -96,6 +105,11 @@ ApplicationWindow {
             skillStore.push(page2.skillList.get(i))
         }
         skillListStore = JSON.stringify(skillStore)
+
+        var ctStore = []
+        for(i=0;i<pageCombat.ctList.count;i++){
+            ctStore.push(pageCombat.ctList.get(i))
+        }
     }
 
     menuBar: MenuBar{

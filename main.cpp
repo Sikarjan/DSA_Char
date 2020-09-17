@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     app.setOrganizationName("Innobiz");
     app.setOrganizationDomain("innobiz.de");
-    app.setApplicationName("DSA Character Sheet");
+    app.setApplicationName("DSA_Character_Sheet");
 
     QString locale = QLocale::system().name();
 
