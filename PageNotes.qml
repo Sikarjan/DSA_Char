@@ -18,6 +18,7 @@ Page {
 
     header: Label {
         text: qsTr("Notes")
+        font.pixelSize: fontSizeLarge
     }
 
     FileDialog {

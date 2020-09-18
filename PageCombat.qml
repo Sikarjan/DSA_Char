@@ -21,10 +21,47 @@ Page {
         console.log("page: "+page.height+" flick: "+flick.height+" content: "+content.height)
     }
 
-    header: Label {
-        anchors.leftMargin: Globals.marginNormal
-        text: qsTr("Combat")
-        font.pixelSize: Globals.fontSizeBig
+    header: RowLayout {
+        spacing: marginNormal
+        Label {
+            anchors.leftMargin: marginNormal
+            text: qsTr("Combat")
+            font.pixelSize: fontSizeLarge
+        }
+        Rectangle {
+            Layout.fillWidth: true
+        }
+        Row {
+            spacing: 2
+            Label {
+                text: qsTr("LP")
+            }
+
+            SpinBox {
+                editable: true
+                wheelEnabled: true
+                enabled: true
+                font.pointSize: 10
+                value: hero.le
+                from: -10
+                to: hero.leMax
+
+                onValueModified: hero.le = value
+            }
+        }
+
+        CharProperty {
+            propertyName: qsTr("Mov")
+            propValue: hero.move
+        }
+        CharProperty {
+            propertyName: qsTr("Ini")
+            propValue: hero.iniBase+hero.iniMod
+        }
+        CharProperty {
+            propertyName: qsTr("Do")
+            propValue: hero.dodge
+        }
     }
 
     Flickable {
@@ -63,7 +100,7 @@ Page {
             }
             Rectangle {
                 width: parent.width
-                height: Globals.marginBig
+                height: marginBig
                 // Add some grafical element
             }
             ListView {
@@ -76,7 +113,7 @@ Page {
             }
             Rectangle {
                 width: parent.width
-                height: Globals.marginBig
+                height: marginBig
                 // Add some grafical element
             }
             ListView {
@@ -86,6 +123,19 @@ Page {
                 model: page3.itemList
                 delegate: rcDelegate
                 header:  rcHead
+            }
+            Rectangle {
+                width: parent.width
+                height: marginBig
+                // Add some grafical element
+            }
+            ListView {
+                width: parent.width
+                height: contentHeight
+
+                model: page3.itemList
+                delegate: armorDelegate
+                header:  armorHead
             }
         }
     }
@@ -182,11 +232,23 @@ Page {
                 width: 100
             }
             Label {
-                text: ct ? ctSkill.modAt+at+ctSkill.level+Math.floor((hero.mu-8)/3):""
+                text: ct ?
+                          ctSkill.modAt+    // Mod by talent e.g. one-handed
+                          at+               // Mod by weapon
+                          ctSkill.level+    // Basic attack
+                          Math.floor((hero.mu-8)/3)-    // Bonus from courage
+                          hero.attrMods     // Mod by current states
+                        :""
                 width: 60
             }
             Label {
-                text: ct ? ctSkill.modPa+pa+Math.floor(ctSkill.level/2)+1+Math.floor((hero.getMainCtAttrValue(ctSkill.primaryAttr)-8)/3):""
+                text: ct ?
+                          ctSkill.modPa+ // Mod by talent e.g. one-handed
+                          pa+            // Mod by weapon
+                          Math.floor(ctSkill.level/2)+1+    // Basic parade
+                          Math.floor((hero.getMainCtAttrValue(ctSkill.primaryAttr)-8)/3)- // Bonus from main attribute
+                          hero.attrMods  // Mod by current states
+                        :""
                 width: 60
             }
         }
@@ -263,7 +325,73 @@ Page {
                 width: 100
             }
             Label {
-                text: ct ? ctSkill.level:""
+                text: ct ? ctSkill.level-hero.attrMods:""
+            }
+        }
+    }
+
+    Component {
+        id: armorHead
+
+        Row {
+            x: marginNormal
+            spacing: 3
+
+            Label {
+                width: 150
+                text: qsTr("Armor")
+            }
+            Label {
+                width: 50
+                text: qsTr("Pro")
+            }
+            Label {
+                width: 50
+                text: qsTr("Enc")
+            }
+            Label {
+                width: 100
+                text: qsTr("Add. Penalties")
+            }
+            Label {
+                width: 50
+                text: qsTr("Worn")
+            }
+        }
+    }
+    Component {
+        id: armorDelegate
+
+        Row {
+            x: marginNormal
+            visible: type === "armor"
+            height: type === "armor" ? childrenRect.height:0
+            spacing: 3
+
+            Label {
+                width: 150
+                text: item
+            }
+            Label {
+                width: 50
+                text: protection ? protection:""
+            }
+            Label {
+                width: 50
+                text: enc ? enc:""
+            }
+            Label {
+                width: 100
+                text: armorType%2 === 0 ? qsTr("-1 Mov -1 Ini"):""
+            }
+            CheckBox {
+                width: 50
+                checked: whereId === 0
+
+                onClicked: {
+                    checked = whereId === 0
+                    note = qsTr("This is toggled by putting the armor from body to a bag in the items tab.")
+                }
             }
         }
     }
@@ -272,13 +400,13 @@ Page {
         id: combatHead
 
         Row{
-            x: Globals.marginNormal
+            x: marginNormal
             spacing: 3
             Label {
                 width: 250
                 text: qsTr("Combat Techniques")
                 font.bold: true
-                font.pixelSize: Globals.fontSizeNormal + 3
+                font.pixelSize: fontSizeMedium
             }
             Text {
                 width: 80
@@ -318,12 +446,12 @@ Page {
         Rectangle {
             color: index%2 == 0 ? "lightgray":"white"
             width: page.width
-            height: childrenRect.height+2*Globals.marginSmall
+            height: childrenRect.height+2*marginSmall
 
             Row {
-                x: Globals.marginNormal
-                y: Globals.marginSmall
-                width: parent.width - 2*Globals.marginNormal
+                x: marginNormal
+                y: marginSmall
+                width: parent.width - 2*marginNormal
                 spacing: 3
 
                 Label {

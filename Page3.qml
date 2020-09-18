@@ -19,7 +19,7 @@ Page {
 
         Label {
             text: qsTr("Belongins")
-            font.pixelSize: Qt.application.font.pixelSize * 2
+            font.pixelSize: fontSizeLarge
         }
 
         Label {
@@ -201,7 +201,7 @@ Page {
                 text: model.item
                 width: 240
                 clip: true
-                font.pixelSize: Qt.application.font.pixelSize*1.8
+                font.pixelSize: fontSizeMedium
 
                 MouseArea {
                     anchors.fill: parent
@@ -239,12 +239,12 @@ Page {
             Label {
                 text: model.weight
                 width: 60
-                font.pixelSize: Qt.application.font.pixelSize*1.8
+                font.pixelSize: fontSizeMedium
             }
             Label {
                 text: model.price
                 width: 50
-                font.pixelSize: Qt.application.font.pixelSize*1.8
+                font.pixelSize: fontSizeMedium
             }
         }
     }

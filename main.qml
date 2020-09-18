@@ -16,6 +16,16 @@ ApplicationWindow {
     property string itemListStore: ""
     property string skillListStore: ""
     property string ctListStore: ""
+    property string note: "" // Implementation missing shall show a short text as hint or result
+
+    readonly property int fontSizeSmall: Qt.application.font.pixelSize * 0.8
+    readonly property int fontSizeMedium: Qt.application.font.pixelSize * 1.5
+    readonly property int fontSizeLarge: Qt.application.font.pixelSize * 2
+    readonly property int fontSizeExtraLarge: Qt.application.font.pixelSize * 5
+
+    readonly property int marginSmall: 3
+    readonly property int marginNormal: 5
+    readonly property int marginBig: 7
 
     Settings {
         property alias x: root.x

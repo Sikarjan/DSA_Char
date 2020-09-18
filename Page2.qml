@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.3
 
 import "components"
 import "dialogs"
-import "components/Globals.js" as Globals
 
 Page {
     width: 600
@@ -19,7 +18,7 @@ Page {
     header: RowLayout {
         Label {
             text: qsTr("Skills")
-            font.pixelSize: Qt.application.font.pixelSize * 2
+            font.pixelSize: fontSizeLarge
             padding: 10
         }
         Rectangle {
@@ -129,7 +128,7 @@ Page {
                 Label {
                     text: skillSection.label
                     font.bold: true
-                    font.pixelSize: Globals.fontSizeNormal + 3
+                    font.pixelSize: fontSizeMedium
                     width: 175
                 }
                 Label { text: qsTr("Check"); width: 100 }

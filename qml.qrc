@@ -6,7 +6,6 @@
         <file>qtquickcontrols2.conf</file>
         <file>components/CharAttribute.qml</file>
         <file>components/Hero.qml</file>
-        <file>components/CharTalent.qml</file>
         <file>Page3.qml</file>
         <file>components/NumberInput.qml</file>
         <file>dialogs/AddBagDialog.qml</file>
@@ -20,6 +19,7 @@
         <file>dialogs/GetMainAttrDialog.qml</file>
         <file>PageCombat.qml</file>
         <file>dialogs/EditCombatSkillDialog.qml</file>
+        <file>components/CharProperty.qml</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>

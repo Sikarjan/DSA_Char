@@ -508,7 +508,19 @@ Item {
                             "ammunition": ammo,
                             "ct": mItem.combatTechnique
                     })
-                }else {
+                }else if('armorType' in mItem){
+                    page3.itemList.append({
+                            "item": mItem.name,
+                            "type": "armor",
+                            "amount": mItem.amount,
+                            "weight": weight,
+                            "price": mItem.price,
+                            "whereId": whereId,
+                            "enc": mItem.enc,
+                            "protection": mItem.pro,
+                            "armorType": mItem.armorType
+                    })
+                } else {
                     page3.itemList.append({
                             "item": mItem.name,
                             "type": "item",

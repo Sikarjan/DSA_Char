@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.11
+import Qt.labs.settings 1.1
 
 import "components"
 import "components/Globals.js" as Globals
@@ -12,10 +13,16 @@ Page {
     hoverEnabled: false
     title: qsTr("Hero")
 
+    Settings {
+        property alias advantages: advantages.text
+        property alias disadvantages: disadvantages.text
+        property alias abilities: abilities.text
+    }
+
     header: RowLayout {
         Label {
             text: qsTr("Hero")
-            font.pixelSize: Globals.fontSizeBig
+            font.pixelSize: fontSizeLarge
             padding: 10
         }
 
@@ -194,7 +201,7 @@ Page {
                         }
                         Label {
                             text: qsTr("Mod")+"+"+hero.koText+"+"+hero.koText
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     SpinBox {
@@ -208,6 +215,8 @@ Page {
                         value: hero.le
                         from: -10
                         to: hero.leMax
+
+                        onValueModified: hero.le = value
                     }
                     Label {
                         text: hero.leMod
@@ -233,7 +242,7 @@ Page {
                         }
                         Label {
                             text: qsTr("20 for Spellcaster + Primary Attribute")
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     SpinBox {
@@ -273,7 +282,7 @@ Page {
                         }
                         Label {
                             text: qsTr("20 for Blessed One + Primary Attribute")
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     SpinBox {
@@ -363,7 +372,7 @@ Page {
                         }
                         Label {
                             text: qsTr("Race Mod")+"("+hero.spiritBase+") +("+hero.muText+"+"+hero.klText+"+"+hero.inText+")/6"
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     Label {
@@ -389,7 +398,7 @@ Page {
                         }
                         Label {
                             text: qsTr("Race Mod")+"("+hero.toughnessBase+") +("+hero.koText+"+"+hero.koText+"+"+hero.kkText+")/6"
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     Label {
@@ -415,7 +424,7 @@ Page {
                         }
                         Label {
                             text: hero.geText+"/2"
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     Label {
@@ -441,7 +450,7 @@ Page {
                         }
                         Label {
                             text: "("+hero.muText+"+"+hero.geText+")/2"
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     Label {
@@ -467,7 +476,7 @@ Page {
                         }
                         Label {
                             text: qsTr("Race Mod +8")
-                            font.pixelSize: Globals.fontSizeSmall
+                            font.pixelSize: fontSizeSmall
                         }
                     }
                     Label {
@@ -486,7 +495,7 @@ Page {
             }
 
             Grid {
-                id: grid
+                id: conditions
 
                 spacing: 2
                 columns: 7
@@ -815,6 +824,43 @@ Page {
                 }
                 Label {
                     text: qsTr("sensless")
+                }
+            }
+
+            Column {
+                width: 380
+                spacing: 2
+                Label {
+                    text: qsTr("Advantages")
+                }
+                TextArea {
+                    id: advantages
+                    width: parent.width
+                    placeholderText: qsTr("Your advantages.")
+                }
+            }
+            Column {
+                width: 380
+                spacing: 2
+                Label {
+                    text: qsTr("Disadvantages")
+                }
+                TextArea {
+                    id: disadvantages
+                    width: parent.width
+                    placeholderText: qsTr("Your disadvantages.")
+                }
+            }
+            Column {
+                width: 380
+                spacing: 2
+                Label {
+                    text: qsTr("Abilities")
+                }
+                TextArea {
+                    id: abilities
+                    width: parent.width
+                    placeholderText: qsTr("Your abilities.")
                 }
             }
         }
