@@ -75,6 +75,10 @@ ApplicationWindow {
             var itemStore = JSON.parse(itemListStore)
             for(i=0;i<itemStore.length; i++){
                 page3.itemList.append(itemStore[i])
+                if(itemStore[i].type === "armor" && itemStore[i].armorType%2 === 0 && itemStore[i].whereId === 0){
+                    hero.moveMod -=1
+                    hero.iniMod -= 1
+                }
             }
         }
 
@@ -91,6 +95,7 @@ ApplicationWindow {
 
         if(ctListStore){
             var ctStore = JSON.parse(ctListStore)
+            pageCombat.ctList.clear()
             for(i=0;i<ctStore.length;i++){
                 pageCombat.ctList.append(ctStore[i])
             }
@@ -120,6 +125,7 @@ ApplicationWindow {
         for(i=0;i<pageCombat.ctList.count;i++){
             ctStore.push(pageCombat.ctList.get(i))
         }
+        ctListStore = JSON.stringify(ctStore)
     }
 
     menuBar: MenuBar{

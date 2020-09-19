@@ -311,7 +311,21 @@ Item {
         xhr.send();
     }
 
+    function resetHero(){
+        hero.moveMod = 0
+        hero.inMod = 0
+        hero.fatePointsMod = 0
+        hero.confusion = 0
+        hero.pain = 0
+        hero.paralysis = 0
+        hero.burden = 0
+        hero.rapture = 0
+        hero.stupor = 0
+    }
+
     function readHero(data){
+        resetHero()
+
         hero.hName = data.name+" "+data.pers.family
         hero.profession = data.professionName
         hero.hSize = data.pers.size
@@ -350,6 +364,7 @@ Item {
         }
         hero.leBought = data.attr.lp
 
+        // Checking for Advantages/Disadvantages
         // Checking for ae (ADV_50), KE (ADV_12)
         var activable = data.activatable
         var getMainAttr = false
@@ -373,6 +388,26 @@ Item {
             getMainAttrDialog.visible = true
         }
 
+        // Movement
+        if(activable['ADV_9']){ // nimble
+            hero.moveMod += 1
+        }else if(activable['DISADV_4']){
+            hero.moveMod -= 1
+        }
+
+        // Fate fatePoint
+        if(activable['ADV_14']){
+            hero.fatePointsMod += 1
+        }else if(activable['DISADV_31']){
+            hero.fatePointsMod += 1
+        }
+
+        // Unyielding
+        if(activable['ADV_54']){
+            // Schmerzbelastung eins weniger implementieren
+        }
+
+        // END Checking Advantages/Disadvantages
         // Loading Skills
         var skills = data.talents
 
@@ -488,7 +523,7 @@ Item {
                             "pa": mItem.pa,
                             "ct": mItem.combatTechnique
                     })
-                }else if('range' in mItem){
+                }else if('range' in mItem){ // Range weapons
                     var ammo = qsTr("Bolts")
                     if(mItem.ammunition === "ITEMTPL_75"){
                         ammo = qsTr("Arrows")
@@ -520,6 +555,10 @@ Item {
                             "protection": mItem.pro,
                             "armorType": mItem.armorType
                     })
+                    if(mItem.armorType%2 === 0 && whereId === 0){
+                        hero.iniMod -= 1
+                        hero.moveMod -= 1
+                    }
                 } else {
                     page3.itemList.append({
                             "item": mItem.name,

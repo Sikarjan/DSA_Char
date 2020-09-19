@@ -407,6 +407,7 @@ Page {
         function moveItem(bagId){
             var lastBagId = get(selectedIndex).whereId
             var load = get(selectedIndex).weight*get(selectedIndex).amount
+            var type = get(selectedIndex).type
 
             setProperty(selectedIndex, "whereId", bagId)
 
@@ -416,6 +417,21 @@ Page {
 
             if(bagId !== 0){
                 bagList.setProperty(bagId, "load", bagList.get(bagId).load + load)
+            }
+
+            if(type === "armor"){
+                var armorType = get(selectedIndex).armorType
+console.log("chekcing for armor")
+                if(armorType%2 === 0){
+                    console.log("changing ini")
+                    if(bagId === 0){
+                        hero.iniMod -= 1
+                        hero.moveMod -= 1
+                    }else{
+                        hero.iniMod += 1
+                        hero.moveMod += 1
+                    }
+                }
             }
 
             itemList.sortItems()

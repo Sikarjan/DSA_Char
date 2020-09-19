@@ -130,6 +130,7 @@ Page {
                 // Add some grafical element
             }
             ListView {
+                id: armorList
                 width: parent.width
                 height: contentHeight
 
