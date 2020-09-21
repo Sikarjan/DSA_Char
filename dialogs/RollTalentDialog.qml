@@ -19,41 +19,11 @@ Dialog {
         tal = talent.name
 
         var attrTest = talent.check.split(",")
-        var attrName = {
-            mu: hero.muText,
-            kl: hero.klText,
-            in: hero.inText,
-            ch: hero.chText,
-            ff: hero.ffText,
-            ge: hero.geText,
-            ko: hero.koText,
-            kk: hero.kkText
-        }
-        talCheck.text = attrName[attrTest[0]]+"/"+attrName[attrTest[1]]+"/"+attrName[attrTest[2]]
+        var val = talent.burden === 0 ? 2:1
 
-        var attrValue = {
-            mu: hero.mu,
-            kl: hero.kl,
-            in: hero.intu,
-            ch: hero.ch,
-            ff: hero.ff,
-            ge: hero.ge,
-            ko: hero.ko,
-            kk: hero.kk
-        }
-        t.text = attrValue[attrTest[0]]+"/"+attrValue[attrTest[1]]+"/"+attrValue[attrTest[2]]
-
-        var attrMod = {
-            mu: hero.muMod,
-            kl: hero.klMod,
-            in: hero.inMod,
-            ch: hero.chMod,
-            ff: hero.ffMod,
-            ge: hero.geMod,
-            ko: hero.koMod,
-            kk: hero.kkMod
-        }
-        ta.text = attrMod[attrTest[0]]+"/"+attrMod[attrTest[1]]+"/"+attrMod[attrTest[2]]
+        talCheck.text = hero.getAttr(attrTest[0],0)+"/"+hero.getAttr(attrTest[1],0)+"/"+hero.getAttr(attrTest[2],0)
+        ta.text = hero.getAttr(attrTest[0],val)+"/"+hero.getAttr(attrTest[1],val)+"/"+hero.getAttr(attrTest[2],val)
+        t.text = hero.getAttr(attrTest[0])+"/"+hero.getAttr(attrTest[1])+"/"+hero.getAttr(attrTest[2])
     }
 
     Column {

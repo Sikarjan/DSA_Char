@@ -16,7 +16,7 @@ Item {
         Column {
             anchors.fill: parent
             spacing: 2
-            x: 1
+            x: 3
 
             Text {
                 text: propertyName

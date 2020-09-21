@@ -1363,7 +1363,7 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../PageCombat.qml" line="37"/>
         <source>LP</source>
-        <translation>LO</translation>
+        <translation>LP</translation>
     </message>
     <message>
         <location filename="../PageCombat.qml" line="54"/>

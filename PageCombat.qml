@@ -246,7 +246,7 @@ Page {
                 text: ct ?
                           ctSkill.modPa+ // Mod by talent e.g. one-handed
                           pa+            // Mod by weapon
-                          Math.floor(ctSkill.level/2)+1+    // Basic parade
+                          Math.round(ctSkill.level/2)+    // Basic parade
                           Math.floor((hero.getMainCtAttrValue(ctSkill.primaryAttr)-8)/3)- // Bonus from main attribute
                           hero.attrMods  // Mod by current states
                         :""
@@ -491,7 +491,7 @@ Page {
                 }
                 Label {
                     width: 30
-                    text: rc ? "X": Math.floor(level/2)+1+Math.floor((hero.getMainCtAttrValue(primaryAttr)-8)/3)
+                    text: rc ? "X": Math.round(level/2)+Math.floor((hero.getMainCtAttrValue(primaryAttr)-8)/3)
                     horizontalAlignment: Text.AlignHCenter
                 }
                 Text {

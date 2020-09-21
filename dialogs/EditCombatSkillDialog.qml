@@ -10,14 +10,14 @@ Dialog {
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
-    property var talent: pageCombat.ctList.get(0)
+    property var talent: {"name": "", "level": 0, "modAt":0, "modPa":0, "modHp":0, "notes": ""} //pageCombat.ctList.get(0)
 
     onVisibleChanged: {
         if(!visible){
             return
         }
 
-        talent = pageCombat.ctList.get(page2.activeSkill)
+        talent = pageCombat.ctList.get(pageCombat.activeSkill)
     }
 
     Column {

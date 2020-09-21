@@ -160,8 +160,8 @@ Item {
         }
     }
 
-    function getAttr(mAttr, val){
-        var attr = {
+    function getAttr(mAttr, val=3){ // val 0=text, 1=Mod values, 2=Mod w/o enc, 3+= attr values
+        var attrMod = {
             mu: hero.muMod,
             kl: hero.klMod,
             in: hero.inMod,
@@ -170,6 +170,16 @@ Item {
             ge: hero.geMod,
             ko: hero.koMod,
             kk: hero.kkMod
+        }
+        var attr = {
+            mu: hero.mu,
+            kl: hero.kl,
+            in: hero.intu,
+            ch: hero.ch,
+            ff: hero.ff,
+            ge: hero.ge,
+            ko: hero.ko,
+            kk: hero.kk
         }
         var attrName = {
             mu: hero.muText,
@@ -189,8 +199,13 @@ Item {
                 if(val === 0){
                     res += attrName[a]
                 }else if(val === 1){
+                    res += attrMod[a]
+                }else if(val === 2){
+                    res += attrMod[a] + hero.burden
+                }else{
                     res += attr[a]
                 }
+
                 res += "/"
             }
         }
