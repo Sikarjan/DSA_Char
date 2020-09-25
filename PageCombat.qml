@@ -38,6 +38,7 @@ Page {
             }
 
             SpinBox {
+                height: mov.height
                 editable: true
                 wheelEnabled: true
                 enabled: true
@@ -51,6 +52,7 @@ Page {
         }
 
         CharProperty {
+            id: mov
             propertyName: qsTr("Mov")
             propValue: hero.move
         }

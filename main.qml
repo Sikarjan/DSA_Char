@@ -19,6 +19,7 @@ ApplicationWindow {
     property string note: "" // Implementation missing shall show a short text as hint or result
 
     readonly property int fontSizeSmall: Qt.application.font.pixelSize * 0.8
+    readonly property int fontSizeRegular: Qt.application.font.pixelSize
     readonly property int fontSizeMedium: Qt.application.font.pixelSize * 1.5
     readonly property int fontSizeLarge: Qt.application.font.pixelSize * 2
     readonly property int fontSizeExtraLarge: Qt.application.font.pixelSize * 5

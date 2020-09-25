@@ -79,6 +79,7 @@ Item {
     property int hSize: 0
     property int hWeight: 0
     property string avatar: ""
+    property int money: 0
 
     property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
 
@@ -591,6 +592,11 @@ Item {
         }
 
         page3.itemList.sortItems()
+
+        // get purse
+        var purse = data.belongings.purse
+        var money = purse.d+purse.s+purse.h+purse+k
+        hero.money = Number(money)
     }
 
     function addBag(item){
