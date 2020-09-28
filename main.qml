@@ -176,6 +176,11 @@ ApplicationWindow {
         Menu {
             title: qsTr("&Items")
             Action {
+                text: qsTr("Money")
+                onTriggered: moneyDialog.open()
+            }
+
+            Action {
                 text: qsTr("&Add Item")
                 onTriggered: addItemDialog.open()
             }
@@ -225,6 +230,9 @@ ApplicationWindow {
     GetMainAttrDialog {
         id: getMainAttrDialog
         anchors.centerIn: parent
+    }
+    MoneyDialog {
+        id: moneyDialog
     }
 
     SwipeView {

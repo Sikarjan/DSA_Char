@@ -10,6 +10,8 @@ Dialog {
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
+    property bool error: false
+
     Column {
         id: content
         anchors.fill: parent
@@ -82,7 +84,7 @@ Dialog {
         }
         Row {
             Label {
-                text: qsTr("Price")
+                text: qsTr("Price in Silver")
                 width: 100
             }
 
@@ -106,6 +108,17 @@ Dialog {
                 valueFromText: function(text, locale) {
                     return Number.fromLocaleString(locale, text) * 100
                 }
+            }
+
+            CheckBox {
+                id: payBox
+                checked: true
+                text: qsTr("pay")
+            }
+            Text {
+                visible: error
+                text: qsTr("Insufficent funds!")
+                color: "red"
             }
         }
         Row {
@@ -217,6 +230,13 @@ Dialog {
     }
 
     onAccepted: {
+        var cost = itemAmount.value * itemPrice.value
+        if(payBox && cost > hero.money){
+            error = true
+            addItemDialog.open()
+            return
+        }
+
         page3.itemList.append({
                             "item": itemName.text,
                             "type": itemType.currentValue,
@@ -241,5 +261,19 @@ Dialog {
 
         // Add weight to hero
         hero.addWeight(itemWeight.realValue, itemWhere.currentValue)
+
+        if(payBox){
+            hero.money -= cost
+        }
+
+        error = false
+    }
+    onRejected: {
+        itemType.currentIndex = 0
+        itemName.clear()
+        itemAmount.value = 1
+        itemWeight.realValue = 1
+        itemPrice.realValue = 0
+        error = false
     }
 }

@@ -124,6 +124,7 @@ Item {
         property alias hSize: hero.hSize
         property alias hWeight: hero.hWeight
         property alias avatar: hero.avatar
+        property alias money: hero.money
 
         property alias currentLoad: hero.currentLoad
         property alias weightBurden: hero.weightBurden
@@ -214,7 +215,7 @@ Item {
     }
 
     function getMainCtAttrValue(pAttr){
-        if(pAttr.length < 3){
+        if(pAttr && pAttr.length < 3){
             return getAttr(pAttr,1)
         }
 

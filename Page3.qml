@@ -45,6 +45,15 @@ Page {
 
         Label {
             text: qsTr("Purse")
+            Layout.alignment: Qt.AlignTop
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {
+                    moneyDialog.open()
+                }
+            }
         }
         CharProperty {
             propertyName: qsTr("Ducats")

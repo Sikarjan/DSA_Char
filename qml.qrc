@@ -20,6 +20,7 @@
         <file>PageCombat.qml</file>
         <file>dialogs/EditCombatSkillDialog.qml</file>
         <file>components/CharProperty.qml</file>
+        <file>dialogs/MoneyDialog.qml</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>
