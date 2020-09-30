@@ -107,90 +107,139 @@
         <translation>Gegenstand hinzufügen</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="23"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="25"/>
         <source>Type</source>
         <translation>Art</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="33"/>
-        <location filename="../dialogs/AddItemDialog.qml" line="44"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="35"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="46"/>
         <source>Item</source>
         <translation>Gegenstand</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="34"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="36"/>
         <source>Weapon</source>
         <translation>Waffen</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="35"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="37"/>
         <source>Range Weapon</source>
         <translation>Fernkampfwaffen</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="36"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="38"/>
         <source>Armor</source>
         <translation>Rüstung</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="56"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="58"/>
         <source>Weight</source>
         <translation>Gewicht</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="85"/>
         <source>Price</source>
-        <translation>Preis</translation>
+        <translation type="vanished">Preis</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="113"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="87"/>
+        <source>Price in Silver</source>
+        <translation>Preis in Silber</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="116"/>
+        <source>pay</source>
+        <translation>bezahlen</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="120"/>
+        <source>Insufficent funds!</source>
+        <translation>Nicht ausreichend Geld!</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="126"/>
         <source>Amount</source>
         <translation>Menge</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="126"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="139"/>
         <source>Where</source>
         <translation>Wo</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="143"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="157"/>
         <source>Combat Technique</source>
         <translation>Kampftechnik</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="158"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="172"/>
         <source>Damage</source>
         <translation>Trefferpunkte</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="166"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="180"/>
         <source>D6+</source>
         <translation>W6+</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="179"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="193"/>
         <source>Reach</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="189"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="203"/>
         <source>short</source>
         <translation>kurz</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="190"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="204"/>
         <source>medium</source>
         <translation>mittel</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="191"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="205"/>
         <source>long</source>
         <translation>lang</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="200"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="214"/>
         <source>AT/PA Mod</source>
         <translation>AT/PA Mod</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="236"/>
+        <source>Reload time</source>
+        <translation>Ladezeit</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="249"/>
+        <source>Ammunition</source>
+        <translation>Munition</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="262"/>
+        <source>Range</source>
+        <translation>Reichweite</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="275"/>
+        <source>Protection</source>
+        <translation>Rüstungsschutz</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="288"/>
+        <source>Encumbrance</source>
+        <translation>Belastung</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="301"/>
+        <source>Penalties</source>
+        <translation>Mali</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="306"/>
+        <source>-1 MOV, -1 INI</source>
+        <translation>-1 GS, -1 INI</translation>
     </message>
 </context>
 <context>
@@ -421,32 +470,32 @@
         <translation>KO</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="258"/>
+        <location filename="../components/Hero.qml" line="288"/>
         <source>Magical success</source>
         <translation>Magischer Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="260"/>
+        <location filename="../components/Hero.qml" line="290"/>
         <source>Perfect success</source>
         <translation>Perfekter Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="274"/>
+        <location filename="../components/Hero.qml" line="304"/>
         <source>Critical error</source>
         <translation>Kritischer Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="276"/>
+        <location filename="../components/Hero.qml" line="306"/>
         <source>Catastrophic error</source>
         <translation>Katstrophaler Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="492"/>
+        <location filename="../components/Hero.qml" line="557"/>
         <source>Bolts</source>
         <translation>Bolzen</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="494"/>
+        <location filename="../components/Hero.qml" line="559"/>
         <source>Arrows</source>
         <translation>Pfeile</translation>
     </message>
@@ -456,26 +505,44 @@
         <translation type="vanished">Du hast die Probe mit einer Qualität %1 bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="295"/>
-        <location filename="../components/Hero.qml" line="297"/>
+        <location filename="../components/Hero.qml" line="325"/>
+        <location filename="../components/Hero.qml" line="327"/>
         <source>Your roll was: </source>
         <translation>Dein Wurf war: </translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="295"/>
+        <location filename="../components/Hero.qml" line="325"/>
         <source>You succeeded with a quality %1 (%2).</source>
         <translation>Du hast die Probe mit einer Qualität %1 (%2) bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="297"/>
+        <location filename="../components/Hero.qml" line="327"/>
         <source>You failed</source>
         <translation>Fehlschlag</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="405"/>
-        <location filename="../components/Hero.qml" line="543"/>
+        <location filename="../components/Hero.qml" line="470"/>
+        <location filename="../components/Hero.qml" line="619"/>
         <source>Body</source>
         <translation>Körper</translation>
+    </message>
+</context>
+<context>
+    <name>MoneyDialog</name>
+    <message>
+        <location filename="../dialogs/MoneyDialog.qml" line="10"/>
+        <source>Purse</source>
+        <translation>Geldbörse</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/MoneyDialog.qml" line="24"/>
+        <source>Silver</source>
+        <translation>Silber</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/MoneyDialog.qml" line="48"/>
+        <source>Available</source>
+        <translation>Verfügbar</translation>
     </message>
 </context>
 <context>
@@ -666,67 +733,67 @@
         <translation>Schmerz</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="670"/>
+        <location filename="../Page1.qml" line="675"/>
         <source>unconscious</source>
         <translation>bewusstlos</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="675"/>
+        <location filename="../Page1.qml" line="680"/>
         <source>Paralysis</source>
         <translation>Paralys</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="722"/>
+        <location filename="../Page1.qml" line="727"/>
         <source>paralysed</source>
         <translation>paralysiert</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="727"/>
+        <location filename="../Page1.qml" line="732"/>
         <source>Rapture</source>
         <translation>Verzückung</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="774"/>
+        <location filename="../Page1.qml" line="779"/>
         <source>engrossed</source>
         <translation>entrückt</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="779"/>
+        <location filename="../Page1.qml" line="784"/>
         <source>Stupor</source>
         <translation>Benommenheit</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="826"/>
+        <location filename="../Page1.qml" line="831"/>
         <source>sensless</source>
         <translation>bewusstlos</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="834"/>
+        <location filename="../Page1.qml" line="839"/>
         <source>Advantages</source>
         <translation>Vorteile</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="839"/>
+        <location filename="../Page1.qml" line="844"/>
         <source>Your advantages.</source>
         <translation>Deine Vorteile.</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="846"/>
+        <location filename="../Page1.qml" line="851"/>
         <source>Disadvantages</source>
         <translation>Nachteile</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="851"/>
+        <location filename="../Page1.qml" line="856"/>
         <source>Your disadvantages.</source>
         <translation>Deine Nachteile.</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="858"/>
+        <location filename="../Page1.qml" line="863"/>
         <source>Abilities</source>
         <translation>Sonderfertigkeiten</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="863"/>
+        <location filename="../Page1.qml" line="868"/>
         <source>Your abilities.</source>
         <translation>Deine Sonderfertigkeiten.</translation>
     </message>
@@ -1231,103 +1298,128 @@
         <translation>Besitz</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="26"/>
+        <location filename="../Page3.qml" line="33"/>
         <source>Total weight: </source>
         <translation>Gesamtgewicht: </translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="30"/>
+        <location filename="../Page3.qml" line="37"/>
         <source>Burden by weight: </source>
         <translation>Belastung durch Gewicht: </translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="45"/>
-        <location filename="../Page3.qml" line="303"/>
+        <location filename="../Page3.qml" line="47"/>
+        <source>Purse</source>
+        <translation>Geldbörse</translation>
+    </message>
+    <message>
+        <location filename="../Page3.qml" line="59"/>
+        <source>Ducats</source>
+        <translation>Dukaten</translation>
+    </message>
+    <message>
+        <location filename="../Page3.qml" line="63"/>
+        <source>Silver</source>
+        <translation>Silber</translation>
+    </message>
+    <message>
+        <location filename="../Page3.qml" line="67"/>
+        <source>Halers</source>
+        <translation>Heller</translation>
+    </message>
+    <message>
+        <location filename="../Page3.qml" line="72"/>
+        <source>Kreutzers</source>
+        <translation>Kreuzer</translation>
+    </message>
+    <message>
+        <location filename="../Page3.qml" line="86"/>
+        <location filename="../Page3.qml" line="344"/>
         <source>Location</source>
         <translation>Aufgewahrungsort</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="46"/>
-        <location filename="../Page3.qml" line="104"/>
+        <location filename="../Page3.qml" line="87"/>
+        <location filename="../Page3.qml" line="145"/>
         <source>Where</source>
         <translation>Wo</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="47"/>
-        <location filename="../Page3.qml" line="105"/>
+        <location filename="../Page3.qml" line="88"/>
+        <location filename="../Page3.qml" line="146"/>
         <source>Level</source>
         <translation>Füllung</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="48"/>
-        <location filename="../Page3.qml" line="76"/>
-        <location filename="../Page3.qml" line="106"/>
-        <location filename="../Page3.qml" line="189"/>
-        <location filename="../Page3.qml" line="275"/>
+        <location filename="../Page3.qml" line="89"/>
+        <location filename="../Page3.qml" line="117"/>
+        <location filename="../Page3.qml" line="147"/>
+        <location filename="../Page3.qml" line="230"/>
+        <location filename="../Page3.qml" line="316"/>
         <source>Weight</source>
         <translation>Gewicht</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="49"/>
-        <location filename="../Page3.qml" line="77"/>
-        <location filename="../Page3.qml" line="107"/>
-        <location filename="../Page3.qml" line="190"/>
-        <location filename="../Page3.qml" line="276"/>
+        <location filename="../Page3.qml" line="90"/>
+        <location filename="../Page3.qml" line="118"/>
+        <location filename="../Page3.qml" line="148"/>
+        <location filename="../Page3.qml" line="231"/>
+        <location filename="../Page3.qml" line="317"/>
         <source>Price</source>
         <translation>Preis</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="50"/>
-        <location filename="../Page3.qml" line="108"/>
+        <location filename="../Page3.qml" line="91"/>
+        <location filename="../Page3.qml" line="149"/>
         <source>Dropped</source>
         <translation>Abgelegt</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="74"/>
-        <location filename="../Page3.qml" line="187"/>
+        <location filename="../Page3.qml" line="115"/>
+        <location filename="../Page3.qml" line="228"/>
         <source>Item</source>
         <translation>Gegenstand</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="75"/>
-        <location filename="../Page3.qml" line="188"/>
-        <location filename="../Page3.qml" line="274"/>
+        <location filename="../Page3.qml" line="116"/>
+        <location filename="../Page3.qml" line="229"/>
+        <location filename="../Page3.qml" line="315"/>
         <source>Amount</source>
         <translation>Menge</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="103"/>
+        <location filename="../Page3.qml" line="144"/>
         <source>Container</source>
         <translation>Behältnis</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="163"/>
+        <location filename="../Page3.qml" line="204"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="167"/>
-        <location filename="../Page3.qml" line="316"/>
+        <location filename="../Page3.qml" line="208"/>
+        <location filename="../Page3.qml" line="357"/>
         <source>Remove</source>
         <translation>Entfernen</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="285"/>
+        <location filename="../Page3.qml" line="326"/>
         <source>Move...</source>
         <translation>Umpacken...</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="306"/>
+        <location filename="../Page3.qml" line="347"/>
         <source>Body</source>
         <translation>Körper</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="333"/>
+        <location filename="../Page3.qml" line="374"/>
         <source>Confirm delete</source>
         <translation>Löschen bestätigen</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="335"/>
+        <location filename="../Page3.qml" line="376"/>
         <source>Are you sure you want to delete %1?
  This cannot be undone.</source>
         <translation>Bist du sicher dass du %1 entfernen willst?
@@ -1366,252 +1458,252 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>LP</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="54"/>
+        <location filename="../PageCombat.qml" line="56"/>
         <source>Mov</source>
         <translation>GS</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="58"/>
+        <location filename="../PageCombat.qml" line="60"/>
         <source>Ini</source>
         <translation>INI</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="62"/>
+        <location filename="../PageCombat.qml" line="64"/>
         <source>Do</source>
         <translation>AU</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="150"/>
-        <location filename="../PageCombat.qml" line="264"/>
+        <location filename="../PageCombat.qml" line="153"/>
+        <location filename="../PageCombat.qml" line="267"/>
         <source>Weapon</source>
         <translation>Waffe</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="154"/>
-        <location filename="../PageCombat.qml" line="268"/>
+        <location filename="../PageCombat.qml" line="157"/>
+        <location filename="../PageCombat.qml" line="271"/>
         <source>Combat Technique</source>
         <translation>Kampftechnik</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="158"/>
+        <location filename="../PageCombat.qml" line="161"/>
         <source>Damage Bonus</source>
         <translation>Schadensbonus</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="163"/>
-        <location filename="../PageCombat.qml" line="276"/>
+        <location filename="../PageCombat.qml" line="166"/>
+        <location filename="../PageCombat.qml" line="279"/>
         <source>Damage</source>
         <translation>Schaden</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="167"/>
+        <location filename="../PageCombat.qml" line="170"/>
         <source>Damage Total</source>
         <translation>Schaden total</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="172"/>
+        <location filename="../PageCombat.qml" line="175"/>
         <source>At/Pa Mod</source>
         <translation>At/Pa Mod</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="176"/>
+        <location filename="../PageCombat.qml" line="179"/>
         <source>Reach</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="180"/>
+        <location filename="../PageCombat.qml" line="183"/>
         <source>At</source>
         <translation>At</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="184"/>
+        <location filename="../PageCombat.qml" line="187"/>
         <source>Pa</source>
         <translation>Pa</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="213"/>
-        <location filename="../PageCombat.qml" line="218"/>
-        <location filename="../PageCombat.qml" line="316"/>
+        <location filename="../PageCombat.qml" line="216"/>
+        <location filename="../PageCombat.qml" line="221"/>
+        <location filename="../PageCombat.qml" line="319"/>
         <source>D6+</source>
         <translation>W6+</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="272"/>
+        <location filename="../PageCombat.qml" line="275"/>
         <source>Load time</source>
         <translation>Ladezeit</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="280"/>
+        <location filename="../PageCombat.qml" line="283"/>
         <source>Ammunition</source>
         <translation>Munition</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="284"/>
+        <location filename="../PageCombat.qml" line="287"/>
         <source>Range</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="288"/>
+        <location filename="../PageCombat.qml" line="291"/>
         <source>AT</source>
         <translation>At</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="342"/>
+        <location filename="../PageCombat.qml" line="345"/>
         <source>Armor</source>
         <translation>Rüstung</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="346"/>
+        <location filename="../PageCombat.qml" line="349"/>
         <source>Pro</source>
         <translation>RS</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="350"/>
+        <location filename="../PageCombat.qml" line="353"/>
         <source>Enc</source>
         <translation>BE</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="354"/>
+        <location filename="../PageCombat.qml" line="357"/>
         <source>Add. Penalties</source>
         <translation>Weitere Mali</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="358"/>
+        <location filename="../PageCombat.qml" line="361"/>
         <source>Worn</source>
         <translation>Getragen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="385"/>
+        <location filename="../PageCombat.qml" line="388"/>
         <source>-1 Mov -1 Ini</source>
         <translation>-1 GS -1 INI</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="393"/>
+        <location filename="../PageCombat.qml" line="396"/>
         <source>This is toggled by putting the armor from body to a bag in the items tab.</source>
         <translation>Ob die Rüstung getragen wird wird über den Reiter Gegenstände geregelt.</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="407"/>
+        <location filename="../PageCombat.qml" line="410"/>
         <source>Combat Techniques</source>
         <translation>Kampftechnik</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="413"/>
+        <location filename="../PageCombat.qml" line="416"/>
         <source>Primary Attribute</source>
         <translation>Leiteigenschaft</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="419"/>
+        <location filename="../PageCombat.qml" line="422"/>
         <source>Impr.</source>
         <translation>SF</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="424"/>
+        <location filename="../PageCombat.qml" line="427"/>
         <source>CSR</source>
         <translation>BE</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="429"/>
+        <location filename="../PageCombat.qml" line="432"/>
         <source>AT/RC</source>
         <translation>At/FK</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="434"/>
+        <location filename="../PageCombat.qml" line="437"/>
         <source>PA</source>
         <translation>Pa</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="438"/>
+        <location filename="../PageCombat.qml" line="441"/>
         <source>Notes</source>
         <translation>Notiz</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="497"/>
+        <location filename="../PageCombat.qml" line="500"/>
         <source>At mod </source>
         <translation>At mod </translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="497"/>
+        <location filename="../PageCombat.qml" line="500"/>
         <source>Pa mod </source>
         <translation>Pa mod </translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="497"/>
+        <location filename="../PageCombat.qml" line="500"/>
         <source>HP mod </source>
         <translation>TP mod </translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="508"/>
+        <location filename="../PageCombat.qml" line="511"/>
         <source>Edit skill</source>
         <translation>Talent bearbeiten</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="551"/>
+        <location filename="../PageCombat.qml" line="554"/>
         <source>Crossbow</source>
         <translation>Armbrust</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="563"/>
+        <location filename="../PageCombat.qml" line="566"/>
         <source>Bows</source>
         <translation>Bogen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="575"/>
+        <location filename="../PageCombat.qml" line="578"/>
         <source>Daggers</source>
         <translation>Dolche</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="587"/>
+        <location filename="../PageCombat.qml" line="590"/>
         <source>Fencing Weapons</source>
         <translation>Fechtwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="599"/>
+        <location filename="../PageCombat.qml" line="602"/>
         <source>Impact Weapons</source>
         <translation>Hiebwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="611"/>
+        <location filename="../PageCombat.qml" line="614"/>
         <source>Chain Weapons</source>
         <translation>Kettenwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="623"/>
+        <location filename="../PageCombat.qml" line="626"/>
         <source>Lances</source>
         <translation>Lanzen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="635"/>
+        <location filename="../PageCombat.qml" line="638"/>
         <source>Brawling</source>
         <translation>Raufen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="647"/>
+        <location filename="../PageCombat.qml" line="650"/>
         <source>Shields</source>
         <translation>Schilde</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="659"/>
+        <location filename="../PageCombat.qml" line="662"/>
         <source>Swords</source>
         <translation>Schwerter</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="671"/>
+        <location filename="../PageCombat.qml" line="674"/>
         <source>Pole Weapons</source>
         <translation>Stangenwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="683"/>
+        <location filename="../PageCombat.qml" line="686"/>
         <source>Throw Weapons</source>
         <translation>Wurfwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="695"/>
+        <location filename="../PageCombat.qml" line="698"/>
         <source>Two-Handed Impact Weapons</source>
         <translation>Zweihandhiebwaffen</translation>
     </message>
     <message>
-        <location filename="../PageCombat.qml" line="707"/>
+        <location filename="../PageCombat.qml" line="710"/>
         <source>Two-Handed Swords</source>
         <translation>Zweihandschwerter</translation>
     </message>
@@ -1667,72 +1759,72 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>Talentprobe</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="71"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="41"/>
         <source>Checking against</source>
         <translation>Probe auf</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="77"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
         <source>ENC: </source>
         <translation>BE: </translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="77"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="77"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="77"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
         <source>maybe</source>
         <translation>Evtl</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="84"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="54"/>
         <source>Attribute values</source>
         <translation>Eigenschaftswerte</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="109"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="79"/>
         <source>With current Mods</source>
         <translation>Modifizierte Werte</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="119"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="89"/>
         <source>Current Skill: </source>
         <translation>Talentwert: </translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="129"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="99"/>
         <source>Skill mod</source>
         <translation>Talent Mod</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="143"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="113"/>
         <source>Obstacle</source>
         <translation>Erschwernis</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="153"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="123"/>
         <source>Harder</source>
         <translation>Schwerer</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="153"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="123"/>
         <source>Easier</source>
         <translation>Leichter</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="160"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="130"/>
         <source>Check Talent with mods</source>
         <translation>Probe mit Modifikatoren</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="175"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="145"/>
         <source>The obstacle value is added to the modified attribute values.</source>
         <translation>Die Erschwernis wird zu den Eigenschaftswerten hinzuaddiert.</translation>
     </message>
@@ -1749,82 +1841,87 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>DSA Heldenbogen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="62"/>
+        <location filename="../main.qml" line="63"/>
         <source>Body</source>
         <translation>Körper</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="127"/>
+        <location filename="../main.qml" line="134"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="129"/>
+        <location filename="../main.qml" line="136"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="132"/>
+        <location filename="../main.qml" line="139"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="134"/>
+        <location filename="../main.qml" line="141"/>
         <source>Save &amp;As</source>
         <translation>Speichern &amp;unter</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="137"/>
+        <location filename="../main.qml" line="144"/>
         <source>&amp;Load</source>
         <translation>&amp;Laden</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="147"/>
+        <location filename="../main.qml" line="154"/>
         <source>&amp;Hero</source>
         <translation>&amp;Held</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="153"/>
+        <location filename="../main.qml" line="160"/>
         <source>&amp;Edit Attributes</source>
         <translation>&amp;Eigenschaften</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="157"/>
+        <location filename="../main.qml" line="164"/>
         <source>Edit &amp;Main Attribute</source>
         <translation>&amp;Leiteigenschaft</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="163"/>
+        <location filename="../main.qml" line="170"/>
         <source>&amp;Add Avatar</source>
         <translation>&amp;Avatar hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="170"/>
+        <location filename="../main.qml" line="177"/>
         <source>&amp;Items</source>
         <translation>&amp;Gegenstand</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="192"/>
+        <location filename="../main.qml" line="179"/>
+        <source>Money</source>
+        <translation>&amp;Geldbörse</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="204"/>
         <source>Add an Avatar</source>
         <translation>Einen Avatar hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="257"/>
+        <location filename="../main.qml" line="272"/>
         <source>Hero</source>
         <translation>Held</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="268"/>
+        <location filename="../main.qml" line="283"/>
         <source>Notes</source>
         <translation>Notizen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="149"/>
+        <location filename="../main.qml" line="156"/>
         <source>&amp;Import</source>
         <translation>&amp;Importieren</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="141"/>
+        <location filename="../main.qml" line="148"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
@@ -1833,17 +1930,17 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation type="vanished">Gegenstände</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="172"/>
+        <location filename="../main.qml" line="184"/>
         <source>&amp;Add Item</source>
         <translation>&amp;Gegenstand hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="176"/>
+        <location filename="../main.qml" line="188"/>
         <source>Add &amp;Bag</source>
         <translation>&amp;Aufbewahrungsort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="184"/>
+        <location filename="../main.qml" line="196"/>
         <source>Import Hero from Optholit</source>
         <translation>Held Importieren</translation>
     </message>
@@ -1933,17 +2030,17 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation type="vanished">Entfernen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="260"/>
+        <location filename="../main.qml" line="275"/>
         <source>Skills</source>
         <translation>Talente</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="263"/>
+        <location filename="../main.qml" line="278"/>
         <source>Combat</source>
         <translation>Kampf</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="266"/>
+        <location filename="../main.qml" line="281"/>
         <source>Belongings</source>
         <translation>Besitz</translation>
     </message>

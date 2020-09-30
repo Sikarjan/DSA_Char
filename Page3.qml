@@ -462,17 +462,19 @@ Page {
 
             if(type === "armor"){
                 var armorType = get(selectedIndex).armorType
-console.log("chekcing for armor")
-                if(armorType%2 === 0){
-                    console.log("changing ini")
-                    if(bagId === 0){
-                        hero.iniMod -= 1
-                        hero.moveMod -= 1
-                    }else{
-                        hero.iniMod += 1
-                        hero.moveMod += 1
-                    }
+                var enc = get(selectedIndex).enc
+                var penalty = armorType%2 === 0 ? 1:0
+
+                if(bagId === 0){
+                    hero.iniMod -= penalty
+                    hero.moveMod -= penalty
+                    hero.burden -= enc
+                }else{
+                    hero.iniMod += penalty
+                    hero.moveMod += penalty
+                    hero.burden += enc
                 }
+
             }
 
             itemList.sortItems()

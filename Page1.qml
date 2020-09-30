@@ -110,7 +110,7 @@ Page {
             Grid {
                 id: basics
                 columns: 2
-                spacing: 2
+                spacing: 4
 
                 Label {
                     text: qsTr("Name")
@@ -636,6 +636,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 0
+                    onToggled: hero.pain = 0
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -643,6 +644,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 1
+                    onToggled: hero.pain = 1
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -650,6 +652,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 2
+                    onToggled: hero.pain = 2
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -657,6 +660,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 3
+                    onToggled: hero.pain = 3
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -664,6 +668,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain >= 4
+                    onToggled: hero.pain = 4
                     ButtonGroup.group: painGroup
                 }
                 Label {

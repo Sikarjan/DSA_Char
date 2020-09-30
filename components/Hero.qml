@@ -150,7 +150,9 @@ Item {
     }
 
     onCurrentLoadChanged: {
-        if(currentLoad > maxLoad){
+        // Armor weight does not count here
+        var wornArmor = armorWeight()
+        if((currentLoad-wornArmor) > maxLoad){
             var extraFill = currentLoad - maxLoad
             var extraBurden = Math.floor(extraFill/4)+1
 
@@ -160,6 +162,17 @@ Item {
             burden -= weightBurden
             weightBurden = 0
         }
+    }
+
+    function armorWeight(){
+        var weight = 0
+        for(var i = 0; i<page3.itemList.count;i++){
+            var mItem = page3.itemList.get(i)
+            if(mItem.type === "armor" && mItem.whereId === 0){
+                weight += mItem.weight*mItem.amount
+            }
+        }
+        return weight
     }
 
     function getAttr(mAttr, val=3){ // val 0=text, 1=Mod values, 2=Mod w/o enc, 3+= attr values
@@ -572,9 +585,11 @@ Item {
                             "protection": mItem.pro,
                             "armorType": mItem.armorType
                     })
+
                     if(mItem.armorType%2 === 0 && whereId === 0){
                         hero.iniMod -= 1
                         hero.moveMod -= 1
+                        hero.burden += mItem.enc
                     }
                 } else {
                     page3.itemList.append({
