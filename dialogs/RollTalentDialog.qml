@@ -15,15 +15,18 @@ Dialog {
     property int labelWidth: 130
 
     onVisibleChanged: {
+        if(!visible){
+            return
+        }
+
         talent = page2.skillList.get(page2.activeSkill)
         tal = talent.name
 
-        var attrTest = talent.check.split(",")
-        var val = talent.burden === 0 ? 2:1
+        talCheck.text = hero.getAttr(talent.check)
+        ta.text = hero.getAttr(talent.check,2,talent.burden,talent.paralys)
+        t.text = hero.getAttr(talent.check,1)
 
-        talCheck.text = hero.getAttr(attrTest[0],0)+"/"+hero.getAttr(attrTest[1],0)+"/"+hero.getAttr(attrTest[2],0)
-        ta.text = hero.getAttr(attrTest[0],val)+"/"+hero.getAttr(attrTest[1],val)+"/"+hero.getAttr(attrTest[2],val)
-        t.text = hero.getAttr(attrTest[0])+"/"+hero.getAttr(attrTest[1])+"/"+hero.getAttr(attrTest[2])
+        obstacle.value = hero.getAttr("in",2,talent.burden,talent.paralys)-hero.getAttr("in",1)
     }
 
     Column {
@@ -45,6 +48,9 @@ Dialog {
             }
             Label {
                 text: qsTr("ENC: ")+(talent.burden === 0 ? qsTr("No"):(talent.burden === 1 ? qsTr("Yes"):qsTr("maybe")))
+            }
+            Label {
+                text: qsTr("Par: ")+(talent.papralys === 0 ? qsTr("No"):qsTr("Yes"))
             }
         }
         Row {
@@ -68,7 +74,7 @@ Dialog {
                 }
 
                 onClicked: {
-                    checkResult.text = hero.rollTalent(talent, 0, "attr")
+                    checkResult.text = hero.rollTalent(talent)
                 }
             }
         }
@@ -116,7 +122,6 @@ Dialog {
                 id: obstacle
                 from:-10
                 to:10
-                value: 0
                 editable: true
             }
             Label {

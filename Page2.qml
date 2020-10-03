@@ -34,14 +34,14 @@ Page {
                 attrName: hero.muText
                 attrColor: "Red"
                 attrValue: hero.mu
-                attrModValue: hero.muMod
+                attrModValue: hero.mu-hero.stateModAll
             }
 
             CharAttribute {
                 id: kl
                 height: 25
                 attrValue: hero.kl
-                attrModValue: hero.klMod
+                attrModValue: hero.kl-hero.stateModAll
                 attrColor: "#7225f0"
                 attrName: hero.klText
             }
@@ -50,7 +50,7 @@ Page {
                 id: intu
                 height: 25
                 attrValue: hero.intu
-                attrModValue: hero.inMod
+                attrModValue: hero.intu-hero.stateModAll
                 attrColor: "#47f025"
                 attrName: hero.klText
             }
@@ -59,7 +59,7 @@ Page {
                 id: ch
                 height: 25
                 attrValue: hero.ch
-                attrModValue: hero.chMod
+                attrModValue: hero.ch-hero.stateModAll
                 attrColor: "#dd000000"
                 attrName: hero.chText
             }
@@ -68,7 +68,7 @@ Page {
                 id: ff
                 height: 25
                 attrValue: hero.ff
-                attrModValue: hero.ffMod
+                attrModValue: hero.ff-hero.stateModAll
                 attrColor: "#f7ff08"
                 attrName: hero.ffText
             }
@@ -77,7 +77,7 @@ Page {
                 id: ge
                 height: 25
                 attrValue: hero.ge
-                attrModValue: hero.geMod
+                attrModValue: hero.ge-hero.stateModAll
                 attrColor: "#254ef0"
                 attrName: hero.geText
             }
@@ -86,7 +86,7 @@ Page {
                 id: ko
                 height: 25
                 attrValue: hero.ko
-                attrModValue: hero.koMod
+                attrModValue: hero.ko-hero.stateModAll
                 attrColor: "#aeafae"
                 attrName: hero.koText
             }
@@ -95,7 +95,7 @@ Page {
                 id: kk
                 height: 25
                 attrValue: hero.kk
-                attrModValue: hero.kkMod
+                attrModValue: hero.kk-hero.stateModAll
                 attrColor: "#ffab00"
                 attrName: hero.kkText
             }
@@ -213,9 +213,9 @@ Page {
                 var attrTest = check.split(",")
 
                 if(state === "in"){
-                    skillCheck.text = hero.getAttr(attrTest[0], 1)+" "+hero.getAttr(attrTest[1], 1)+" "+hero.getAttr(attrTest[2], 1)
+                    skillCheck.text = hero.getAttr(check, 1)
                 }else{
-                    skillCheck.text = hero.getAttr(attrTest[0], 0)+" "+hero.getAttr(attrTest[1], 0)+" "+hero.getAttr(attrTest[2], 0)
+                    skillCheck.text = hero.getAttr(check, 0)
                 }
             }
         }
@@ -277,14 +277,14 @@ Page {
 
             return secs[id]
         }
-
         ListElement {
             tal:"TAL_1"
             sec: 0
             name: qsTr("Flying")
             level: 0
-            check: "mu,in,ge"
+            check: "mu/in/ge"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -294,7 +294,7 @@ Page {
             sec: 0
             name: qsTr("Gaukelei")
             level: 0
-            check: "mu,ch,ff"
+            check: "mu/ch/ff"
             burden: 1
             mod: 0
             comment: ""
@@ -305,8 +305,9 @@ Page {
             sec: 0
             name: qsTr("Climbing")
             level: 0
-            check: "mu,ge,kk"
+            check: "mu/ge/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -316,8 +317,9 @@ Page {
             sec: 0
             name: qsTr("Body Control")
             level: 0
-            check: "ge,ge,ko"
+            check: "ge/ge/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -327,8 +329,9 @@ Page {
             sec: 0
             name: qsTr("Feat of Strength")
             level: 0
-            check: "ko,kk,kk"
+            check: "ko/kk/kk"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -338,8 +341,9 @@ Page {
             sec: 0
             name: qsTr("Riding")
             level: 0
-            check: "ch,ge,kk"
+            check: "ch/ge/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -349,8 +353,9 @@ Page {
             sec: 0
             name: qsTr("Swimming")
             level: 0
-            check: "ge,ko,kk"
+            check: "ge/ko/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -360,8 +365,9 @@ Page {
             sec: 0
             name: qsTr("Self-Control")
             level: 0
-            check: "mu,mu,ko"
+            check: "mu/mu/ko"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -371,8 +377,9 @@ Page {
             sec: 0
             name: qsTr("Singing")
             level: 0
-            check: "kl,ch,ko"
+            check: "kl/ch/ko"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -382,8 +389,9 @@ Page {
             sec: 0
             name: qsTr("Perception")
             level: 0
-            check: "kl,in,in"
+            check: "kl/in/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -393,8 +401,9 @@ Page {
             sec: 0
             name: qsTr("Dancing")
             level: 0
-            check: "kl,ch,ge"
+            check: "kl/ch/ge"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -404,8 +413,9 @@ Page {
             sec: 0
             name: qsTr("Pickpocket")
             level: 0
-            check: "mu,ff,ge"
+            check: "mu/ff/ge"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -415,8 +425,9 @@ Page {
             sec: 0
             name: qsTr("Stealth")
             level: 0
-            check: "mu,in,ge"
+            check: "mu/in/ge"
             burden: 1
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -426,8 +437,9 @@ Page {
             sec: 0
             name: qsTr("Carousing")
             level: 0
-            check: "kl,ko,kk"
+            check: "kl/ko/kk"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -437,8 +449,9 @@ Page {
             sec: 1
             name: qsTr("Persuasion")
             level: 0
-            check: "mu,kl,ch"
+            check: "mu/kl/ch"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -448,8 +461,9 @@ Page {
             sec: 1
             name: qsTr("Seduction")
             level: 0
-            check: "mu,ch,ch"
+            check: "mu/ch/ch"
             burden: 2
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -459,8 +473,9 @@ Page {
             sec: 1
             name: qsTr("Intimidation")
             level: 0
-            check: "mu,in,ch"
+            check: "mu/in/ch"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -470,8 +485,9 @@ Page {
             sec: 1
             name: qsTr("Etiquette")
             level: 0
-            check: "kl,in,ch"
+            check: "kl/in/ch"
             burden: 2
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -481,8 +497,9 @@ Page {
             sec: 1
             name: qsTr("Streetwise")
             level: 0
-            check: "kl,in,ch"
+            check: "kl/in/ch"
             burden: 2
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -492,8 +509,9 @@ Page {
             sec: 1
             name: qsTr("Empathy")
             level: 0
-            check: "kl,in,ch"
+            check: "kl/in/ch"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -503,8 +521,9 @@ Page {
             sec: 1
             name: qsTr("Fast-Talk")
             level: 0
-            check: "mu,in,ch"
+            check: "mu/in/ch"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -514,8 +533,9 @@ Page {
             sec: 1
             name: qsTr("Disguise")
             level: 0
-            check: "in,ch,ge"
+            check: "in/ch/ge"
             burden: 2
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -525,8 +545,9 @@ Page {
             sec: 1
             name: qsTr("Willpower")
             level: 0
-            check: "mu,in,ch"
+            check: "mu/in/ch"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -536,8 +557,9 @@ Page {
             sec: 2
             name: qsTr("Tracking")
             level: 0
-            check: "mu,in,ge"
+            check: "mu/in/ge"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -547,8 +569,9 @@ Page {
             sec: 2
             name: qsTr("Ropes")
             level: 0
-            check: "kl,ge,ko"
+            check: "kl/ge/ko"
             burden: 2
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -558,8 +581,9 @@ Page {
             sec: 2
             name: qsTr("Fishing")
             level: 0
-            check: "ff,ge,ko"
+            check: "ff/ge/ko"
             burden: 2
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -569,8 +593,9 @@ Page {
             sec: 2
             name: qsTr("Orienting")
             level: 0
-            check: "kl,in,in"
+            check: "kl/in/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -580,8 +605,9 @@ Page {
             sec: 2
             name: qsTr("Plant Lore")
             level: 0
-            check: "kl,ff,ko"
+            check: "kl/ff/ko"
             burden: 2
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -591,8 +617,9 @@ Page {
             sec: 2
             name: qsTr("Animal Lore")
             level: 0
-            check: "mu,mu,ch"
+            check: "mu/mu/ch"
             burden: 1
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -602,8 +629,9 @@ Page {
             sec: 2
             name: qsTr("Survival")
             level: 0
-            check: "mu,ge,ko"
+            check: "mu/ge/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -613,8 +641,9 @@ Page {
             sec: 3
             name: qsTr("Gambling")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -624,8 +653,9 @@ Page {
             sec: 3
             name: qsTr("Geography")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -635,8 +665,9 @@ Page {
             sec: 3
             name: qsTr("History")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -646,8 +677,9 @@ Page {
             sec: 3
             name: qsTr("Religions")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -657,8 +689,9 @@ Page {
             sec: 3
             name: qsTr("Warfare")
             level: 0
-            check: "mu,kl,in"
+            check: "mu/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -668,8 +701,9 @@ Page {
             sec: 3
             name: qsTr("Magical Lore")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -679,8 +713,9 @@ Page {
             sec: 3
             name: qsTr("Mechanics")
             level: 0
-            check: "kl,kl,ff"
+            check: "kl/kl/ff"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -690,8 +725,9 @@ Page {
             sec: 3
             name: qsTr("Math")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -701,8 +737,9 @@ Page {
             sec: 3
             name: qsTr("Law")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -712,8 +749,9 @@ Page {
             sec: 3
             name: qsTr("Myths & Legends")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -723,8 +761,9 @@ Page {
             sec: 3
             name: qsTr("Sphere Lore")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -734,8 +773,9 @@ Page {
             sec: 3
             name: qsTr("Astronomy")
             level: 0
-            check: "kl,kl,in"
+            check: "kl/kl/in"
             burden: 0
+            paralys: 0
             mod: 0
             comment: ""
         }
@@ -745,8 +785,9 @@ Page {
             sec: 4
             name: qsTr("Alchemy")
             level: 0
-            check: "mu,kl,ff"
+            check: "mu/kl/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -756,8 +797,9 @@ Page {
             sec: 4
             name: qsTr("Sailing")
             level: 0
-            check: "ff,ge,kk"
+            check: "ff/ge/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -767,8 +809,9 @@ Page {
             sec: 4
             name: qsTr("Driving")
             level: 0
-            check: "ch,ff,ko"
+            check: "ch/ff/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -778,8 +821,9 @@ Page {
             sec: 4
             name: qsTr("Commerce")
             level: 0
-            check: "mu,in,ch"
+            check: "mu/in/ch"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -789,8 +833,9 @@ Page {
             sec: 4
             name: qsTr("Treat Poison")
             level: 0
-            check: "mu,kl,in"
+            check: "mu/kl/in"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -800,8 +845,9 @@ Page {
             sec: 4
             name: qsTr("Treat Disease")
             level: 0
-            check: "mu,in,ko"
+            check: "mu/in/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -811,8 +857,9 @@ Page {
             sec: 4
             name: qsTr("Treat Soul")
             level: 0
-            check: "in,ch,ko"
+            check: "in/ch/ko"
             burden: 0
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -822,8 +869,9 @@ Page {
             sec: 4
             name: qsTr("Treat Wounds")
             level: 0
-            check: "kl,ff,ff"
+            check: "kl/ff/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -833,8 +881,9 @@ Page {
             sec: 4
             name: qsTr("Woodworking")
             level: 0
-            check: "ff,ge,kk"
+            check: "ff/ge/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -844,8 +893,9 @@ Page {
             sec: 4
             name: qsTr("Prepare Food")
             level: 0
-            check: "in,ff,ff"
+            check: "in/ff/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -855,8 +905,9 @@ Page {
             sec: 4
             name: qsTr("Leatherworking")
             level: 0
-            check: "ff,ge,ko"
+            check: "ff/ge/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -866,8 +917,9 @@ Page {
             sec: 4
             name: qsTr("Artistic Ability")
             level: 0
-            check: "in,ff,ff"
+            check: "in/ff/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -877,8 +929,9 @@ Page {
             sec: 4
             name: qsTr("Metalworking")
             level: 0
-            check: "ff,ko,kk"
+            check: "ff/ko/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -888,8 +941,9 @@ Page {
             sec: 4
             name: qsTr("Music")
             level: 0
-            check: "ch,ff,ko"
+            check: "ch/ff/ko"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -899,8 +953,9 @@ Page {
             sec: 4
             name: qsTr("Pick Locks")
             level: 0
-            check: "in,ff,ff"
+            check: "in/ff/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -910,8 +965,9 @@ Page {
             sec: 4
             name: qsTr("Earthencraft")
             level: 0
-            check: "ff,ff,kk"
+            check: "ff/ff/kk"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
@@ -921,15 +977,17 @@ Page {
             sec: 4
             name: qsTr("Clothworking")
             level: 0
-            check: "kl,ff,ff"
+            check: "kl/ff/ff"
             burden: 1
+            paralys: 1
             mod: 0
             comment: ""
         }
         /*
         Regex for notepad++ to get all skills in the right format from https://github.com/elyukai/optolith-client/blob/master/src/App/Constants/Id.re
           \| ([\d]+) => ([\w]*)
-        ListElement {\r\n\ttal:"TAL_\1" \r\n\tsec: qsTr\("Craft"\)\r\n\tname: qsTr\("\2"\)\r\n\tlevel: 0\r\n\tcheck: "mu,kl,in"\r\n\tburden: 0\r\n\tmod: 0\r\n\tcomment: ""\r\n}\r\n
+        ListElement {\r\n\ttal:"TAL_\1" \r\n\tsec: qsTr\("Craft"\)\r\n\tname: qsTr\("\2"\)\r\n\tlevel: 0\r\n\tcheck: "mu/kl/in"\r\n\tburden: 0\r\n\tmod: 0\r\n\tcomment: ""\r\n}\r\n
         */
+
     }
 }

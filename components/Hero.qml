@@ -5,28 +5,20 @@ Item {
     id: hero
     property string muText: qsTr("COU")
     property int mu: 8
-    property int muMod: mu-attrMods
     property string klText: qsTr("SGC")
     property int kl: 8
-    property int klMod: kl-attrMods
     property string chText: qsTr("CHA")
     property int ch: 8
-    property int chMod: ch-attrMods
     property string inText: qsTr("INT")
-    property int intu: 15
-    property int inMod: intu-attrMods
+    property int intu: 8
     property string ffText: qsTr("DEX")
     property int ff: 8
-    property int ffMod: ff-attrMods
     property string geText: qsTr("AGE")
     property int ge: 8
-    property int geMod: ge-attrMods
     property string kkText: qsTr("STR")
     property int kk: 8
-    property int kkMod: kk-attrMods
     property string koText: qsTr("CON")
     property int ko: 8
-    property int koMod: ko-attrMods
 
     property int leMod: 2
     property int leBought: 0
@@ -72,6 +64,7 @@ Item {
     property int paralysis: 0
     property int rapture: 0
     property int stupor: 0
+    property int fear: 0
 
     property string hName: " "
     property int raceId: 0
@@ -80,7 +73,10 @@ Item {
     property int hWeight: 0
     property string avatar: ""
 
-    property int attrMods: confusion+pain+burden+paralysis+rapture+stupor
+    property int stateModAll: confusion+pain+burden+paralysis+rapture+stupor+fear
+    property int stateModMove: burden+pain+paralysis*0.25*(8+moveMod+moveRaceMod)
+    property int stateModTalent: stupor+rapture+pain+confusion+fear
+    property int stateModMagic: stupor+rapture+fear+pain+confusion+paralysis
 
     Settings {
         property alias mu: hero.mu
@@ -160,17 +156,7 @@ Item {
         }
     }
 
-    function getAttr(mAttr, val=3){ // val 0=text, 1=Mod values, 2=Mod w/o enc, 3+= attr values
-        var attrMod = {
-            mu: hero.muMod,
-            kl: hero.klMod,
-            in: hero.inMod,
-            ch: hero.chMod,
-            ff: hero.ffMod,
-            ge: hero.geMod,
-            ko: hero.koMod,
-            kk: hero.kkMod
-        }
+    function getAttr(mAttr, cat=0, enc=0, par=0){ // cat 0=text, 1=Attr values, 2=For Talent, 3=For Spell, 4=All mods     enc 0=No, 1=Yes     par  0=No, 1=Yes
         var attr = {
             mu: hero.mu,
             kl: hero.kl,
@@ -196,14 +182,16 @@ Item {
 
         for(const a of attrs){
             if(a in attr){
-                if(val === 0){
+                if(cat === 0){
                     res += attrName[a]
-                }else if(val === 1){
-                    res += attrMod[a]
-                }else if(val === 2){
-                    res += attrMod[a] + hero.burden
-                }else{
+                }else if(cat === 1){
                     res += attr[a]
+                }else if(cat === 2){
+                    res += attr[a] - hero.stateModTalent - (enc===0 ? 0:hero.burden) - (par === 0 ? 0:hero.paralysis)
+                }else if(cat === 3){
+                    res += attr[a] - hero.stateModMagic
+                }else{
+                    res += attr[a] - hero.stateModAll
                 }
 
                 res += "/"
@@ -224,33 +212,20 @@ Item {
         return Math.max.apply(null, attrs)
     }
 
-    function rollTalent(talent, obstacle=0, skillMod=0, mode="mod"){
-        var attrTest = talent.check.split(",")
+    function rollTalent(talent, obstacle=0, skillMod=0){
+        var attrTest = talent.check.split("/")
         var skill = talent.level + skillMod
         var attr = {}
 
-        if(mode==="mod"){
-            attr = {
-                mu: hero.muMod,
-                kl: hero.klMod,
-                in: hero.inMod,
-                ch: hero.chMod,
-                ff: hero.ffMod,
-                ge: hero.geMod,
-                ko: hero.koMod,
-                kk: hero.kkMod
-            }
-        }else{
-            attr = {
-                mu: hero.mu,
-                kl: hero.kl,
-                in: hero.intu,
-                ch: hero.ch,
-                ff: hero.ff,
-                ge: hero.ge,
-                ko: hero.ko,
-                kk: hero.kk
-            }
+        attr = {
+            mu: hero.mu,
+            kl: hero.kl,
+            in: hero.intu,
+            ch: hero.ch,
+            ff: hero.ff,
+            ge: hero.ge,
+            ko: hero.ko,
+            kk: hero.kk
         }
 
         var roll1 = Math.floor((Math.random()*20)+1)
@@ -328,7 +303,7 @@ Item {
 
     function resetHero(){
         hero.moveMod = 0
-        hero.inMod = 0
+        hero.iniMod = 0
         hero.fatePointsMod = 0
         hero.confusion = 0
         hero.pain = 0
@@ -336,6 +311,7 @@ Item {
         hero.burden = 0
         hero.rapture = 0
         hero.stupor = 0
+        hero.fear = 0
     }
 
     function readHero(data){

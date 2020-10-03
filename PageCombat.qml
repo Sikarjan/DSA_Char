@@ -52,11 +52,11 @@ Page {
 
         CharProperty {
             propertyName: qsTr("Mov")
-            propValue: hero.move
+            propValue: hero.move-hero.stateModMove
         }
         CharProperty {
             propertyName: qsTr("Ini")
-            propValue: hero.iniBase+hero.iniMod
+            propValue: hero.iniBase+hero.iniMod-hero.burden
         }
         CharProperty {
             propertyName: qsTr("Do")

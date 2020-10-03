@@ -35,19 +35,19 @@ Page {
                 attrName: hero.muText
                 attrColor: "Red"
                 attrValue: hero.mu
-                attrModValue: hero.muMod
+                attrModValue: hero.mu-hero.stateModAll
             }
 
             CharAttribute {
                 attrValue: hero.kl
-                attrModValue: hero.klMod
+                attrModValue: hero.kl-hero.stateModAll
                 attrColor: "#7220f0"
                 attrName: hero.klText
             }
 
             CharAttribute {
                 attrValue: hero.intu
-                attrModValue: hero.inMod
+                attrModValue: hero.intu-hero.stateModAll
                 attrColor: "#47f020"
                 attrName: hero.klText
             }
@@ -55,35 +55,35 @@ Page {
             CharAttribute {
                 id: ch
                 attrValue: hero.ch
-                attrModValue: hero.chMod
+                attrModValue: hero.ch-hero.stateModAll
                 attrColor: "#dd000000"
                 attrName: hero.chText
             }
 
             CharAttribute {
                 attrValue: hero.ff
-                attrModValue: hero.ffMod
+                attrModValue: hero.ff-hero.stateModAll
                 attrColor: "#f7ff08"
                 attrName: hero.ffText
             }
 
             CharAttribute {
                 attrValue: hero.ge
-                attrModValue: hero.geMod
+                attrModValue: hero.ge-hero.stateModAll
                 attrColor: "#204ef0"
                 attrName: hero.geText
             }
 
             CharAttribute {
                 attrValue: hero.ko
-                attrModValue: hero.koMod
+                attrModValue: hero.ko-hero.stateModAll
                 attrColor: "#aeafae"
                 attrName: hero.koText
             }
 
             CharAttribute {
                 attrValue: hero.kk
-                attrModValue: hero.kkMod
+                attrModValue: hero.kk-hero.stateModAll
                 attrColor: "#ffab00"
                 attrName: hero.kkText
             }
