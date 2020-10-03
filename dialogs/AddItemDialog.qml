@@ -10,6 +10,8 @@ Dialog {
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
+    property bool error: false
+
     Column {
         id: content
         anchors.fill: parent
@@ -82,7 +84,7 @@ Dialog {
         }
         Row {
             Label {
-                text: qsTr("Price")
+                text: qsTr("Price in Silver")
                 width: 100
             }
 
@@ -106,6 +108,17 @@ Dialog {
                 valueFromText: function(text, locale) {
                     return Number.fromLocaleString(locale, text) * 100
                 }
+            }
+
+            CheckBox {
+                id: payBox
+                checked: true
+                text: qsTr("pay")
+            }
+            Text {
+                visible: error
+                text: qsTr("Insufficent funds!")
+                color: "red"
             }
         }
         Row {
@@ -133,6 +146,7 @@ Dialog {
                 valueRole: "bagId"
                 model: page3.bagList
                 width: parent.width - 110
+                currentIndex: 0
             }
         }
         Row {
@@ -173,7 +187,7 @@ Dialog {
         }
         Row {
             width: parent.width
-            visible: itemType.currentIndex === 1 || itemType.currentIndex === 2
+            visible: itemType.currentIndex === 1
 
             Label {
                 text: qsTr("Reach")
@@ -194,7 +208,7 @@ Dialog {
         }
         Row {
             width: parent.width
-            visible: itemType.currentIndex === 1 || itemType.currentIndex === 2
+            visible: itemType.currentIndex === 1
 
             Label {
                 text: qsTr("AT/PA Mod")
@@ -214,23 +228,124 @@ Dialog {
                 value: 0
             }
         }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 2
+
+            Label {
+                text: qsTr("Reload time")
+                width: 100
+            }
+            SpinBox {
+                id: reload
+                from:1
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 2
+
+            Label {
+                text: qsTr("Ammunition")
+                width: 100
+            }
+            TextField {
+                id: ammo
+                width: parent.width-110
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 2
+
+            Label {
+                text: qsTr("Range")
+                width: 100
+            }
+            TextField {
+                id: range
+                width: parent.width-110
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 3
+
+            Label {
+                text: qsTr("Protection")
+                width: 100
+            }
+            SpinBox {
+                id: protection
+                from:0
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 3
+
+            Label {
+                text: qsTr("Encumbrance")
+                width: 100
+            }
+            SpinBox {
+                id: enc
+                from:0
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 3
+
+            Label {
+                text: qsTr("Penalties")
+                width: 100
+            }
+            ComboBox {
+                id: armorType
+                model: [qsTr("-1 MOV, -1 INI"),""]
+            }
+        }
     }
 
     onAccepted: {
-        page3.itemList.append({
-                            "item": itemName.text,
-                            "type": itemType.currentValue,
-                            "amount": itemAmount.value,
-                            "weight": itemWeight.realValue,
-                            "price": itemPrice.realValue,
-                            "whereId": itemWhere.currentValue, // holds bagId
-                            "damageDice": damageDice.value,
-                            "damageFlat": damageFlat.value,
-                            "reach": reach.currentValue,
-                            "at": at.value,
-                            "pa": pa.value,
-                            "ct": ct.currentValue
-        })
+        var cost = itemAmount.value * itemPrice.value
+        if(payBox && cost > hero.money){
+            error = true
+            addItemDialog.open()
+            return
+        }
+
+        var append = {
+            "item": itemName.text,
+            "type": itemType.currentValue,
+            "amount": itemAmount.value,
+            "weight": itemWeight.realValue,
+            "price": itemPrice.realValue,
+            "whereId": itemWhere.currentValue // holds bagId
+        }
+
+        if(itemType.currentIndex === 1){
+            append.damageDice = damageDice.value
+            append.damageFlat = damageFlat.value
+            append.reach = reach.currentValue
+            append.at = at.value
+            append.pa = pa.value
+            append.ct = ct.currentValue
+        }else if(itemType.currentIndex === 2){
+            append.damageDice = damageDice.value
+            append.damageFlat = damageFlat.value
+            append.range = range.text
+            append.reload = reload.value
+            append.ammunition = ammo.text
+            append.ct = ct.currentValue
+        }else if(itemType.currentIndex === 3){
+            append.protection = protection.value
+            append.enc = enc.value
+            append.armorType = armorType.currentIndex
+        }
+
+        page3.itemList.append(append)
         page3.itemList.sortItems()
 
         itemType.currentIndex = 0
@@ -241,5 +356,20 @@ Dialog {
 
         // Add weight to hero
         hero.addWeight(itemWeight.realValue, itemWhere.currentValue)
+
+
+        if(payBox){
+            hero.money -= cost
+        }
+
+        error = false
+    }
+    onRejected: {
+        itemType.currentIndex = 0
+        itemName.clear()
+        itemAmount.value = 1
+        itemWeight.realValue = 1
+        itemPrice.realValue = 0
+        error = false
     }
 }

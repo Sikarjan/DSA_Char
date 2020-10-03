@@ -110,7 +110,7 @@ Page {
             Grid {
                 id: basics
                 columns: 2
-                spacing: 2
+                spacing: 4
 
                 Label {
                     text: qsTr("Name")
@@ -575,6 +575,59 @@ Page {
                     text: qsTr("perplex")
                 }
 
+                // Fear
+                Label {
+                    text: qsTr("Fear")
+                }
+                RadioButton {
+                    id: fear0
+                    width: 22
+                    height: 24
+                    text: qsTr("")
+                    ButtonGroup.group: fearGroup
+                    checked: hero.fear === 0
+                    onToggled: hero.fear = 0
+                }
+                RadioButton {
+                    id: fear1
+                    width: 22
+                    height: 24
+                    text: qsTr("")
+                    ButtonGroup.group: fearGroup
+                    checked: hero.fear === 1
+                    onToggled: hero.fear = 1
+                }
+                RadioButton {
+                    id: fear2
+                    width: 22
+                    height: 24
+                    text: qsTr("")
+                    ButtonGroup.group: fearGroup
+                    checked: hero.fear === 2
+                    onToggled: hero.fear = 2
+                }
+                RadioButton {
+                    id: fear3
+                    width: 22
+                    height: 24
+                    text: qsTr("")
+                    ButtonGroup.group: fearGroup
+                    checked: hero.fear === 3
+                    onToggled: hero.fear = 3
+                }
+                RadioButton {
+                    id: fear4
+                    width: 22
+                    height: 24
+                    text: qsTr("")
+                    ButtonGroup.group: fearGroup
+                    checked: hero.fear === 4
+                    onToggled: hero.fear = 4
+                }
+                Label {
+                    text: qsTr("petrified")
+                }
+
                 // Burden
                 Label {
                     text: qsTr("Encumbrance")
@@ -636,6 +689,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 0
+                    onToggled: hero.pain = 0
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -643,6 +697,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 1
+                    onToggled: hero.pain = 1
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -650,6 +705,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 2
+                    onToggled: hero.pain = 2
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -657,6 +713,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain == 3
+                    onToggled: hero.pain = 3
                     ButtonGroup.group: painGroup
                 }
                 RadioButton {
@@ -664,6 +721,7 @@ Page {
                     width: 22
                     height: 24
                     checked: hero.pain >= 4
+                    onToggled: hero.pain = 4
                     ButtonGroup.group: painGroup
                 }
                 Label {
@@ -869,6 +927,10 @@ Page {
     ButtonGroup {
         id: confusionGroup
     }
+    ButtonGroup {
+        id: fearGroup
+    }
+
     ButtonGroup {
         id: burdenGroup
     }

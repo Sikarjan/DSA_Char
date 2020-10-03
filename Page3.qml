@@ -22,14 +22,55 @@ Page {
             font.pixelSize: fontSizeLarge
         }
 
-        Label {
-            text: qsTr("Total weight: ") + hero.currentLoad.toFixed(3)
-            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+
+        Rectangle {
+            Layout.fillWidth: true
         }
+
+        Column {
+            spacing: 2
+            Label {
+                text: qsTr("Total weight: ") + hero.currentLoad.toFixed(3)
+                Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+            }
+            Label {
+                text: qsTr("Burden by weight: ") + hero.weightBurden
+                Layout.rightMargin: 5
+                Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+            }
+        }
+        Rectangle {
+            Layout.fillWidth: true
+        }
+
         Label {
-            text: qsTr("Burden by weight: ") + hero.weightBurden
-            Layout.rightMargin: 5
-            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+            text: qsTr("Purse")
+            Layout.alignment: Qt.AlignTop
+
+            MouseArea {
+                anchors.fill: parent
+
+                onClicked: {
+                    moneyDialog.open()
+                }
+            }
+        }
+        CharProperty {
+            propertyName: qsTr("Ducats")
+            propValue: Math.floor(hero.money/1000)
+        }
+        CharProperty {
+            propertyName: qsTr("Silver")
+            propValue: Math.floor(hero.money/100).toString().slice(-1)
+        }
+        CharProperty {
+            propertyName: qsTr("Halers")
+            propValue: Math.floor(hero.money/10).toString().slice(-1)
+        }
+        CharProperty {
+            width: 45
+            propertyName: qsTr("Kreutzers")
+            propValue: hero.money.toString().slice(-1)
         }
     }
 
@@ -421,17 +462,19 @@ Page {
 
             if(type === "armor"){
                 var armorType = get(selectedIndex).armorType
-console.log("chekcing for armor")
-                if(armorType%2 === 0){
-                    console.log("changing ini")
-                    if(bagId === 0){
-                        hero.iniMod -= 1
-                        hero.moveMod -= 1
-                    }else{
-                        hero.iniMod += 1
-                        hero.moveMod += 1
-                    }
+                var enc = get(selectedIndex).enc
+                var penalty = armorType%2 === 0 ? 1:0
+
+                if(bagId === 0){
+                    hero.iniMod -= penalty
+                    hero.moveMod -= penalty
+                    hero.burden -= enc
+                }else{
+                    hero.iniMod += penalty
+                    hero.moveMod += penalty
+                    hero.burden += enc
                 }
+
             }
 
             itemList.sortItems()

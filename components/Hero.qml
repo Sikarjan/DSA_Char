@@ -72,6 +72,7 @@ Item {
     property int hSize: 0
     property int hWeight: 0
     property string avatar: ""
+    property int money: 0
 
     property int stateModAll: confusion+pain+burden+paralysis+rapture+stupor+fear
     property int stateModMove: burden+pain+paralysis*0.25*(8+moveMod+moveRaceMod)
@@ -119,6 +120,7 @@ Item {
         property alias hSize: hero.hSize
         property alias hWeight: hero.hWeight
         property alias avatar: hero.avatar
+        property alias money: hero.money
 
         property alias currentLoad: hero.currentLoad
         property alias weightBurden: hero.weightBurden
@@ -144,7 +146,9 @@ Item {
     }
 
     onCurrentLoadChanged: {
-        if(currentLoad > maxLoad){
+        // Armor weight does not count here
+        var wornArmor = armorWeight()
+        if((currentLoad-wornArmor) > maxLoad){
             var extraFill = currentLoad - maxLoad
             var extraBurden = Math.floor(extraFill/4)+1
 
@@ -154,6 +158,17 @@ Item {
             burden -= weightBurden
             weightBurden = 0
         }
+    }
+
+    function armorWeight(){
+        var weight = 0
+        for(var i = 0; i<page3.itemList.count;i++){
+            var mItem = page3.itemList.get(i)
+            if(mItem.type === "armor" && mItem.whereId === 0){
+                weight += mItem.weight*mItem.amount
+            }
+        }
+        return weight
     }
 
     function getAttr(mAttr, cat=0, enc=0, par=0){ // cat 0=text, 1=Attr values, 2=For Talent, 3=For Spell, 4=All mods     enc 0=No, 1=Yes     par  0=No, 1=Yes
@@ -201,7 +216,7 @@ Item {
     }
 
     function getMainCtAttrValue(pAttr){
-        if(pAttr.length < 3){
+        if(pAttr && pAttr.length < 3){
             return getAttr(pAttr,1)
         }
 
@@ -546,9 +561,11 @@ Item {
                             "protection": mItem.pro,
                             "armorType": mItem.armorType
                     })
+
                     if(mItem.armorType%2 === 0 && whereId === 0){
                         hero.iniMod -= 1
                         hero.moveMod -= 1
+                        hero.burden += mItem.enc
                     }
                 } else {
                     page3.itemList.append({
@@ -567,6 +584,11 @@ Item {
         }
 
         page3.itemList.sortItems()
+
+        // get purse
+        var purse = data.belongings.purse
+        var money = purse.d+purse.s+purse.h+purse+k
+        hero.money = Number(money)
     }
 
     function addBag(item){

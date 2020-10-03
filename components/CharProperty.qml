@@ -1,8 +1,8 @@
 import QtQuick 2.0
 
 Item {
-    width: height
-    height: 30
+    width: 40
+    height: 36
 
     property string propertyName: ""
     property int propValue: 0
@@ -11,21 +11,21 @@ Item {
         width: parent.width
         height: parent.height
         border.color: "black"
-        border.width: 2
+        border.width: 1
 
         Column {
             anchors.fill: parent
-            spacing: 2
-            x: 3
+            anchors.margins: 3
 
             Text {
                 text: propertyName
-                font.pixelSize: fontSizeSmall
+                font.pixelSize: fontSizeRegular
             }
             Text {
                 width: parent.width -2*x
                 text: propValue
                 horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: fontSizeMedium
             }
         }
     }
