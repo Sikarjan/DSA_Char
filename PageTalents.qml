@@ -210,8 +210,6 @@ Page {
             Component.onCompleted: setAttrText("out")
 
             function setAttrText(state) {
-                var attrTest = check.split(",")
-
                 if(state === "in"){
                     skillCheck.text = hero.getAttr(check, 1)
                 }else{

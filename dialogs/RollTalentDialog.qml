@@ -11,7 +11,7 @@ Dialog {
     standardButtons: Dialog.Ok
 
     property string tal: ""
-    property var talent: page2.skillList.get(0)
+    property var talent: pageTalents.skillList.get(0)
     property int labelWidth: 130
 
     onVisibleChanged: {
@@ -19,7 +19,7 @@ Dialog {
             return
         }
 
-        talent = page2.skillList.get(page2.activeSkill)
+        talent = pageTalents.skillList.get(pageTalents.activeSkill)
         tal = talent.name
 
         talCheck.text = hero.getAttr(talent.check)

@@ -42,13 +42,13 @@ ApplicationWindow {
 
     Component.onCompleted: {
         if(bagListStore){
-            page3.bagList.clear()
+            pageBelongings.bagList.clear()
 
             var bagStore = JSON.parse(bagListStore)
             var bagIdHigh = 0
 
             for(var i=0;i<bagStore.length; i++){
-                page3.bagList.append(bagStore[i])
+                pageBelongings.bagList.append(bagStore[i])
                 if(i>0){
                     hero.addItemWhereMenu(bagStore[i].bagName, bagStore[i].bagId)
                     if(bagStore[i].bagId>bagIdHigh){
@@ -56,9 +56,9 @@ ApplicationWindow {
                     }
                 }
             }
-            page3.bagList.nextId = bagIdHigh+1
+            pageBelongings.bagList.nextId = bagIdHigh+1
         }else{
-            page3.bagList.append({
+            pageBelongings.bagList.append({
                    "bagId": 0,
                    "bagName": qsTr("Body"),
                    "size": hero.maxLoad,
@@ -72,10 +72,10 @@ ApplicationWindow {
         }
 
         if(itemListStore){
-            page3.itemList.clear()
+            pageBelongings.itemList.clear()
             var itemStore = JSON.parse(itemListStore)
             for(i=0;i<itemStore.length; i++){
-                page3.itemList.append(itemStore[i])
+                pageBelongings.itemList.append(itemStore[i])
                 if(itemStore[i].type === "armor" && itemStore[i].armorType%2 === 0 && itemStore[i].whereId === 0){
                     hero.moveMod -=1
                     hero.iniMod -= 1
@@ -87,9 +87,9 @@ ApplicationWindow {
             var skillStore = JSON.parse(skillListStore)
             for(i=0;i<skillStore.length;i++){
                 if(skillStore[i].level !== 0 || skillStore[i].mod !== 0 || skillStore[i].comment !== ""){
-                    page2.skillView.setSkill(skillStore[i].tal, "level", skillStore[i].level)
-                    page2.skillView.setSkill(skillStore[i].tal, "mod", skillStore[i].mod)
-                    page2.skillView.setSkill(skillStore[i].tal, "comment", skillStore[i].comment)
+                    pageTalents.skillView.setSkill(skillStore[i].tal, "level", skillStore[i].level)
+                    pageTalents.skillView.setSkill(skillStore[i].tal, "mod", skillStore[i].mod)
+                    pageTalents.skillView.setSkill(skillStore[i].tal, "comment", skillStore[i].comment)
                 }
             }
         }
@@ -105,20 +105,20 @@ ApplicationWindow {
 
     onClosing: {
         var bagStore = []
-        for(var i=0;i<page3.bagList.count;i++){
-            bagStore.push(page3.bagList.get(i))
+        for(var i=0;i<pageBelongings.bagList.count;i++){
+            bagStore.push(pageBelongings.bagList.get(i))
         }
         bagListStore = JSON.stringify(bagStore)
 
         var itemStore = []
-        for(i=0;i<page3.itemList.count;i++){
-            itemStore.push(page3.itemList.get(i))
+        for(i=0;i<pageBelongings.itemList.count;i++){
+            itemStore.push(pageBelongings.itemList.get(i))
         }
         itemListStore = JSON.stringify(itemStore)
 
         var skillStore = []
-        for(i=0;i<page2.skillList.count;i++){
-            skillStore.push(page2.skillList.get(i))
+        for(i=0;i<pageTalents.skillList.count;i++){
+            skillStore.push(pageTalents.skillList.get(i))
         }
         skillListStore = JSON.stringify(skillStore)
 
@@ -240,19 +240,22 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1 {
-            id: page1
+        PageHero {
+            id: pageHero
         }
 
-        Page2 {
-            id: page2
+        PageTalents {
+            id: pageTalents
         }
         PageCombat {
             id: pageCombat
         }
+        PageMagic {
+            id: pageMagic
+        }
 
-        Page3 {
-            id: page3
+        PageBelongings {
+            id: pageBelongings
         }
 
         PageNotes {
@@ -276,6 +279,9 @@ ApplicationWindow {
         }
         TabButton {
             text: qsTr("Combat")
+        }
+        TabButton {
+            text: qsTr("Magic")
         }
         TabButton {
             text: qsTr("Belongings")

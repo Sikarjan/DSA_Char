@@ -109,7 +109,7 @@ Page {
                 width: parent.width
                 height: contentHeight
 
-                model: page3.itemList
+                model: pageBelongings.itemList
                 delegate: ccDelegate
                 header: ccHead
             }
@@ -122,7 +122,7 @@ Page {
                 width: parent.width
                 height: contentHeight
 
-                model: page3.itemList
+                model: pageBelongings.itemList
                 delegate: rcDelegate
                 header:  rcHead
             }
@@ -136,7 +136,7 @@ Page {
                 width: parent.width
                 height: contentHeight
 
-                model: page3.itemList
+                model: pageBelongings.itemList
                 delegate: armorDelegate
                 header:  armorHead
             }

@@ -144,7 +144,7 @@ Dialog {
                 id: itemWhere
                 textRole: "bagName"
                 valueRole: "bagId"
-                model: page3.bagList
+                model: pageBelongings.bagList
                 width: parent.width - 110
                 currentIndex: 0
             }
@@ -345,8 +345,8 @@ Dialog {
             append.armorType = armorType.currentIndex
         }
 
-        page3.itemList.append(append)
-        page3.itemList.sortItems()
+        pageBelongings.itemList.append(append)
+        pageBelongings.itemList.sortItems()
 
         itemType.currentIndex = 0
         itemName.clear()

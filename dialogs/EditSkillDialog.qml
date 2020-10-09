@@ -10,14 +10,14 @@ Dialog {
 
     standardButtons: Dialog.Ok | Dialog.Cancel
 
-    property var talent: page2.skillList.get(0)
+    property var talent: pageTalents.skillList.get(0)
 
     onVisibleChanged: {
         if(!visible){
             return
         }
 
-        talent = page2.skillList.get(page2.activeSkill)
+        talent = pageTalents.skillList.get(pageTalents.activeSkill)
     }
 
     Column {
@@ -64,8 +64,8 @@ Dialog {
         }
     }
     onAccepted: {
-        page2.skillList.setProperty(page2.activeSkill, "level", skillRate.value)
-        page2.skillList.setProperty(page2.activeSkill, "mod", skillMod.value)
-        page2.skillList.setProperty(page2.activeSkill, "comment", skillComment.text)
+        pageTalents.skillList.setProperty(pageTalents.activeSkill, "level", skillRate.value)
+        pageTalents.skillList.setProperty(pageTalents.activeSkill, "mod", skillMod.value)
+        pageTalents.skillList.setProperty(pageTalents.activeSkill, "comment", skillComment.text)
     }
 }
