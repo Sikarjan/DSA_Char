@@ -1,5 +1,5 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.3
 import Qt.labs.settings 1.1
 import "components"
@@ -41,6 +41,10 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
+        if(hero.keMod !=-1 || hero.aeMod != -1){
+            hero.addPageMagic()
+        }
+
         if(bagListStore){
             pageBelongings.bagList.clear()
 
@@ -152,10 +156,6 @@ ApplicationWindow {
 
         Menu {
             title: qsTr("&Hero")
-            Action{
-                text: qsTr("&Import")
-                onTriggered: importHeroDialog.visible = true
-            }
             Action {
                 text: qsTr("&Edit Attributes")
                 onTriggered: editAttributesDialog.visible = true
@@ -165,13 +165,19 @@ ApplicationWindow {
                 onTriggered: getMainAttrDialog.visible = true
                 enabled: hero.aeMod >= 0 || hero.keMod >= 0
             }
-
             Action {
                 text: qsTr("&Add Avatar")
                 onTriggered: addAvatarDialog.visible = true
+            }            
+            MenuSeparator{}
+            Action{
+                text: qsTr("&Import")
+                onTriggered: importHeroDialog.visible = true
             }
-
-
+            Action {
+                text: qsTr("&Clear")
+                onTriggered: hero.resetHero()
+            }
         }
         Menu {
             title: qsTr("&Items")
@@ -250,10 +256,6 @@ ApplicationWindow {
         PageCombat {
             id: pageCombat
         }
-        PageMagic {
-            id: pageMagic
-        }
-
         PageBelongings {
             id: pageBelongings
         }
@@ -281,12 +283,22 @@ ApplicationWindow {
             text: qsTr("Combat")
         }
         TabButton {
-            text: qsTr("Magic")
-        }
-        TabButton {
             text: qsTr("Belongings")
         }TabButton {
             text: qsTr("Notes")
+        }
+    }
+    Component {
+        id: newTabButton
+        TabButton {
+            id: magicTap
+            text: qsTr("Magic")
+        }
+    }
+    Component {
+        id: newPage
+        PageMagic {
+            id: pageMagic
         }
     }
 }

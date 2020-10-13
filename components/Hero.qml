@@ -1,5 +1,6 @@
-import QtQuick 2.0
+import QtQuick 2.15
 import Qt.labs.settings 1.1
+import "../"
 
 Item {
     id: hero
@@ -327,6 +328,44 @@ Item {
         hero.rapture = 0
         hero.stupor = 0
         hero.fear = 0
+        hero.hName = ""
+        hero.profession = ""
+        hero.hSize = ""
+        hero.hWeight = ""
+        hero.raceId = 0
+        hero.avatar = ""
+        hero.mu = 8
+        hero.kl = 8
+        hero.intu = 8
+        hero.ge = 8
+        hero.ch = 8
+        hero.ff = 8
+        hero.kk = 8
+        hero.ko = 8
+        for(var i=0;i<pageTalents.skillList.count;i++){
+            pageTalents.skillList.setProperty(i,"level",0)
+        }
+        pageBelongings.itemList.clear()
+        pageBelongings.bagList.clear()
+        pageBelongings.bagList.append({
+               "bagId": 0,
+               "bagName": qsTr("Body"),
+               "size": hero.maxLoad,
+               "type": "body",
+               "weight": 0,
+               "price": 0,
+               "load": 0,
+               "where": "-",
+               "dropped": false
+        })
+        pageBelongings.bagList.nextId = 1
+        editItemWhereMenu()
+        currentLoad = 0
+
+        if(swipeView.count === 6){
+            swipeView.removeItem(3)
+            tabBar.removeItem(3)
+        }
     }
 
     function readHero(data){
@@ -392,6 +431,7 @@ Item {
 
         if(getMainAttr) {
             getMainAttrDialog.visible = true
+            addPageMagic()
         }
 
         // Movement
@@ -417,10 +457,6 @@ Item {
         // Loading Skills
         var skills = data.talents
 
-        // Resetting data
-        for(i=0;i<pageTalents.skillList.count;i++){
-            pageTalents.skillList.setProperty(i,"level",0)
-        }
         for(var sKey in skills){
             var skill = skills[sKey]
 
@@ -439,22 +475,6 @@ Item {
         }
 
         var belongings = data.belongings.items
-        pageBelongings.itemList.clear()
-        pageBelongings.bagList.clear()
-        pageBelongings.bagList.append({
-               "bagId": 0,
-               "bagName": qsTr("Body"),
-               "size": hero.maxLoad,
-               "type": "body",
-               "weight": 0,
-               "price": 0,
-               "load": 0,
-               "where": "-",
-               "dropped": false
-        })
-        pageBelongings.bagList.nextId = 1
-        editItemWhereMenu()
-        currentLoad = 0
 
         // First run to find bags
         var bags = ["@"]
@@ -587,7 +607,7 @@ Item {
 
         // get purse
         var purse = data.belongings.purse
-        var money = purse.d+purse.s+purse.h+purse+k
+        var money = purse.d+purse.s+purse.h+purse.k
         hero.money = Number(money)
     }
 
@@ -653,5 +673,12 @@ Item {
         if(bagId > 0){
             pageBelongings.bagList.setProperty(bagId, "load", pageBelongings.bagList.get(bagId).load+weight)
         }
+    }
+
+    function addPageMagic(){
+        var tab = newTabButton.createObject(tabBar)
+        var page = newPage.createObject(swipeView)
+        tabBar.insertItem(3, tab)
+        swipeView.insertItem(3, page)
     }
 }

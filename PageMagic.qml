@@ -7,7 +7,7 @@ import Qt.labs.qmlmodels 1.0
 import "components"
 
 Page {
-    id: page
+    id: pageMagic
     width: 600
     height: 400
 
