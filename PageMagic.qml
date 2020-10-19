@@ -1,5 +1,4 @@
 import QtQuick 2.15
-import QtQuick.Controls 1.4
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
 import Qt.labs.qmlmodels 1.0
@@ -100,89 +99,116 @@ Page {
         }
     }
 
-    Component.onCompleted: {
-        spellModel.append({
-                             "spell": "Test spell",
-                             "check": "in/kl/kk",
-                             "sr": 4,
-                             "cost": "5 AsP",
-                             "time": 4,
-                             "range": "selbst",
-                             "duration": "QSx3",
-                             "property": "Heilung",
-                             "impr": "B",
-                             "effect": "Paralys Stufe 1"
-        })
-    }
-
     Column {
         id:content
         anchors.fill: parent
         anchors.margins: 5
         spacing: 5
+        clip: true
 
-        TableView {
+        ListView {
             id: spellView
             width: parent.width
+            height: contentHeight
             model: spellModel
 
-           TableViewColumn { role: "spell"; title: qsTr("Spell"); delegate: linkCell}
-           TableViewColumn { role: "check"; title: qsTr("Check"); delegate: checkCell }
-           TableViewColumn { role: "sr"; title: qsTr("SR"); delegate: textCell}
-           TableViewColumn { role: "cost"; title: qsTr("Cost"); delegate: textCell}
-           TableViewColumn { role: "time"; title: qsTr("Casting Time"); delegate: textCell}
-           TableViewColumn { role: "range"; title: qsTr("Range"); delegate: textCell}
-           TableViewColumn { role: "duration"; title: qsTr("Duration"); delegate: textCell}
-           TableViewColumn { role: "proptery"; title: qsTr("Property"); delegate: textCell}
-           TableViewColumn { role: "impr"; title: qsTr("Impr."); delegate: textCell }
-           TableViewColumn { role: "effect"; title: qsTr("Effect"); delegate: textCell }
-
-        }
-    }
-
-    Component {
-        id: textCell
-        Label {
-            text: styleData.value
-        }
-    }
-    Component {
-        id: linkCell
-        Label {
-            text: styleData.value
-        }
-    }
-
-    Component {
-        id: checkCell
-        Rectangle {
-            implicitWidth: childrenRect.width
-            implicitHeight: childrenRect.height
-            Label {
-                id: check
-                text: hero.getAttr(styleData.value)
-            }
-            MouseArea {
-                anchors.fill: parent
-
-                onEntered: check.text = hero.getAttr(styleData.value,3)
-                onExited: check.text = hero.getAttr(styleData.value)
-            }
+            header: spellHeader
+            delegate: spellDelegate
         }
     }
 
     ListModel {
         id: spellModel
-/*
-        TableModelColumn { display: "spell"}
-        TableModelColumn { display: "check"}
-        TableModelColumn { display: "sr"}
-        TableModelColumn { display: "cost"}
-        TableModelColumn { display: "time"}
-        TableModelColumn { display: "range"}
-        TableModelColumn { display: "duration"}
-        TableModelColumn { display: "proptery"}
-        TableModelColumn { display: "impr"}
-        TableModelColumn { display: "effect"}*/
+
+        Component.onCompleted: {
+            spellModel.append({
+                                 "spell": "Test spell",
+                                 "check": "in/kl/kk",
+                                 "sr": 4,
+                                 "cost": "5 AsP",
+                                 "time": 4,
+                                 "range": "selbst",
+                                 "duration": "QSx3",
+                                 "prop": "Heilung",
+                                 "impr": "B",
+                                 "effect": "Paralys Stufe 1"
+            })
+            spellModel.append({
+                                 "spell": "Test spell 2",
+                                 "check": "in/ch/kk",
+                                 "sr": 6,
+                                 "cost": "2 AsP",
+                                 "time": 4,
+                                 "range": "selbst",
+                                 "duration": "QSx3",
+                                 "prop": "Heilung",
+                                 "impr": "D",
+                                 "effect": "Unsichtbar"
+            })
+        }
+    }
+
+    Component {
+        id: spellHeader
+
+        RowLayout {
+            width: parent.width
+            spacing: 3
+
+            Layout.bottomMargin: 5
+
+            Label { text: qsTr("Spell");    width: 120 }
+            Label { text: qsTr("Check");    width: 90}
+            Label { text: qsTr("SR");       width: 40}
+            Label { text: qsTr("Cost");     width: 60}
+            Label { text: qsTr("Casting Time");     width: 60}
+            Label { text: qsTr("Range");    width: 80}
+            Label { text: qsTr("Duration"); width: 60}
+            Label { text: qsTr("Property"); width: 90}
+            Label { text: qsTr("Impr.");    width: 40 }
+            Label { text: qsTr("Effect");   Layout.fillWidth: true }
+        }
+    }
+
+    Component {
+        id:spellDelegate
+        RowLayout {
+            spacing: 0
+            width: parent.width
+            TCell {
+                text: spell
+                width: 120
+                horizontalAlignment: Text.AlignLeft
+
+                MouseArea {
+                    anchors.fill: parent
+
+                    hoverEnabled: true
+
+                    onEntered: {spellCheck.text = hero.getAttr(check, 3)}
+                    onExited: {spellCheck.text = hero.getAttr(check, 0)}
+                    onClicked: {
+                        activeSpell = index
+                        spellContext.popup()
+                    }
+                }
+            }
+            TCell { id: spellCheck; width: 90; highlight: true }
+            TCell { text: sr;       width: 40 }
+            TCell { text: cost;     width: 60; highlight: true }
+            TCell { text: time;     width: 60 }
+            TCell { text: range;    width: 80; highlight: true }
+            TCell { text: duration; width: 60 }
+            TCell { text: prop;     width: 90; highlight: true }
+            TCell { text: impr;     width: 40 }
+            TCell {
+                text: effect
+                Layout.fillWidth: true
+                highlight: true
+                horizontalAlignment: Text.AlignLeft
+            }
+
+            Component.onCompleted: {check.text = hero.getAttr(check, 0)}
+        }
     }
 }

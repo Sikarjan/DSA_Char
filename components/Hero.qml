@@ -193,6 +193,7 @@ Item {
             ko: hero.koText,
             kk: hero.kkText
         }
+
         var attrs = mAttr.split("/")
         var res = ""
 
@@ -342,6 +343,9 @@ Item {
         hero.ff = 8
         hero.kk = 8
         hero.ko = 8
+        pageHero.advantages.text = ""
+        pageHero.disadvantages.text = ""
+        pageHero.abilities.text = ""
         for(var i=0;i<pageTalents.skillList.count;i++){
             pageTalents.skillList.setProperty(i,"level",0)
         }
@@ -676,7 +680,8 @@ Item {
     }
 
     function addPageMagic(){
-        var tab = newTabButton.createObject(tabBar)
+        var tabText = hero.aeMod != -1? qsTr("Spells"):qsTr("Liturgical Chants")
+        var tab = newTabButton.createObject(tabBar, {text: tabText})
         var page = newPage.createObject(swipeView)
         tabBar.insertItem(3, tab)
         swipeView.insertItem(3, page)

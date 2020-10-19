@@ -66,7 +66,7 @@ Dialog {
         Row {
             Label {
                 width: firstLabel.width
-                text: qsTr("PA mod")
+                text: qsTr("HP mod")
             }
             SpinBox {
                 id: hpMod

@@ -149,15 +149,15 @@ Page {
                 id: skillName
                 text: name
                 width: 170
-                font.pointSize: Qt.application.font.pixelSize
+                font.pointSize: fontSizeRegular
 
                 MouseArea {
                     anchors.fill: parent
 
                     hoverEnabled: true
 
-                    onEntered: setAttrText("in")
-                    onExited: setAttrText("out")
+                    onEntered: {skillCheck.text = hero.getAttr(check, 1)}
+                    onExited: {skillCheck.text = hero.getAttr(check, 0)}
                     onClicked: {
                         activeSkill = index
                         skillContext.popup()
@@ -207,15 +207,7 @@ Page {
                 Layout.fillWidth: true
             }
 
-            Component.onCompleted: setAttrText("out")
-
-            function setAttrText(state) {
-                if(state === "in"){
-                    skillCheck.text = hero.getAttr(check, 1)
-                }else{
-                    skillCheck.text = hero.getAttr(check, 0)
-                }
-            }
+            Component.onCompleted: {skillCheck.text = hero.getAttr(check, 0)}
         }
 
         ScrollBar.vertical: ScrollBar {
