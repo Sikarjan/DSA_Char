@@ -166,11 +166,6 @@ ApplicationWindow {
                 enabled: hero.aeMod >= 0 || hero.keMod >= 0
             }
             Action {
-                text: qsTr("Add &Spell")
-                onTriggered: addSpellDialog.visible = true
-                enabled: hero.aeMod >= 0
-            }
-            Action {
                 text: qsTr("&Add Avatar")
                 onTriggered: addAvatarDialog.visible = true
             }            
@@ -242,10 +237,6 @@ ApplicationWindow {
         id: getMainAttrDialog
         anchors.centerIn: parent
     }
-    AddSpellDialog {
-        id:addSpellDialog
-        anchors.centerIn: parent
-    }
 
     MoneyDialog {
         id: moneyDialog
@@ -259,7 +250,6 @@ ApplicationWindow {
         PageHero {
             id: pageHero
         }
-
         PageTalents {
             id: pageTalents
         }
@@ -269,7 +259,6 @@ ApplicationWindow {
         PageBelongings {
             id: pageBelongings
         }
-
         PageNotes {
             id: pageNotes
         }

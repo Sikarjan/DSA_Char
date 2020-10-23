@@ -1,14 +1,20 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.3
-import Qt.labs.qmlmodels 1.0
+import QtQuick.Dialogs 1.3
+import Qt.labs.settings 1.1
 
 import "components"
+import "dialogs"
 
 Page {
     id: pageMagic
     width: 600
     height: 400
+
+    property alias spellModel: spellModel
+    property int activeSpell: -1
+    property string spellListStore: ""
 
     header: RowLayout {
         Label {
@@ -99,12 +105,36 @@ Page {
         }
     }
 
+    Settings {
+        property alias spellListStore: pageMagic.spellListStore
+    }
+
+    Component.onCompleted: {
+        if(spellListStore){
+            var spellStore = JSON.parse(spellListStore)
+            spellModel.clear()
+            for(var i=0;i<spellStore.length;i++){
+                spellModel.append(spellStore[i])
+            }
+        }
+    }
+
+    AddSpellDialog {
+        id:addSpellDialog
+        anchors.centerIn: parent
+    }
+
     Column {
         id:content
         anchors.fill: parent
         anchors.margins: 5
         spacing: 5
         clip: true
+
+        Button {
+            text: qsTr("Add Spell")
+            onClicked: addSpellDialog.visible = true
+        }
 
         ListView {
             id: spellView
@@ -120,38 +150,28 @@ Page {
     ListModel {
         id: spellModel
 
-        Component.onCompleted: {
-            spellModel.append({
-                                 "spell": "Test spell",
-                                 "check": "in/kl/kk",
-                                 "sr": 4,
-                                 "cost": "5 AsP",
-                                 "time": 4,
-                                 "range": "selbst",
-                                 "duration": "QSx3",
-                                 "prop": "Heilung",
-                                 "impr": "B",
-                                 "effect": "Paralys Stufe 1"
-            })
-            spellModel.append({
-                                 "spell": "Test spell 2",
-                                 "check": "in/ch/kk",
-                                 "sr": 6,
-                                 "cost": "2 AsP",
-                                 "time": 4,
-                                 "range": "selbst",
-                                 "duration": "QSx3",
-                                 "prop": "Heilung",
-                                 "impr": "D",
-                                 "effect": "Unsichtbar"
-            })
+        function sortSpells() {
+            let indexes = [...Array(count).keys()]
+            indexes.sort((a,b) => compareFunction(get(a), get(b)))
+
+            let sorted = 0
+            while (sorted < indexes.length && sorted === indexes[sorted]) sorted++
+            if (sorted === indexes.length) return
+            for (let i = sorted; i < indexes.length; i++) {
+                move(indexes[i], count - 1, 1)
+                insert(indexes[i], { } )
+            }
+            remove(sorted, indexes.length - sorted)
+        }
+        function compareFunction(a, b){
+            return a.spell.localeCompare(b.spell)
         }
     }
 
     Component {
         id: spellHeader
 
-        RowLayout {
+        Row {
             width: parent.width
             spacing: 3
 
@@ -166,7 +186,7 @@ Page {
             Label { text: qsTr("Duration"); width: 60}
             Label { text: qsTr("Property"); width: 90}
             Label { text: qsTr("Impr.");    width: 40 }
-            Label { text: qsTr("Effect");   Layout.fillWidth: true }
+            Label { text: qsTr("Effect") }
         }
     }
 
@@ -208,7 +228,20 @@ Page {
                 horizontalAlignment: Text.AlignLeft
             }
 
-            Component.onCompleted: {check.text = hero.getAttr(check, 0)}
+            Component.onCompleted: {
+                check.text = hero.getAttr(check, 0)
+            }
+        }
+    }
+    Menu {
+        id: spellContext
+        MenuItem {
+            text: qsTr("Edit")
+            onTriggered: addSpellDialog.visible = true
+        }
+        MenuItem {
+            text: qsTr("Delete")
+            onTriggered: spellModel.remove(activeSpell)
         }
     }
 }
