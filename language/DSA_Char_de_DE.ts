@@ -243,6 +243,119 @@
     </message>
 </context>
 <context>
+    <name>AddSpellDialog</name>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="9"/>
+        <source>Add Spell</source>
+        <translation>Zauber hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="44"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="59"/>
+        <source>Check</source>
+        <translation>Probe</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="116"/>
+        <source>Spell Rate</source>
+        <translation>Fertigkeitswert</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="129"/>
+        <source>Cost</source>
+        <translation>Kosten</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="142"/>
+        <source>Casting Time</source>
+        <translation>Zauberdauer</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="155"/>
+        <source>Range</source>
+        <translation>Reichweite</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="168"/>
+        <source>Duration</source>
+        <translation>Wirkungsdauer</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="181"/>
+        <source>Property</source>
+        <translation>Merkmal</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="189"/>
+        <source>Anti-Magic</source>
+        <translation>Antimagie</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="190"/>
+        <source>Clairvoyance</source>
+        <translation>Hellsicht</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="191"/>
+        <source>Demonic</source>
+        <translation>Demonisch</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="192"/>
+        <source>Elemental</source>
+        <translation>Elementar</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="193"/>
+        <source>Healing</source>
+        <translation>Heilung</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="194"/>
+        <source>Illusion</source>
+        <translation>Illusion</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="195"/>
+        <source>Influence</source>
+        <translation>Einfluss</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="196"/>
+        <source>Object</source>
+        <translation>Objekt</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="197"/>
+        <source>Spheres</source>
+        <translation>Sphären</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="198"/>
+        <source>Telekinesis</source>
+        <translation>Telekinese</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="199"/>
+        <source>Transformation</source>
+        <translation>Verwandlung</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="207"/>
+        <source>Improve</source>
+        <translation>Steigerungsfaktor</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="220"/>
+        <source>Effect</source>
+        <translation>Wirkung</translation>
+    </message>
+</context>
+<context>
     <name>CharTalent</name>
     <message>
         <source>roll</source>
@@ -317,9 +430,13 @@
     </message>
     <message>
         <location filename="../dialogs/EditCombatSkillDialog.qml" line="57"/>
-        <location filename="../dialogs/EditCombatSkillDialog.qml" line="69"/>
         <source>PA mod</source>
         <translation>PA mod</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/EditCombatSkillDialog.qml" line="69"/>
+        <source>HP mod</source>
+        <translation>LP mod</translation>
     </message>
     <message>
         <location filename="../dialogs/EditCombatSkillDialog.qml" line="81"/>
@@ -394,7 +511,7 @@
     <message>
         <location filename="../components/Globals.js" line="2"/>
         <source>Elves</source>
-        <translation>ELven</translation>
+        <translation type="unfinished">Elven</translation>
     </message>
     <message>
         <location filename="../components/Globals.js" line="2"/>
@@ -430,7 +547,7 @@
 <context>
     <name>Hero</name>
     <message>
-        <location filename="../components/Hero.qml" line="6"/>
+        <location filename="../components/Hero.qml" line="7"/>
         <source>COU</source>
         <translation>MU</translation>
     </message>
@@ -440,64 +557,74 @@
         <translation>KL</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="12"/>
+        <location filename="../components/Hero.qml" line="11"/>
         <source>CHA</source>
         <translation>CH</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="15"/>
+        <location filename="../components/Hero.qml" line="13"/>
         <source>INT</source>
         <translation>IN</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="18"/>
+        <location filename="../components/Hero.qml" line="15"/>
         <source>DEX</source>
         <translation>FF</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="21"/>
+        <location filename="../components/Hero.qml" line="17"/>
         <source>AGE</source>
         <translation>GE</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="24"/>
+        <location filename="../components/Hero.qml" line="19"/>
         <source>STR</source>
         <translation>KK</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="27"/>
+        <location filename="../components/Hero.qml" line="21"/>
         <source>CON</source>
         <translation>KO</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="288"/>
+        <location filename="../components/Hero.qml" line="276"/>
         <source>Magical success</source>
         <translation>Magischer Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="290"/>
+        <location filename="../components/Hero.qml" line="278"/>
         <source>Perfect success</source>
         <translation>Perfekter Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="304"/>
+        <location filename="../components/Hero.qml" line="292"/>
         <source>Critical error</source>
         <translation>Kritischer Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="306"/>
+        <location filename="../components/Hero.qml" line="294"/>
         <source>Catastrophic error</source>
         <translation>Katstrophaler Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="557"/>
+        <location filename="../components/Hero.qml" line="567"/>
         <source>Bolts</source>
         <translation>Bolzen</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="559"/>
+        <location filename="../components/Hero.qml" line="569"/>
         <source>Arrows</source>
         <translation>Pfeile</translation>
+    </message>
+    <message>
+        <location filename="../components/Hero.qml" line="693"/>
+        <source>Spells</source>
+        <translation>Zauber</translation>
+    </message>
+    <message>
+        <location filename="../components/Hero.qml" line="693"/>
+        <source>Liturgical Chants</source>
+        <translation>Liturgien</translation>
     </message>
     <message>
         <source>You succeeded with a quality %1.</source>
@@ -505,24 +632,24 @@
         <translation type="vanished">Du hast die Probe mit einer Qualität %1 bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="325"/>
-        <location filename="../components/Hero.qml" line="327"/>
+        <location filename="../components/Hero.qml" line="313"/>
+        <location filename="../components/Hero.qml" line="315"/>
         <source>Your roll was: </source>
         <translation>Dein Wurf war: </translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="325"/>
+        <location filename="../components/Hero.qml" line="313"/>
         <source>You succeeded with a quality %1 (%2).</source>
         <translation>Du hast die Probe mit einer Qualität %1 (%2) bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="327"/>
+        <location filename="../components/Hero.qml" line="315"/>
         <source>You failed</source>
         <translation>Fehlschlag</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="470"/>
-        <location filename="../components/Hero.qml" line="619"/>
+        <location filename="../components/Hero.qml" line="365"/>
+        <location filename="../components/Hero.qml" line="629"/>
         <source>Body</source>
         <translation>Körper</translation>
     </message>
@@ -548,164 +675,128 @@
 <context>
     <name>Page1</name>
     <message>
-        <location filename="../Page1.qml" line="14"/>
-        <location filename="../Page1.qml" line="24"/>
         <source>Hero</source>
-        <translation>Held</translation>
+        <translation type="vanished">Held</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="116"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation type="vanished">Name</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="122"/>
         <source>Race</source>
-        <translation>Rasse</translation>
+        <translation type="vanished">Rasse</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="128"/>
         <source>Profession</source>
-        <translation>Profession</translation>
+        <translation type="vanished">Profession</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="134"/>
         <source>Size</source>
-        <translation>Größe</translation>
+        <translation type="vanished">Größe</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="137"/>
         <source>finger</source>
-        <translation>Finger</translation>
+        <translation type="vanished">Finger</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="140"/>
         <source>Weigh</source>
-        <translation>Gewicht</translation>
+        <translation type="vanished">Gewicht</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="143"/>
         <source>stone</source>
-        <translation>Stein</translation>
+        <translation type="vanished">Stein</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="171"/>
         <source>Points</source>
-        <translation>Abgeleitete Werte</translation>
+        <translation type="vanished">Abgeleitete Werte</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="176"/>
-        <location filename="../Page1.qml" line="362"/>
         <source>Stat</source>
-        <translation>Wert</translation>
+        <translation type="vanished">Wert</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="181"/>
-        <location filename="../Page1.qml" line="203"/>
-        <location filename="../Page1.qml" line="359"/>
         <source>Mod</source>
-        <translation>Mod</translation>
+        <translation type="vanished">Mod</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="185"/>
         <source>Bought</source>
-        <translation>Gekauft</translation>
+        <translation type="vanished">Gekauft</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="189"/>
         <source>Max</source>
-        <translation>Max</translation>
+        <translation type="vanished">Max</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="199"/>
         <source>Life Points</source>
-        <translation>Lebenspunkte</translation>
+        <translation type="vanished">Lebenspunkte</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="240"/>
         <source>Arcane Energie</source>
-        <translation>Astralenergie</translation>
+        <translation type="vanished">Astralenergie</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="244"/>
         <source>20 for Spellcaster + Primary Attribute</source>
-        <translation>20 für Zauberer + Leiteigenschaft</translation>
+        <translation type="vanished">20 für Zauberer + Leiteigenschaft</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="280"/>
         <source>Karma Points</source>
-        <translation>Karmalenergie</translation>
+        <translation type="vanished">Karmalenergie</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="284"/>
         <source>20 for Blessed One + Primary Attribute</source>
-        <translation>20 für Geweiht + Leiteigenschaft</translation>
+        <translation type="vanished">20 für Geweiht + Leiteigenschaft</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="317"/>
         <source>Fate Points</source>
-        <translation>Schicksalspunkte</translation>
+        <translation type="vanished">Schicksalspunkte</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="351"/>
         <source>Properties</source>
-        <translation>Merkmale</translation>
+        <translation type="vanished">Merkmale</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="356"/>
         <source>Base</source>
-        <translation>Basis</translation>
+        <translation type="vanished">Basis</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="370"/>
         <source>Spirit</source>
-        <translation>Seelenkraft</translation>
+        <translation type="vanished">Seelenkraft</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="374"/>
-        <location filename="../Page1.qml" line="400"/>
         <source>Race Mod</source>
-        <translation>Rassenmod.</translation>
+        <translation type="vanished">Rassenmod.</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="396"/>
         <source>Toughness</source>
-        <translation>Zähigkeit</translation>
+        <translation type="vanished">Zähigkeit</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="422"/>
         <source>Dodge</source>
-        <translation>Ausweichen</translation>
+        <translation type="vanished">Ausweichen</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="448"/>
         <source>Initiative</source>
-        <translation>Initiative</translation>
+        <translation type="vanished">Initiative</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="474"/>
         <source>Movement</source>
-        <translation>Bewegung</translation>
+        <translation type="vanished">Bewegung</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="478"/>
         <source>Race Mod +8</source>
-        <translation>Rassenmod. +8</translation>
+        <translation type="vanished">Rassenmod. +8</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="504"/>
         <source>Condition</source>
-        <translation>Zustände</translation>
+        <translation type="vanished">Zustände</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="522"/>
         <source>Incapacitated</source>
-        <translation>Handlungsunfähig</translation>
+        <translation type="vanished">Handlungsunfähig</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="527"/>
         <source>Confusion</source>
-        <translation>Verwirrung</translation>
+        <translation type="vanished">Verwirrung</translation>
     </message>
     <message>
         <location filename="../Page1.qml" line="533"/>
@@ -713,89 +804,72 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="575"/>
         <source>perplex</source>
-        <translation>perplex</translation>
+        <translation type="vanished">perplex</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="580"/>
         <source>Encumbrance</source>
-        <translation>Belastung</translation>
+        <translation type="vanished">Belastung</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="627"/>
         <source>hamstrung</source>
-        <translation>handlungsunfähig</translation>
+        <translation type="vanished">handlungsunfähig</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="632"/>
         <source>Pain</source>
-        <translation>Schmerz</translation>
+        <translation type="vanished">Schmerz</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="675"/>
         <source>unconscious</source>
-        <translation>bewusstlos</translation>
+        <translation type="vanished">bewusstlos</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="680"/>
         <source>Paralysis</source>
-        <translation>Paralys</translation>
+        <translation type="vanished">Paralys</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="727"/>
         <source>paralysed</source>
-        <translation>paralysiert</translation>
+        <translation type="vanished">paralysiert</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="732"/>
         <source>Rapture</source>
-        <translation>Verzückung</translation>
+        <translation type="vanished">Verzückung</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="779"/>
         <source>engrossed</source>
-        <translation>entrückt</translation>
+        <translation type="vanished">entrückt</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="784"/>
         <source>Stupor</source>
-        <translation>Benommenheit</translation>
+        <translation type="vanished">Benommenheit</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="831"/>
         <source>sensless</source>
-        <translation>bewusstlos</translation>
+        <translation type="vanished">bewusstlos</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="839"/>
         <source>Advantages</source>
-        <translation>Vorteile</translation>
+        <translation type="vanished">Vorteile</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="844"/>
         <source>Your advantages.</source>
-        <translation>Deine Vorteile.</translation>
+        <translation type="vanished">Deine Vorteile.</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="851"/>
         <source>Disadvantages</source>
-        <translation>Nachteile</translation>
+        <translation type="vanished">Nachteile</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="856"/>
         <source>Your disadvantages.</source>
-        <translation>Deine Nachteile.</translation>
+        <translation type="vanished">Deine Nachteile.</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="863"/>
         <source>Abilities</source>
-        <translation>Sonderfertigkeiten</translation>
+        <translation type="vanished">Sonderfertigkeiten</translation>
     </message>
     <message>
-        <location filename="../Page1.qml" line="868"/>
         <source>Your abilities.</source>
-        <translation>Deine Sonderfertigkeiten.</translation>
+        <translation type="vanished">Deine Sonderfertigkeiten.</translation>
     </message>
 </context>
 <context>
@@ -897,374 +971,300 @@
 <context>
     <name>Page2</name>
     <message>
-        <location filename="../Page2.qml" line="20"/>
         <source>Skills</source>
-        <translation>Talente</translation>
+        <translation type="vanished">Talente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="134"/>
         <source>Check</source>
-        <translation>Probe</translation>
+        <translation type="vanished">Probe</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="135"/>
         <source>ENC</source>
-        <translation>BE</translation>
+        <translation type="vanished">BE</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="136"/>
         <source>SR</source>
-        <translation>FW</translation>
+        <translation type="vanished">FW</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="138"/>
         <source>Mod</source>
-        <translation>Mod</translation>
+        <translation type="vanished">Mod</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="139"/>
         <source>Comment</source>
-        <translation>Anmerkung</translation>
+        <translation type="vanished">Anmerkung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="175"/>
         <source>No</source>
-        <translation>Nein</translation>
+        <translation type="vanished">Nein</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="175"/>
         <source>Yes</source>
-        <translation>Ja</translation>
+        <translation type="vanished">Ja</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="175"/>
         <source>maybe</source>
-        <translation>Evtl</translation>
+        <translation type="vanished">Evtl</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="241"/>
         <source>Edit</source>
-        <translation>Bearbeiten</translation>
+        <translation type="vanished">Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="276"/>
         <source>Physical</source>
-        <translation>Körpertalente</translation>
+        <translation type="vanished">Körpertalente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="276"/>
         <source>Social</source>
-        <translation>Gesellschaftstalente</translation>
+        <translation type="vanished">Gesellschaftstalente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="276"/>
         <source>Nature</source>
-        <translation>Naturtalente</translation>
+        <translation type="vanished">Naturtalente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="276"/>
         <source>Knowledge</source>
-        <translation>Wissenstalente</translation>
+        <translation type="vanished">Wissenstalente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="276"/>
         <source>Craft</source>
-        <translation>Handwerkstalente</translation>
+        <translation type="vanished">Handwerkstalente</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="284"/>
         <source>Flying</source>
-        <translation>Fliegen</translation>
+        <translation type="vanished">Fliegen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="295"/>
         <source>Gaukelei</source>
-        <translation>Gaukeleien</translation>
+        <translation type="vanished">Gaukeleien</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="306"/>
         <source>Climbing</source>
-        <translation>Klettern</translation>
+        <translation type="vanished">Klettern</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="317"/>
         <source>Body Control</source>
-        <translation>Körperbeherrschung</translation>
+        <translation type="vanished">Körperbeherrschung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="328"/>
         <source>Feat of Strength</source>
-        <translation>Kraftakt</translation>
+        <translation type="vanished">Kraftakt</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="339"/>
         <source>Riding</source>
-        <translation>Reiten</translation>
+        <translation type="vanished">Reiten</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="350"/>
         <source>Swimming</source>
-        <translation>Schwimmen</translation>
+        <translation type="vanished">Schwimmen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="361"/>
         <source>Self-Control</source>
-        <translation>Selbstbeherrschung</translation>
+        <translation type="vanished">Selbstbeherrschung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="372"/>
         <source>Singing</source>
-        <translation>Singen</translation>
+        <translation type="vanished">Singen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="383"/>
         <source>Perception</source>
-        <translation>Sinnesschärfe</translation>
+        <translation type="vanished">Sinnesschärfe</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="394"/>
         <source>Dancing</source>
-        <translation>Tanzen</translation>
+        <translation type="vanished">Tanzen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="405"/>
         <source>Pickpocket</source>
-        <translation>Taschendiebstahl</translation>
+        <translation type="vanished">Taschendiebstahl</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="416"/>
         <source>Stealth</source>
-        <translation>Verbergen</translation>
+        <translation type="vanished">Verbergen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="427"/>
         <source>Carousing</source>
-        <translation>Zechen</translation>
+        <translation type="vanished">Zechen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="438"/>
         <source>Persuasion</source>
-        <translation>Bekehren &amp; Überzeugen</translation>
+        <translation type="vanished">Bekehren &amp; Überzeugen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="449"/>
         <source>Seduction</source>
-        <translation>Betören</translation>
+        <translation type="vanished">Betören</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="460"/>
         <source>Intimidation</source>
-        <translation>Einschüchtern</translation>
+        <translation type="vanished">Einschüchtern</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="471"/>
         <source>Etiquette</source>
-        <translation>Etikette</translation>
+        <translation type="vanished">Etikette</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="482"/>
         <source>Streetwise</source>
-        <translation>Gassenwissen</translation>
+        <translation type="vanished">Gassenwissen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="493"/>
         <source>Empathy</source>
-        <translation>Menschenkenntnis</translation>
+        <translation type="vanished">Menschenkenntnis</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="504"/>
         <source>Fast-Talk</source>
-        <translation>Überreden</translation>
+        <translation type="vanished">Überreden</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="515"/>
         <source>Disguise</source>
-        <translation>Verkleiden</translation>
+        <translation type="vanished">Verkleiden</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="526"/>
         <source>Willpower</source>
-        <translation>Willenskraft</translation>
+        <translation type="vanished">Willenskraft</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="537"/>
         <source>Tracking</source>
-        <translation>Fährtensuche</translation>
+        <translation type="vanished">Fährtensuche</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="548"/>
         <source>Ropes</source>
-        <translation>Fesseln</translation>
+        <translation type="vanished">Fesseln</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="559"/>
         <source>Fishing</source>
-        <translation>Fischen &amp; Angeln</translation>
+        <translation type="vanished">Fischen &amp; Angeln</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="570"/>
         <source>Orienting</source>
-        <translation>Orientierung</translation>
+        <translation type="vanished">Orientierung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="581"/>
         <source>Plant Lore</source>
-        <translation>Pflanzenkunde</translation>
+        <translation type="vanished">Pflanzenkunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="592"/>
         <source>Animal Lore</source>
-        <translation>Tierkunde</translation>
+        <translation type="vanished">Tierkunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="603"/>
         <source>Survival</source>
-        <translation>Wildnisleben</translation>
+        <translation type="vanished">Wildnisleben</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="614"/>
         <source>Gambling</source>
-        <translation>Brett- &amp; Glückspiel</translation>
+        <translation type="vanished">Brett- &amp; Glückspiel</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="625"/>
         <source>Geography</source>
-        <translation>Geographie</translation>
+        <translation type="vanished">Geographie</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="636"/>
         <source>History</source>
-        <translation>Geschichtswissen</translation>
+        <translation type="vanished">Geschichtswissen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="647"/>
         <source>Religions</source>
-        <translation>Götter &amp; Kulte</translation>
+        <translation type="vanished">Götter &amp; Kulte</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="658"/>
         <source>Warfare</source>
-        <translation>Kriegskunst</translation>
+        <translation type="vanished">Kriegskunst</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="669"/>
         <source>Magical Lore</source>
-        <translation>Magiekunde</translation>
+        <translation type="vanished">Magiekunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="680"/>
         <source>Mechanics</source>
-        <translation>Mechanik</translation>
+        <translation type="vanished">Mechanik</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="691"/>
         <source>Math</source>
-        <translation>Rechnen</translation>
+        <translation type="vanished">Rechnen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="702"/>
         <source>Law</source>
-        <translation>Rechtskunde</translation>
+        <translation type="vanished">Rechtskunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="713"/>
         <source>Myths &amp; Legends</source>
-        <translation>Sagen &amp; Legenden</translation>
+        <translation type="vanished">Sagen &amp; Legenden</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="724"/>
         <source>Sphere Lore</source>
-        <translation>Sphärenkunde</translation>
+        <translation type="vanished">Sphärenkunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="735"/>
         <source>Astronomy</source>
-        <translation>Sternenkunde</translation>
+        <translation type="vanished">Sternenkunde</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="746"/>
         <source>Alchemy</source>
-        <translation>Alchimie</translation>
+        <translation type="vanished">Alchimie</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="757"/>
         <source>Sailing</source>
-        <translation>Boote &amp; Schiffe</translation>
+        <translation type="vanished">Boote &amp; Schiffe</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="768"/>
         <source>Driving</source>
-        <translation>Fahrzeuge</translation>
+        <translation type="vanished">Fahrzeuge</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="779"/>
         <source>Commerce</source>
-        <translation>Handel</translation>
+        <translation type="vanished">Handel</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="790"/>
         <source>Treat Poison</source>
-        <translation>Heilkunde Gift</translation>
+        <translation type="vanished">Heilkunde Gift</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="801"/>
         <source>Treat Disease</source>
-        <translation>Heilkunde Krankheiten</translation>
+        <translation type="vanished">Heilkunde Krankheiten</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="812"/>
         <source>Treat Soul</source>
-        <translation>Heilkunde Seele</translation>
+        <translation type="vanished">Heilkunde Seele</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="823"/>
         <source>Treat Wounds</source>
-        <translation>Heilkunde Wunden</translation>
+        <translation type="vanished">Heilkunde Wunden</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="834"/>
         <source>Woodworking</source>
-        <translation>Holzbearbeitung</translation>
+        <translation type="vanished">Holzbearbeitung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="845"/>
         <source>Prepare Food</source>
-        <translation>Lebensmittelbearbeitung</translation>
+        <translation type="vanished">Lebensmittelbearbeitung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="856"/>
         <source>Leatherworking</source>
-        <translation>Lederbearbeitung</translation>
+        <translation type="vanished">Lederbearbeitung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="867"/>
         <source>Artistic Ability</source>
-        <translation>Malen &amp; Zeichnen</translation>
+        <translation type="vanished">Malen &amp; Zeichnen</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="878"/>
         <source>Metalworking</source>
-        <translation>Metallbearbeitung</translation>
+        <translation type="vanished">Metallbearbeitung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="889"/>
         <source>Music</source>
-        <translation>Musizieren</translation>
+        <translation type="vanished">Musizieren</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="900"/>
         <source>Pick Locks</source>
-        <translation>Schlösserknacken</translation>
+        <translation type="vanished">Schlösserknacken</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="911"/>
         <source>Earthencraft</source>
-        <translation>Steinbearbeitung</translation>
+        <translation type="vanished">Steinbearbeitung</translation>
     </message>
     <message>
-        <location filename="../Page2.qml" line="922"/>
         <source>Clothworking</source>
-        <translation>Stoffbearbeitung</translation>
+        <translation type="vanished">Stoffbearbeitung</translation>
     </message>
 </context>
 <context>
@@ -1293,136 +1293,97 @@
 <context>
     <name>Page3</name>
     <message>
-        <location filename="../Page3.qml" line="21"/>
         <source>Belongins</source>
-        <translation>Besitz</translation>
+        <translation type="vanished">Besitz</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="33"/>
         <source>Total weight: </source>
-        <translation>Gesamtgewicht: </translation>
+        <translation type="vanished">Gesamtgewicht: </translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="37"/>
         <source>Burden by weight: </source>
-        <translation>Belastung durch Gewicht: </translation>
+        <translation type="vanished">Belastung durch Gewicht: </translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="47"/>
         <source>Purse</source>
-        <translation>Geldbörse</translation>
+        <translation type="vanished">Geldbörse</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="59"/>
         <source>Ducats</source>
-        <translation>Dukaten</translation>
+        <translation type="vanished">Dukaten</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="63"/>
         <source>Silver</source>
-        <translation>Silber</translation>
+        <translation type="vanished">Silber</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="67"/>
         <source>Halers</source>
-        <translation>Heller</translation>
+        <translation type="vanished">Heller</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="72"/>
         <source>Kreutzers</source>
-        <translation>Kreuzer</translation>
+        <translation type="vanished">Kreuzer</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="86"/>
-        <location filename="../Page3.qml" line="344"/>
         <source>Location</source>
-        <translation>Aufgewahrungsort</translation>
+        <translation type="vanished">Aufgewahrungsort</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="87"/>
-        <location filename="../Page3.qml" line="145"/>
         <source>Where</source>
-        <translation>Wo</translation>
+        <translation type="vanished">Wo</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="88"/>
-        <location filename="../Page3.qml" line="146"/>
         <source>Level</source>
-        <translation>Füllung</translation>
+        <translation type="vanished">Füllung</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="89"/>
-        <location filename="../Page3.qml" line="117"/>
-        <location filename="../Page3.qml" line="147"/>
-        <location filename="../Page3.qml" line="230"/>
-        <location filename="../Page3.qml" line="316"/>
         <source>Weight</source>
-        <translation>Gewicht</translation>
+        <translation type="vanished">Gewicht</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="90"/>
-        <location filename="../Page3.qml" line="118"/>
-        <location filename="../Page3.qml" line="148"/>
-        <location filename="../Page3.qml" line="231"/>
-        <location filename="../Page3.qml" line="317"/>
         <source>Price</source>
-        <translation>Preis</translation>
+        <translation type="vanished">Preis</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="91"/>
-        <location filename="../Page3.qml" line="149"/>
         <source>Dropped</source>
-        <translation>Abgelegt</translation>
+        <translation type="vanished">Abgelegt</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="115"/>
-        <location filename="../Page3.qml" line="228"/>
         <source>Item</source>
-        <translation>Gegenstand</translation>
+        <translation type="vanished">Gegenstand</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="116"/>
-        <location filename="../Page3.qml" line="229"/>
-        <location filename="../Page3.qml" line="315"/>
         <source>Amount</source>
-        <translation>Menge</translation>
+        <translation type="vanished">Menge</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="144"/>
         <source>Container</source>
-        <translation>Behältnis</translation>
+        <translation type="vanished">Behältnis</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="204"/>
         <source>Edit</source>
-        <translation>Bearbeiten</translation>
+        <translation type="vanished">Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="208"/>
-        <location filename="../Page3.qml" line="357"/>
         <source>Remove</source>
-        <translation>Entfernen</translation>
+        <translation type="vanished">Entfernen</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="326"/>
         <source>Move...</source>
-        <translation>Umpacken...</translation>
+        <translation type="vanished">Umpacken...</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="347"/>
         <source>Body</source>
-        <translation>Körper</translation>
+        <translation type="vanished">Körper</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="374"/>
         <source>Confirm delete</source>
-        <translation>Löschen bestätigen</translation>
+        <translation type="vanished">Löschen bestätigen</translation>
     </message>
     <message>
-        <location filename="../Page3.qml" line="376"/>
         <source>Are you sure you want to delete %1?
  This cannot be undone.</source>
-        <translation>Bist du sicher dass du %1 entfernen willst?
+        <translation type="vanished">Bist du sicher dass du %1 entfernen willst?
 Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
 </context>
@@ -1443,6 +1404,142 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     <message>
         <source>Location</source>
         <translation type="vanished">Aufbewahrungsort</translation>
+    </message>
+</context>
+<context>
+    <name>PageBelongings</name>
+    <message>
+        <location filename="../PageBelongings.qml" line="21"/>
+        <source>Belongins</source>
+        <translation>Besitz</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="33"/>
+        <source>Total weight: </source>
+        <translation>Gesamtgewicht: </translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="37"/>
+        <source>Burden by weight: </source>
+        <translation>Belastung durch Gewicht: </translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="47"/>
+        <source>Purse</source>
+        <translation>Geldbörse</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="59"/>
+        <source>Ducats</source>
+        <translation>Dukaten</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="63"/>
+        <source>Silver</source>
+        <translation>Silber</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="67"/>
+        <source>Halers</source>
+        <translation>Heller</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="72"/>
+        <source>Kreutzers</source>
+        <translation>Kreuzer</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="86"/>
+        <location filename="../PageBelongings.qml" line="344"/>
+        <source>Location</source>
+        <translation>Ort</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="87"/>
+        <location filename="../PageBelongings.qml" line="145"/>
+        <source>Where</source>
+        <translation>Wo</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="88"/>
+        <location filename="../PageBelongings.qml" line="146"/>
+        <source>Level</source>
+        <translation>Füllung</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="89"/>
+        <location filename="../PageBelongings.qml" line="117"/>
+        <location filename="../PageBelongings.qml" line="147"/>
+        <location filename="../PageBelongings.qml" line="230"/>
+        <location filename="../PageBelongings.qml" line="316"/>
+        <source>Weight</source>
+        <translation>Gewicht</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="90"/>
+        <location filename="../PageBelongings.qml" line="118"/>
+        <location filename="../PageBelongings.qml" line="148"/>
+        <location filename="../PageBelongings.qml" line="231"/>
+        <location filename="../PageBelongings.qml" line="317"/>
+        <source>Price</source>
+        <translation>Preis</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="91"/>
+        <location filename="../PageBelongings.qml" line="149"/>
+        <source>Dropped</source>
+        <translation>Abgelegt</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="115"/>
+        <location filename="../PageBelongings.qml" line="228"/>
+        <source>Item</source>
+        <translation>Gegenstand</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="116"/>
+        <location filename="../PageBelongings.qml" line="229"/>
+        <location filename="../PageBelongings.qml" line="315"/>
+        <source>Amount</source>
+        <translation>Menge</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="144"/>
+        <source>Container</source>
+        <translation>Tasche</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="204"/>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="208"/>
+        <location filename="../PageBelongings.qml" line="357"/>
+        <source>Remove</source>
+        <translation>Entfernen</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="326"/>
+        <source>Move...</source>
+        <translation>Umpacken...</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="347"/>
+        <source>Body</source>
+        <translation>Körper</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="374"/>
+        <source>Confirm delete</source>
+        <translation>Löschen bestätigen</translation>
+    </message>
+    <message>
+        <location filename="../PageBelongings.qml" line="376"/>
+        <source>Are you sure you want to delete %1?
+ This cannot be undone.</source>
+        <translation>Bist du sicher dass du %1 entfernen willst?
+Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
 </context>
 <context>
@@ -1709,6 +1806,347 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
 </context>
 <context>
+    <name>PageHero</name>
+    <message>
+        <location filename="../PageHero.qml" line="14"/>
+        <location filename="../PageHero.qml" line="30"/>
+        <source>Hero</source>
+        <translation>Held</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="123"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="132"/>
+        <source>Race</source>
+        <translation>Rasse</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="138"/>
+        <source>Culture</source>
+        <translation>Kultur</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="147"/>
+        <source>Profession</source>
+        <translation>Profession</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="156"/>
+        <source>Size</source>
+        <translation>Größe</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="165"/>
+        <source>Weigh</source>
+        <translation>Gewicht</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="168"/>
+        <source>stone</source>
+        <translation>Stein</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="196"/>
+        <source>Points</source>
+        <translation>Aktuell</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="201"/>
+        <location filename="../PageHero.qml" line="387"/>
+        <source>Stat</source>
+        <translation>Wert</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="206"/>
+        <location filename="../PageHero.qml" line="228"/>
+        <location filename="../PageHero.qml" line="384"/>
+        <source>Mod</source>
+        <translation>Mod</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="210"/>
+        <source>Bought</source>
+        <translation>Gekauft</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="214"/>
+        <source>Max</source>
+        <translation>Max</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="224"/>
+        <source>Life Points</source>
+        <translation>Lebenspunkte</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="265"/>
+        <source>Arcane Energie</source>
+        <translation>Astralenergie</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="269"/>
+        <source>20 for Spellcaster + Primary Attribute</source>
+        <translation>20 für Zauberer + Leiteigenschaft</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="305"/>
+        <source>Karma Points</source>
+        <translation>Karmalenergie</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="309"/>
+        <source>20 for Blessed One + Primary Attribute</source>
+        <translation>20 für Geweiht + Leiteigenschaft</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="342"/>
+        <source>Fate Points</source>
+        <translation>Schicksalspunkte</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="376"/>
+        <source>Properties</source>
+        <translation>Merkmale</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="381"/>
+        <source>Base</source>
+        <translation>Basis</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="395"/>
+        <source>Spirit</source>
+        <translation>Seelenkraft</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="399"/>
+        <location filename="../PageHero.qml" line="425"/>
+        <source>Race Mod</source>
+        <translation>Rassenmod.</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="421"/>
+        <source>Toughness</source>
+        <translation>Zähigkeit</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="447"/>
+        <source>Dodge</source>
+        <translation>Ausweichen</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="473"/>
+        <source>Initiative</source>
+        <translation>Initiative</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="499"/>
+        <source>Movement</source>
+        <translation>Bewegung</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="503"/>
+        <source>Race Mod +8</source>
+        <translation>Rassenmod. +8</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="529"/>
+        <source>Condition</source>
+        <translation>Zustand</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="547"/>
+        <source>Incapacitated</source>
+        <translation>Handlungsunfähig</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="552"/>
+        <source>Confusion</source>
+        <translation>Verwirrung</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="558"/>
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="600"/>
+        <source>perplex</source>
+        <translation>perplex</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="605"/>
+        <source>Fear</source>
+        <translation>Angst</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="653"/>
+        <source>petrified</source>
+        <translation>versteinert</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="658"/>
+        <source>Encumbrance</source>
+        <translation>Belastung</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="705"/>
+        <source>hamstrung</source>
+        <translation>handlungsunfähig</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="710"/>
+        <source>Pain</source>
+        <translation>Schmerz</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="753"/>
+        <source>unconscious</source>
+        <translation>bewusstlos</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="758"/>
+        <source>Paralysis</source>
+        <translation>Paralys</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="805"/>
+        <source>paralysed</source>
+        <translation>paralysiert</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="810"/>
+        <source>Rapture</source>
+        <translation>Verzückung</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="857"/>
+        <source>engrossed</source>
+        <translation>entrückt</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="862"/>
+        <source>Stupor</source>
+        <translation>Benommenheit</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="909"/>
+        <source>sensless</source>
+        <translation>bewusstlos</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="917"/>
+        <source>Advantages</source>
+        <translation>Vorteile</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="922"/>
+        <source>Your advantages.</source>
+        <translation>Deine Vorteile.</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="929"/>
+        <source>Disadvantages</source>
+        <translation>Nachteile</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="934"/>
+        <source>Your disadvantages.</source>
+        <translation>Deine Nachteile.</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="941"/>
+        <source>Abilities</source>
+        <translation>Sonderfertigkeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageHero.qml" line="946"/>
+        <source>Your abilities.</source>
+        <translation>Deine Sonderfertigkeiten.</translation>
+    </message>
+</context>
+<context>
+    <name>PageMagic</name>
+    <message>
+        <location filename="../PageMagic.qml" line="21"/>
+        <source>Magic</source>
+        <translation>Zauber</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="33"/>
+        <source>AE</source>
+        <translation>AE</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="137"/>
+        <source>Add Spell</source>
+        <translation>Zaber hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="182"/>
+        <source>Spell</source>
+        <translation>Zauberspruch</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="183"/>
+        <source>Check</source>
+        <translation>Probe</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="184"/>
+        <source>SR</source>
+        <translation>FW</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="185"/>
+        <source>Cost</source>
+        <translation>Kosten</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="186"/>
+        <source>Casting Time</source>
+        <translation>Zauberdauer</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="187"/>
+        <source>Range</source>
+        <translation>Reichweite</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="188"/>
+        <source>Duration</source>
+        <translation>Wirkungsdauer</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="189"/>
+        <source>Property</source>
+        <translation>Merkmal</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="190"/>
+        <source>Impr.</source>
+        <translation>SF</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="191"/>
+        <source>Effect</source>
+        <translation>Wirkung</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="245"/>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="249"/>
+        <source>Delete</source>
+        <translation>Löschen</translation>
+    </message>
+</context>
+<context>
     <name>PageNotes</name>
     <message>
         <location filename="../PageNotes.qml" line="20"/>
@@ -1752,6 +2190,379 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
 </context>
 <context>
+    <name>PageTalents</name>
+    <message>
+        <location filename="../PageTalents.qml" line="20"/>
+        <source>Skills</source>
+        <translation>Talente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="134"/>
+        <source>Check</source>
+        <translation>Probe</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="135"/>
+        <source>ENC</source>
+        <translation>BE</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="136"/>
+        <source>SR</source>
+        <translation>FW</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="138"/>
+        <source>Mod</source>
+        <translation>Mod</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="139"/>
+        <source>Comment</source>
+        <translation>Anmerkung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="175"/>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="175"/>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="175"/>
+        <source>maybe</source>
+        <translation>Evtl</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="231"/>
+        <source>Edit</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="266"/>
+        <source>Physical</source>
+        <translation>Körpertalente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="266"/>
+        <source>Social</source>
+        <translation>Gesellschaftstalente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="266"/>
+        <source>Nature</source>
+        <translation>Naturtalente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="266"/>
+        <source>Knowledge</source>
+        <translation>Wissenstalente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="266"/>
+        <source>Craft</source>
+        <translation>Handwerkstalente</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="273"/>
+        <source>Flying</source>
+        <translation>Fliegen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="285"/>
+        <source>Gaukelei</source>
+        <translation>Gaukeleien</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="296"/>
+        <source>Climbing</source>
+        <translation>Klettern</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="308"/>
+        <source>Body Control</source>
+        <translation>Körperbeherrschung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="320"/>
+        <source>Feat of Strength</source>
+        <translation>Kraftakt</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="332"/>
+        <source>Riding</source>
+        <translation>Reiten</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="344"/>
+        <source>Swimming</source>
+        <translation>Schwimmen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="356"/>
+        <source>Self-Control</source>
+        <translation>Selbstbeherrschung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="368"/>
+        <source>Singing</source>
+        <translation>Singen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="380"/>
+        <source>Perception</source>
+        <translation>Sinnesschärfe</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="392"/>
+        <source>Dancing</source>
+        <translation>Tanzen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="404"/>
+        <source>Pickpocket</source>
+        <translation>Taschendiebstahl</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="416"/>
+        <source>Stealth</source>
+        <translation>Verbergen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="428"/>
+        <source>Carousing</source>
+        <translation>Zechen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="440"/>
+        <source>Persuasion</source>
+        <translation>Bekehren &amp; Überzeugen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="452"/>
+        <source>Seduction</source>
+        <translation>Betören</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="464"/>
+        <source>Intimidation</source>
+        <translation>Einschüchtern</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="476"/>
+        <source>Etiquette</source>
+        <translation>Etikette</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="488"/>
+        <source>Streetwise</source>
+        <translation>Gassenwissen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="500"/>
+        <source>Empathy</source>
+        <translation>Menschenkenntnis</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="512"/>
+        <source>Fast-Talk</source>
+        <translation>Überreden</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="524"/>
+        <source>Disguise</source>
+        <translation>Verkleiden</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="536"/>
+        <source>Willpower</source>
+        <translation>Willenskraft</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="548"/>
+        <source>Tracking</source>
+        <translation>Fährtensuche</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="560"/>
+        <source>Ropes</source>
+        <translation>Fesseln</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="572"/>
+        <source>Fishing</source>
+        <translation>Fischen &amp; Angeln</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="584"/>
+        <source>Orienting</source>
+        <translation>Orientierung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="596"/>
+        <source>Plant Lore</source>
+        <translation>Pflanzenkunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="608"/>
+        <source>Animal Lore</source>
+        <translation>Tierkunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="620"/>
+        <source>Survival</source>
+        <translation>Wildnisleben</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="632"/>
+        <source>Gambling</source>
+        <translation>Brett- &amp; Glückspiel</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="644"/>
+        <source>Geography</source>
+        <translation>Geographie</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="656"/>
+        <source>History</source>
+        <translation>Geschichtswissen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="668"/>
+        <source>Religions</source>
+        <translation>Götter &amp; Kulte</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="680"/>
+        <source>Warfare</source>
+        <translation>Kriegskunst</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="692"/>
+        <source>Magical Lore</source>
+        <translation>Magiekunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="704"/>
+        <source>Mechanics</source>
+        <translation>Mechanik</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="716"/>
+        <source>Math</source>
+        <translation>Rechnen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="728"/>
+        <source>Law</source>
+        <translation>Rechtskunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="740"/>
+        <source>Myths &amp; Legends</source>
+        <translation>Sagen &amp; Legenden</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="752"/>
+        <source>Sphere Lore</source>
+        <translation>Sphärenkunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="764"/>
+        <source>Astronomy</source>
+        <translation>Sternenkunde</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="776"/>
+        <source>Alchemy</source>
+        <translation>Alchimie</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="788"/>
+        <source>Sailing</source>
+        <translation>Boote &amp; Schiffe</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="800"/>
+        <source>Driving</source>
+        <translation>Fahrzeuge</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="812"/>
+        <source>Commerce</source>
+        <translation>Handel</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="824"/>
+        <source>Treat Poison</source>
+        <translation>Heilkunde Gift</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="836"/>
+        <source>Treat Disease</source>
+        <translation>Heilkunde Krankheiten</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="848"/>
+        <source>Treat Soul</source>
+        <translation>Heilkunde Seele</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="860"/>
+        <source>Treat Wounds</source>
+        <translation>Heilkunde Wunden</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="872"/>
+        <source>Woodworking</source>
+        <translation>Holzbearbeitung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="884"/>
+        <source>Prepare Food</source>
+        <translation>Lebensmittelbearbeitung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="896"/>
+        <source>Leatherworking</source>
+        <translation>Lederbearbeitung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="908"/>
+        <source>Artistic Ability</source>
+        <translation>Malen &amp; Zeichnen</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="920"/>
+        <source>Metalworking</source>
+        <translation>Metallbearbeitung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="932"/>
+        <source>Music</source>
+        <translation>Musizieren</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="944"/>
+        <source>Pick Locks</source>
+        <translation>Schlösserknacken</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="956"/>
+        <source>Earthencraft</source>
+        <translation>Steinbearbeitung</translation>
+    </message>
+    <message>
+        <location filename="../PageTalents.qml" line="968"/>
+        <source>Clothworking</source>
+        <translation>Stoffbearbeitung</translation>
+    </message>
+</context>
+<context>
     <name>RollTalentDialog</name>
     <message>
         <location filename="../dialogs/RollTalentDialog.qml" line="9"/>
@@ -1759,72 +2570,79 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>Talentprobe</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="41"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="44"/>
         <source>Checking against</source>
         <translation>Probe auf</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="50"/>
         <source>ENC: </source>
         <translation>BE: </translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="50"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="53"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="50"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="53"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="47"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="50"/>
         <source>maybe</source>
         <translation>Evtl</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="54"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="53"/>
+        <source>Par: </source>
+        <translation>Par:</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/RollTalentDialog.qml" line="60"/>
         <source>Attribute values</source>
         <translation>Eigenschaftswerte</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="79"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="85"/>
         <source>With current Mods</source>
         <translation>Modifizierte Werte</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="89"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="95"/>
         <source>Current Skill: </source>
         <translation>Talentwert: </translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="99"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="105"/>
         <source>Skill mod</source>
         <translation>Talent Mod</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="113"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="119"/>
         <source>Obstacle</source>
         <translation>Erschwernis</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="123"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="128"/>
         <source>Harder</source>
         <translation>Schwerer</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="123"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="128"/>
         <source>Easier</source>
         <translation>Leichter</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="130"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="135"/>
         <source>Check Talent with mods</source>
         <translation>Probe mit Modifikatoren</translation>
     </message>
     <message>
-        <location filename="../dialogs/RollTalentDialog.qml" line="145"/>
+        <location filename="../dialogs/RollTalentDialog.qml" line="150"/>
         <source>The obstacle value is added to the modified attribute values.</source>
         <translation>Die Erschwernis wird zu den Eigenschaftswerten hinzuaddiert.</translation>
     </message>
@@ -1841,37 +2659,37 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>DSA Heldenbogen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="63"/>
+        <location filename="../main.qml" line="67"/>
         <source>Body</source>
         <translation>Körper</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="134"/>
+        <location filename="../main.qml" line="138"/>
         <source>&amp;File</source>
         <translation>&amp;Datei</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="136"/>
+        <location filename="../main.qml" line="140"/>
         <source>&amp;New</source>
         <translation>&amp;Neu</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="139"/>
+        <location filename="../main.qml" line="143"/>
         <source>&amp;Save</source>
         <translation>&amp;Speichern</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="141"/>
+        <location filename="../main.qml" line="145"/>
         <source>Save &amp;As</source>
         <translation>Speichern &amp;unter</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="144"/>
+        <location filename="../main.qml" line="148"/>
         <source>&amp;Load</source>
         <translation>&amp;Laden</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="154"/>
+        <location filename="../main.qml" line="158"/>
         <source>&amp;Hero</source>
         <translation>&amp;Held</translation>
     </message>
@@ -1886,42 +2704,52 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>&amp;Leiteigenschaft</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="170"/>
+        <location filename="../main.qml" line="169"/>
         <source>&amp;Add Avatar</source>
         <translation>&amp;Avatar hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="177"/>
+        <location filename="../main.qml" line="178"/>
+        <source>&amp;Clear</source>
+        <translation>&amp;Löschen</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="183"/>
         <source>&amp;Items</source>
         <translation>&amp;Gegenstand</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="179"/>
+        <location filename="../main.qml" line="185"/>
         <source>Money</source>
         <translation>&amp;Geldbörse</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="204"/>
+        <location filename="../main.qml" line="210"/>
         <source>Add an Avatar</source>
         <translation>Einen Avatar hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="272"/>
+        <location filename="../main.qml" line="276"/>
         <source>Hero</source>
         <translation>Held</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="283"/>
+        <location filename="../main.qml" line="287"/>
         <source>Notes</source>
         <translation>Notizen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="156"/>
+        <location filename="../main.qml" line="294"/>
+        <source>Magic</source>
+        <translation>Zauber</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="174"/>
         <source>&amp;Import</source>
         <translation>&amp;Importieren</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="148"/>
+        <location filename="../main.qml" line="152"/>
         <source>&amp;Quit</source>
         <translation>&amp;Beenden</translation>
     </message>
@@ -1930,17 +2758,17 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation type="vanished">Gegenstände</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="184"/>
+        <location filename="../main.qml" line="190"/>
         <source>&amp;Add Item</source>
         <translation>&amp;Gegenstand hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="188"/>
+        <location filename="../main.qml" line="194"/>
         <source>Add &amp;Bag</source>
         <translation>&amp;Aufbewahrungsort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="196"/>
+        <location filename="../main.qml" line="202"/>
         <source>Import Hero from Optholit</source>
         <translation>Held Importieren</translation>
     </message>
@@ -2030,17 +2858,17 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation type="vanished">Entfernen</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="275"/>
+        <location filename="../main.qml" line="279"/>
         <source>Skills</source>
         <translation>Talente</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="278"/>
+        <location filename="../main.qml" line="282"/>
         <source>Combat</source>
         <translation>Kampf</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="281"/>
+        <location filename="../main.qml" line="285"/>
         <source>Belongings</source>
         <translation>Besitz</translation>
     </message>

@@ -19,6 +19,12 @@ Page {
         property alias abilities: abilities.text
     }
 
+    function clear(){
+        advantages.text = ""
+        disadvantages.text = ""
+        abilities.text = ""
+    }
+
     header: RowLayout {
         Label {
             text: qsTr("Hero")

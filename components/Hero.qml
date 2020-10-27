@@ -31,7 +31,7 @@ Item {
     property int aeMod: -1
     property int aeBought: 0
     property int aeMax: aeMod >= 0 ? eval(mainAttr)+aeMod+aeBought+20:0
-    property int ae: aeMax
+    property int ae: 0
 
     property int keMod: -1
     property int keBought: 0
@@ -69,6 +69,7 @@ Item {
 
     property string hName: " "
     property int raceId: 0
+    property string culture: ""
     property string profession: " "
     property int hSize: 0
     property int hWeight: 0
@@ -92,9 +93,9 @@ Item {
 
         property alias le: hero.le
         property alias leBought: hero.leBought
+        property alias ae: hero.ae
         property alias aeMod: hero.aeMod
         property alias aeBought: hero.aeBought
-        property alias ae: hero.ae
         property alias keMod: hero.keMod
         property alias keBought: hero.keBought
         property alias ke: hero.ke
@@ -117,6 +118,7 @@ Item {
 
         property alias hName: hero.hName
         property alias raceId: hero.raceId
+        property alias culture: hero.culture
         property alias profession: hero.profession
         property alias hSize: hero.hSize
         property alias hWeight: hero.hWeight
@@ -132,6 +134,15 @@ Item {
             pageBelongings.bagList.setProperty(0,"size", kk*2)
         }
     }
+
+    onMainAttrChanged: {
+        if(aeMod > 0){
+            ae = eval(mainAttr)+aeMod+aeBought+20
+        }else if(keMod > 0){
+            ke = eval(mainAttr)+keMod+keBought+20
+        }
+    }
+
     onLeChanged: {
         if(le<=5){
             pain = 4
@@ -343,9 +354,7 @@ Item {
         hero.ff = 8
         hero.kk = 8
         hero.ko = 8
-        pageHero.advantages.text = ""
-        pageHero.disadvantages.text = ""
-        pageHero.abilities.text = ""
+        pageHero.clear()
         for(var i=0;i<pageTalents.skillList.count;i++){
             pageTalents.skillList.setProperty(i,"level",0)
         }
@@ -440,9 +449,10 @@ Item {
 
         // Movement
         if(activable['ADV_9']){ // nimble
-            hero.moveMod += 1
+            hero.moveMod = 1
         }else if(activable['DISADV_4']){
-            hero.moveMod -= 1
+            console.log("here2")
+            hero.moveMod = 1
         }
 
         // Fate fatePoint

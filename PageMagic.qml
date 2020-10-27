@@ -41,7 +41,9 @@ Page {
                 from: -10
                 to: hero.aeMax
 
-                onValueModified: hero.ae = value
+                onValueModified: {
+                    hero.ae = value
+                }
             }
         }
 
@@ -173,28 +175,32 @@ Page {
 
         Row {
             width: parent.width
-            spacing: 3
+            spacing: 0
 
             Layout.bottomMargin: 5
 
-            Label { text: qsTr("Spell");    width: 120 }
-            Label { text: qsTr("Check");    width: 90}
-            Label { text: qsTr("SR");       width: 40}
-            Label { text: qsTr("Cost");     width: 60}
-            Label { text: qsTr("Casting Time");     width: 60}
-            Label { text: qsTr("Range");    width: 80}
-            Label { text: qsTr("Duration"); width: 60}
-            Label { text: qsTr("Property"); width: 90}
-            Label { text: qsTr("Impr.");    width: 40 }
-            Label { text: qsTr("Effect") }
+            Text { text: qsTr("Spell");    width: 120;  wrapMode: Text.WordWrap }
+            Text { text: qsTr("Check");    width: 90;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("SR");       width: 40;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Cost");     width: 60;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Casting Time");     width: 60;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Range");    width: 80;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Duration"); width: 60;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Property"); width: 90;  wrapMode: Text.WordWrap}
+            Text { text: qsTr("Impr.");    width: 40;  wrapMode: Text.WordWrap }
+            Text { text: qsTr("Effect") }
         }
     }
 
     Component {
         id:spellDelegate
+
         RowLayout {
+            id: row
             spacing: 0
             width: parent.width
+            Layout.alignment: Qt.AlignTop
+
             TCell {
                 text: spell
                 width: 120
@@ -213,23 +219,23 @@ Page {
                     }
                 }
             }
-            TCell { id: spellCheck; width: 90; highlight: true }
+            TCell { id: spellCheck; width: 90; bgHeight: row.implicitHeight }
             TCell { text: sr;       width: 40 }
-            TCell { text: cost;     width: 60; highlight: true }
+            TCell { text: cost;     width: 60; bgHeight: row.implicitHeight }
             TCell { text: time;     width: 60 }
-            TCell { text: range;    width: 80; highlight: true }
+            TCell { text: range;    width: 80; bgHeight: row.implicitHeight }
             TCell { text: duration; width: 60 }
-            TCell { text: prop;     width: 90; highlight: true }
+            TCell { text: prop;     width: 90; bgHeight: row.implicitHeight }
             TCell { text: impr;     width: 40 }
             TCell {
                 text: effect
                 Layout.fillWidth: true
-                highlight: true
+                bgHeight: row.implicitHeight
                 horizontalAlignment: Text.AlignLeft
             }
 
             Component.onCompleted: {
-                check.text = hero.getAttr(check, 0)
+                spellCheck.text = hero.getAttr(check, 0)
             }
         }
     }
