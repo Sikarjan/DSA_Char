@@ -24,6 +24,7 @@
         <file>PageMagic.qml</file>
         <file>dialogs/AddSpellDialog.qml</file>
         <file>components/TCell.qml</file>
+        <file>components/TextBox.qml</file>
     </qresource>
     <qresource prefix="/lang">
         <file>language/DSA_Char_de_DE.qm</file>

@@ -101,22 +101,26 @@ Page {
             active: true
         }
 
-        GridLayout {
+        Grid {
             id: content
             columnSpacing: 5
             columns: Math.floor(page.width/400)
             width: parent.width
 
-            Grid {
+            GridLayout {
                 id: basics
                 columns: 2
-                spacing: 4
+                columnSpacing: 4
+                width: 390
 
                 Label {
                     text: qsTr("Name")
                 }
-                Label {
+                TextField {
                     text: hero.hName
+                    onEditingFinished: hero.hName = text
+                    selectByMouse: true
+                    Layout.fillWidth: true
                 }
                 Label {
                     text: qsTr("Race")
@@ -125,16 +129,31 @@ Page {
                     text: Globals.raceIds[hero.raceId]
                 }
                 Label {
-                    text: qsTr("Profession")
+                    text: qsTr("Culture")
+                }
+                TextField {
+                    text: hero.culture
+                    onEditingFinished: hero.culture = text
+                    selectByMouse: true
+                    Layout.fillWidth: true
                 }
                 Label {
+                    text: qsTr("Profession")
+                }
+                TextField {
                     text: hero.profession
+                    onEditingFinished: hero.profession = text
+                    selectByMouse: true
+                    Layout.fillWidth: true
                 }
                 Label {
                     text: qsTr("Size")
                 }
-                Label {
-                    text: hero.hSize + " "+qsTr("finger")
+                TextField {
+                    text: hero.hSize
+                    onEditingFinished: hero.hSize = text
+                    selectByMouse: true
+                    Layout.fillWidth: true
                 }
                 Label {
                     text: qsTr("Weigh")
@@ -891,7 +910,7 @@ Page {
                 Label {
                     text: qsTr("Advantages")
                 }
-                TextArea {
+                TextBox {
                     id: advantages
                     width: parent.width
                     placeholderText: qsTr("Your advantages.")
@@ -903,7 +922,7 @@ Page {
                 Label {
                     text: qsTr("Disadvantages")
                 }
-                TextArea {
+                TextBox {
                     id: disadvantages
                     width: parent.width
                     placeholderText: qsTr("Your disadvantages.")
@@ -915,7 +934,7 @@ Page {
                 Label {
                     text: qsTr("Abilities")
                 }
-                TextArea {
+                TextBox {
                     id: abilities
                     width: parent.width
                     placeholderText: qsTr("Your abilities.")
