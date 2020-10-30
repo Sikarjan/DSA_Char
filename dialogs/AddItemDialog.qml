@@ -190,6 +190,19 @@ Dialog {
             visible: itemType.currentIndex === 1
 
             Label {
+                text: qsTr("Damage Bonus")
+                width: 100
+            }
+            SpinBox {
+                id: damageBonus
+                from: 8
+            }
+        }
+        Row {
+            width: parent.width
+            visible: itemType.currentIndex === 1
+
+            Label {
                 text: qsTr("Reach")
                 width: 100
             }
@@ -310,7 +323,7 @@ Dialog {
 
     onAccepted: {
         var cost = itemAmount.value * itemPrice.value
-        if(payBox && cost > hero.money){
+        if(payBox.checked && cost > hero.money){
             error = true
             addItemDialog.open()
             return
@@ -328,6 +341,7 @@ Dialog {
         if(itemType.currentIndex === 1){
             append.damageDice = damageDice.value
             append.damageFlat = damageFlat.value
+            append.damageBonus = damageBonus.value
             append.reach = reach.currentValue
             append.at = at.value
             append.pa = pa.value
@@ -358,7 +372,7 @@ Dialog {
         hero.addWeight(itemWeight.realValue, itemWhere.currentValue)
 
 
-        if(payBox){
+        if(payBox.checked){
             hero.money -= cost
         }
 

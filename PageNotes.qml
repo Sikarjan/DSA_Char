@@ -154,7 +154,7 @@ Page {
                     }
                     ToolButton {
                         id: fontFamilyToolButton
-                        text: qsTr("\uE805") // icon-font
+                        text: "\uE805" // icon-font
                         font.family: "fontello"
                         font.bold: document.bold
                         font.italic: document.italic
@@ -166,7 +166,7 @@ Page {
                         }
                     }
                     ToolButton {
-                        text: qsTr("\uf0ca") // icon-unordered list
+                        text: "\uf0ca" // icon-unordered list
                         font.family: "fontello"
                         focusPolicy: Qt.TabFocus
                         checkable: true

@@ -183,61 +183,66 @@
     </message>
     <message>
         <location filename="../dialogs/AddItemDialog.qml" line="193"/>
+        <source>Damage Bonus</source>
+        <translation>Schadensbonus</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddItemDialog.qml" line="206"/>
         <source>Reach</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="203"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="216"/>
         <source>short</source>
         <translation>kurz</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="204"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="217"/>
         <source>medium</source>
         <translation>mittel</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="205"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="218"/>
         <source>long</source>
         <translation>lang</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="214"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="227"/>
         <source>AT/PA Mod</source>
         <translation>AT/PA Mod</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="236"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="249"/>
         <source>Reload time</source>
         <translation>Ladezeit</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="249"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="262"/>
         <source>Ammunition</source>
         <translation>Munition</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="262"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="275"/>
         <source>Range</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="275"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="288"/>
         <source>Protection</source>
         <translation>Rüstungsschutz</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="288"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="301"/>
         <source>Encumbrance</source>
         <translation>Belastung</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="301"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="314"/>
         <source>Penalties</source>
         <translation>Mali</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddItemDialog.qml" line="306"/>
+        <location filename="../dialogs/AddItemDialog.qml" line="319"/>
         <source>-1 MOV, -1 INI</source>
         <translation>-1 GS, -1 INI</translation>
     </message>
@@ -260,97 +265,107 @@
         <translation>Probe</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="116"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="117"/>
+        <source>-SP</source>
+        <translation>-SK</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="118"/>
+        <source>-TP</source>
+        <translation>-ZK</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/AddSpellDialog.qml" line="126"/>
         <source>Spell Rate</source>
         <translation>Fertigkeitswert</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="129"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="139"/>
         <source>Cost</source>
         <translation>Kosten</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="142"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="152"/>
         <source>Casting Time</source>
         <translation>Zauberdauer</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="155"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="165"/>
         <source>Range</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="168"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="178"/>
         <source>Duration</source>
         <translation>Wirkungsdauer</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="181"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="191"/>
         <source>Property</source>
         <translation>Merkmal</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="189"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="199"/>
         <source>Anti-Magic</source>
         <translation>Antimagie</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="190"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="200"/>
         <source>Clairvoyance</source>
         <translation>Hellsicht</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="191"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="201"/>
         <source>Demonic</source>
         <translation>Demonisch</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="192"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="202"/>
         <source>Elemental</source>
         <translation>Elementar</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="193"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="203"/>
         <source>Healing</source>
         <translation>Heilung</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="194"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="204"/>
         <source>Illusion</source>
         <translation>Illusion</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="195"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="205"/>
         <source>Influence</source>
         <translation>Einfluss</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="196"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="206"/>
         <source>Object</source>
         <translation>Objekt</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="197"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="207"/>
         <source>Spheres</source>
         <translation>Sphären</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="198"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="208"/>
         <source>Telekinesis</source>
         <translation>Telekinese</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="199"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="209"/>
         <source>Transformation</source>
         <translation>Verwandlung</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="207"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="217"/>
         <source>Improve</source>
         <translation>Steigerungsfaktor</translation>
     </message>
     <message>
-        <location filename="../dialogs/AddSpellDialog.qml" line="220"/>
+        <location filename="../dialogs/AddSpellDialog.qml" line="230"/>
         <source>Effect</source>
         <translation>Wirkung</translation>
     </message>
@@ -511,7 +526,7 @@
     <message>
         <location filename="../components/Globals.js" line="2"/>
         <source>Elves</source>
-        <translation type="unfinished">Elven</translation>
+        <translation>Elven</translation>
     </message>
     <message>
         <location filename="../components/Globals.js" line="2"/>
@@ -587,42 +602,42 @@
         <translation>KO</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="276"/>
+        <location filename="../components/Hero.qml" line="278"/>
         <source>Magical success</source>
         <translation>Magischer Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="278"/>
+        <location filename="../components/Hero.qml" line="280"/>
         <source>Perfect success</source>
         <translation>Perfekter Erfolg</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="292"/>
+        <location filename="../components/Hero.qml" line="294"/>
         <source>Critical error</source>
         <translation>Kritischer Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="294"/>
+        <location filename="../components/Hero.qml" line="296"/>
         <source>Catastrophic error</source>
         <translation>Katstrophaler Patzer</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="567"/>
+        <location filename="../components/Hero.qml" line="569"/>
         <source>Bolts</source>
         <translation>Bolzen</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="569"/>
+        <location filename="../components/Hero.qml" line="571"/>
         <source>Arrows</source>
         <translation>Pfeile</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="693"/>
+        <location filename="../components/Hero.qml" line="695"/>
         <source>Spells</source>
         <translation>Zauber</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="693"/>
+        <location filename="../components/Hero.qml" line="695"/>
         <source>Liturgical Chants</source>
         <translation>Liturgien</translation>
     </message>
@@ -632,24 +647,24 @@
         <translation type="vanished">Du hast die Probe mit einer Qualität %1 bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="313"/>
         <location filename="../components/Hero.qml" line="315"/>
+        <location filename="../components/Hero.qml" line="317"/>
         <source>Your roll was: </source>
         <translation>Dein Wurf war: </translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="313"/>
+        <location filename="../components/Hero.qml" line="315"/>
         <source>You succeeded with a quality %1 (%2).</source>
         <translation>Du hast die Probe mit einer Qualität %1 (%2) bestanden.</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="315"/>
+        <location filename="../components/Hero.qml" line="317"/>
         <source>You failed</source>
         <translation>Fehlschlag</translation>
     </message>
     <message>
-        <location filename="../components/Hero.qml" line="365"/>
-        <location filename="../components/Hero.qml" line="629"/>
+        <location filename="../components/Hero.qml" line="367"/>
+        <location filename="../components/Hero.qml" line="631"/>
         <source>Body</source>
         <translation>Körper</translation>
     </message>
@@ -1697,7 +1712,7 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../PageCombat.qml" line="427"/>
         <source>CSR</source>
-        <translation>BE</translation>
+        <translation>KTW</translation>
     </message>
     <message>
         <location filename="../PageCombat.qml" line="432"/>
@@ -1970,100 +1985,100 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../PageHero.qml" line="558"/>
         <source></source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="600"/>
+        <location filename="../PageHero.qml" line="596"/>
         <source>perplex</source>
         <translation>perplex</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="605"/>
+        <location filename="../PageHero.qml" line="601"/>
         <source>Fear</source>
         <translation>Angst</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="653"/>
+        <location filename="../PageHero.qml" line="644"/>
         <source>petrified</source>
         <translation>versteinert</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="658"/>
+        <location filename="../PageHero.qml" line="649"/>
         <source>Encumbrance</source>
         <translation>Belastung</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="705"/>
+        <location filename="../PageHero.qml" line="696"/>
         <source>hamstrung</source>
         <translation>handlungsunfähig</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="710"/>
+        <location filename="../PageHero.qml" line="701"/>
         <source>Pain</source>
         <translation>Schmerz</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="753"/>
+        <location filename="../PageHero.qml" line="744"/>
         <source>unconscious</source>
         <translation>bewusstlos</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="758"/>
+        <location filename="../PageHero.qml" line="749"/>
         <source>Paralysis</source>
         <translation>Paralys</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="805"/>
+        <location filename="../PageHero.qml" line="796"/>
         <source>paralysed</source>
         <translation>paralysiert</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="810"/>
+        <location filename="../PageHero.qml" line="801"/>
         <source>Rapture</source>
         <translation>Verzückung</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="857"/>
+        <location filename="../PageHero.qml" line="848"/>
         <source>engrossed</source>
         <translation>entrückt</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="862"/>
+        <location filename="../PageHero.qml" line="853"/>
         <source>Stupor</source>
         <translation>Benommenheit</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="909"/>
+        <location filename="../PageHero.qml" line="900"/>
         <source>sensless</source>
         <translation>bewusstlos</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="917"/>
+        <location filename="../PageHero.qml" line="907"/>
         <source>Advantages</source>
         <translation>Vorteile</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="922"/>
+        <location filename="../PageHero.qml" line="908"/>
         <source>Your advantages.</source>
         <translation>Deine Vorteile.</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="929"/>
+        <location filename="../PageHero.qml" line="913"/>
         <source>Disadvantages</source>
         <translation>Nachteile</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="934"/>
+        <location filename="../PageHero.qml" line="914"/>
         <source>Your disadvantages.</source>
         <translation>Deine Nachteile.</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="941"/>
+        <location filename="../PageHero.qml" line="919"/>
         <source>Abilities</source>
         <translation>Sonderfertigkeiten</translation>
     </message>
     <message>
-        <location filename="../PageHero.qml" line="946"/>
+        <location filename="../PageHero.qml" line="920"/>
         <source>Your abilities.</source>
         <translation>Deine Sonderfertigkeiten.</translation>
     </message>
@@ -2081,67 +2096,112 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <translation>AE</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="137"/>
+        <location filename="../PageMagic.qml" line="141"/>
         <source>Add Spell</source>
         <translation>Zaber hinzufügen</translation>
     </message>
     <message>
+        <location filename="../PageMagic.qml" line="157"/>
+        <source>cantrips</source>
+        <translation>Zaubertricks</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="158"/>
+        <source>Your cantrips</source>
+        <translation>Deine Zaubertricks</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="163"/>
+        <source>Magical Special Abilities</source>
+        <translation>Magische Sonderfertigkeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="164"/>
+        <source>Your special abilites</source>
+        <translation>Liste deiner magischen Sonderfertigkeiten</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="168"/>
+        <source>Tradition</source>
+        <translation>Tradition</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="175"/>
+        <source>Properties</source>
+        <translation>Merkmale</translation>
+    </message>
+    <message>
         <location filename="../PageMagic.qml" line="182"/>
+        <source>Primary Attribute</source>
+        <translation>Leiteigenschaft</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="217"/>
         <source>Spell</source>
         <translation>Zauberspruch</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="183"/>
+        <location filename="../PageMagic.qml" line="218"/>
         <source>Check</source>
         <translation>Probe</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="184"/>
+        <location filename="../PageMagic.qml" line="219"/>
         <source>SR</source>
         <translation>FW</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="185"/>
+        <location filename="../PageMagic.qml" line="220"/>
         <source>Cost</source>
         <translation>Kosten</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="186"/>
+        <location filename="../PageMagic.qml" line="221"/>
         <source>Casting Time</source>
         <translation>Zauberdauer</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="187"/>
+        <location filename="../PageMagic.qml" line="222"/>
         <source>Range</source>
         <translation>Reichweite</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="188"/>
+        <location filename="../PageMagic.qml" line="223"/>
         <source>Duration</source>
         <translation>Wirkungsdauer</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="189"/>
+        <location filename="../PageMagic.qml" line="224"/>
         <source>Property</source>
         <translation>Merkmal</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="190"/>
+        <location filename="../PageMagic.qml" line="225"/>
         <source>Impr.</source>
         <translation>SF</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="191"/>
+        <location filename="../PageMagic.qml" line="226"/>
         <source>Effect</source>
         <translation>Wirkung</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="245"/>
+        <location filename="../PageMagic.qml" line="279"/>
+        <source> (-SP)</source>
+        <translation> (-SK)</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="281"/>
+        <source> (-TP)</source>
+        <translation> (-ZK)</translation>
+    </message>
+    <message>
+        <location filename="../PageMagic.qml" line="289"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../PageMagic.qml" line="249"/>
+        <location filename="../PageMagic.qml" line="293"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
@@ -2152,16 +2212,6 @@ Dies kann nicht rückgängig gemacht werden.</translation>
         <location filename="../PageNotes.qml" line="20"/>
         <source>Notes</source>
         <translation>Notizen</translation>
-    </message>
-    <message>
-        <location filename="../PageNotes.qml" line="157"/>
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PageNotes.qml" line="169"/>
-        <source></source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PageNotes.qml" line="300"/>
@@ -2599,7 +2649,7 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../dialogs/RollTalentDialog.qml" line="53"/>
         <source>Par: </source>
-        <translation>Par:</translation>
+        <translation>Par: </translation>
     </message>
     <message>
         <location filename="../dialogs/RollTalentDialog.qml" line="60"/>
@@ -2720,8 +2770,12 @@ Dies kann nicht rückgängig gemacht werden.</translation>
     </message>
     <message>
         <location filename="../main.qml" line="185"/>
-        <source>Money</source>
+        <source>&amp;Money</source>
         <translation>&amp;Geldbörse</translation>
+    </message>
+    <message>
+        <source>Money</source>
+        <translation type="vanished">&amp;Geldbörse</translation>
     </message>
     <message>
         <location filename="../main.qml" line="210"/>

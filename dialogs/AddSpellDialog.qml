@@ -108,6 +108,16 @@ Dialog {
                     { value: "kk", text: hero.kkText },
                 ]
             }
+            ComboBox {
+                id: mod
+                textRole: "text"
+                valueRole: "value"
+                model: [
+                    {value: 0, text: "-"},
+                    {value: 1, text: qsTr("-SP")},
+                    {value: 2, text: qsTr("-TP")}
+                ]
+            }
         }
         Row {
             width: parent.width
@@ -233,6 +243,7 @@ Dialog {
         var mSpell = {
             "spell": spellName.text,
             "check": attr1.currentText.toLowerCase()+"/"+attr2.currentText.toLowerCase()+"/"+attr3.currentText.toLowerCase(),
+            "mod": mod.currentValue,
             "sr": sr.value,
             "cost": cost.text,
             "time": time.text,
@@ -267,6 +278,7 @@ Dialog {
         attr1.currentIndex = 0
         attr2.currentIndex = 0
         attr3.currentIndex = 0
+        mod.currentIndex = 0
         sr.value = 0
         cost.text = ""
         time.text = ""

@@ -209,6 +209,10 @@ Item {
         var res = ""
 
         for(const a of attrs){
+            if(a === "intu"){
+                a = "in"
+            }
+
             if(a in attr){
                 if(cat === 0){
                     res += attrName[a]
@@ -223,6 +227,8 @@ Item {
                 }
 
                 res += "/"
+            }else{
+                console.log("Attribute could not be found: "+a+"\nInput was:"+mAttr)
             }
         }
         return res.slice(0,-1)

@@ -147,6 +147,7 @@ Page {
         id: ccHead
 
         Row {
+            x: marginNormal
             spacing: 3
 
             Label {
@@ -194,6 +195,7 @@ Page {
         id: ccDelegate
 
         Row {
+            x: marginNormal
             visible: type === "weapon"
             height: type === "weapon" ? childrenRect.height:0
             spacing: 3
@@ -227,7 +229,7 @@ Page {
             }
 
             Label {
-                text: at ? at+"/"+pa:""
+                text: ct ? at+"/"+pa:""
                 width: 100
             }
             Label {
@@ -240,7 +242,7 @@ Page {
                           at+               // Mod by weapon
                           ctSkill.level+    // Basic attack
                           Math.floor((hero.mu-8)/3)-    // Bonus from courage
-                          hero.attrMods     // Mod by current states
+                          hero.stateModAll     // Mod by current states
                         :""
                 width: 60
             }
@@ -250,7 +252,7 @@ Page {
                           pa+            // Mod by weapon
                           Math.round(ctSkill.level/2)+    // Basic parade
                           Math.floor((hero.getMainCtAttrValue(ctSkill.primaryAttr)-8)/3)- // Bonus from main attribute
-                          hero.attrMods  // Mod by current states
+                          hero.stateModAll  // Mod by current states
                         :""
                 width: 60
             }
@@ -261,6 +263,7 @@ Page {
         id: rcHead
 
         Row {
+            x: marginNormal
             spacing: 3
 
             Label {
@@ -281,7 +284,7 @@ Page {
             }
             Label {
                 text: qsTr("Ammunition")
-                width: 100
+                width: 150
             }
             Label {
                 text: qsTr("Range")
@@ -297,6 +300,7 @@ Page {
         id: rcDelegate
 
         Row {
+            x: marginNormal
             visible: type === "rangeWeapon"
             height: type === "rangeWeapon" ? childrenRect.height:0
             spacing: 3
@@ -319,16 +323,28 @@ Page {
                 text: damageDice ? damageDice+qsTr("D6+")+damageFlat:""
                 width: 60
             }
-            Label {
-                text: ammunition ? ammunition:""
-                width: 100
+            Row {
+                width: 150
+                spacing: 2
+                SpinBox {
+                    width: 70
+                    from: 0
+                    value: ct ? pa:""
+
+                    onValueModified: pa = value
+                }
+
+                Label {
+                    text: ammunition ? ammunition:""
+                    width: 80
+                }
             }
             Label {
                 text: range ? range:""
                 width: 100
             }
             Label {
-                text: ct ? ctSkill.level-hero.attrMods:""
+                text: ct ? ctSkill.level-hero.stateModAll:""
             }
         }
     }
@@ -387,14 +403,9 @@ Page {
                 width: 100
                 text: armorType%2 === 0 ? qsTr("-1 Mov -1 Ini"):""
             }
-            CheckBox {
+            Label {
                 width: 50
-                checked: whereId === 0
-
-                onClicked: {
-                    checked = whereId === 0
-                    note = qsTr("This is toggled by putting the armor from body to a bag in the items tab.")
-                }
+                text: whereId === 0 ? qsTr("Yes"):qsTr("No")
             }
         }
     }

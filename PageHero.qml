@@ -555,7 +555,6 @@ Page {
                     id: con0
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: confusionGroup
                     checked: hero.confusion === 0
                     onToggled: hero.confusion = 0
@@ -564,7 +563,6 @@ Page {
                     id: con1
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: confusionGroup
                     checked: hero.confusion === 1
                     onToggled: hero.confusion = 1
@@ -573,7 +571,6 @@ Page {
                     id: con2
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: confusionGroup
                     checked: hero.confusion === 2
                     onToggled: hero.confusion = 2
@@ -582,7 +579,6 @@ Page {
                     id: con3
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: confusionGroup
                     checked: hero.confusion === 3
                     onToggled: hero.confusion = 3
@@ -591,7 +587,6 @@ Page {
                     id: con4
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: confusionGroup
                     checked: hero.confusion === 4
                     onToggled: hero.confusion = 4
@@ -608,7 +603,6 @@ Page {
                     id: fear0
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: fearGroup
                     checked: hero.fear === 0
                     onToggled: hero.fear = 0
@@ -617,7 +611,6 @@ Page {
                     id: fear1
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: fearGroup
                     checked: hero.fear === 1
                     onToggled: hero.fear = 1
@@ -626,7 +619,6 @@ Page {
                     id: fear2
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: fearGroup
                     checked: hero.fear === 2
                     onToggled: hero.fear = 2
@@ -635,7 +627,6 @@ Page {
                     id: fear3
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: fearGroup
                     checked: hero.fear === 3
                     onToggled: hero.fear = 3
@@ -644,7 +635,6 @@ Page {
                     id: fear4
                     width: 22
                     height: 24
-                    text: qsTr("")
                     ButtonGroup.group: fearGroup
                     checked: hero.fear === 4
                     onToggled: hero.fear = 4
@@ -910,41 +900,23 @@ Page {
                 }
             }
 
-            Column {
+            TextBox {
+                id: advantages
                 width: 380
-                spacing: 2
-                Label {
-                    text: qsTr("Advantages")
-                }
-                TextBox {
-                    id: advantages
-                    width: parent.width
-                    placeholderText: qsTr("Your advantages.")
-                }
+                title: qsTr("Advantages")
+                placeholderText: qsTr("Your advantages.")
             }
-            Column {
+            TextBox {
+                id: disadvantages
                 width: 380
-                spacing: 2
-                Label {
-                    text: qsTr("Disadvantages")
-                }
-                TextBox {
-                    id: disadvantages
-                    width: parent.width
-                    placeholderText: qsTr("Your disadvantages.")
-                }
+                title: qsTr("Disadvantages")
+                placeholderText: qsTr("Your disadvantages.")
             }
-            Column {
+            TextBox {
+                id: abilities
                 width: 380
-                spacing: 2
-                Label {
-                    text: qsTr("Abilities")
-                }
-                TextBox {
-                    id: abilities
-                    width: parent.width
-                    placeholderText: qsTr("Your abilities.")
-                }
+                title: qsTr("Abilities")
+                placeholderText: qsTr("Your abilities.")
             }
         }
     }

@@ -260,8 +260,8 @@ Page {
             }
             SpinBox {
                 value: model.amount
-                width: 80
-                height: itemNameLabel.height
+                width: 70
+                height: itemNameLabel.height+4
                 editable: true
                 wheelEnabled: true
 
@@ -468,11 +468,11 @@ Page {
                 if(bagId === 0){
                     hero.iniMod -= penalty
                     hero.moveMod -= penalty
-                    hero.burden -= enc
+                    hero.burden += enc
                 }else{
                     hero.iniMod += penalty
                     hero.moveMod += penalty
-                    hero.burden += enc
+                    hero.burden -= enc
                 }
 
             }

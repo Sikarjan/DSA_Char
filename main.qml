@@ -182,7 +182,7 @@ ApplicationWindow {
         Menu {
             title: qsTr("&Items")
             Action {
-                text: qsTr("Money")
+                text: qsTr("&Money")
                 onTriggered: moneyDialog.open()
             }
 

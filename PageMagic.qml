@@ -109,6 +109,10 @@ Page {
 
     Settings {
         property alias spellListStore: pageMagic.spellListStore
+        property alias cantrips: cantrips.text
+        property alias magicAbilities: magicAbilities.text
+        property alias tradition: tradition.text
+        property alias prop: prop.text
     }
 
     Component.onCompleted: {
@@ -147,6 +151,37 @@ Page {
             header: spellHeader
             delegate: spellDelegate
         }
+        TextBox {
+            id: cantrips
+            width: 380
+            title: qsTr("cantrips")
+            placeholderText: qsTr("Your cantrips")
+        }
+        TextBox {
+            id: magicAbilities
+            width: 380
+            title: qsTr("Magical Special Abilities")
+            placeholderText: qsTr("Your special abilites")
+        }
+        GridLayout {
+           columns: 2
+           Label { text: qsTr("Tradition")}
+           TextField {
+               id: tradition
+               selectByMouse: true
+               Layout.fillWidth: true
+           }
+
+           Label { text: qsTr("Properties")}
+           TextField {
+               id: prop
+               selectByMouse: true
+               Layout.fillWidth: true
+           }
+
+           Label { text: qsTr("Primary Attribute")}
+           Label { text: hero.getAttr(hero.mainAttr) }
+        }
     }
 
     ListModel {
@@ -179,15 +214,15 @@ Page {
 
             Layout.bottomMargin: 5
 
-            Text { text: qsTr("Spell");    width: 120;  wrapMode: Text.WordWrap }
-            Text { text: qsTr("Check");    width: 90;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("SR");       width: 40;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Cost");     width: 60;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Casting Time");     width: 60;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Range");    width: 80;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Duration"); width: 60;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Property"); width: 90;  wrapMode: Text.WordWrap}
-            Text { text: qsTr("Impr.");    width: 40;  wrapMode: Text.WordWrap }
+            Text { text: qsTr("Spell");    width: 120;  wrapMode: Text.Wrap }
+            Text { text: qsTr("Check");    width: 90;  wrapMode: Text.Wrap}
+            Text { text: qsTr("SR");       width: 40;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Cost");     width: 60;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Casting Time");     width: 60;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Range");    width: 80;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Duration"); width: 60;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Property"); width: 90;  wrapMode: Text.Wrap}
+            Text { text: qsTr("Impr.");    width: 40;  wrapMode: Text.Wrap }
             Text { text: qsTr("Effect") }
         }
     }
@@ -211,8 +246,8 @@ Page {
 
                     hoverEnabled: true
 
-                    onEntered: {spellCheck.text = hero.getAttr(check, 3)}
-                    onExited: {spellCheck.text = hero.getAttr(check, 0)}
+                    onEntered: {spellCheck.text = hero.getAttr(check, 3)+spellMod(mod)}
+                    onExited: {spellCheck.text = hero.getAttr(check, 0)+spellMod(mod)}
                     onClicked: {
                         activeSpell = index
                         spellContext.popup()
@@ -235,7 +270,16 @@ Page {
             }
 
             Component.onCompleted: {
-                spellCheck.text = hero.getAttr(check, 0)
+                spellCheck.text = hero.getAttr(check, 0)+spellMod(mod)
+            }
+            function spellMod(mod){
+                if(mod === 0){
+                    return "";
+                }else if(mod === 1){
+                    return qsTr(" (-SP)")
+                }else if(mod === 2){
+                    return qsTr(" (-TP)")
+                }
             }
         }
     }
