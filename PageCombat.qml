@@ -18,7 +18,6 @@ Page {
 
     Component.onCompleted: {
         ctList.sortCombatSkills()
-        console.log("page: "+page.height+" flick: "+flick.height+" content: "+content.height)
     }
 
     header: RowLayout {
@@ -78,7 +77,7 @@ Page {
 
         Column {
             id: content
-            anchors.fill: parent
+            width: parent.width
             spacing: 5
 
             ListView {

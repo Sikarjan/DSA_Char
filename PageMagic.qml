@@ -130,57 +130,76 @@ Page {
         anchors.centerIn: parent
     }
 
-    Column {
-        id:content
+    Flickable {
+        id: flick
         anchors.fill: parent
         anchors.margins: 5
-        spacing: 5
+        contentHeight: content.height
         clip: true
 
-        Button {
-            text: qsTr("Add Spell")
-            onClicked: addSpellDialog.visible = true
+        ScrollBar.vertical: ScrollBar {
+            active: true
         }
 
-        ListView {
-            id: spellView
+        Column {
+            id:content
             width: parent.width
-            height: contentHeight
-            model: spellModel
+            spacing: 15
+            clip: true
 
-            header: spellHeader
-            delegate: spellDelegate
-        }
-        TextBox {
-            id: cantrips
-            width: 380
-            title: qsTr("cantrips")
-            placeholderText: qsTr("Your cantrips")
-        }
-        TextBox {
-            id: magicAbilities
-            width: 380
-            title: qsTr("Magical Special Abilities")
-            placeholderText: qsTr("Your special abilites")
-        }
-        GridLayout {
-           columns: 2
-           Label { text: qsTr("Tradition")}
-           TextField {
-               id: tradition
-               selectByMouse: true
-               Layout.fillWidth: true
-           }
+            Button {
+                text: qsTr("Add Spell")
+                onClicked: addSpellDialog.visible = true
+            }
 
-           Label { text: qsTr("Properties")}
-           TextField {
-               id: prop
-               selectByMouse: true
-               Layout.fillWidth: true
-           }
+            ListView {
+                id: spellView
+                width: parent.width
+                height: contentHeight
+                model: spellModel
 
-           Label { text: qsTr("Primary Attribute")}
-           Label { text: hero.getAttr(hero.mainAttr) }
+                header: spellHeader
+                delegate: spellDelegate
+            }
+
+            GridLayout {
+                width: parent.width
+                columns: Math.floor(pageMagic.width/400)
+
+                TextBox {
+                    id: cantrips
+                    width: 380
+                    title: qsTr("cantrips")
+                    placeholderText: qsTr("Your cantrips")
+                }
+                TextBox {
+                    id: magicAbilities
+                    width: 380
+                    title: qsTr("Magical Special Abilities")
+                    placeholderText: qsTr("Your special abilites")
+                }
+
+                RowLayout {
+                    Label { text: qsTr("Tradition"); width: 100}
+                    TextField {
+                       id: tradition
+                       selectByMouse: true
+                       Layout.fillWidth: true
+                    }
+                }
+                RowLayout {
+                    Label { text: qsTr("Properties"); width: 100}
+                    TextField {
+                       id: prop
+                       selectByMouse: true
+                       Layout.fillWidth: true
+                    }
+                }
+                RowLayout {
+                    Label { text: qsTr("Primary Attribute"); width: 100}
+                    Label { text: hero.getAttr(hero.mainAttr) }
+                }
+            }
         }
     }
 

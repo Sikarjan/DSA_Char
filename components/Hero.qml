@@ -208,7 +208,7 @@ Item {
         var attrs = mAttr.split("/")
         var res = ""
 
-        for(const a of attrs){
+        for(var a of attrs){
             if(a === "intu"){
                 a = "in"
             }
