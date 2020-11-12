@@ -123,40 +123,43 @@ Page {
                 id: secRow
                 anchors.verticalCenter: parent.verticalCenter
                 x:2
-                spacing: 5
+                spacing: 0
 
                 Label {
                     text: skillSection.label
                     font.bold: true
-                    font.pixelSize: fontSizeMedium
+ //                   font.pixelSize: fontSizeMedium
                     width: 175
                 }
                 Label { text: qsTr("Check"); width: 100 }
                 Label { text: qsTr("ENC"); width: 50 }
                 Label { text: qsTr("SR"); width: 30 }
-                Label { text: "+"; width: Qt.application.font.pixelSize+5 }
                 Label { text: qsTr("Mod"); width: 30 }
                 Label { text: qsTr("Comment") }
             }
         }
 
-        delegate: Row {
-            spacing: 5
+        delegate: RowLayout {
+            id: skillRow
             width: skillView.width - 10
+            spacing: 0
             x:5
 
-            Label {
+            TCell {
                 id: skillName
                 text: name
                 width: 170
-                font.pointSize: fontSizeRegular
+                horizontalAlignment: Text.AlignLeft
 
                 MouseArea {
                     anchors.fill: parent
 
                     hoverEnabled: true
 
-                    onEntered: {skillCheck.text = hero.getAttr(check, 1)}
+                    onEntered: {
+                        skillCheck.text = hero.getAttr(check, 1)
+                        activeSkill = index
+                    }
                     onExited: {skillCheck.text = hero.getAttr(check, 0)}
                     onClicked: {
                         activeSkill = index
@@ -165,46 +168,30 @@ Page {
                 }
             }
 
-            Label {
+            TCell {
                 id: skillCheck
                 text: check
-                font.pointSize: skillName.font.pointSize
                 width: 100
+                bgHeight: skillRow.implicitHeight
             }
-            Label {
+            TCell {
                 text: burden === 0 ? qsTr("No"):(burden === 1? qsTr("Yes"):qsTr("maybe"))
                 width: 50
             }
-            Label {
+            TCell {
                 text: level
                 width: 30
+                bgHeight: skillRow.implicitHeight
             }
-            Button {
-                anchors.verticalCenter: parent.verticalCenter
-                width: skillCheck.height -2
-                height: width
-
-                Image {
-                    anchors.fill: parent
-                    source: "qrc:/img/img/dice.png"
-                    fillMode: Image.PreserveAspectFit
-                }
-
-                onClicked: {
-                    activeSkill = index
-                    rollTalentDialog.open()
-                }
-            }
-
-            Label {
+            TCell {
                 text: mod < 0 ? mod:(mod > 0 ? "+"+mod:"")
                 width: 30
             }
 
-            Label {
+            TCell {
                 text: comment
-                clip: true
                 Layout.fillWidth: true
+                horizontalAlignment: Text.AlignLeft
             }
 
             Component.onCompleted: {skillCheck.text = hero.getAttr(check, 0)}
@@ -227,6 +214,13 @@ Page {
 
     Menu {
         id: skillContext
+        MenuItem {
+            text:   qsTr("Probe")
+            onTriggered: {
+                rollTalentDialog.open()
+            }
+        }
+
         MenuItem {
             text: qsTr("Edit")
             onTriggered: editSkillDialog.open()
